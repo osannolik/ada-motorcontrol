@@ -5319,6 +5319,20 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000083</resetValue>
           <fields>
             <field>
+              <name>PLLSAIRDY</name>
+              <description>PLLSAI clock ready flag</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>PLLSAION</name>
+              <description>PLLSAI enable</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
               <name>PLLI2SRDY</name>
               <description>PLLI2S clock ready flag</description>
               <bitOffset>27</bitOffset>
@@ -5420,36 +5434,25 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x24003010</resetValue>
           <fields>
             <field>
-              <name>PLLQ3</name>
-              <description>Main PLL (PLL) division factor for USB
-              OTG FS, SDIO and random number generator
-              clocks</description>
-              <bitOffset>27</bitOffset>
-              <bitWidth>1</bitWidth>
+              <name>PLLM</name>
+              <description>Division factor for the main PLL (PLL)
+              and audio PLL (PLLI2S) input clock</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
             </field>
             <field>
-              <name>PLLQ2</name>
-              <description>Main PLL (PLL) division factor for USB
-              OTG FS, SDIO and random number generator
-              clocks</description>
-              <bitOffset>26</bitOffset>
-              <bitWidth>1</bitWidth>
+              <name>PLLN</name>
+              <description>Main PLL (PLL) multiplication factor for
+              VCO</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>9</bitWidth>
             </field>
             <field>
-              <name>PLLQ1</name>
-              <description>Main PLL (PLL) division factor for USB
-              OTG FS, SDIO and random number generator
-              clocks</description>
-              <bitOffset>25</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLQ0</name>
-              <description>Main PLL (PLL) division factor for USB
-              OTG FS, SDIO and random number generator
-              clocks</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>1</bitWidth>
+              <name>PLLP</name>
+              <description>Main PLL (PLL) division factor for main
+              system clock</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>2</bitWidth>
             </field>
             <field>
               <name>PLLSRC</name>
@@ -5459,123 +5462,19 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PLLP1</name>
-              <description>Main PLL (PLL) division factor for main
-              system clock</description>
-              <bitOffset>17</bitOffset>
-              <bitWidth>1</bitWidth>
+              <name>PLLQ</name>
+              <description>Main PLL (PLL) division factor for USB
+              OTG FS, SDIO and random number generator
+              clocks</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
             </field>
             <field>
-              <name>PLLP0</name>
-              <description>Main PLL (PLL) division factor for main
-              system clock</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN8</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>14</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN7</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>13</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN6</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>12</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN5</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>11</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN4</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>10</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN3</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>9</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN2</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN1</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>7</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLN0</name>
-              <description>Main PLL (PLL) multiplication factor for
-              VCO</description>
-              <bitOffset>6</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLM5</name>
-              <description>Division factor for the main PLL (PLL)
-              and audio PLL (PLLI2S) input clock</description>
-              <bitOffset>5</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLM4</name>
-              <description>Division factor for the main PLL (PLL)
-              and audio PLL (PLLI2S) input clock</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLM3</name>
-              <description>Division factor for the main PLL (PLL)
-              and audio PLL (PLLI2S) input clock</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLM2</name>
-              <description>Division factor for the main PLL (PLL)
-              and audio PLL (PLLI2S) input clock</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLM1</name>
-              <description>Division factor for the main PLL (PLL)
-              and audio PLL (PLLI2S) input clock</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>PLLM0</name>
-              <description>Division factor for the main PLL (PLL)
-              and audio PLL (PLLI2S) input clock</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>1</bitWidth>
+              <name>PLLR</name>
+              <description>Main PLL division factor for DSI
+              clock</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>3</bitWidth>
             </field>
           </fields>
         </register>
@@ -5656,31 +5555,17 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>SWS1</name>
-              <description>System clock switch status</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>SWS0</name>
+              <name>SWS</name>
               <description>System clock switch status</description>
               <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
+              <bitWidth>2</bitWidth>
               <access>read-only</access>
             </field>
             <field>
-              <name>SW1</name>
-              <description>System clock switch</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>SW0</name>
+              <name>SW</name>
               <description>System clock switch</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>1</bitWidth>
+              <bitWidth>2</bitWidth>
               <access>read-write</access>
             </field>
           </fields>
@@ -7204,10 +7089,17 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>RTCSEL</name>
+              <name>RTCSEL0</name>
               <description>RTC clock source selection</description>
               <bitOffset>8</bitOffset>
-              <bitWidth>2</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RTCSEL1</name>
+              <description>RTC clock source selection</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
             <field>
@@ -12128,6 +12020,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>PWRCTRL</description>
               <bitOffset>0</bitOffset>
               <bitWidth>2</bitWidth>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Power_OFF</name>
+                  <description>The clock to card is stopped.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Power_ON</name>
+                  <description>The card is clocked.</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
@@ -12152,12 +12056,41 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               bit</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Edge_Rising</name>
+                  <description>Cmd and Data changed on the SDMMCCLK falling edge succeeding the rising edge of SDMMC_CK.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Edge_Falling</name>
+                  <description>Cmd and Data changed on the SDMMC_CK falling edge.</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
             <field>
               <name>WIDBUS</name>
               <description>Wide bus mode enable bit</description>
               <bitOffset>11</bitOffset>
               <bitWidth>2</bitWidth>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Bus_Wide_1b</name>
+                  <description>Default bus mode: SDMMC_D0 is used.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Bus_Wide_4b</name>
+                  <description>4-wide bus mode: SDMMC_D[3:0] used.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Bus_Wide_8b</name>
+                  <description>8-wide bus mode: SDMMC_D[7:0] used.</description>
+                  <value>2</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
             <field>
               <name>BYPASS</name>
@@ -12263,6 +12196,23 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>Wait for response bits</description>
               <bitOffset>6</bitOffset>
               <bitWidth>2</bitWidth>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>No_Response</name>
+                  <description>No response, expect CMDSENT flag.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Short_Response</name>
+                  <description>Short response, expect CMDREND or CCRCFAIL flag.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Long_Response</name>
+                  <description>Long response, expect CMDREND or CCRCFAIL flag.</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
             <field>
               <name>CMDINDEX</name>
@@ -12429,6 +12379,83 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>Data block size</description>
               <bitOffset>4</bitOffset>
               <bitWidth>4</bitWidth>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Block_1b</name>
+                  <description>Block length = 2**0 = 1 byte</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_2b</name>
+                  <description>Block length = 2**1 = 2 byte</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_4b</name>
+                  <description>Block length = 2**2 = 4 byte</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_8b</name>
+                  <description>Block length = 2**3 = 8 byte</description>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_16b</name>
+                  <description>Block length = 2**4 = 16 byte</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_32b</name>
+                  <description>Block length = 2**5 = 32 byte</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_64b</name>
+                  <description>Block length = 2**6 = 64 byte</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_128b</name>
+                  <description>Block length = 2**7 = 128 byte</description>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_256b</name>
+                  <description>Block length = 2**8 = 256 byte</description>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_512b</name>
+                  <description>Block length = 2**9 = 512 byte</description>
+                  <value>9</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_1024b</name>
+                  <description>Block length = 2**10 = 1024 byte</description>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_2048b</name>
+                  <description>Block length = 2**11 = 2048 byte</description>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_4096b</name>
+                  <description>Block length = 2**12 = 4096 byte</description>
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_8192b</name>
+                  <description>Block length = 2**13 = 8192 byte</description>
+                  <value>13</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Block_16384b</name>
+                  <description>Block length = 2**14 = 16384 byte</description>
+                  <value>14</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
             <field>
               <name>DMAEN</name>
@@ -12442,6 +12469,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               or SDIO multibyte data transfer.</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Block</name>
+                  <description>Block data transfer</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Stream</name>
+                  <description>Stream or SDIO multibyte data transfer</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
             <field>
               <name>DTDIR</name>
@@ -12449,6 +12488,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               selection</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Controller_To_Card</name>
+                  <description>Data is sent to the card</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Card_To_Controller</name>
+                  <description>Data is read from the card</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
             <field>
               <name>DTEN</name>
@@ -13223,10 +13274,58 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>SMPx_x</name>
+              <name>SMP18</name>
+              <description>Sample time bits</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP17</name>
+              <description>Sample time bits</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP16</name>
+              <description>Sample time bits</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP15</name>
+              <description>Sample time bits</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP14</name>
+              <description>Sample time bits</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP13</name>
+              <description>Sample time bits</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP12</name>
+              <description>Sample time bits</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP11</name>
+              <description>Sample time bits</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP10</name>
               <description>Sample time bits</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
+              <bitWidth>3</bitWidth>
             </field>
           </fields>
         </register>
@@ -13240,10 +13339,64 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>SMPx_x</name>
+              <name>SMP9</name>
+              <description>Sample time bits</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP8</name>
+              <description>Sample time bits</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP7</name>
+              <description>Sample time bits</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP6</name>
+              <description>Sample time bits</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP5</name>
+              <description>Sample time bits</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP4</name>
+              <description>Sample time bits</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP3</name>
+              <description>Sample time bits</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP2</name>
+              <description>Sample time bits</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP1</name>
+              <description>Sample time bits</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>SMP0</name>
               <description>Sample time bits</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
+              <bitWidth>3</bitWidth>
             </field>
           </fields>
         </register>
@@ -14117,11 +14270,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
-      <interrupt>
-        <name>UART7</name>
-        <description>UART 7 global interrupt</description>
-        <value>82</value>
-      </interrupt>
       <registers>
         <register>
           <name>CR</name>
@@ -14531,9 +14679,24 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>UART8</name>
-        <description>UART 8 global interrupt</description>
-        <value>83</value>
+        <name>I2C3_EV</name>
+        <description>I2C3 event interrupt</description>
+        <value>72</value>
+      </interrupt>
+      <interrupt>
+        <name>I2C3_ER</name>
+        <description>I2C3 error interrupt</description>
+        <value>73</value>
+      </interrupt>
+      <interrupt>
+        <name>FMPI2C1_EV</name>
+        <description>FMPI2C1 event interrupt</description>
+        <value>95</value>
+      </interrupt>
+      <interrupt>
+        <name>FMPI2C1_ER</name>
+        <description>FMPI2C1 error interrupt</description>
+        <value>96</value>
       </interrupt>
       <registers>
         <register>
@@ -15011,25 +15174,19 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>I2C2</name>
       <baseAddress>0x40005800</baseAddress>
       <interrupt>
-        <name>TIM6_DAC</name>
-        <description>TIM6 global interrupt, DAC1 and DAC2 underrun
-        error interrupt</description>
-        <value>54</value>
+        <name>I2C2_EV</name>
+        <description>I2C2 event interrupt</description>
+        <value>33</value>
+      </interrupt>
+      <interrupt>
+        <name>I2C2_ER</name>
+        <description>I2C2 error interrupt</description>
+        <value>34</value>
       </interrupt>
     </peripheral>
     <peripheral derivedFrom="I2C3">
       <name>I2C1</name>
       <baseAddress>0x40005400</baseAddress>
-      <interrupt>
-        <name>I2C3_EV</name>
-        <description>I2C3 event interrupt</description>
-        <value>72</value>
-      </interrupt>
-      <interrupt>
-        <name>I2C3_ER</name>
-        <description>I2C3 error interrupt</description>
-        <value>73</value>
-      </interrupt>
     </peripheral>
     <peripheral>
       <name>IWDG</name>
@@ -15041,16 +15198,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
-      <interrupt>
-        <name>I2C2_EV</name>
-        <description>I2C2 event interrupt</description>
-        <value>33</value>
-      </interrupt>
-      <interrupt>
-        <name>I2C2_ER</name>
-        <description>I2C2 error interrupt</description>
-        <value>34</value>
-      </interrupt>
       <registers>
         <register>
           <name>KR</name>
@@ -15241,6 +15388,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>RTC_WKUP</name>
+        <description>RTC Wakeup interrupt through the EXTI
+        line</description>
+        <value>3</value>
+      </interrupt>
+      <interrupt>
+        <name>RTC_Alarm</name>
+        <description>RTC Alarms (A and B) through EXTI line
+        interrupt</description>
+        <value>41</value>
+      </interrupt>
       <registers>
         <register>
           <name>TR</name>
@@ -16880,16 +17039,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>UART5</name>
       <baseAddress>0x40005000</baseAddress>
       <interrupt>
-        <name>RTC_WKUP</name>
-        <description>RTC Wakeup interrupt through the EXTI
-        line</description>
-        <value>3</value>
-      </interrupt>
-      <interrupt>
-        <name>RTC_Alarm</name>
-        <description>RTC Alarms (A and B) through EXTI line
-        interrupt</description>
-        <value>41</value>
+        <name>UART5</name>
+        <description>UART5 global interrupt</description>
+        <value>53</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -17135,9 +17287,27 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>UART5</name>
-        <description>UART5 global interrupt</description>
-        <value>53</value>
+        <name>TIM1_BRK_TIM9</name>
+        <description>TIM1 Break interrupt and TIM9 global
+        interrupt</description>
+        <value>24</value>
+      </interrupt>
+      <interrupt>
+        <name>TIM1_UP_TIM10</name>
+        <description>TIM1 Update interrupt and TIM10 global
+        interrupt</description>
+        <value>25</value>
+      </interrupt>
+      <interrupt>
+        <name>TIM1_TRG_COM_TIM11</name>
+        <description>TIM1 Trigger and Commutation interrupts and
+        TIM11 global interrupt</description>
+        <value>26</value>
+      </interrupt>
+      <interrupt>
+        <name>TIM1_CC</name>
+        <description>TIM1 Capture Compare interrupt</description>
+        <value>27</value>
       </interrupt>
       <registers>
         <register>
@@ -18230,27 +18400,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM1_BRK_TIM9</name>
-        <description>TIM1 Break interrupt and TIM9 global
-        interrupt</description>
-        <value>24</value>
-      </interrupt>
-      <interrupt>
-        <name>TIM1_UP_TIM10</name>
-        <description>TIM1 Update interrupt and TIM10 global
-        interrupt</description>
-        <value>25</value>
-      </interrupt>
-      <interrupt>
-        <name>TIM1_TRG_COM_TIM11</name>
-        <description>TIM1 Trigger and Commutation interrupts and
-        TIM11 global interrupt</description>
-        <value>26</value>
-      </interrupt>
-      <interrupt>
-        <name>TIM1_CC</name>
-        <description>TIM1 Capture Compare interrupt</description>
-        <value>27</value>
+        <name>TIM8_TRG_COM_TIM14</name>
+        <description>TIM8 Trigger and Commutation interrupts and
+        TIM14 global interrupt</description>
+        <value>45</value>
       </interrupt>
       <registers>
         <register>
@@ -22242,10 +22395,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM8_TRG_COM_TIM14</name>
-        <description>TIM8 Trigger and Commutation interrupts and
-        TIM14 global interrupt</description>
-        <value>45</value>
+        <name>TIM6_DAC</name>
+        <description>TIM6 global interrupt, DAC1 and DAC2 underrun
+        error interrupt</description>
+        <value>54</value>
       </interrupt>
       <registers>
         <register>
@@ -22420,10 +22573,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM7</name>
       <baseAddress>0x40001400</baseAddress>
       <interrupt>
-        <name>TIM1_TRG_COM_TIM11</name>
-        <description>TIM1 Trigger and Commutation interrupts and
-        TIM11 global interrupt</description>
-        <value>26</value>
+        <name>TIM7</name>
+        <description>TIM7 global interrupt</description>
+        <value>55</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -22507,9 +22659,16 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM7</name>
-        <description>TIM7 global interrupt</description>
-        <value>55</value>
+        <name>OTG_FS_WKUP</name>
+        <description>USB On-The-Go FS Wakeup through EXTI line
+        interrupt</description>
+        <value>42</value>
+      </interrupt>
+      <interrupt>
+        <name>OTG_FS</name>
+        <description>USB On The Go FS global
+        interrupt</description>
+        <value>67</value>
       </interrupt>
       <registers>
         <register>
@@ -27671,6 +27830,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>CAN1_TX</name>
+        <description>CAN1 TX interrupts</description>
+        <value>19</value>
+      </interrupt>
+      <interrupt>
+        <name>CAN1_RX0</name>
+        <description>CAN1 RX0 interrupts</description>
+        <value>20</value>
+      </interrupt>
+      <interrupt>
+        <name>CAN1_RX1</name>
+        <description>CAN1 RX1 interrupts</description>
+        <value>21</value>
+      </interrupt>
+      <interrupt>
+        <name>CAN1_SCE</name>
+        <description>CAN1 SCE interrupt</description>
+        <value>22</value>
+      </interrupt>
       <registers>
         <register>
           <name>MCR</name>
@@ -41090,6 +41269,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
     <peripheral derivedFrom="CAN1">
       <name>CAN2</name>
       <baseAddress>0x40006800</baseAddress>
+      <interrupt>
+        <name>CAN2_TX</name>
+        <description>CAN2 TX interrupts</description>
+        <value>63</value>
+      </interrupt>
+      <interrupt>
+        <name>CAN2_RX0</name>
+        <description>CAN2 RX0 interrupts</description>
+        <value>64</value>
+      </interrupt>
+      <interrupt>
+        <name>CAN2_RX1</name>
+        <description>CAN2 RX1 interrupts</description>
+        <value>65</value>
+      </interrupt>
+      <interrupt>
+        <name>CAN2_SCE</name>
+        <description>CAN2 SCE interrupt</description>
+        <value>66</value>
+      </interrupt>
     </peripheral>
     <peripheral>
       <name>NVIC</name>
@@ -41102,18 +41301,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x1001</size>
         <usage>registers</usage>
       </addressBlock>
-      <interrupt>
-        <name>OTG_FS_WKUP</name>
-        <description>USB On-The-Go FS Wakeup through EXTI line
-        interrupt</description>
-        <value>42</value>
-      </interrupt>
-      <interrupt>
-        <name>OTG_FS</name>
-        <description>USB On The Go FS global
-        interrupt</description>
-        <value>67</value>
-      </interrupt>
       <registers>
         <register>
           <name>ICTR</name>
@@ -42160,6 +42347,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>FLASH</name>
+        <description>Flash global interrupt</description>
+        <value>4</value>
+      </interrupt>
       <registers>
         <register>
           <name>ACR</name>
@@ -43443,6 +43635,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>OTG_HS</name>
+        <description>USB On The Go HS global interrupt</description>
+        <value>77</value>
+      </interrupt>
       <registers>
         <register>
           <name>OTG_HS_GOTGCTL</name>
@@ -44774,24 +44971,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>CAN1_TX</name>
-        <description>CAN1 TX interrupts</description>
-        <value>19</value>
-      </interrupt>
-      <interrupt>
-        <name>CAN1_RX0</name>
-        <description>CAN1 RX0 interrupts</description>
-        <value>20</value>
-      </interrupt>
-      <interrupt>
-        <name>CAN1_RX1</name>
-        <description>CAN1 RX1 interrupts</description>
-        <value>21</value>
-      </interrupt>
-      <interrupt>
-        <name>CAN1_SCE</name>
-        <description>CAN1 SCE interrupt</description>
-        <value>22</value>
+        <name>OTG_HS_EP1_IN</name>
+        <description>USB On The Go HS End Point 1 In global interrupt</description>
+        <value>75</value>
       </interrupt>
       <registers>
         <register>
@@ -48971,24 +49153,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>CAN2_TX</name>
-        <description>CAN2 TX interrupts</description>
-        <value>63</value>
-      </interrupt>
-      <interrupt>
-        <name>CAN2_RX0</name>
-        <description>CAN2 RX0 interrupts</description>
-        <value>64</value>
-      </interrupt>
-      <interrupt>
-        <name>CAN2_RX1</name>
-        <description>CAN2 RX1 interrupts</description>
-        <value>65</value>
-      </interrupt>
-      <interrupt>
-        <name>CAN2_SCE</name>
-        <description>CAN2 SCE interrupt</description>
-        <value>66</value>
+        <name>OTG_HS_EP1_OUT</name>
+        <description>USB On The Go HS End Point 1 Out global interrupt</description>
+        <value>74</value>
       </interrupt>
       <registers>
         <register>
@@ -52542,6 +52709,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x3F200</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>OTG_HS_WKUP</name>
+        <description>USB On The Go HS Wakeup through EXTI interrupt</description>
+        <value>76</value>
+      </interrupt>
       <registers>
         <register>
           <name>OTG_HS_PCGCR</name>
@@ -52586,9 +52758,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>FLASH</name>
-        <description>Flash global interrupt</description>
-        <value>4</value>
+        <name>SAI1</name>
+        <description>SAI1 global interrupt</description>
+        <value>87</value>
       </interrupt>
       <registers>
         <register>
@@ -53448,9 +53620,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SAI2</name>
       <baseAddress>0x40015C00</baseAddress>
       <interrupt>
-        <name>FLASH</name>
-        <description>Flash global interrupt</description>
-        <value>4</value>
+        <name>SAI2</name>
+        <description>SAI2 global interrupt</description>
+        <value>91</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -53463,6 +53635,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>PVD</name>
+        <description>PVD through EXTI line detection
+        interrupt</description>
+        <value>1</value>
+      </interrupt>
       <interrupt>
         <name>TAMP_STAMP</name>
         <description>Tamper and TimeStamp interrupts through the
@@ -53730,14 +53908,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>LCD_TFT</name>
-        <description>LTDC global interrupt</description>
-        <value>88</value>
-      </interrupt>
-      <interrupt>
-        <name>LCD_TFT_1</name>
-        <description>LTDC global error interrupt</description>
-        <value>89</value>
+        <name>QUADSPI</name>
+        <description>QuadSPI global interrupt</description>
+        <value>92</value>
       </interrupt>
       <registers>
         <register>
@@ -54202,6 +54375,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>CEC</name>
+        <description>CEC global interrupt</description>
+        <value>93</value>
+      </interrupt>
       <registers>
         <register>
           <name>CR</name>
@@ -54539,6 +54717,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>SPDIF_RX</name>
+        <description>SPDIF_RX global interrupt</description>
+        <value>94</value>
+      </interrupt>
       <registers>
         <register>
           <name>CR</name>
