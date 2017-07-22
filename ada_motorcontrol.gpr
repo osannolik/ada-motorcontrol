@@ -1,6 +1,7 @@
+with "./Ada_Drivers_Library/boards/config";
 with "./Ada_Drivers_Library/boards/stm32f446_motorcontrol/stm32f446_motorcontrol.gpr";
 
-project Ada_MotorControl extends "./common.gpr" is
+project Ada_MotorControl is
 
   for Runtime ("Ada") use STM32F446_MotorControl'Runtime("Ada");
   for Target use "arm-eabi";
@@ -13,5 +14,26 @@ project Ada_MotorControl extends "./common.gpr" is
   package Builder is
     for Global_Configuration_Pragmas use "gnat.adc";
   end Builder;
+
+   type LOADER_Type is
+      ("RAM", "ROM");
+   LOADER : LOADER_Type := external ("LOADER", "ROM");
+
+   package Compiler renames Config.Compiler;
+
+   package Linker is
+      for Default_Switches ("Ada") use
+        ("-Wl,--gc-sections",
+         "-Wl,--print-memory-usage");
+   end Linker;
+
+   package Ide is
+      for Gnat use "arm-eabi-gnat";
+      for Gnatlist use "arm-eabi-gnatls";
+      for Debugger_Command use "arm-eabi-gdb";
+      for Program_Host use "localhost:4242";
+      for Communication_Protocol use "remote";
+      for Connection_Tool use "st-util";
+   end Ide;
 
 end Ada_MotorControl;
