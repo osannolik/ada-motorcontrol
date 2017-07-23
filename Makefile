@@ -9,6 +9,8 @@ LISTFILE = obj/main.lst
 
 PORT_REM = 4242
 
+FORCE?=
+
 # use -vl or -vm or -vh
 VERB?= 
 ifneq ($(VERB), )
@@ -17,12 +19,12 @@ else
 V=@
 endif
 
-.PHONY: all target_connect run debug
+.PHONY: all build target_connect run debug
 
-all: $(OUTFILE) $(LISTFILE)
+all: build $(LISTFILE)
 
-$(OUTFILE): $(ADA_PRJ)
-	$(V) $(GPRBUILD) -P $< $(VERB)
+build:
+	$(V) $(GPRBUILD) -P $(ADA_PRJ) $(VERB) $(FORCE)
 
 $(LISTFILE): $(OUTFILE)
 	$(V) $(OD) -S $< > $@

@@ -17,25 +17,28 @@ project Ada_MotorControl is
       ("--create-map-file");
   end Builder;
 
-   type LOADER_Type is
-      ("RAM", "ROM");
-   LOADER : LOADER_Type := external ("LOADER", "ROM");
+  type LOADER_Type is
+    ("RAM", "ROM");
+  LOADER : LOADER_Type := external ("LOADER", "ROM");
 
-   package Compiler renames Config.Compiler;
+  package Compiler extends Config.Compiler is
+    for Default_Switches ("Ada") use
+      ("-Og");
+  end Compiler;
 
-   package Linker is
-      for Default_Switches ("Ada") use
-        ("-Wl,--gc-sections",
-         "-Wl,--print-memory-usage");
-   end Linker;
+  package Linker is
+    for Default_Switches ("Ada") use
+      ("-Wl,--gc-sections",
+       "-Wl,--print-memory-usage");
+  end Linker;
 
-   package Ide is
-      for Gnat use "arm-eabi-gnat";
-      for Gnatlist use "arm-eabi-gnatls";
-      for Debugger_Command use "arm-eabi-gdb";
-      for Program_Host use "localhost:4242";
-      for Communication_Protocol use "remote";
-      for Connection_Tool use "st-util";
-   end Ide;
+  package Ide is
+    for Gnat use "arm-eabi-gnat";
+    for Gnatlist use "arm-eabi-gnatls";
+    for Debugger_Command use "arm-eabi-gdb";
+    for Program_Host use "localhost:4242";
+    for Communication_Protocol use "remote";
+    for Connection_Tool use "st-util";
+  end Ide;
 
 end Ada_MotorControl;
