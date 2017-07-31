@@ -32,6 +32,7 @@
 --  Note this version is for use with the ravenscar-sfp runtime.
 
 with Ada.Real_Time; use Ada.Real_Time;
+with AMC.LCH;
 
 package body Last_Chance_Handler is
 
@@ -40,10 +41,11 @@ package body Last_Chance_Handler is
    -------------------------
 
    procedure Last_Chance_Handler (Msg : System.Address; Line : Integer) is
-      pragma Unreferenced (Msg, Line);
    begin
       --  No-return procedure...
       loop
+         AMC.LCH.Handler (Msg  => Msg,
+                          Line => Line);
          delay until Clock + Milliseconds (500);
       end loop;
    end Last_Chance_Handler;
