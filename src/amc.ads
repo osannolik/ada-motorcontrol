@@ -1,5 +1,7 @@
 package AMC is
+   --  Ada Motor Controller
 
-   procedure Initialize;
+   function Is_Initialized
+      return Boolean;
 
 end AMC;

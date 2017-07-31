@@ -11,10 +11,16 @@ with Last_Chance_Handler;  pragma Unreferenced (Last_Chance_Handler);
 
 with System;
 
+with AMC;
+
 procedure Main is
    pragma Priority (System.Priority'First);
 begin
+
+   --  AMC.Initialize;
+
    loop
       null;
    end loop;
+
 end Main;

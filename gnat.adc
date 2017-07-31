@@ -1,2 +1,2 @@
-pragma Partition_Elaboration_Policy (Concurrent);
+pragma Partition_Elaboration_Policy (Sequential);
 

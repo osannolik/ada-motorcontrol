@@ -2,6 +2,7 @@ with STM32.Device;
 with STM32.GPIO;
 
 package AMC.Board is
+   --  Ada Motor Controller PCB specifics
 
    subtype Led_Pin is STM32.GPIO.GPIO_Point;
    subtype Button_Pin is STM32.GPIO.GPIO_Point;
@@ -11,6 +12,12 @@ package AMC.Board is
    Led_Red   : Led_Pin renames STM32.Device.PC10;
 
    User_Button : Button_Pin renames STM32.Device.PB2;
+
+   Gate_Power_Enable : STM32.GPIO.GPIO_Point renames STM32.Device.PA3;
+
+   procedure Set_Gate_Driver_Power (Enabled : in Boolean)
+   with
+      Pre => Is_Initialized;
 
    procedure Turn_On  (Led : in out Led_Pin)
    with
