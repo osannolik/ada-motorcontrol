@@ -23,7 +23,7 @@ project Ada_MotorControl is
 
   package Compiler extends Config.Compiler is
     for Default_Switches ("Ada") use
-      ("-Og");
+      ("-O0", "-g");
   end Compiler;
 
   package Linker is

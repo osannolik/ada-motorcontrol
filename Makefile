@@ -24,7 +24,7 @@ endif
 all: build $(LISTFILE)
 
 build:
-	$(V) $(GPRBUILD) -P $(ADA_PRJ) $(VERB) $(FORCE)
+	$(V) $(GPRBUILD) -P $(ADA_PRJ) $(VERB) $(FORCE) -g
 
 $(LISTFILE): $(OUTFILE)
 	$(V) $(OD) -S $< > $@
