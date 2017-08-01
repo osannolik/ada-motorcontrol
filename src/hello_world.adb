@@ -12,6 +12,11 @@ package body Hello_World is
       Next_Release : Time := Clock;
    begin
 
+--        while not AMC.Is_Initialized loop
+--           Next_Release := Next_Release + Period;
+--           delay until Next_Release;
+--        end loop;
+
       AMC.Board.Turn_Off (AMC.Board.Led_Red);
       AMC.Board.Turn_Off (AMC.Board.Led_Green);
 

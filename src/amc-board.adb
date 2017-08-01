@@ -1,7 +1,5 @@
 package body AMC.Board is
 
-   Initialized : Boolean := False;
-
    procedure Set_Gate_Driver_Power (Enabled : in Boolean)
    is
    begin
