@@ -1,5 +1,7 @@
 ADA_PRJ = ada_motorcontrol.gpr
 
+PLATFORM_BUILD=Debug
+
 TOOL = /usr/gnat
 GPRBUILD = $(TOOL)/bin/gprbuild
 OD = $(TOOL)/bin/arm-eabi-objdump
@@ -24,7 +26,7 @@ endif
 all: build $(LISTFILE)
 
 build:
-	$(V) $(GPRBUILD) -P $(ADA_PRJ) $(VERB) $(FORCE) -g
+	$(V) $(GPRBUILD) -P $(ADA_PRJ) $(VERB) $(FORCE) -g -XPLATFORM_BUILD=$(PLATFORM_BUILD) -XLOADER=ROM
 
 $(LISTFILE): $(OUTFILE)
 	$(V) $(OD) -S $< > $@

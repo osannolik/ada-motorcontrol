@@ -3,42 +3,59 @@ with "./Ada_Drivers_Library/boards/stm32f446_motorcontrol/stm32f446_motorcontrol
 
 project Ada_MotorControl is
 
-  for Runtime ("Ada") use STM32F446_MotorControl'Runtime("Ada");
-  for Target use "arm-eabi";
-  for Main use ("main.adb");
-  for Languages use ("Ada");
-  for Source_Dirs use ("src");
-  for Object_Dir use "obj";
-  for Create_Missing_Dirs use "True";
+   type Build_Type is
+      ("Debug", "Production");
+   for Runtime ("ada") use Stm32F446_Motorcontrol'Runtime ("Ada");
+   for Target use "arm-eabi";
+   for Main use ("main.adb");
+   for Languages use ("Ada");
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   for Create_Missing_Dirs use "True";
+   type Loader_Type is
+      ("RAM", "ROM");
+   Loader : Loader_Type := external ("LOADER", "ROM");
+   PLATFORM_BUILD : Build_Type := external ("PLATFORM_BUILD");
 
-  package Builder is
-    for Global_Configuration_Pragmas use "gnat.adc";
-    for Default_Switches ("Ada") use
-      ("--create-map-file");
-  end Builder;
+   package Builder is
+      for Global_Configuration_Pragmas use "gnat.adc";
+      for Default_Switches ("ada") use ("--create-map-file");
+   end Builder;
 
-  type LOADER_Type is
-    ("RAM", "ROM");
-  LOADER : LOADER_Type := external ("LOADER", "ROM");
+   package Compiler extends Config.Compiler is
+      for Default_Switches ("ada") use ("-O0", "-g", "-gnatQ", "-ffunction-sections", "-fdata-sections");
+   end Compiler;
 
-  package Compiler extends Config.Compiler is
-    for Default_Switches ("Ada") use
-      ("-O0", "-g");
-  end Compiler;
+   package Linker is
+      for Default_Switches ("ada") use ("-Wl,--gc-sections", "-Wl,--print-memory-usage");
+   end Linker;
 
-  package Linker is
-    for Default_Switches ("Ada") use
-      ("-Wl,--gc-sections",
-       "-Wl,--print-memory-usage");
-  end Linker;
+   package Ide is
+      for Program_Host use "localhost:4242";
+      for Communication_Protocol use "remote";
+      for Connection_Tool use "st-util";
 
-  package Ide is
-    for Gnat use "arm-eabi-gnat";
-    for Gnatlist use "arm-eabi-gnatls";
-    for Debugger_Command use "arm-eabi-gdb";
-    for Program_Host use "localhost:4242";
-    for Communication_Protocol use "remote";
-    for Connection_Tool use "st-util";
-  end Ide;
+      case PLATFORM_BUILD is
+
+         when "Debug" =>
+
+            case Loader is
+
+               when "RAM" =>
+                  for Debugger_Command use "arm-eabi-gdb";
+                  for Gnatlist use "arm-eabi-gnatls";
+                  for Gnat use "arm-eabi-gnat";
+
+               when "ROM" =>
+
+            end case;
+
+         when "Production" =>
+            for Debugger_Command use "arm-eabi-gdb";
+            for Gnatlist use "arm-eabi-gnatls";
+            for Gnat use "arm-eabi-gnat";
+      end case;
+   end Ide;
 
 end Ada_MotorControl;
+

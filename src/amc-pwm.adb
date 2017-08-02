@@ -59,9 +59,12 @@ package body AMC.PWM is
                       Break_Enabled                 => True,
                       Off_State_Selection_Run_Mode  => 0,
                       Off_State_Selection_Idle_Mode => 0,
-                      Lock_Configuration            => Off,
+                      Lock_Configuration            => Level_1,
                       Deadtime_Generator            => Deadtime_Value(AMC.Board.PWM_Timer,
                                                                       AMC.Config.PWM_Gate_Deadtime_S));
+
+      Enable_Interrupt (This   => AMC.Board.PWM_Timer,
+                        Source => Timer_Break_Interrupt);
 
       PWM_A.Enable_Output;
       PWM_A.Enable_Complementary_Output;
@@ -78,6 +81,11 @@ package body AMC.PWM is
 
       Initialized := True;
    end Initialize;
+
+   procedure Generate_Break_Event is
+   begin
+      STM32.Timers.Generate_Event (AMC.Board.PWM_Timer, STM32.Timers.Event_Source_Break);
+   end Generate_Break_Event;
 
    function Is_Initialized
       return Boolean is (Initialized);
@@ -137,5 +145,15 @@ package body AMC.PWM is
 
       return 0;
    end Deadtime_Value;
+
+
+   protected body Break is
+
+      procedure Break_ISR is
+      begin
+         STM32.Timers.Clear_Pending_Interrupt (AMC.Board.PWM_Timer, STM32.Timers.Timer_Break_Interrupt);
+      end Break_ISR;
+
+   end Break;
 
 end AMC.PWM;
