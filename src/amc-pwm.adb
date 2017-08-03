@@ -165,7 +165,7 @@ package body AMC.PWM is
 
    procedure Generate_Break_Event (This : Object) is
    begin
-      STM32.Timers.Generate_Event (AMC.Board.PWM_Timer, STM32.Timers.Event_Source_Break);
+      STM32.Timers.Generate_Event (This.Generator.all, STM32.Timers.Event_Source_Break);
    end Generate_Break_Event;
 
    function Is_Initialized (This : Object)
