@@ -2,7 +2,6 @@ with AMC.Board;
 with AMC.Config;
 with AMC.Types;
 with STM32.Device;
-with STM32.Timers;
 
 package body AMC.PWM is
 
@@ -13,47 +12,97 @@ package body AMC.PWM is
    --  the requested deadtime Time is obtained.
    --  Please refer to STM32F4 reference manual for details.
 
-   procedure Initialize
+   procedure Initialize_Gate
+      (This       : in out Object;
+       Gate       : Gates;
+       Channel    : STM32.Timers.Timer_Channel;
+       Pin_H      : STM32.GPIO.GPIO_Point;
+       Pin_L      : STM32.GPIO.GPIO_Point;
+       Pin_AF     : STM32.GPIO_Alternate_Function;
+       Polarity   : STM32.Timers.Timer_Output_Compare_Polarity
+          := STM32.Timers.High;
+       Idle_State : STM32.Timers.Timer_Capture_Compare_State
+          := STM32.Timers.Disable)
    is
       use STM32.Timers;
-
-      Polarity : constant Timer_Output_Compare_Polarity := High;
-      Idle_State : constant Timer_Capture_Compare_State := Disable;
    begin
-      STM32.PWM.Configure_PWM_Timer (Generator => AMC.Board.PWM_Timer'Access,
-                                     Frequency => UInt32(AMC.Config.PWM_Frequency_Hz));
+      This.Gates(Gate).Channel := Channel;
 
-      PWM_A.Attach_PWM_Channel (Generator                => AMC.Board.PWM_Timer'Access,
-                                Channel                  => AMC.Board.PWM_Gate_A_Ch,
-                                Point                    => AMC.Board.PWM_Gate_H_A_Pin,
-                                Complementary_Point      => AMC.Board.PWM_Gate_L_A_Pin,
-                                PWM_AF                   => AMC.Board.PWM_Gate_GPIO_AF,
-                                Polarity                 => Polarity,
-                                Idle_State               => Idle_State,
-                                Complementary_Polarity   => Polarity,
-                                Complementary_Idle_State => Idle_State);
+      if Complementary_Outputs_Supported (This    => This.Generator.all,
+                                          Channel => Channel)
+      then
+         This.Gates(Gate).Modulator.Attach_PWM_Channel
+            (Generator                => This.Generator,
+             Channel                  => Channel,
+             Point                    => Pin_H,
+             Complementary_Point      => Pin_L,
+             PWM_AF                   => Pin_AF,
+             Polarity                 => Polarity,
+             Idle_State               => Idle_State,
+             Complementary_Polarity   => Polarity,
+             Complementary_Idle_State => Idle_State);
+      else
+         This.Gates(Gate).Modulator.Attach_PWM_Channel
+            (Generator => This.Generator,
+             Channel   => Channel,
+             Point     => Pin_H,
+             PWM_AF    => Pin_AF,
+             Polarity  => Polarity);
+      end if;
+   end Initialize_Gate;
 
-      PWM_B.Attach_PWM_Channel (Generator                => AMC.Board.PWM_Timer'Access,
-                                Channel                  => AMC.Board.PWM_Gate_B_Ch,
-                                Point                    => AMC.Board.PWM_Gate_H_B_Pin,
-                                Complementary_Point      => AMC.Board.PWM_Gate_L_B_Pin,
-                                PWM_AF                   => AMC.Board.PWM_Gate_GPIO_AF,
-                                Polarity                 => Polarity,
-                                Idle_State               => Idle_State,
-                                Complementary_Polarity   => Polarity,
-                                Complementary_Idle_State => Idle_State);
+   procedure Initialize_Gate
+      (This       : in out Object;
+       Gate       : Gates;
+       Channel    : STM32.Timers.Timer_Channel;
+       Polarity   : STM32.Timers.Timer_Output_Compare_Polarity
+          := STM32.Timers.High;
+       Idle_State : STM32.Timers.Timer_Capture_Compare_State
+          := STM32.Timers.Disable)
+   is
+      use STM32.Timers;
+   begin
+      This.Gates(Gate).Channel := Channel;
 
-      PWM_C.Attach_PWM_Channel (Generator                => AMC.Board.PWM_Timer'Access,
-                                Channel                  => AMC.Board.PWM_Gate_C_Ch,
-                                Point                    => AMC.Board.PWM_Gate_H_C_Pin,
-                                Complementary_Point      => AMC.Board.PWM_Gate_L_C_Pin,
-                                PWM_AF                   => AMC.Board.PWM_Gate_GPIO_AF,
-                                Polarity                 => Polarity,
-                                Idle_State               => Idle_State,
-                                Complementary_Polarity   => Polarity,
-                                Complementary_Idle_State => Idle_State);
+      if Complementary_Outputs_Supported (This    => This.Generator.all,
+                                          Channel => Channel)
+      then
+         This.Gates(Gate).Modulator.Attach_PWM_Channel
+            (Generator                => This.Generator,
+             Channel                  => Channel,
+             Polarity                 => Polarity,
+             Idle_State               => Idle_State,
+             Complementary_Polarity   => Polarity,
+             Complementary_Idle_State => Idle_State);
+      else
+         This.Gates(Gate).Modulator.Attach_PWM_Channel
+            (Generator => This.Generator,
+             Channel   => Channel,
+             Polarity  => Polarity);
+      end if;
+   end Initialize_Gate;
 
-      Configure_BDTR (This                          => AMC.Board.PWM_Timer,
+   procedure Initialize
+      (This      : in out Object;
+       Generator : not null access STM32.Timers.Timer;
+       Frequency : AMC.Types.Frequency_Hz;
+       Deadtime  : AMC.Types.Seconds;
+       Alignment : Pulse_Alignment)
+   is
+      use STM32.Timers;
+      Counter_Mode : constant Timer_Counter_Alignment_Mode :=
+         (case Alignment is
+             when Edge   => Up,
+             when Center => Center_Aligned3);
+   begin
+      This.Generator := Generator;
+
+      STM32.PWM.Configure_PWM_Timer (Generator    => Generator,
+                                     Frequency    => UInt32(Frequency),
+                                     Counter_Mode => Counter_Mode);
+
+      --  TODO: Make inactive state configurable.
+      Configure_BDTR (This                          => Generator.all,
                       Automatic_Output_Enabled      => False,
                       Break_Polarity                => High,
                       Break_Enabled                 => True,
@@ -61,34 +110,66 @@ package body AMC.PWM is
                       Off_State_Selection_Idle_Mode => 0,
                       Lock_Configuration            => Level_1,
                       Deadtime_Generator            => Deadtime_Value(AMC.Board.PWM_Timer,
-                                                                      AMC.Config.PWM_Gate_Deadtime_S));
+                                                                      Deadtime));
 
       Enable_Interrupt (This   => AMC.Board.PWM_Timer,
                         Source => Timer_Break_Interrupt);
 
-      PWM_A.Enable_Output;
-      PWM_A.Enable_Complementary_Output;
-
-      PWM_B.Enable_Output;
-      PWM_B.Enable_Complementary_Output;
-
-      PWM_C.Enable_Output;
-      PWM_C.Enable_Complementary_Output;
-
-      PWM_A.Set_Duty_Cycle (50);
-      PWM_B.Set_Duty_Cycle (50);
-      PWM_C.Set_Duty_Cycle (50);
-
-      Initialized := True;
+      This.Initialized := True;
    end Initialize;
 
-   procedure Generate_Break_Event is
+   procedure Enable
+      (This : in out Object;
+       Gate : Gates)
+   is
+   begin
+      if STM32.Timers.Complementary_Outputs_Supported
+         (This    => This.Generator.all,
+          Channel => This.Gates(Gate).Channel)
+      then
+         This.Gates(Gate).Modulator.Enable_Complementary_Output;
+      end if;
+
+      This.Gates(Gate).Modulator.Enable_Output;
+   end Enable;
+
+   procedure Disable
+      (This : in out Object;
+       Gate : Gates)
+   is
+   begin
+      if STM32.Timers.Complementary_Outputs_Supported
+         (This    => This.Generator.all,
+          Channel => This.Gates(Gate).Channel)
+      then
+         This.Gates(Gate).Modulator.Disable_Complementary_Output;
+      end if;
+      This.Gates(Gate).Modulator.Disable_Output;
+   end Disable;
+
+   procedure Set_Duty_Cycle
+      (This  : in out Object;
+       Gate  : Gates;
+       Value : AMC.Types.Duty_Cycle)
+   is
+      use STM32.Timers;
+      CCR : UInt16;
+   begin
+      CCR := UInt16(Value * Float(Current_Autoreload (This.Generator.all)) / 100.0);
+
+      Set_Compare_Value
+         (This    => This.Generator.all,
+          Channel => This.Gates(Gate).Channel,
+          Value   => CCR);
+   end Set_Duty_Cycle;
+
+   procedure Generate_Break_Event (This : Object) is
    begin
       STM32.Timers.Generate_Event (AMC.Board.PWM_Timer, STM32.Timers.Event_Source_Break);
    end Generate_Break_Event;
 
-   function Is_Initialized
-      return Boolean is (Initialized);
+   function Is_Initialized (This : Object)
+      return Boolean is (This.Initialized);
 
    function Deadtime_Value (Timer : STM32.Timers.Timer;
                             Time  : AMC.Types.Seconds)
@@ -145,7 +226,6 @@ package body AMC.PWM is
 
       return 0;
    end Deadtime_Value;
-
 
    protected body Break is
 

@@ -21,6 +21,7 @@ package AMC.Board is
    PWM_Gate_A_Ch    : STM32.Timers.Timer_Channel    renames STM32.Timers.Channel_1;
    PWM_Gate_B_Ch    : STM32.Timers.Timer_Channel    renames STM32.Timers.Channel_2;
    PWM_Gate_C_Ch    : STM32.Timers.Timer_Channel    renames STM32.Timers.Channel_3;
+   PWM_Trigger_Ch   : STM32.Timers.Timer_Channel    renames STM32.Timers.Channel_4;
 
    PWM_Gate_H_A_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PA8;
    PWM_Gate_L_A_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PA7;

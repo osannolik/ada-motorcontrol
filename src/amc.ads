@@ -9,6 +9,8 @@ package AMC is
    function Is_Initialized
      return Boolean;
 
+   procedure Safe_State;
+
 private
    Initialized : Boolean := False;
 end AMC;

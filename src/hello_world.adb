@@ -30,8 +30,6 @@ package body Hello_World is
             AMC.Board.Turn_On (AMC.Board.Led_Red);
             AMC.Board.Turn_Off (AMC.Board.Led_Green);
 
-            AMC.PWM.Generate_Break_Event;
-
          else
             AMC.Board.Turn_Off (AMC.Board.Led_Red);
             AMC.Board.Turn_On (AMC.Board.Led_Green);
