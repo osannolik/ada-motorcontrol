@@ -1,9 +1,20 @@
-with STM32.Device;
 with STM32.PWM;
 with STM32.Timers;
 with AMC.Board;
 
 package body AMC.ADC is
+
+
+   type Data is array (1 .. 8) of UInt16; -- arbitrary size, component type
+   for Data'Component_Size use 16; -- confirming
+
+   Counts : Data := (others => 1337) with Volatile;
+
+   function Get_Data_Test(Index : Integer) return UInt16 is
+   begin
+      return Counts(Index);
+   end Get_Data_Test;
+
 
    procedure Initialize (This : in out Object)
    is
@@ -20,6 +31,7 @@ package body AMC.ADC is
       Nbr_Of_Inj : array (ADCs'Range) of Integer := (others => 0);
 
       Regular_Conv_Trigger : STM32.PWM.PWM_Modulator;
+      DMA_Stream_Config : STM32.DMA.DMA_Stream_Configuration;
    begin
 
       This.Reading_Data :=
@@ -51,11 +63,16 @@ package body AMC.ADC is
       for Reading of This.Reading_Data loop
          STM32.Device.Enable_Clock (Reading.Pin);
          Reading.Pin.Configure_IO
-            (Config => (Mode => STM32.GPIO.Mode_Analog, others => <>));
+            (Config =>
+                STM32.GPIO.GPIO_Port_Configuration'(Mode        => STM32.GPIO.Mode_Analog,
+                                                    Output_Type => STM32.GPIO.Push_Pull,
+                                                    Speed       => STM32.GPIO.Speed_100MHz,
+                                                    Resistors   => STM32.GPIO.Floating));
+              --  (Mode => STM32.GPIO.Mode_Analog, others => <>));
       end loop;
 
       STM32.ADC.Configure_Common_Properties
-         (Mode           => STM32.ADC.Triple_Combined_Regular_Injected_Simultaneous,
+         (Mode           => STM32.ADC.Triple_Injected_Simultaneous,
           Prescalar      => STM32.ADC.PCLK2_Div_2,  --  Somewhat overclocked...
           DMA_Mode       => STM32.ADC.Disabled,
           Sampling_Delay => STM32.ADC.Sampling_Delay_5_Cycles);
@@ -84,6 +101,9 @@ package body AMC.ADC is
                                       Resolution => STM32.ADC.ADC_Resolution_12_Bits,
                                       Alignment  => STM32.ADC.Right_Aligned);
             STM32.ADC.Enable (All_ADCs(ADC).all);
+
+            STM32.ADC.Enable_DMA (This => All_ADCs(ADC).all);
+            STM32.ADC.Enable_DMA_After_Last_Transfer (This => All_ADCs(ADC).all);
          end if;
 
          if Nbr_Of_Reg(ADC) > 0 then
@@ -144,14 +164,57 @@ package body AMC.ADC is
                                     Frequency => 14_000);
 
       Regular_Conv_Trigger.Attach_PWM_Channel (Generator => STM32.Device.Timer_2'Access,
-                                               Channel   => STM32.Timers.Channel_1,
+                                               Channel   => STM32.Timers.Channel_4,
                                                Polarity  => STM32.Timers.High);
 
       Regular_Conv_Trigger.Set_Duty_Cycle (Value => 50);  --  Anything /= 0 or /= 100
 
 
+
+
       --  Multi_Disable_DMA_After_Last_Transfer
 
+
+
+      STM32.Device.Enable_Clock (DMA_Ctrl);
+
+      STM32.DMA.Reset (DMA_Ctrl, DMA_Stream);
+
+      DMA_Stream_Config :=
+         STM32.DMA.DMA_Stream_Configuration'
+         (Channel                      => STM32.DMA.Channel_0,
+          Direction                    => STM32.DMA.Peripheral_To_Memory,
+          Increment_Peripheral_Address => False,
+          Increment_Memory_Address     => True,
+          Peripheral_Data_Format       => STM32.DMA.HalfWords,
+          Memory_Data_Format           => STM32.DMA.HalfWords,
+          Operation_Mode               => STM32.DMA.Circular_Mode,
+          Priority                     => STM32.DMA.Priority_Medium,
+          FIFO_Enabled                 => False,
+          FIFO_Threshold               => STM32.DMA.FIFO_Threshold_Half_Full_Configuration,
+          Memory_Burst_Size            => STM32.DMA.Memory_Burst_Single,
+          Peripheral_Burst_Size        => STM32.DMA.Peripheral_Burst_Single);
+
+      STM32.DMA.Configure (DMA_Ctrl, DMA_Stream, DMA_Stream_Config);
+
+      STM32.DMA.Clear_All_Status (DMA_Ctrl, DMA_Stream);
+
+      STM32.DMA.Start_Transfer_with_Interrupts
+         (This               => DMA_Ctrl,
+          Stream             => DMA_Stream,
+          Source             => STM32.ADC.Data_Register_Address
+                                   (This => STM32.Device.ADC_1),
+          Destination        => Counts'Address,
+          Data_Count         => 2,
+          Enabled_Interrupts => (STM32.DMA.Transfer_Complete_Interrupt => True,
+                                 others                                => False));
+
+--        STM32.DMA.Start_Transfer (This        => DMA_Ctrl,
+--                                  Stream      => DMA_Stream,
+--                                  Source      => STM32.ADC.Data_Register_Address
+--                                                    (This => STM32.Device.ADC_1),
+--                                  Destination => Counts'Address,
+--                                  Data_Count  => 2);
 
 
       Regular_Conv_Trigger.Enable_Output;
@@ -161,5 +224,36 @@ package body AMC.ADC is
 
    function Is_Initialized (This : in Object)
       return Boolean is (This.Initialized);
+
+
+   protected body Handler is
+      --  use STM32.DMA;
+
+      -----------------
+      -- Await_Event --
+      -----------------
+
+      entry Await_Event (Occurrence : out STM32.DMA.DMA_Interrupt) when Event_Occurred is
+      begin
+         Occurrence := Event_Kind;
+         Event_Occurred := False;
+      end Await_Event;
+
+      -----------------
+      -- IRQ_Handler --
+      -----------------
+
+      procedure IRQ_Handler is
+         use STM32.DMA;
+      begin
+         AMC.Board.Toggle (AMC.Board.Led_Green);
+         if Status (Controller.all, Stream, Transfer_Complete_Indicated) then
+            Clear_Status (Controller.all, Stream, Transfer_Complete_Indicated);
+            Event_Kind := Transfer_Complete_Interrupt;
+            Event_Occurred := True;
+         end if;
+      end IRQ_Handler;
+
+   end Handler;
 
 end AMC.ADC;

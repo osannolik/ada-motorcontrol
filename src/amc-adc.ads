@@ -1,10 +1,16 @@
+with STM32.Device;
 with STM32.ADC;
 with STM32.GPIO;
-
+with STM32.DMA;
+with Ada.Interrupts;
+with Ada.Interrupts.Names;
 
 package AMC.ADC is
    --  Analog to digital conversion
    --  Interfaces the mcu adc peripheral
+
+
+
 
    Sampling_Time_Regular : STM32.ADC.Channel_Sampling_Times renames
       STM32.ADC.Sample_480_Cycles;
@@ -36,6 +42,34 @@ package AMC.ADC is
       return Boolean;
 
    procedure Initialize (This : in out Object);
+
+   function Get_Data_Test(Index : Integer) return UInt16;
+
+   protected type Handler
+     (Controller : access STM32.DMA.DMA_Controller;
+      Stream     : STM32.DMA.DMA_Stream_Selector;
+      IRQ        : Ada.Interrupts.Interrupt_ID)
+   is
+      pragma Interrupt_Priority;
+
+      entry Await_Event (Occurrence : out STM32.DMA.DMA_Interrupt);
+
+   private
+
+      Event_Occurred : Boolean := False;
+      Event_Kind     : STM32.DMA.DMA_Interrupt;
+
+      procedure IRQ_Handler;
+      pragma Attach_Handler (IRQ_Handler, IRQ);
+
+   end Handler;
+
+
+   DMA_Ctrl : STM32.DMA.DMA_Controller renames STM32.Device.DMA_2;
+
+   DMA_Stream : constant STM32.DMA.DMA_Stream_Selector := STM32.DMA.Stream_0;
+
+   IRQ_Handler : Handler (DMA_Ctrl'Access, DMA_Stream, Ada.Interrupts.Names.DMA2_Stream0_Interrupt);
 
 private
 
