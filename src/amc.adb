@@ -1,22 +1,24 @@
 with AMC.Board;
 with AMC.Config;
 with AMC.Types;
---  with AMC.ADC;
+with AMC.ADC;
 with AMC.PWM;
 
 pragma Elaborate(AMC.Board);
 pragma Elaborate(AMC.PWM);
+pragma Elaborate(AMC.ADC);
 
 package body AMC is
 
    PWM_Peripheral : AMC.PWM.Object;
+   ADC_Peripheral : AMC.ADC.Object;
 
    procedure Initialize
    is
    begin
       AMC.Board.Initialize;
-      --  AMC.ADC.Initialize;
-      --  AMC.PWM.Initialize;
+
+      ADC_Peripheral.Initialize;
 
       PWM_Peripheral.Initialize (Generator => AMC.Board.PWM_Timer'Access,
                                  Frequency => AMC.Config.PWM_Frequency_Hz,
@@ -64,7 +66,7 @@ package body AMC is
 
       Initialized :=
         AMC.Board.Is_Initialized and
-        --  AMC.ADC.Is_Initialized and
+        ADC_Peripheral.Is_Initialized and
         PWM_Peripheral.Is_Initialized;
         --  and AMC.Child.Is_initialized;
 

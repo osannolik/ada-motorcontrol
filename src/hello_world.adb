@@ -23,8 +23,8 @@ package body Hello_World is
 
       loop
 
-         AMC.Board.Set_Gate_Driver_Power
-           (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
+         --  AMC.Board.Set_Gate_Driver_Power
+         --    (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
 
          if AMC.Board.Is_Pressed (AMC.Board.User_Button) then
             AMC.Board.Turn_On (AMC.Board.Led_Red);

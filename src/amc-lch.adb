@@ -10,12 +10,12 @@ package body AMC.LCH is
          AMC.Board.Initialize;
       end if;
 
-      --  Force the gate driver into a safe state
-      AMC.Safe_State;
-
       -- Signal error to the user
       AMC.Board.Turn_On (Led => AMC.Board.Led_Red);
       AMC.Board.Turn_Off (Led => AMC.Board.Led_Green);
+
+      --  Force the gate driver into a safe state
+      AMC.Safe_State;
    end Handler;
 
 end AMC.LCH;
