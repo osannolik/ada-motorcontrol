@@ -199,23 +199,25 @@ package body AMC.ADC is
 
       STM32.DMA.Clear_All_Status (DMA_Ctrl, DMA_Stream);
 
-      STM32.DMA.Start_Transfer_with_Interrupts
-         (This               => DMA_Ctrl,
-          Stream             => DMA_Stream,
-          Source             => STM32.ADC.Data_Register_Address
-                                   (This => STM32.Device.ADC_1),
-          Destination        => Counts'Address,
-          Data_Count         => 2,
-          Enabled_Interrupts => (STM32.DMA.Transfer_Complete_Interrupt => True,
-                                 others                                => False));
+--        STM32.DMA.Start_Transfer_with_Interrupts
+--           (This               => DMA_Ctrl,
+--            Stream             => DMA_Stream,
+--            Source             => STM32.ADC.Data_Register_Address
+--                                     (This => STM32.Device.ADC_1),
+--            Destination        => Counts'Address,
+--            Data_Count         => 2,
+--            Enabled_Interrupts => (STM32.DMA.Transfer_Complete_Interrupt => True,
+--                                   others                                => False));
 
---        STM32.DMA.Start_Transfer (This        => DMA_Ctrl,
---                                  Stream      => DMA_Stream,
---                                  Source      => STM32.ADC.Data_Register_Address
---                                                    (This => STM32.Device.ADC_1),
---                                  Destination => Counts'Address,
---                                  Data_Count  => 2);
+      STM32.DMA.Start_Transfer (This        => DMA_Ctrl,
+                                Stream      => DMA_Stream,
+                                Source      => STM32.ADC.Data_Register_Address
+                                                  (This => STM32.Device.ADC_1),
+                                Destination => Counts'Address,
+                                Data_Count  => 2);
 
+
+      STM32.ADC.Enable_Interrupts (STM32.Device.ADC_1, STM32.ADC.Injected_Channel_Conversion_Complete);
 
       Regular_Conv_Trigger.Enable_Output;
 
@@ -226,31 +228,35 @@ package body AMC.ADC is
       return Boolean is (This.Initialized);
 
 
-   protected body Handler is
-      --  use STM32.DMA;
+    protected body Handler is
 
-      -----------------
-      -- Await_Event --
-      -----------------
-
-      entry Await_Event (Occurrence : out STM32.DMA.DMA_Interrupt) when Event_Occurred is
+      function Get_Samples return Injected_Samples_Array is
       begin
-         Occurrence := Event_Kind;
-         Event_Occurred := False;
-      end Await_Event;
+         return Samples;
+      end Get_Samples;
 
-      -----------------
-      -- IRQ_Handler --
-      -----------------
+--        entry Await_Event (Injected_Samples : out Injected_Samples_Array) when Event_Occurred is
+--        begin
+--           Injected_Samples := Samples;
+--           Event_Occurred   := False;
+--        end Await_Event;
 
       procedure IRQ_Handler is
-         use STM32.DMA;
+         use STM32.ADC;
       begin
-         AMC.Board.Toggle (AMC.Board.Led_Green);
-         if Status (Controller.all, Stream, Transfer_Complete_Indicated) then
-            Clear_Status (Controller.all, Stream, Transfer_Complete_Indicated);
-            Event_Kind := Transfer_Complete_Interrupt;
-            Event_Occurred := True;
+         AMC.Board.Turn_On (AMC.Board.Led_Green);
+
+         if Status (STM32.Device.ADC_1, Injected_Channel_Conversion_Complete) then
+            if Interrupt_Enabled (STM32.Device.ADC_1, Injected_Channel_Conversion_Complete) then
+               Clear_Interrupt_Pending (STM32.Device.ADC_1, Injected_Channel_Conversion_Complete);
+
+
+               Samples := ((I_A) => 1, (I_B) => 2, (I_C) => 3,
+                           (EMF_A) => 4, (EMF_B) => 5, (EMF_C) => 6);
+               --  Event_Occurred := True;
+
+               Ada.Synchronous_Task_Control.Set_True (Regular_Channel_EOC);
+            end if;
          end if;
       end IRQ_Handler;
 

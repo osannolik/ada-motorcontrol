@@ -9,7 +9,7 @@ with AMC.ADC;
 with HAL; use HAL;
 
 with ADA.Text_IO;
-with STM32.DMA;
+with Ada.Synchronous_Task_Control;
 
 package body Hello_World is
 
@@ -59,14 +59,18 @@ package body Hello_World is
       --  Period       : constant Time_Span := Milliseconds (100);
       --  Next_Release : Time := Clock;
 
-      Event_Kind : STM32.DMA.DMA_Interrupt;
+      --  Event_Kind : STM32.DMA.DMA_Interrupt;
       Dummy_Stuff : Boolean := False;
+      Samples : AMC.ADC.Injected_Samples_Array := (others => 0);
    begin
       loop
+         Ada.Synchronous_Task_Control.Suspend_Until_True (AMC.ADC.Regular_Channel_EOC);
+         --  AMC.ADC.Handler.Await_Event (Injected_Samples => Samples);
+         Samples := AMC.ADC.Handler.Get_Samples;
 
-         AMC.ADC.IRQ_Handler.Await_Event (Occurrence => Event_Kind);
+         AMC.Board.Turn_Off (AMC.Board.Led_Green);
 
-         AMC.Board.Toggle (AMC.Board.Led_Red);
+         --  Dummy_Stuff := not Dummy_Stuff;
 
       end loop;
    end Sampler;

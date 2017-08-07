@@ -2,14 +2,18 @@ with STM32.Device;
 with STM32.ADC;
 with STM32.GPIO;
 with STM32.DMA;
-with Ada.Interrupts;
+--  with Ada.Interrupts;
 with Ada.Interrupts.Names;
+with System;
+with Ada.Synchronous_Task_Control;
 
 package AMC.ADC is
    --  Analog to digital conversion
    --  Interfaces the mcu adc peripheral
 
+   DMA_Ctrl : STM32.DMA.DMA_Controller renames STM32.Device.DMA_2;
 
+   DMA_Stream : constant STM32.DMA.DMA_Stream_Selector := STM32.DMA.Stream_0;
 
 
    Sampling_Time_Regular : STM32.ADC.Channel_Sampling_Times renames
@@ -22,6 +26,8 @@ package AMC.ADC is
 
    subtype ADC_Readings_Inj is ADC_Readings range I_A .. EMF_C;
    subtype ADC_Readings_Reg is ADC_Readings range Bat_Sense .. Board_Temp;
+
+   type Injected_Samples_Array is array (ADC_Readings_Inj'Range) of UInt16;
 
    subtype Rank is STM32.ADC.Regular_Channel_Rank;
 
@@ -45,31 +51,48 @@ package AMC.ADC is
 
    function Get_Data_Test(Index : Integer) return UInt16;
 
-   protected type Handler
-     (Controller : access STM32.DMA.DMA_Controller;
-      Stream     : STM32.DMA.DMA_Stream_Selector;
-      IRQ        : Ada.Interrupts.Interrupt_ID)
-   is
-      pragma Interrupt_Priority;
 
-      entry Await_Event (Occurrence : out STM32.DMA.DMA_Interrupt);
+
+
+
+
+   Regular_Channel_EOC : Ada.Synchronous_Task_Control.Suspension_Object;
+
+   protected Handler is
+      pragma Interrupt_Priority(System.Interrupt_Priority'Last);
+
+      function Get_Samples return Injected_Samples_Array;
 
    private
 
-      Event_Occurred : Boolean := False;
-      Event_Kind     : STM32.DMA.DMA_Interrupt;
+      Samples : Injected_Samples_Array := (others => 0);
 
-      procedure IRQ_Handler;
-      pragma Attach_Handler (IRQ_Handler, IRQ);
+      procedure IRQ_Handler with
+        Attach_Handler => Ada.Interrupts.Names.ADC_Interrupt;
 
    end Handler;
 
 
-   DMA_Ctrl : STM32.DMA.DMA_Controller renames STM32.Device.DMA_2;
 
-   DMA_Stream : constant STM32.DMA.DMA_Stream_Selector := STM32.DMA.Stream_0;
 
-   IRQ_Handler : Handler (DMA_Ctrl'Access, DMA_Stream, Ada.Interrupts.Names.DMA2_Stream0_Interrupt);
+
+--     protected Handler is
+--        pragma Interrupt_Priority(System.Interrupt_Priority'Last);
+--
+--        function Get_Samples return Injected_Samples_Array;
+--        entry Await_Event (Injected_Samples : out Injected_Samples_Array);
+--
+--     private
+--
+--        Samples : Injected_Samples_Array := (others => 0);
+--
+--        Event_Occurred : Boolean := False;
+--
+--        procedure IRQ_Handler with
+--          Attach_Handler => Ada.Interrupts.Names.ADC_Interrupt;
+--
+--     end Handler;
+
 
 private
 
