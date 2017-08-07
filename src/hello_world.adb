@@ -64,9 +64,9 @@ package body Hello_World is
       Samples : AMC.ADC.Injected_Samples_Array := (others => 0);
    begin
       loop
-         Ada.Synchronous_Task_Control.Suspend_Until_True (AMC.ADC.Regular_Channel_EOC);
-         --  AMC.ADC.Handler.Await_Event (Injected_Samples => Samples);
-         Samples := AMC.ADC.Handler.Get_Samples;
+         --  Ada.Synchronous_Task_Control.Suspend_Until_True (AMC.ADC.Regular_Channel_EOC);
+         AMC.ADC.Handler.Await_Event (Injected_Samples => Samples);
+         --  Samples := AMC.ADC.Handler.Get_Samples;
 
          AMC.Board.Turn_Off (AMC.Board.Led_Green);
 

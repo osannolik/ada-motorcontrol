@@ -235,11 +235,11 @@ package body AMC.ADC is
          return Samples;
       end Get_Samples;
 
---        entry Await_Event (Injected_Samples : out Injected_Samples_Array) when Event_Occurred is
---        begin
---           Injected_Samples := Samples;
---           Event_Occurred   := False;
---        end Await_Event;
+      entry Await_Event (Injected_Samples : out Injected_Samples_Array) when Event_Occurred is
+      begin
+         Injected_Samples := Samples;
+         Event_Occurred   := False;
+      end Await_Event;
 
       procedure IRQ_Handler is
          use STM32.ADC;
@@ -253,9 +253,9 @@ package body AMC.ADC is
 
                Samples := ((I_A) => 1, (I_B) => 2, (I_C) => 3,
                            (EMF_A) => 4, (EMF_B) => 5, (EMF_C) => 6);
-               --  Event_Occurred := True;
+               Event_Occurred := True;
 
-               Ada.Synchronous_Task_Control.Set_True (Regular_Channel_EOC);
+               --  Ada.Synchronous_Task_Control.Set_True (Regular_Channel_EOC);
             end if;
          end if;
       end IRQ_Handler;

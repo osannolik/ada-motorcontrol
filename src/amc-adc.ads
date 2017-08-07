@@ -56,42 +56,42 @@ package AMC.ADC is
 
 
 
-   Regular_Channel_EOC : Ada.Synchronous_Task_Control.Suspension_Object;
-
-   protected Handler is
-      pragma Interrupt_Priority(System.Interrupt_Priority'Last);
-
-      function Get_Samples return Injected_Samples_Array;
-
-   private
-
-      Samples : Injected_Samples_Array := (others => 0);
-
-      procedure IRQ_Handler with
-        Attach_Handler => Ada.Interrupts.Names.ADC_Interrupt;
-
-   end Handler;
-
-
-
-
-
+--     Regular_Channel_EOC : Ada.Synchronous_Task_Control.Suspension_Object;
+--
 --     protected Handler is
 --        pragma Interrupt_Priority(System.Interrupt_Priority'Last);
 --
 --        function Get_Samples return Injected_Samples_Array;
---        entry Await_Event (Injected_Samples : out Injected_Samples_Array);
 --
 --     private
 --
 --        Samples : Injected_Samples_Array := (others => 0);
 --
---        Event_Occurred : Boolean := False;
---
 --        procedure IRQ_Handler with
 --          Attach_Handler => Ada.Interrupts.Names.ADC_Interrupt;
 --
 --     end Handler;
+
+
+
+
+
+   protected Handler is
+      pragma Interrupt_Priority(System.Interrupt_Priority'Last);
+
+      function Get_Samples return Injected_Samples_Array;
+      entry Await_Event (Injected_Samples : out Injected_Samples_Array);
+
+   private
+
+      Samples : Injected_Samples_Array := (others => 0);
+
+      Event_Occurred : Boolean := False;
+
+      procedure IRQ_Handler with
+        Attach_Handler => Ada.Interrupts.Names.ADC_Interrupt;
+
+   end Handler;
 
 
 private
