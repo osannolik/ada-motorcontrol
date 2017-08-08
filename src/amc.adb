@@ -47,13 +47,13 @@ package body AMC is
                                       Channel => AMC.Board.PWM_Trigger_Ch);
 
       PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Gate_A,
-                                     Value => 25.0);
+                                     Value => 50.0);
 
       PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Gate_B,
                                      Value => 50.0);
 
       PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Gate_C,
-                                     Value => 75.0);
+                                     Value => 50.0);
 
       PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Sample_Trigger,
                                      Value => 1.0);

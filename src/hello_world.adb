@@ -9,7 +9,6 @@ with AMC.ADC;
 with HAL; use HAL;
 
 with ADA.Text_IO;
-with Ada.Synchronous_Task_Control;
 
 package body Hello_World is
 
@@ -30,12 +29,12 @@ package body Hello_World is
 
       loop
 
-         --  AMC.Board.Set_Gate_Driver_Power
-         --    (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
+         AMC.Board.Set_Gate_Driver_Power
+            (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
 
-         for I in 1..8 loop
-            Data(I) := AMC.ADC.Get_Data_Test(I);
-         end loop;
+--           for I in 1..8 loop
+--              Data(I) := AMC.ADC.Get_Data_Test(I);
+--           end loop;
 
          --  ADA.Text_IO.Put_Line(Data'Img);
 
@@ -55,22 +54,20 @@ package body Hello_World is
    end Blinker;
 
    task body Sampler is
-
-      --  Period       : constant Time_Span := Milliseconds (100);
-      --  Next_Release : Time := Clock;
-
-      --  Event_Kind : STM32.DMA.DMA_Interrupt;
       Dummy_Stuff : Boolean := False;
       Samples : AMC.ADC.Injected_Samples_Array := (others => 0);
+      Bat_Sense_Data : UInt16 := 0;
+      Board_Temp_Data : UInt16 := 0;
    begin
       loop
-         --  Ada.Synchronous_Task_Control.Suspend_Until_True (AMC.ADC.Regular_Channel_EOC);
-         AMC.ADC.Handler.Await_Event (Injected_Samples => Samples);
-         --  Samples := AMC.ADC.Handler.Get_Samples;
+         AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);
 
          AMC.Board.Turn_Off (AMC.Board.Led_Green);
 
-         --  Dummy_Stuff := not Dummy_Stuff;
+         Bat_Sense_Data := AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
+         Board_Temp_Data := AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
+
+         Dummy_Stuff := not Dummy_Stuff;
 
       end loop;
    end Sampler;

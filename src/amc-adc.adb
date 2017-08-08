@@ -1,20 +1,21 @@
 with STM32.PWM;
 with STM32.Timers;
-with AMC.Board;
+
+with STM32_SVD.ADC;
 
 package body AMC.ADC is
 
-
-   type Data is array (1 .. 8) of UInt16; -- arbitrary size, component type
-   for Data'Component_Size use 16; -- confirming
-
-   Counts : Data := (others => 1337) with Volatile;
-
-   function Get_Data_Test(Index : Integer) return UInt16 is
+   function Get_Sample (Reading : in ADC_Readings)
+      return UInt16 is
    begin
-      return Counts(Index);
-   end Get_Data_Test;
-
+      if Reading in ADC_Readings_Inj'Range then
+         return Handler.Get_Injected_Samples(Reading);
+      elsif Reading in ADC_Readings_Reg'Range then
+         return Regular_Samples(Reading);
+      else
+         return UInt16'(0);
+      end if;
+   end Get_Sample;
 
    procedure Initialize (This : in out Object)
    is
@@ -24,8 +25,6 @@ package body AMC.ADC is
       All_ADCs : constant ADCs_Access :=
          (STM32.Device.ADC_1'Access, STM32.Device.ADC_2'Access, STM32.Device.ADC_3'Access);
 
-      use AMC.Board;
-
       Reading : ADC_Reading;
       Nbr_Of_Reg : array (ADCs'Range) of Integer := (others => 0);
       Nbr_Of_Inj : array (ADCs'Range) of Integer := (others => 0);
@@ -34,73 +33,46 @@ package body AMC.ADC is
       DMA_Stream_Config : STM32.DMA.DMA_Stream_Configuration;
    begin
 
-      This.Reading_Data :=
-         ((I_A)        => (Pin          => ADC_I_A_Pin,
-                           ADC_Point    => ADC_I_A_Point,
-                           Channel_Rank => 1),
-          (I_B)        => (Pin          => ADC_I_B_Pin,
-                           ADC_Point    => ADC_I_B_Point,
-                           Channel_Rank => 1),
-          (I_C)        => (Pin          => ADC_I_C_Pin,
-                           ADC_Point    => ADC_I_C_Point,
-                           Channel_Rank => 1),
-          (EMF_A)      => (Pin          => ADC_EMF_A_Pin,
-                           ADC_Point    => ADC_EMF_A_Point,
-                           Channel_Rank => 2),
-          (EMF_B)      => (Pin          => ADC_EMF_B_Pin,
-                           ADC_Point    => ADC_EMF_B_Point,
-                           Channel_Rank => 2),
-          (EMF_C)      => (Pin          => ADC_EMF_C_Pin,
-                           ADC_Point    => ADC_EMF_C_Point,
-                           Channel_Rank => 2),
-          (Bat_Sense)  => (Pin          => ADC_Bat_Sense_Pin,
-                           ADC_Point    => ADC_Bat_Sense_Point,
-                           Channel_Rank => 1),
-          (Board_Temp) => (Pin          => ADC_Board_Temp_Pin,
-                           ADC_Point    => ADC_Board_Temp_Point,
-                           Channel_Rank => 2));
-
-      for Reading of This.Reading_Data loop
+      --  Initialize GPIO for analog input
+      for Reading of Readings_ADC_Settings loop
          STM32.Device.Enable_Clock (Reading.Pin);
          Reading.Pin.Configure_IO
             (Config =>
                 STM32.GPIO.GPIO_Port_Configuration'(Mode        => STM32.GPIO.Mode_Analog,
-                                                    Output_Type => STM32.GPIO.Push_Pull,
-                                                    Speed       => STM32.GPIO.Speed_100MHz,
-                                                    Resistors   => STM32.GPIO.Floating));
-              --  (Mode => STM32.GPIO.Mode_Analog, others => <>));
+                                                    others => <>));
       end loop;
 
-      STM32.ADC.Configure_Common_Properties
-         (Mode           => STM32.ADC.Triple_Injected_Simultaneous,
-          Prescalar      => STM32.ADC.PCLK2_Div_2,  --  Somewhat overclocked...
-          DMA_Mode       => STM32.ADC.Disabled,
-          Sampling_Delay => STM32.ADC.Sampling_Delay_5_Cycles);
-
+      --  Count the number of regular/injected for each ADC
       for ADC in ADCs'Range loop
          for R in ADC_Readings_Reg'Range loop
-            Reading := This.Reading_Data(R);
+            Reading := Readings_ADC_Settings(R);
             if Reading.ADC_Point.ADC = All_ADCs(ADC) then
                Nbr_Of_Reg(ADC) := Nbr_Of_Reg(ADC) + 1;
             end if;
          end loop;
          for R in ADC_Readings_Inj'Range loop
-            Reading := This.Reading_Data(R);
+            Reading := Readings_ADC_Settings(R);
             if Reading.ADC_Point.ADC = All_ADCs(ADC) then
                Nbr_Of_Inj(ADC) := Nbr_Of_Inj(ADC) + 1;
             end if;
          end loop;
       end loop;
 
+
       for ADC in ADCs'Range loop
 
+         --  Configure the used ADCs
          if Nbr_Of_Reg(ADC) > 0 or Nbr_Of_Inj(ADC) > 0 then
             STM32.Device.Enable_Clock (All_ADCs(ADC).all);
+
+            STM32.ADC.Disable (All_ADCs(ADC).all);
 
             STM32.ADC.Configure_Unit (This       => All_ADCs(ADC).all,
                                       Resolution => STM32.ADC.ADC_Resolution_12_Bits,
                                       Alignment  => STM32.ADC.Right_Aligned);
-            STM32.ADC.Enable (All_ADCs(ADC).all);
+
+            STM32.ADC.Set_Scan_Mode (This    => All_ADCs(ADC).all,
+                                     Enabled => True);
 
             STM32.ADC.Enable_DMA (This => All_ADCs(ADC).all);
             STM32.ADC.Enable_DMA_After_Last_Transfer (This => All_ADCs(ADC).all);
@@ -115,7 +87,7 @@ package body AMC.ADC is
                   (others => (0, Sampling_Time_Regular));
             begin
                for R in ADC_Readings_Reg'Range loop
-                  Reading := This.Reading_Data(R);
+                  Reading := Readings_ADC_Settings(R);
                   if Reading.ADC_Point.ADC = All_ADCs(ADC) then
                      Regulars(Reading.Channel_Rank) :=
                         (Channel     => Reading.ADC_Point.Channel,
@@ -141,7 +113,7 @@ package body AMC.ADC is
                   (others => (0, Sampling_Time_Injected, 0));
             begin
                for R in ADC_Readings_Inj'Range loop
-                  Reading := This.Reading_Data(R);
+                  Reading := Readings_ADC_Settings(R);
                   if Reading.ADC_Point.ADC = All_ADCs(ADC) then
                      Injecteds(Injected_Channel_Rank(Reading.Channel_Rank)) :=
                         (Channel     => Reading.ADC_Point.Channel,
@@ -150,18 +122,37 @@ package body AMC.ADC is
                   end if;
                end loop;
 
-               Configure_Injected_Conversions
-                  (This          => All_ADCs(ADC).all,
-                   AutoInjection => False,
-                   Trigger       => (Trigger_Rising_Edge, Event => Timer1_CC4_Event),
-                   Enable_EOC    => False,
-                   Conversions   => Injecteds);
+               if All_ADCs(ADC) = Multi_Main_ADC'Access then
+                  Configure_Injected_Conversions
+                     (This          => All_ADCs(ADC).all,
+                      AutoInjection => False,
+                      Trigger       => (Enabler => Trigger_Rising_Edge,
+                                        Event => Timer1_CC4_Event),
+                      Enable_EOC    => False,
+                      Conversions   => Injecteds);
+               else
+                  Configure_Injected_Conversions
+                     (This          => All_ADCs(ADC).all,
+                      AutoInjection => False,
+                      Trigger       => (Enabler => Trigger_Disabled),
+                      Enable_EOC    => False,
+                      Conversions   => Injecteds);
+               end if;
             end;
          end if;
       end loop;
 
+      --  Setup ADC mode
+      STM32.ADC.Configure_Common_Properties
+         (Mode           => STM32.ADC.Triple_Injected_Simultaneous,
+          Prescalar      => STM32.ADC.PCLK2_Div_2,  --  Somewhat overclocked...
+          DMA_Mode       => STM32.ADC.Disabled,
+          Sampling_Delay => STM32.ADC.Sampling_Delay_5_Cycles);
+
+
+      --  Initialize the timer used for triggering the regular conversions
       STM32.PWM.Configure_PWM_Timer(Generator => STM32.Device.Timer_2'Access,
-                                    Frequency => 14_000);
+                                    Frequency => STM32.PWM.Hertz(Regular_Conversion_Frequency));
 
       Regular_Conv_Trigger.Attach_PWM_Channel (Generator => STM32.Device.Timer_2'Access,
                                                Channel   => STM32.Timers.Channel_4,
@@ -169,13 +160,7 @@ package body AMC.ADC is
 
       Regular_Conv_Trigger.Set_Duty_Cycle (Value => 50);  --  Anything /= 0 or /= 100
 
-
-
-
-      --  Multi_Disable_DMA_After_Last_Transfer
-
-
-
+      --  Initialize the DMA used to copy the values from the regular conversions
       STM32.Device.Enable_Clock (DMA_Ctrl);
 
       STM32.DMA.Reset (DMA_Ctrl, DMA_Stream);
@@ -199,25 +184,22 @@ package body AMC.ADC is
 
       STM32.DMA.Clear_All_Status (DMA_Ctrl, DMA_Stream);
 
---        STM32.DMA.Start_Transfer_with_Interrupts
---           (This               => DMA_Ctrl,
---            Stream             => DMA_Stream,
---            Source             => STM32.ADC.Data_Register_Address
---                                     (This => STM32.Device.ADC_1),
---            Destination        => Counts'Address,
---            Data_Count         => 2,
---            Enabled_Interrupts => (STM32.DMA.Transfer_Complete_Interrupt => True,
---                                   others                                => False));
-
       STM32.DMA.Start_Transfer (This        => DMA_Ctrl,
                                 Stream      => DMA_Stream,
                                 Source      => STM32.ADC.Data_Register_Address
-                                                  (This => STM32.Device.ADC_1),
-                                Destination => Counts'Address,
-                                Data_Count  => 2);
+                                                  (This => Regulars_ADC),
+                                Destination => Regular_Samples'Address,
+                                Data_Count  => Regular_Samples'Length);
+
+      STM32.ADC.Enable_Interrupts (Multi_Main_ADC, STM32.ADC.Injected_Channel_Conversion_Complete);
 
 
-      STM32.ADC.Enable_Interrupts (STM32.Device.ADC_1, STM32.ADC.Injected_Channel_Conversion_Complete);
+      --  Finally, enable the used ADCs
+      for ADC in ADCs'Range loop
+         if Nbr_Of_Reg(ADC) > 0 or Nbr_Of_Inj(ADC) > 0 then
+            STM32.ADC.Enable (All_ADCs(ADC).all);
+         end if;
+      end loop;
 
       Regular_Conv_Trigger.Enable_Output;
 
@@ -228,37 +210,37 @@ package body AMC.ADC is
       return Boolean is (This.Initialized);
 
 
-    protected body Handler is
+   protected body Handler is
 
-      function Get_Samples return Injected_Samples_Array is
+      function Get_Injected_Samples return Injected_Samples_Array is
       begin
          return Samples;
-      end Get_Samples;
+      end Get_Injected_Samples;
 
-      entry Await_Event (Injected_Samples : out Injected_Samples_Array) when Event_Occurred is
+      entry Await_New_Samples (Injected_Samples : out Injected_Samples_Array) when New_Samples is
       begin
          Injected_Samples := Samples;
-         Event_Occurred   := False;
-      end Await_Event;
+         New_Samples := False;
+      end Await_New_Samples;
 
-      procedure IRQ_Handler is
+      procedure ISR is
          use STM32.ADC;
       begin
          AMC.Board.Turn_On (AMC.Board.Led_Green);
 
-         if Status (STM32.Device.ADC_1, Injected_Channel_Conversion_Complete) then
-            if Interrupt_Enabled (STM32.Device.ADC_1, Injected_Channel_Conversion_Complete) then
-               Clear_Interrupt_Pending (STM32.Device.ADC_1, Injected_Channel_Conversion_Complete);
+         if Status (Multi_Main_ADC, Injected_Channel_Conversion_Complete) then
+            Clear_Interrupt_Pending (Multi_Main_ADC, Injected_Channel_Conversion_Complete);
 
+            for R in ADC_Readings_Inj'Range loop
+               Samples(R) :=
+                  STM32.ADC.Injected_Conversion_Value
+                     (This => Readings_ADC_Settings(R).ADC_Point.ADC.all,
+                      Rank => Injected_Channel_Rank(Readings_ADC_Settings(R).Channel_Rank));
+            end loop;
 
-               Samples := ((I_A) => 1, (I_B) => 2, (I_C) => 3,
-                           (EMF_A) => 4, (EMF_B) => 5, (EMF_C) => 6);
-               Event_Occurred := True;
-
-               --  Ada.Synchronous_Task_Control.Set_True (Regular_Channel_EOC);
-            end if;
+            New_Samples := True;
          end if;
-      end IRQ_Handler;
+      end ISR;
 
    end Handler;
 
