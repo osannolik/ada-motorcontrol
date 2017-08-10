@@ -65,6 +65,10 @@ package AMC.PWM is
       (This : in out Object;
        Gate : Gates);
 
+   function Get_Duty_Resolution
+      (This : in out Object)
+       return AMC.Types.Duty_Cycle;
+
    procedure Set_Duty_Cycle
       (This  : in out Object;
        Gate  : Gates;

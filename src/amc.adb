@@ -58,7 +58,7 @@ package body AMC is
                                      Value => 50.0);
 
       PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Sample_Trigger,
-                                     Value => 1.0);
+                                     Value => PWM_Peripheral.Get_Duty_Resolution);
 
       PWM_Peripheral.Enable (Gate => AMC.PWM.Gate_A);
       PWM_Peripheral.Enable (Gate => AMC.PWM.Gate_B);

@@ -151,16 +151,25 @@ package body AMC.PWM is
       This.Gates(Gate).Modulator.Disable_Output;
    end Disable;
 
+   function Get_Duty_Resolution
+      (This : in out Object)
+       return AMC.Types.Duty_Cycle
+   is
+      use STM32.Timers;
+   begin
+      return AMC.Types.Duty_Cycle
+         (100.0 / Float(Current_Autoreload (This.Generator.all)));
+   end Get_Duty_Resolution;
+
    procedure Set_Duty_Cycle
       (This  : in out Object;
        Gate  : Gates;
        Value : AMC.Types.Duty_Cycle)
    is
       use STM32.Timers;
-      CCR : UInt16;
+      CCR : constant UInt16 :=
+         UInt16(Value * Float(Current_Autoreload (This.Generator.all)) / 100.0);
    begin
-      CCR := UInt16(Value * Float(Current_Autoreload (This.Generator.all)) / 100.0);
-
       Set_Compare_Value
          (This    => This.Generator.all,
           Channel => This.Gates(Gate).Channel,
