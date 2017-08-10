@@ -49,6 +49,10 @@ package body AMC.PWM is
              PWM_AF    => Pin_AF,
              Polarity  => Polarity);
       end if;
+
+      Set_Output_Preload_Enable (This    => This.Generator.all,
+                                 Channel => Channel,
+                                 Enabled => True);
    end Initialize_Gate;
 
    procedure Initialize_Gate
