@@ -3,12 +3,14 @@ with STM32.ADC;
 with STM32.GPIO;
 with STM32.DMA;
 with Ada.Interrupts.Names;
-with System;
 with AMC.Board;
 
 package AMC.ADC is
    --  Analog to digital conversion
    --  Interfaces the mcu adc peripheral
+
+   V_Ref : constant AMC_Types.Voltage_V := 3.3;
+   ADC_V_Per_Lsb : constant Float := V_Ref / 4095.0; --  12 bit
 
    Regular_Conversion_Frequency : constant Positive := 14_000;
 
@@ -31,8 +33,12 @@ package AMC.ADC is
    subtype ADC_Readings_Inj is ADC_Readings range I_A .. EMF_C;
    subtype ADC_Readings_Reg is ADC_Readings range Bat_Sense .. Board_Temp;
 
-   type Injected_Samples_Array is array (ADC_Readings_Inj'Range) of UInt16;
-   type Regular_Samples_Array is array (ADC_Readings_Reg'Range) of UInt16;
+   type Injected_Samples_Array is
+      array (ADC_Readings_Inj'Range) of AMC_Types.Voltage_V;
+
+   type Regular_Samples_Array is
+      array (ADC_Readings_Reg'Range) of UInt16;
+
    for Regular_Samples_Array'Component_Size use 16;
 
    subtype Rank is STM32.ADC.Regular_Channel_Rank;
@@ -50,22 +56,27 @@ package AMC.ADC is
    end record;
 
    function Get_Sample (Reading : in ADC_Readings)
-      return UInt16;
+      return AMC_Types.Voltage_V;
 
    function Is_Initialized (This : in Object)
       return Boolean;
 
+   function To_Voltage (Adc_Value : in UInt16)
+                        return AMC_Types.Voltage_V
+   with
+      Inline;
+
    procedure Initialize (This : in out Object);
 
    protected Handler is
-      pragma Interrupt_Priority(System.Interrupt_Priority'Last);
+      pragma Interrupt_Priority(ADC_ISR_Prio);
 
       function Get_Injected_Samples return Injected_Samples_Array;
       entry Await_New_Samples (Injected_Samples : out Injected_Samples_Array);
 
    private
 
-      Samples : Injected_Samples_Array := (others => 0);
+      Samples : Injected_Samples_Array := (others => 0.0);
       New_Samples : Boolean := False;
 
       procedure ISR with

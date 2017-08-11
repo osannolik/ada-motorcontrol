@@ -98,4 +98,6 @@ package AMC.Board is
 
 private
    Initialized : Boolean := False;
+
+
 end AMC.Board;

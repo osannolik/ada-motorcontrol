@@ -96,8 +96,10 @@ package body AMC is
             (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
 
          declare
-            Bat_Sense_Data  : UInt16 := AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
-            Board_Temp_Data : UInt16 := AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
+            Bat_Sense_Data  : AMC_Types.Voltage_V :=
+               AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
+            Board_Temp_Data : AMC_Types.Voltage_V :=
+               AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
          begin
             null;
          end;
@@ -112,7 +114,7 @@ package body AMC is
 
    task body Current_Control is
       Idq_Sp : AMC_Types.Idq;
-      Samples : AMC.ADC.Injected_Samples_Array := (others => 0);
+      Samples : AMC.ADC.Injected_Samples_Array := (others => 0.0);
    begin
       loop
          AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);

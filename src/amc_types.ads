@@ -5,6 +5,9 @@ package AMC_Types is
    subtype Seconds is Float;
    subtype Duty_Cycle is Float range 0.0 .. 100.0;
 
+   subtype Voltage_V is Float;
+   --  Represents an electric voltage
+
    subtype Current_A is Float;
    --  Represents an electric current
 

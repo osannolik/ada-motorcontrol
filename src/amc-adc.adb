@@ -6,14 +6,14 @@ with STM32_SVD.ADC;
 package body AMC.ADC is
 
    function Get_Sample (Reading : in ADC_Readings)
-      return UInt16 is
+      return AMC_Types.Voltage_V is
    begin
       if Reading in ADC_Readings_Inj'Range then
          return Handler.Get_Injected_Samples(Reading);
       elsif Reading in ADC_Readings_Reg'Range then
-         return Regular_Samples(Reading);
+         return To_Voltage (Regular_Samples(Reading));
       else
-         return UInt16'(0);
+         return 0.0;
       end if;
    end Get_Sample;
 
@@ -209,6 +209,12 @@ package body AMC.ADC is
    function Is_Initialized (This : in Object)
       return Boolean is (This.Initialized);
 
+   function To_Voltage (Adc_Value : in UInt16)
+                        return AMC_Types.Voltage_V
+   is
+   begin
+      return AMC_Types.Voltage_V (ADC_V_Per_Lsb * Float (Adc_Value));
+   end To_Voltage;
 
    protected body Handler is
 
@@ -232,10 +238,10 @@ package body AMC.ADC is
             Clear_Interrupt_Pending (Multi_Main_ADC, Injected_Channel_Conversion_Complete);
 
             for R in ADC_Readings_Inj'Range loop
-               Samples(R) :=
-                  STM32.ADC.Injected_Conversion_Value
+               Samples(R) := To_Voltage
+                  (STM32.ADC.Injected_Conversion_Value
                      (This => Readings_ADC_Settings(R).ADC_Point.ADC.all,
-                      Rank => Injected_Channel_Rank(Readings_ADC_Settings(R).Channel_Rank));
+                      Rank => Injected_Channel_Rank(Readings_ADC_Settings(R).Channel_Rank)));
             end loop;
 
             New_Samples := True;
