@@ -1,12 +1,11 @@
 with AMC.Board;
 with AMC.Config;
-with AMC.Types;
 with STM32.Device;
 
 package body AMC.PWM is
 
    function Deadtime_Value (Timer : STM32.Timers.Timer;
-                            Time  : AMC.Types.Seconds)
+                            Time  : AMC_Types.Seconds)
                             return Uint8;
    --  Returns the DTG bit-field for timer register BDTR such that
    --  the requested deadtime Time is obtained.
@@ -89,8 +88,8 @@ package body AMC.PWM is
    procedure Initialize
       (This      : in out Object;
        Generator : not null access STM32.Timers.Timer;
-       Frequency : AMC.Types.Frequency_Hz;
-       Deadtime  : AMC.Types.Seconds;
+       Frequency : AMC_Types.Frequency_Hz;
+       Deadtime  : AMC_Types.Seconds;
        Alignment : Pulse_Alignment)
    is
       use STM32.Timers;
@@ -153,18 +152,18 @@ package body AMC.PWM is
 
    function Get_Duty_Resolution
       (This : in out Object)
-       return AMC.Types.Duty_Cycle
+       return AMC_Types.Duty_Cycle
    is
       use STM32.Timers;
    begin
-      return AMC.Types.Duty_Cycle
+      return AMC_Types.Duty_Cycle
          (100.0 / Float(Current_Autoreload (This.Generator.all)));
    end Get_Duty_Resolution;
 
    procedure Set_Duty_Cycle
       (This  : in out Object;
        Gate  : Gates;
-       Value : AMC.Types.Duty_Cycle)
+       Value : AMC_Types.Duty_Cycle)
    is
       use STM32.Timers;
       CCR : constant UInt16 :=
@@ -185,7 +184,7 @@ package body AMC.PWM is
       return Boolean is (This.Initialized);
 
    function Deadtime_Value (Timer : STM32.Timers.Timer;
-                            Time  : AMC.Types.Seconds)
+                            Time  : AMC_Types.Seconds)
                             return Uint8
    is
       use STM32.Timers;
@@ -208,7 +207,7 @@ package body AMC.PWM is
 
       declare
          Tmp           : Float;
-         T_DTS         : constant AMC.Types.Seconds :=
+         T_DTS         : constant AMC_Types.Seconds :=
            Clock_Divisor / Float(Timer_Frequency);
          S_To_Ns       : constant Float := 1.0e+9;
          DT_Max_Factor : constant array(0 .. 3) of Float :=

@@ -1,4 +1,3 @@
-with AMC.Types;
 with STM32.GPIO;
 with STM32.Timers;
 with STM32.PWM;
@@ -53,8 +52,8 @@ package AMC.PWM is
    procedure Initialize
       (This      : in out Object;
        Generator : not null access STM32.Timers.Timer;
-       Frequency : AMC.Types.Frequency_Hz;
-       Deadtime  : AMC.Types.Seconds;
+       Frequency : AMC_Types.Frequency_Hz;
+       Deadtime  : AMC_Types.Seconds;
        Alignment : Pulse_Alignment);
 
    procedure Enable
@@ -67,12 +66,12 @@ package AMC.PWM is
 
    function Get_Duty_Resolution
       (This : in out Object)
-       return AMC.Types.Duty_Cycle;
+       return AMC_Types.Duty_Cycle;
 
    procedure Set_Duty_Cycle
       (This  : in out Object;
        Gate  : Gates;
-       Value : AMC.Types.Duty_Cycle);
+       Value : AMC_Types.Duty_Cycle);
 
    procedure Generate_Break_Event (This : Object);
    --  Sets the pwm outputs to an inactive state, e.g. all low.

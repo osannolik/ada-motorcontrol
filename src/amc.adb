@@ -2,7 +2,6 @@ with Ada.Real_Time; use Ada.Real_Time;
 
 with AMC.Board;
 with AMC.Config;
-with AMC.Types;
 with AMC.ADC;
 with AMC.PWM;
 
@@ -96,48 +95,33 @@ package body AMC is
          AMC.Board.Set_Gate_Driver_Power
             (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
 
-         if AMC.Board.Is_Pressed (AMC.Board.User_Button) then
-            --  AMC.Board.Turn_On (AMC.Board.Led_Red);
-            --  AMC.Board.Turn_Off (AMC.Board.Led_Green);
+         declare
+            Bat_Sense_Data  : UInt16 := AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
+            Board_Temp_Data : UInt16 := AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
+         begin
             null;
-         else
-            --  AMC.Board.Turn_Off (AMC.Board.Led_Red);
-            --  AMC.Board.Turn_On (AMC.Board.Led_Green);
-            null;
-         end if;
+         end;
+
+         Inverter_System_Outputs.Idq_CC_Request.Set (Value => (Iq => 0.0,
+                                                               Id => 0.0));
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;
       end loop;
    end Inverter_System;
 
-   task body Sampler is
-      Dummy_Stuff : Boolean := False;
+   task body Current_Control is
+      Idq_Sp : AMC_Types.Idq;
       Samples : AMC.ADC.Injected_Samples_Array := (others => 0);
-      Bat_Sense_Data : UInt16 := 0;
-      Board_Temp_Data : UInt16 := 0;
    begin
       loop
          AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);
 
+         Idq_Sp := Inverter_System_Outputs.Idq_CC_Request.Get;
+
          AMC.Board.Turn_Off (AMC.Board.Led_Green);
-
-         Bat_Sense_Data := AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
-         Board_Temp_Data := AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
-
-         Dummy_Stuff := not Dummy_Stuff;
---           if Dummy_Stuff then
---              AMC.PWM.Set_Duty_Cycle (AMC.PWM_Peripheral,
---                                      Gate  => AMC.PWM.Gate_C,
---                                      Value => 50.0);
---           else
---              AMC.PWM.Set_Duty_Cycle (AMC.PWM_Peripheral,
---                                      Gate  => AMC.PWM.Gate_C,
---                                      Value => 75.0);
---           end if;
-
       end loop;
-   end Sampler;
+   end Current_Control;
 
 begin
 

@@ -1,8 +1,13 @@
 with HAL;       use HAL;
 with System;
+with AMC_Types;
+
+private with Generic_PO;
 
 package AMC is
    --  Ada Motor Controller
+
+   Current_Control_Prio : constant System.Priority := System.Priority'Last;
 
    procedure Initialize;
    --  Initialization to be performed during elaboration
@@ -15,10 +20,26 @@ package AMC is
    task Inverter_System with
       Storage_Size => (4 * 1024);
 
-   task Sampler with
-      Priority => System.Priority'Last,
+   task Current_Control with
+      Priority => Current_Control_Prio,
       Storage_Size => (4 * 1024);
 
 private
+
+   package Idq_PO is new Generic_PO (AMC_Types.Idq);
+
+   type Idq_PO_Shared_With_CC is new Idq_PO.Shared_Data(Current_Control_Prio);
+   --  Provides mutually exclusive access to an Idq type
+
+   type Inverter_System_States is record
+      Idq_CC_Request : Idq_PO_Shared_With_CC;
+      --  Holds the Idq value that is used as set-point for the current controller
+   end record;
+   --  Collects protected objects set by the Inverter_System task
+
+   Inverter_System_Outputs : Inverter_System_States;
+   --  Inverter_System task outputs
+
+
    Initialized : Boolean := False;
 end AMC;
