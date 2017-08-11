@@ -2,6 +2,9 @@ with HAL;       use HAL;
 with System;
 with AMC_Types;
 
+with Generic_DQ;
+with Generic_ABC;
+
 private with Generic_PO;
 
 package AMC is
@@ -10,6 +13,8 @@ package AMC is
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
    Current_Control_Prio : constant System.Priority := System.Priority'Last;
    Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;
+
+   Inverter_System_Period_Ms : constant Positive := 10;
 
    procedure Initialize;
    --  Initialization to be performed during elaboration
@@ -31,7 +36,7 @@ private
 
    package Idq_PO is new Generic_PO (AMC_Types.Idq);
 
-   type Idq_PO_Shared_With_CC is new Idq_PO.Shared_Data(Current_Control_Prio);
+   subtype Idq_PO_Shared_With_CC is Idq_PO.Shared_Data(Current_Control_Prio);
    --  Provides mutually exclusive access to an Idq type
 
    type Inverter_System_States is record
@@ -43,6 +48,13 @@ private
    Inverter_System_Outputs : Inverter_System_States;
    --  Inverter_System task outputs
 
+   package Dq_Float_Package is new Generic_DQ (Float);
+
+   package Dq_Voltage_Package is new Generic_DQ (AMC_Types.Voltage_V);
+
+   package Abc_Float_Package is new Generic_ABC (Float);
+
+   package Abc_Voltage_Package is new Generic_ABC (AMC_Types.Voltage_V);
 
    Initialized : Boolean := False;
 end AMC;

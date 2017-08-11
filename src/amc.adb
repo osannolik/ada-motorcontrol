@@ -9,14 +9,50 @@ pragma Elaborate(AMC.Board);
 pragma Elaborate(AMC.PWM);
 pragma Elaborate(AMC.ADC);
 
+
+
+
+
 package body AMC is
 
    ADC_Peripheral : AMC.ADC.Object;
    PWM_Peripheral : AMC.PWM.Object;
 
+   My_Dq : Dq_Voltage_Package.Dq;
+   My_Dq_2 : Dq_Voltage_Package.Dq;
+
+   My_Abc : Abc_Voltage_Package.Abc;
+
    procedure Initialize
    is
    begin
+
+      My_Dq := (D=>0.0,Q=>0.0);
+      My_Dq_2 := (D=>1.0,Q=>-1.0);
+
+      My_Abc := Abc_Voltage_Package.Abc'(A => 1.0,
+                                         B => 2.0,
+                                         C => 3.0);
+
+      declare
+         use Dq_Voltage_Package;
+         use Abc_Voltage_Package;
+         Mag : constant Float := My_Dq_2.Magnitude;
+         Mag_Abc : constant Float := My_Abc.Magnitude;
+      begin
+         My_Abc := 2.0 * My_Abc;
+         My_Abc := My_Abc * 0.5;
+         My_Abc := My_Abc + My_Abc;
+         My_Abc := My_Abc - My_Abc;
+         My_Abc.Normalize;
+
+         My_Dq := My_Dq + My_Dq_2;
+         My_Dq.Normalize;
+         My_Dq := 2.0 * My_Dq;
+         My_Dq := My_Dq * 0.5;
+         My_Dq := My_Dq - My_Dq_2;
+      end;
+
       AMC.Board.Initialize;
 
       ADC_Peripheral.Initialize;
@@ -84,7 +120,7 @@ package body AMC is
       return Boolean is (Initialized);
 
    task body Inverter_System is
-      Period       : constant Time_Span := Milliseconds (100);
+      Period       : constant Time_Span := Milliseconds (Inverter_System_Period_Ms);
       Next_Release : Time := Clock;
    begin
 
