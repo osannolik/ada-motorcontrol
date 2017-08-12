@@ -1,5 +1,3 @@
-with Generic_DQ;
-
 package AMC_Types is
    --  Ada Motor Controller common types
 
@@ -22,27 +20,55 @@ package AMC_Types is
    end record;
    --  Represents three phase currents in the dq-reference frame
 
-   type Phase is (A, B, C);
 
-   type Phase_Voltages is array (Phase'Range) of Voltage_V;
+   type Abc is tagged record
+      A : Float;
+      B : Float;
+      C : Float;
+   end record;
 
-   type Phase_Currents is array (Phase'Range) of Current_A;
+   type Dq is tagged record
+      D : Float;
+      Q : Float;
+   end record;
 
-   generic
-      type Basetype is private;
-   package TestType is
-      type Dq is record
-         D : Basetype;
-         Q : Basetype;
-      end record;
-   end TestType;
+   subtype junk is Abc;
 
-   package Dq_Float is new TestType (Voltage_V);
+   function "+"(X,Y : in Abc) return Abc;
 
-   subtype Dq_Float_Type is Dq_Float.Dq;
+   function "-"(X,Y : in Abc) return Abc;
 
-   Dq_Test_2 : Dq_Float.Dq;
+   function "*"(X : in Abc; c : in Float) return Abc;
 
-   Dq_Test : Dq_Float_Type;
+   function "*"(c : in Float; X : in Abc) return Abc;
+
+   function "/"(X : in Abc; c : in Float) return Abc;
+
+   function Magnitude(X : in Abc) return Float
+      with
+         Inline;
+
+   procedure Normalize(X : in out Abc);
+
+   function To_Dq(X : in Abc'Class) return Dq;
+
+
+   function "+"(X,Y : in Dq) return Dq;
+
+   function "-"(X,Y : in Dq) return Dq;
+
+   function "*"(X : in Dq; c : in Float) return Dq;
+
+   function "*"(c : in Float; X : in Dq) return Dq;
+
+   function "/"(X : in Dq; c : in Float) return Dq;
+
+   function Magnitude(X : in Dq) return Float
+      with
+         Inline;
+
+   procedure Normalize(X : in out Dq);
+
+   function To_Abc(X : in Dq'Class) return Abc;
 
 end AMC_Types;
