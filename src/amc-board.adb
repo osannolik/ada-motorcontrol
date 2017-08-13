@@ -100,4 +100,13 @@ package body AMC.Board is
                             C => To_Voltage (ADC_Voltage => ADC_Voltage_C));
    end To_Voltages_Abc;
 
+   function To_Vbus (ADC_Voltage : AMC_Types.Voltage_V)
+                     return AMC_Types.Voltage_V
+   is
+   begin
+      return AMC_Types.Voltage_V
+         (ADC_Voltage * Vbus_Voltage_Per_ADC_Voltage);
+
+   end To_Vbus;
+
 end AMC.Board;

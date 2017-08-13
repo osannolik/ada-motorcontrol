@@ -40,6 +40,10 @@ package body AMC is
             null;
          end;
 
+         Inverter_System_Outputs.Vbus.Set
+            (Value => AMC.Board.To_Vbus
+                (ADC_Voltage => AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense)));
+
          Inverter_System_Outputs.Idq_CC_Request.Set (Value => (Iq => 0.0,
                                                                Id => 0.0));
 
@@ -54,6 +58,7 @@ package body AMC is
       Samples    : AMC.ADC.Injected_Samples_Array := (others => 0.0);
       Iabc_Raw   : Abc;
       Idq_Sp     : Idq;
+      Vbus       : Voltage_V;
       Idq        : Dq;
       V_Ctrl_Dq  : Dq;
       V_Ctrl_Abc : Abc;
@@ -69,6 +74,7 @@ package body AMC is
          AMC.Board.Turn_On (AMC.Board.Led_Green);
 
          Idq_Sp := Inverter_System_Outputs.Idq_CC_Request.Get;
+         Vbus := Inverter_System_Outputs.Vbus.Get;
 
          Iabc_Raw := AMC.Board.To_Currents_Abc
             (ADC_Voltage_A => Samples (AMC.ADC.I_A),

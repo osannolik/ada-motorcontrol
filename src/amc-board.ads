@@ -15,6 +15,9 @@ package AMC.Board is
    R_EMF_1       : constant Float := 33.0e3;  --  R29, R31, R33
    R_EMF_2       : constant Float := 3.9e3;   --  R35, R36, R37
 
+   R_Vbus_1      : constant Float := 20.0e3;  --  R1
+   R_Vbus_2      : constant Float := 1.8e3;   --  R2
+
    subtype Led_Pin is STM32.GPIO.GPIO_Point;
    subtype Button_Pin is STM32.GPIO.GPIO_Point;
    subtype Mcu_Pin is STM32.GPIO.GPIO_Point;
@@ -129,6 +132,11 @@ package AMC.Board is
    with
       Inline;
 
+   function To_Vbus (ADC_Voltage : AMC_Types.Voltage_V)
+                     return AMC_Types.Voltage_V
+   with
+      Inline;
+
 private
    Initialized : Boolean := False;
 
@@ -137,5 +145,8 @@ private
 
    Phase_Voltage_Per_ADC_Voltage : constant Float :=
       (R_EMF_1 + R_EMF_2) / R_EMF_2;
+
+   Vbus_Voltage_Per_ADC_Voltage : constant Float :=
+      (R_Vbus_1 + R_Vbus_2) / R_Vbus_2;
 
 end AMC.Board;

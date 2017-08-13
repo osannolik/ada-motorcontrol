@@ -32,13 +32,20 @@ package AMC is
 private
 
    package Idq_PO is new Generic_PO (AMC_Types.Idq);
+   package Voltage_PO is new Generic_PO (AMC_Types.Voltage_V);
 
    subtype Idq_PO_Shared_With_CC is Idq_PO.Shared_Data(Current_Control_Prio);
    --  Provides mutually exclusive access to an Idq type
 
+   subtype Voltage_PO_Shared_With_CC is Voltage_PO.Shared_Data(Current_Control_Prio);
+   --  Provides mutually exclusive access to a Voltage_V type
+
    type Inverter_System_States is record
       Idq_CC_Request : Idq_PO_Shared_With_CC;
       --  Holds the Idq value that is used as set-point for the current controller
+
+      Vbus : Voltage_PO_Shared_With_CC;
+      --  DC bus voltage
    end record;
    --  Collects protected objects set by the Inverter_System task
 
