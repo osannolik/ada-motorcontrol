@@ -2,9 +2,6 @@ with HAL;       use HAL;
 with System;
 with AMC_Types;
 
-with Generic_DQ;
-with Generic_ABC;
-
 private with Generic_PO;
 
 package AMC is
@@ -47,14 +44,6 @@ private
 
    Inverter_System_Outputs : Inverter_System_States;
    --  Inverter_System task outputs
-
-   package Dq_Float_Package is new Generic_DQ (Float);
-
-   package Dq_Voltage_Package is new Generic_DQ (AMC_Types.Voltage_V);
-
-   package Abc_Float_Package is new Generic_ABC (Float);
-
-   package Abc_Voltage_Package is new Generic_ABC (AMC_Types.Voltage_V);
 
    Initialized : Boolean := False;
 end AMC;

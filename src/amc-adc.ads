@@ -9,8 +9,7 @@ package AMC.ADC is
    --  Analog to digital conversion
    --  Interfaces the mcu adc peripheral
 
-   V_Ref : constant AMC_Types.Voltage_V := 3.3;
-   ADC_V_Per_Lsb : constant Float := V_Ref / 4095.0; --  12 bit
+   ADC_V_Per_Lsb : constant Float := AMC.Board.ADC_Vref / 4095.0; --  12 bit
 
    Regular_Conversion_Frequency : constant Positive := 14_000;
 

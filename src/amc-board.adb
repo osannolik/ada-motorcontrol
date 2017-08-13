@@ -60,4 +60,44 @@ package body AMC.Board is
    function Is_Initialized
       return Boolean is (Initialized);
 
+   function To_Current (ADC_Voltage : AMC_Types.Voltage_V)
+                        return AMC_Types.Current_A
+   is
+   begin
+      return AMC_Types.Current_A
+         ((ADC_Voltage - Ina240_Offset) * Phase_Ampere_Per_ADC_Voltage);
+   end To_Current;
+
+   function To_Currents_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
+                             ADC_Voltage_B : AMC_Types.Voltage_V;
+                             ADC_Voltage_C : AMC_Types.Voltage_V)
+                             return AMC_Types.Abc
+   is
+   begin
+      return AMC_Types.Abc'(A => To_Current (ADC_Voltage => ADC_Voltage_A),
+                            B => To_Current (ADC_Voltage => ADC_Voltage_B),
+                            C => To_Current (ADC_Voltage => ADC_Voltage_C));
+   end To_Currents_Abc;
+
+   function To_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
+                        return AMC_Types.Voltage_V
+   is
+   begin
+      --  Assumes steady state measurement
+      return AMC_Types.Voltage_V
+         (ADC_Voltage * Phase_Voltage_Per_ADC_Voltage);
+
+   end To_Voltage;
+
+   function To_Voltages_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
+                             ADC_Voltage_B : AMC_Types.Voltage_V;
+                             ADC_Voltage_C : AMC_Types.Voltage_V)
+                             return AMC_Types.Abc
+   is
+   begin
+      return AMC_Types.Abc'(A => To_Voltage (ADC_Voltage => ADC_Voltage_A),
+                            B => To_Voltage (ADC_Voltage => ADC_Voltage_B),
+                            C => To_Voltage (ADC_Voltage => ADC_Voltage_C));
+   end To_Voltages_Abc;
+
 end AMC.Board;

@@ -232,7 +232,7 @@ package body AMC.ADC is
       procedure ISR is
          use STM32.ADC;
       begin
-         AMC.Board.Turn_On (AMC.Board.Led_Green);
+         --  AMC.Board.Turn_On (AMC.Board.Led_Green);
 
          if Status (Multi_Main_ADC, Injected_Channel_Conversion_Complete) then
             Clear_Interrupt_Pending (Multi_Main_ADC, Injected_Channel_Conversion_Complete);

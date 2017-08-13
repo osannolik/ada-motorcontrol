@@ -9,49 +9,108 @@ pragma Elaborate(AMC.Board);
 pragma Elaborate(AMC.PWM);
 pragma Elaborate(AMC.ADC);
 
-
-
-
+with Transforms;
 
 package body AMC is
 
    ADC_Peripheral : AMC.ADC.Object;
    PWM_Peripheral : AMC.PWM.Object;
 
-   My_Dq : Dq_Voltage_Package.Dq;
-   My_Dq_2 : Dq_Voltage_Package.Dq;
 
-   My_Abc : Abc_Voltage_Package.Abc;
+   task body Inverter_System is
+      Period       : constant Time_Span := Milliseconds (Inverter_System_Period_Ms);
+      Next_Release : Time := Clock;
+
+   begin
+
+      AMC.Board.Turn_Off (AMC.Board.Led_Red);
+      AMC.Board.Turn_Off (AMC.Board.Led_Green);
+
+      loop
+         AMC.Board.Set_Gate_Driver_Power
+            (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
+
+         declare
+            Bat_Sense_Data  : AMC_Types.Voltage_V :=
+               AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
+            Board_Temp_Data : AMC_Types.Voltage_V :=
+               AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
+         begin
+            null;
+         end;
+
+         Inverter_System_Outputs.Idq_CC_Request.Set (Value => (Iq => 0.0,
+                                                               Id => 0.0));
+
+         Next_Release := Next_Release + Period;
+         delay until Next_Release;
+      end loop;
+   end Inverter_System;
+
+   task body Current_Control is
+      use AMC_Types;
+
+      Samples    : AMC.ADC.Injected_Samples_Array := (others => 0.0);
+      Iabc_Raw   : Abc;
+      Idq_Sp     : Idq;
+      Idq        : Dq;
+      V_Ctrl_Dq  : Dq;
+      V_Ctrl_Abc : Abc;
+      Duty       : Abc;
+      --  Vabc_Raw : Abc;
+
+      An_Angle : constant Angle_Rad := 3.14; --  Get from sensor
+      A : Angle := Compose (An_Angle);
+   begin
+      loop
+         AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);
+
+         AMC.Board.Turn_On (AMC.Board.Led_Green);
+
+         Idq_Sp := Inverter_System_Outputs.Idq_CC_Request.Get;
+
+         Iabc_Raw := AMC.Board.To_Currents_Abc
+            (ADC_Voltage_A => Samples (AMC.ADC.I_A),
+             ADC_Voltage_B => Samples (AMC.ADC.I_B),
+             ADC_Voltage_C => Samples (AMC.ADC.I_C));
+
+--           Vabc_Raw := AMC.Board.To_Voltages_Abc
+--              (ADC_Voltage_A => Samples (AMC.ADC.EMF_A),
+--               ADC_Voltage_B => Samples (AMC.ADC.EMF_B),
+--               ADC_Voltage_C => Samples (AMC.ADC.EMF_C));
+
+
+         A := Compose (An_Angle);
+
+         Idq := Transforms.Park (Transforms.Clarke (Iabc_Raw), A);
+
+         --  Do control towards Idq_Sp, PI etc
+         V_Ctrl_Dq := (0.0, 0.0);
+
+         V_Ctrl_Abc := Transforms.Clarke_Inv (Transforms.Park_Inv (V_Ctrl_Dq, A));
+
+         --  Convert to corresponding duty cycle value, zsm etc
+         Duty := V_Ctrl_Abc + (50.0, 50.0, 50.0);
+
+
+         PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Gate_A,
+                                        Value => Duty.A);
+
+         PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Gate_B,
+                                        Value => Duty.B);
+
+         PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Gate_C,
+                                        Value => Duty.C);
+
+
+         AMC.Board.Turn_Off (AMC.Board.Led_Green);
+
+      end loop;
+   end Current_Control;
 
    procedure Initialize
    is
    begin
-
-      My_Dq := (D=>0.0,Q=>0.0);
-      My_Dq_2 := (D=>1.0,Q=>-1.0);
-
-      My_Abc := Abc_Voltage_Package.Abc'(A => 1.0,
-                                         B => 2.0,
-                                         C => 3.0);
-
-      declare
-         use Dq_Voltage_Package;
-         use Abc_Voltage_Package;
-         Mag : constant Float := My_Dq_2.Magnitude;
-         Mag_Abc : constant Float := My_Abc.Magnitude;
-      begin
-         My_Abc := 2.0 * My_Abc;
-         My_Abc := My_Abc * 0.5;
-         My_Abc := My_Abc + My_Abc;
-         My_Abc := My_Abc - My_Abc;
-         My_Abc.Normalize;
-
-         My_Dq := My_Dq + My_Dq_2;
-         My_Dq.Normalize;
-         My_Dq := 2.0 * My_Dq;
-         My_Dq := My_Dq * 0.5;
-         My_Dq := My_Dq - My_Dq_2;
-      end;
 
       AMC.Board.Initialize;
 
@@ -118,48 +177,6 @@ package body AMC is
 
    function Is_Initialized
       return Boolean is (Initialized);
-
-   task body Inverter_System is
-      Period       : constant Time_Span := Milliseconds (Inverter_System_Period_Ms);
-      Next_Release : Time := Clock;
-   begin
-
-      AMC.Board.Turn_Off (AMC.Board.Led_Red);
-      AMC.Board.Turn_Off (AMC.Board.Led_Green);
-
-      loop
-         AMC.Board.Set_Gate_Driver_Power
-            (Enabled => AMC.Board.Is_Pressed (AMC.Board.User_Button));
-
-         declare
-            Bat_Sense_Data  : AMC_Types.Voltage_V :=
-               AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
-            Board_Temp_Data : AMC_Types.Voltage_V :=
-               AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
-         begin
-            null;
-         end;
-
-         Inverter_System_Outputs.Idq_CC_Request.Set (Value => (Iq => 0.0,
-                                                               Id => 0.0));
-
-         Next_Release := Next_Release + Period;
-         delay until Next_Release;
-      end loop;
-   end Inverter_System;
-
-   task body Current_Control is
-      Idq_Sp : AMC_Types.Idq;
-      Samples : AMC.ADC.Injected_Samples_Array := (others => 0.0);
-   begin
-      loop
-         AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);
-
-         Idq_Sp := Inverter_System_Outputs.Idq_CC_Request.Get;
-
-         AMC.Board.Turn_Off (AMC.Board.Led_Green);
-      end loop;
-   end Current_Control;
 
 begin
 

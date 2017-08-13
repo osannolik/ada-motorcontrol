@@ -6,6 +6,15 @@ with STM32.ADC;
 package AMC.Board is
    --  Ada Motor Controller board specifics
 
+   ADC_Vref      : constant Float := 3.3;
+
+   R_Shunt       : constant Float := 0.5e-3;  --  R26, R27, R28
+   Ina240_Gain   : constant Float := 50.0;
+   Ina240_Offset : constant Float := ADC_Vref * 0.5;
+
+   R_EMF_1       : constant Float := 33.0e3;  --  R29, R31, R33
+   R_EMF_2       : constant Float := 3.9e3;   --  R35, R36, R37
+
    subtype Led_Pin is STM32.GPIO.GPIO_Point;
    subtype Button_Pin is STM32.GPIO.GPIO_Point;
    subtype Mcu_Pin is STM32.GPIO.GPIO_Point;
@@ -96,8 +105,37 @@ package AMC.Board is
       Pre  => not Is_Initialized,
       Post => Is_Initialized;
 
+   function To_Current (ADC_Voltage : AMC_Types.Voltage_V)
+                        return AMC_Types.Current_A
+   with
+      Inline;
+
+   function To_Currents_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
+                             ADC_Voltage_B : AMC_Types.Voltage_V;
+                             ADC_Voltage_C : AMC_Types.Voltage_V)
+                             return AMC_Types.Abc
+   with
+      Inline;
+
+   function To_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
+                        return AMC_Types.Voltage_V
+   with
+      Inline;
+
+   function To_Voltages_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
+                             ADC_Voltage_B : AMC_Types.Voltage_V;
+                             ADC_Voltage_C : AMC_Types.Voltage_V)
+                             return AMC_Types.Abc
+   with
+      Inline;
+
 private
    Initialized : Boolean := False;
 
+   Phase_Ampere_Per_ADC_Voltage : constant Float :=
+      1.0 / (R_Shunt * Ina240_Gain);
+
+   Phase_Voltage_Per_ADC_Voltage : constant Float :=
+      (R_EMF_1 + R_EMF_2) / R_EMF_2;
 
 end AMC.Board;
