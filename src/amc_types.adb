@@ -24,6 +24,16 @@ package body AMC_Types is
                   C => X.C + Y.C);
    end "+";
 
+   function "+"(X : in Abc; c : in Float) return Abc is
+   begin
+      return Abc'(A => X.A + c,
+                  B => X.B + c,
+                  C => X.C + c);
+   end "+";
+
+   function "+"(c : in Float; X : in Abc) return Abc is
+      (X + c);
+
    function "-"(X,Y : in Abc) return Abc is
    begin
       return Abc'(A => X.A - Y.A,

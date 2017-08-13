@@ -31,10 +31,4 @@ package Transforms is
                       Angle : in AMC_Types.Angle)
                       return AMC_Types.Alfa_Beta;
 
-private
-
-   One_Over_Sqrt3 : constant Float := 0.577350269;
-
-   Sqrt3_Over_Two : constant Float := 0.866025404;
-
 end Transforms;

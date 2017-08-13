@@ -1,4 +1,5 @@
 with AMC_Math;
+with AMC_Utils;
 
 package body Transforms is
 
@@ -6,6 +7,7 @@ package body Transforms is
                     K : in Float := Factor_Default)
                     return AMC_Types.Alfa_Beta
    is
+      use AMC_Utils;
    begin
       return AMC_Types.Alfa_Beta'
          (Alfa => X.A,
@@ -16,6 +18,7 @@ package body Transforms is
                         K : in Float := Factor_Default)
                         return AMC_Types.Abc
    is
+      use AMC_Utils;
       Tmp1 : constant Float := -0.5 * X.Alfa;
       Tmp2 : constant Float := Sqrt3_Over_Two * X.Beta;
    begin

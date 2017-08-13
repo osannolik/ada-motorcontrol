@@ -10,6 +10,7 @@ pragma Elaborate(AMC.PWM);
 pragma Elaborate(AMC.ADC);
 
 with Transforms;
+with ZSM;
 
 package body AMC is
 
@@ -91,6 +92,7 @@ package body AMC is
 
          --  Convert to corresponding duty cycle value, zsm etc
          Duty := V_Ctrl_Abc + (50.0, 50.0, 50.0);
+         Duty := ZSM.Sinusoidal (Duty);
 
 
          PWM_Peripheral.Set_Duty_Cycle (Gate  => AMC.PWM.Gate_A,

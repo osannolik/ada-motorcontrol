@@ -53,6 +53,10 @@ package AMC_Types is
 
    function "+"(X,Y : in Abc) return Abc;
 
+   function "+"(X : in Abc; c : in Float) return Abc;
+
+   function "+"(c : in Float; X : in Abc) return Abc;
+
    function "-"(X,Y : in Abc) return Abc;
 
    function "*"(X : in Abc; c : in Float) return Abc;
