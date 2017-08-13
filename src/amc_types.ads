@@ -11,6 +11,10 @@ package AMC_Types is
    subtype Current_A is Float;
    --  Represents an electric current
 
+   type Temperature_DegC is new Float;
+
+   type Temperature_K is new Float;
+
    type Angle_Deg is new Float;
 
    type Angle_Rad is new Float;

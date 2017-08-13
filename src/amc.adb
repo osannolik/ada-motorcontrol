@@ -36,6 +36,8 @@ package body AMC is
                AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense);
             Board_Temp_Data : AMC_Types.Voltage_V :=
                AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
+            BT : AMC_Types.Temperature_DegC :=
+               AMC.Board.To_Board_Temp (Board_Temp_Data);
          begin
             null;
          end;

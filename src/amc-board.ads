@@ -2,6 +2,7 @@ with STM32.Device;
 with STM32.GPIO;
 with STM32.Timers;
 with STM32.ADC;
+with AMC_Types;
 
 package AMC.Board is
    --  Ada Motor Controller board specifics
@@ -17,6 +18,12 @@ package AMC.Board is
 
    R_Vbus_1      : constant Float := 20.0e3;  --  R1
    R_Vbus_2      : constant Float := 1.8e3;   --  R2
+
+   R_NTC_1       : constant Float := 10.0e3;  --  NTC
+   R_NTC_2       : constant Float := 10.0e3;  --  R3
+   NTC_Beta      : constant Float := 3434.0;
+
+   Temperature_Default : constant AMC_Types.Temperature_DegC := 25.0;
 
    subtype Led_Pin is STM32.GPIO.GPIO_Point;
    subtype Button_Pin is STM32.GPIO.GPIO_Point;
@@ -136,6 +143,9 @@ package AMC.Board is
                      return AMC_Types.Voltage_V
    with
       Inline;
+
+   function To_Board_Temp (ADC_Voltage : AMC_Types.Voltage_V)
+                           return AMC_Types.Temperature_DegC;
 
 private
    Initialized : Boolean := False;

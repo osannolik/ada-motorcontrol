@@ -1,3 +1,6 @@
+with AMC_Utils;
+with AMC_Math;
+
 package body AMC.Board is
 
    procedure Set_Gate_Driver_Power (Enabled : in Boolean)
@@ -108,5 +111,26 @@ package body AMC.Board is
          (ADC_Voltage * Vbus_Voltage_Per_ADC_Voltage);
 
    end To_Vbus;
+
+   function To_Board_Temp (ADC_Voltage : AMC_Types.Voltage_V)
+                           return AMC_Types.Temperature_DegC
+   is
+      R  : Float;
+      T0 : constant AMC_Types.Temperature_K :=
+         AMC_Utils.To_Kelvin(Temperature_Default);
+      T  : AMC_Types.Temperature_K;
+   begin
+      if ADC_Voltage = 0.0 then
+         return Temperature_Default;
+      end if;
+
+      R := R_NTC_2 * (ADC_Vref/Float(ADC_Voltage) - 1.0);
+
+      T := AMC_Types.Temperature_K
+         (1.0 / (1.0 / Float(T0) + AMC_Math.Log (R / R_NTC_1) / NTC_Beta));
+
+      return AMC_Utils.To_DegC (T);
+
+   end To_Board_Temp;
 
 end AMC.Board;

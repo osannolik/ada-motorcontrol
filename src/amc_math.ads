@@ -19,4 +19,7 @@ package AMC_Math is
    function Cos (X : in Float) return Float renames
       Ada.Numerics.Elementary_Functions.Cos;
 
+   function Log (X : in Float) return Float renames
+      Ada.Numerics.Elementary_Functions.Log;
+
 end AMC_Math;
