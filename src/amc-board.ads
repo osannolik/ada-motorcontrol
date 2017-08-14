@@ -85,6 +85,8 @@ package AMC.Board is
    ADC_Board_Temp_Point : constant STM32.ADC.ADC_Point :=
       (STM32.Device.ADC_1'Access, Channel => 14);
 
+   Encoder_A_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB6;
+   Encoder_B_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB7;
 
    procedure Set_Gate_Driver_Power (Enabled : in Boolean)
    with

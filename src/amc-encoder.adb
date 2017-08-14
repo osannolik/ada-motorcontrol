@@ -1,4 +1,5 @@
 with STM32.GPIO;
+with AMC.Board;
 with AMC_Math;
 
 package body AMC.Encoder is
@@ -9,7 +10,7 @@ package body AMC.Encoder is
       use STM32.Timers;
 
       Input_Pins : constant STM32.GPIO.GPIO_Points :=
-         (STM32.Device.PB6, STM32.Device.PB7);
+         (AMC.Board.Encoder_A_Pin, AMC.Board.Encoder_B_Pin);
 
    begin
 
@@ -26,7 +27,7 @@ package body AMC.Encoder is
          (Points => Input_Pins,
           AF     => STM32.Device.GPIO_AF_TIM4_2);
 
-      STM32.Device.Enable_Clock (STM32.Device.Timer_4);
+      STM32.Device.Enable_Clock (Counting_Timer);
 
 
       Configure (This          => Counting_Timer,
