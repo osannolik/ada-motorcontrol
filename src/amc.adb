@@ -11,7 +11,7 @@ pragma Elaborate(AMC.PWM);
 pragma Elaborate(AMC.ADC);
 pragma Elaborate(AMC.Encoder);
 
-with Transforms;
+with FOC;
 with ZSM;
 
 package body AMC is
@@ -55,8 +55,8 @@ package body AMC is
             (Value => AMC.Board.To_Vbus
                 (ADC_Voltage => AMC.ADC.Get_Sample (AMC.ADC.Bat_Sense)));
 
-         Inverter_System_Outputs.Idq_CC_Request.Set (Value => (Iq => 0.0,
-                                                               Id => 0.0));
+         Inverter_System_Outputs.Idq_CC_Request.Set (Value => (D => 0.0,
+                                                               Q => 0.0));
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;
@@ -67,44 +67,31 @@ package body AMC is
       use AMC_Types;
 
       Samples    : AMC.ADC.Injected_Samples_Array := (others => 0.0);
-      Iabc_Raw   : Abc;
-      Idq_Sp     : Idq;
       Vbus       : Voltage_V;
-      Idq        : Dq;
-      V_Ctrl_Dq  : Dq;
       V_Ctrl_Abc : Abc;
       Duty       : Abc;
       --  Vabc_Raw : Abc;
-
-      A : Angle;
    begin
       loop
          AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);
 
          AMC.Board.Turn_On (AMC.Board.Led_Green);
 
-         Idq_Sp := Inverter_System_Outputs.Idq_CC_Request.Get;
-         Vbus := Inverter_System_Outputs.Vbus.Get;
-
-         Iabc_Raw := AMC.Board.To_Currents_Abc
-            (ADC_Voltage_A => Samples (AMC.ADC.I_A),
-             ADC_Voltage_B => Samples (AMC.ADC.I_B),
-             ADC_Voltage_C => Samples (AMC.ADC.I_C));
-
 --           Vabc_Raw := AMC.Board.To_Voltages_Abc
 --              (ADC_Voltage_A => Samples (AMC.ADC.EMF_A),
 --               ADC_Voltage_B => Samples (AMC.ADC.EMF_B),
 --               ADC_Voltage_C => Samples (AMC.ADC.EMF_C));
 
+         Vbus := Inverter_System_Outputs.Vbus.Get;
 
-         A := ENC_Peripheral.Get_Angle;
-
-         Idq := Transforms.Park (Transforms.Clarke (Iabc_Raw), A);
-
-         --  Do control towards Idq_Sp, PI etc
-         V_Ctrl_Dq := (0.0, 0.0);
-
-         V_Ctrl_Abc := Transforms.Clarke_Inv (Transforms.Park_Inv (V_Ctrl_Dq, A));
+         V_Ctrl_Abc := FOC.Calculate_Voltage
+            (Iabc          => AMC.Board.To_Currents_Abc
+                (ADC_Voltage_A => Samples (AMC.ADC.I_A),
+                 ADC_Voltage_B => Samples (AMC.ADC.I_B),
+                 ADC_Voltage_C => Samples (AMC.ADC.I_C)),
+             I_Set_Point   => Inverter_System_Outputs.Idq_CC_Request.Get,
+             Current_Angle => ENC_Peripheral.Get_Angle,
+             Vbus          => Vbus);
 
          --  Convert to corresponding duty cycle value, zsm etc
          Duty := V_Ctrl_Abc + (50.0, 50.0, 50.0);
