@@ -1,5 +1,5 @@
 with AMC_Types;
-with AMC_Utils;
+private with AMC_Utils;
 
 package ZSM is
    --  Zero Sequence Modulation
@@ -15,7 +15,7 @@ package ZSM is
    --  Defined according to:
    --  m = Vm / Vc, where
    --  Vm: peak value of the modulating wave,
-   --  Vc: peak value of the acheivable carrier wave, e.g. Vbus/2.
+   --  Vc: peak value of the achievable carrier wave, e.g. Vbus/2.
 
    function Modulate(X : in AMC_Types.Abc;
                      Method : Modulation_Method)
