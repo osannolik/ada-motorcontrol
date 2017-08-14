@@ -45,6 +45,8 @@ package body AMC is
             Encoder_Counter : UInt32 := ENC_Peripheral.Get_Counter;
 
             Encoder_Angle : AMC_Types.Angle_Rad := ENC_Peripheral.Get_Angle;
+
+            Encoder_Dir : Float := ENC_Peripheral.Get_Direction;
          begin
             null;
          end;

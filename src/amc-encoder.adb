@@ -88,4 +88,14 @@ package body AMC.Encoder is
       return Compose (Angle_Rad'(Get_Angle (This)));
    end Get_Angle;
 
+   function Get_Direction (This : in Object) return Float is
+      use STM32.Timers;
+   begin
+      case Current_Counter_Mode (Counting_Timer) is
+         when Up     => return  1.0;
+         when Down   => return -1.0;
+         when others => return  0.0;
+      end case;
+   end Get_Direction;
+
 end AMC.Encoder;

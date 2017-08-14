@@ -25,6 +25,8 @@ package AMC.Encoder is
 
    function Get_Angle (This : in Object) return AMC_Types.Angle;
 
+   function Get_Direction (This : in Object) return Float;
+
 private
 
    Counting_Timer : STM32.Timers.Timer renames STM32.Device.Timer_4;
