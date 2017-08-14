@@ -4,10 +4,12 @@ with AMC.Board;
 with AMC.Config;
 with AMC.ADC;
 with AMC.PWM;
+with AMC.Encoder;
 
 pragma Elaborate(AMC.Board);
 pragma Elaborate(AMC.PWM);
 pragma Elaborate(AMC.ADC);
+pragma Elaborate(AMC.Encoder);
 
 with Transforms;
 with ZSM;
@@ -16,6 +18,7 @@ package body AMC is
 
    ADC_Peripheral : AMC.ADC.Object;
    PWM_Peripheral : AMC.PWM.Object;
+   ENC_Peripheral : AMC.Encoder.Object;
 
 
    task body Inverter_System is
@@ -38,6 +41,10 @@ package body AMC is
                AMC.ADC.Get_Sample (AMC.ADC.Board_Temp);
             BT : AMC_Types.Temperature_DegC :=
                AMC.Board.To_Board_Temp (Board_Temp_Data);
+
+            Encoder_Counter : UInt32 := ENC_Peripheral.Get_Counter;
+
+            Encoder_Angle : AMC_Types.Angle_Rad := ENC_Peripheral.Get_Angle;
          begin
             null;
          end;
@@ -67,8 +74,7 @@ package body AMC is
       Duty       : Abc;
       --  Vabc_Raw : Abc;
 
-      An_Angle : constant Angle_Rad := 3.14; --  Get from sensor
-      A : Angle := Compose (An_Angle);
+      A : Angle;
    begin
       loop
          AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);
@@ -89,7 +95,7 @@ package body AMC is
 --               ADC_Voltage_C => Samples (AMC.ADC.EMF_C));
 
 
-         A := Compose (An_Angle);
+         A := ENC_Peripheral.Get_Angle;
 
          Idq := Transforms.Park (Transforms.Clarke (Iabc_Raw), A);
 
@@ -123,6 +129,8 @@ package body AMC is
    begin
 
       AMC.Board.Initialize;
+
+      ENC_Peripheral.Initialize;
 
       ADC_Peripheral.Initialize;
 
@@ -171,10 +179,11 @@ package body AMC is
       PWM_Peripheral.Enable (Gate => AMC.PWM.Sample_Trigger);
 
       Initialized :=
-        AMC.Board.Is_Initialized and
-        ADC_Peripheral.Is_Initialized and
-        PWM_Peripheral.Is_Initialized;
-        --  and AMC.Child.Is_initialized;
+         AMC.Board.Is_Initialized and
+         ADC_Peripheral.Is_Initialized and
+         PWM_Peripheral.Is_Initialized and
+         ENC_Peripheral.Is_Initialized;
+      --  and AMC.Child.Is_initialized;
 
    end Initialize;
 
