@@ -17,7 +17,7 @@ with ZSM;
 package body AMC is
 
    ADC_Peripheral : AMC.ADC.Object;
-   PWM_Peripheral : AMC.PWM.Object;
+   package PWM_Peripheral renames AMC.PWM;
    ENC_Peripheral : AMC.Encoder.Object;
 
 
@@ -109,7 +109,7 @@ package body AMC is
          Duty := ZSM.Sinusoidal (Duty);
 
 
-         PWM_Peripheral.Set_Duty_Cycle (Dabc => Duty);
+         AMC.PWM.Set_Duty_Cycle (Dabc => Duty);
 
          AMC.Board.Turn_Off (AMC.Board.Led_Green);
 
@@ -126,24 +126,24 @@ package body AMC is
 
       ADC_Peripheral.Initialize;
 
-      PWM_Peripheral.Initialize (Frequency => AMC.Config.PWM_Frequency_Hz,
+      AMC.PWM.Initialize (Frequency => AMC.Config.PWM_Frequency_Hz,
                                  Deadtime  => AMC.Config.PWM_Gate_Deadtime_S,
                                  Alignment => AMC_Types.Center);
 
-      PWM_Peripheral.Set_Duty_Cycle (Dabc => AMC_Types.Abc'(A => 50.0,
-                                                            B => 50.0,
-                                                            C => 50.0));
+      AMC.PWM.Set_Duty_Cycle (Dabc => AMC_Types.Abc'(A => 50.0,
+                                                     B => 50.0,
+                                                     C => 50.0));
 
-      PWM_Peripheral.Set_Trigger_Cycle (PWM_Peripheral.Get_Duty_Resolution);
+      AMC.PWM.Set_Trigger_Cycle (AMC.PWM.Get_Duty_Resolution);
 
-      PWM_Peripheral.Enable (AMC_Types.A);
-      PWM_Peripheral.Enable (AMC_Types.B);
-      PWM_Peripheral.Enable (AMC_Types.C);
+      AMC.PWM.Enable (AMC_Types.A);
+      AMC.PWM.Enable (AMC_Types.B);
+      AMC.PWM.Enable (AMC_Types.C);
 
       Initialized :=
          AMC.Board.Is_Initialized and
          ADC_Peripheral.Is_Initialized and
-         PWM_Peripheral.Is_Initialized and
+         AMC.PWM.Is_Initialized and
          ENC_Peripheral.Is_Initialized;
       --  and AMC.Child.Is_initialized;
 
@@ -151,7 +151,7 @@ package body AMC is
 
    procedure Safe_State is
    begin
-      PWM_Peripheral.Generate_Break_Event;
+      AMC.PWM.Generate_Break_Event;
       AMC.Board.Set_Gate_Driver_Power (Enabled => False);
    end Safe_State;
 

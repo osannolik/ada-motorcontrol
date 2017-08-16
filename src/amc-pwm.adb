@@ -11,8 +11,7 @@ package body AMC.PWM is
 
 
    procedure Initialize_Gate
-      (This       : in out Object;
-       Phase      : AMC_Types.Phase;
+      (Phase      : AMC_Types.Phase;
        Channel    : STM32.Timers.Timer_Channel;
        Pin_H      : STM32.GPIO.GPIO_Point;
        Pin_L      : STM32.GPIO.GPIO_Point;
@@ -24,13 +23,12 @@ package body AMC.PWM is
    is
       use STM32.Timers;
    begin
-      This.Channels(Phase) := Channel;
 
-      if Complementary_Outputs_Supported (This    => This.Generator.all,
+      if Complementary_Outputs_Supported (This    => PWM_Timer_Ref.all,
                                           Channel => Channel)
       then
-         This.Modulators(Phase).Attach_PWM_Channel
-            (Generator                => This.Generator,
+         Modulators(Phase).Attach_PWM_Channel
+            (Generator                => PWM_Timer_Ref,
              Channel                  => Channel,
              Point                    => Pin_H,
              Complementary_Point      => Pin_L,
@@ -40,23 +38,21 @@ package body AMC.PWM is
              Complementary_Polarity   => Polarity,
              Complementary_Idle_State => Idle_State);
       else
-         This.Modulators(Phase).Attach_PWM_Channel
-            (Generator => This.Generator,
+         Modulators(Phase).Attach_PWM_Channel
+            (Generator => PWM_Timer_Ref,
              Channel   => Channel,
              Point     => Pin_H,
              PWM_AF    => Pin_AF,
              Polarity  => Polarity);
       end if;
 
-      Set_Output_Preload_Enable (This    => This.Generator.all,
+      Set_Output_Preload_Enable (This    => PWM_Timer_Ref.all,
                                  Channel => Channel,
                                  Enabled => True);
    end Initialize_Gate;
 
    procedure Initialize_Trigger
-      (This       : in out Object;
-       Channel    : STM32.Timers.Timer_Channel;
-       Polarity   : STM32.Timers.Timer_Output_Compare_Polarity
+      (Polarity   : STM32.Timers.Timer_Output_Compare_Polarity
           := STM32.Timers.High;
        Idle_State : STM32.Timers.Timer_Capture_Compare_State
           := STM32.Timers.Disable)
@@ -64,26 +60,26 @@ package body AMC.PWM is
       use STM32.Timers;
    begin
 
-      if Complementary_Outputs_Supported (This    => This.Generator.all,
-                                          Channel => Channel)
+      if Complementary_Outputs_Supported (This    => PWM_Timer_Ref.all,
+                                          Channel => Trigger_Channel)
       then
          Trigger_Modulator.Attach_PWM_Channel
-            (Generator                => This.Generator,
-             Channel                  => Channel,
+            (Generator                => PWM_Timer_Ref,
+             Channel                  => Trigger_Channel,
              Polarity                 => Polarity,
              Idle_State               => Idle_State,
              Complementary_Polarity   => Polarity,
              Complementary_Idle_State => Idle_State);
       else
          Trigger_Modulator.Attach_PWM_Channel
-            (Generator => This.Generator,
-             Channel   => Channel,
+            (Generator => PWM_Timer_Ref,
+             Channel   => Trigger_Channel,
              Polarity  => Polarity);
       end if;
 
       if STM32.Timers.Complementary_Outputs_Supported
-         (This    => This.Generator.all,
-          Channel => Channel)
+         (This    => PWM_Timer_Ref.all,
+          Channel => Trigger_Channel)
       then
          Trigger_Modulator.Enable_Complementary_Output;
       end if;
@@ -93,8 +89,7 @@ package body AMC.PWM is
    end Initialize_Trigger;
 
    procedure Initialize
-      (This      : in out Object;
-       Frequency : AMC_Types.Frequency_Hz;
+      (Frequency : AMC_Types.Frequency_Hz;
        Deadtime  : AMC_Types.Seconds;
        Alignment : AMC_Types.PWM_Alignment)
    is
@@ -104,8 +99,6 @@ package body AMC.PWM is
              when AMC_Types.Edge   => Up,
              when AMC_Types.Center => Center_Aligned3);
    begin
-      This.Generator := PWM_Timer_Ref;
-
       STM32.PWM.Configure_PWM_Timer (Generator    => PWM_Timer_Ref,
                                      Frequency    => UInt32(Frequency),
                                      Counter_Mode => Counter_Mode);
@@ -123,123 +116,115 @@ package body AMC.PWM is
 
 
       for P in AMC_Types.Phase'Range loop
-         Initialize_Gate (This    => This,
-                          Phase   => P,
+         Initialize_Gate (Phase   => P,
                           Channel => Gate_Phase_Settings(P).Channel,
                           Pin_H   => Gate_Phase_Settings(P).Pin_H,
                           Pin_L   => Gate_Phase_Settings(P).Pin_L,
                           Pin_AF  => Gate_Phase_Settings(P).Pin_AF);
       end loop;
 
-      Initialize_Trigger(This    => This,
-                         Channel => Trigger_Channel);
+      Initialize_Trigger;
 
       Enable_Interrupt (This   => PWM_Timer_Ref.all,
                         Source => Timer_Break_Interrupt);
 
-      This.Initialized := True;
+      Initialized := True;
    end Initialize;
 
    procedure Enable
-      (This  : in out Object;
-       Phase : AMC_Types.Phase)
+      (Phase : AMC_Types.Phase)
    is
    begin
       if STM32.Timers.Complementary_Outputs_Supported
-         (This    => This.Generator.all,
-          Channel => This.Channels(Phase))
+         (This    => PWM_Timer_Ref.all,
+          Channel => Gate_Phase_Settings(Phase).Channel)
       then
-         This.Modulators(Phase).Enable_Complementary_Output;
+         Modulators(Phase).Enable_Complementary_Output;
       end if;
 
-      This.Modulators(Phase).Enable_Output;
+      Modulators(Phase).Enable_Output;
    end Enable;
 
    procedure Disable
-      (This  : in out Object;
-       Phase : AMC_Types.Phase)
+      (Phase : AMC_Types.Phase)
    is
    begin
       if STM32.Timers.Complementary_Outputs_Supported
-         (This    => This.Generator.all,
-          Channel => This.Channels(Phase))
+         (This    => PWM_Timer_Ref.all,
+          Channel => Gate_Phase_Settings(Phase).Channel)
       then
-         This.Modulators(Phase).Disable_Complementary_Output;
+         Modulators(Phase).Disable_Complementary_Output;
       end if;
-      This.Modulators(Phase).Disable_Output;
+      Modulators(Phase).Disable_Output;
    end Disable;
 
    function Get_Duty_Resolution
-      (This : in out Object)
-       return AMC_Types.Duty_Cycle
+      return AMC_Types.Duty_Cycle
    is
       use STM32.Timers;
    begin
       return AMC_Types.Duty_Cycle
-         (100.0 / Float(Current_Autoreload (This.Generator.all)));
+         (100.0 / Float(Current_Autoreload (PWM_Timer_Ref.all)));
    end Get_Duty_Resolution;
 
    procedure Set_Duty_Cycle
-      (This  : in out Object;
-       Phase : AMC_Types.Phase;
+      (Phase : AMC_Types.Phase;
        Value : AMC_Types.Duty_Cycle)
    is
       use STM32.Timers;
       CCR : constant UInt16 :=
-         UInt16(Value * Float(Current_Autoreload (This.Generator.all)) / 100.0);
+         UInt16(Value * Float(Current_Autoreload (PWM_Timer_Ref.all)) / 100.0);
    begin
       Set_Compare_Value
-         (This    => This.Generator.all,
-          Channel => This.Channels(Phase),
+         (This    => PWM_Timer_Ref.all,
+          Channel => Gate_Phase_Settings(Phase).Channel,
           Value   => CCR);
    end Set_Duty_Cycle;
 
    procedure Set_Trigger_Cycle
-      (This  : in out Object;
-       Value : AMC_Types.Duty_Cycle)
+      (Value : AMC_Types.Duty_Cycle)
    is
       use STM32.Timers;
       CCR : constant UInt16 :=
-         UInt16(Value * Float(Current_Autoreload (This.Generator.all)) / 100.0);
+         UInt16(Value * Float(Current_Autoreload (PWM_Timer_Ref.all)) / 100.0);
    begin
       Set_Compare_Value
-         (This    => This.Generator.all,
+         (This    => PWM_Timer_Ref.all,
           Channel => Trigger_Channel,
           Value   => CCR);
    end Set_Trigger_Cycle;
 
    procedure Set_Duty_Cycle
-      (This : in out Object;
-       Dabc : AMC_Types.Abc)
+      (Dabc : AMC_Types.Abc)
    is
       use STM32.Timers;
 
       CCR_Per_Duty : constant Float :=
-         Float(Current_Autoreload (This.Generator.all)) / 100.0;
+         Float(Current_Autoreload (PWM_Timer_Ref.all)) / 100.0;
    begin
       Set_Compare_Value
-         (This    => This.Generator.all,
-          Channel => This.Channels(AMC_Types.A),
+         (This    => PWM_Timer_Ref.all,
+          Channel => Gate_Phase_Settings(AMC_Types.A).Channel,
           Value   => UInt16(Dabc.A * CCR_Per_Duty));
 
       Set_Compare_Value
-         (This    => This.Generator.all,
-          Channel => This.Channels(AMC_Types.B),
+         (This    => PWM_Timer_Ref.all,
+          Channel => Gate_Phase_Settings(AMC_Types.B).Channel,
           Value   => UInt16(Dabc.B * CCR_Per_Duty));
 
       Set_Compare_Value
-         (This    => This.Generator.all,
-          Channel => This.Channels(AMC_Types.C),
+         (This    => PWM_Timer_Ref.all,
+          Channel => Gate_Phase_Settings(AMC_Types.C).Channel,
           Value   => UInt16(Dabc.C * CCR_Per_Duty));
    end Set_Duty_Cycle;
 
-   procedure Generate_Break_Event (This : Object) is
+   procedure Generate_Break_Event is
    begin
-      STM32.Timers.Generate_Event (This.Generator.all, STM32.Timers.Event_Source_Break);
+      STM32.Timers.Generate_Event (PWM_Timer_Ref.all, STM32.Timers.Event_Source_Break);
    end Generate_Break_Event;
 
-   function Is_Initialized (This : Object)
-      return Boolean is (This.Initialized);
+   function Is_Initialized
+      return Boolean is (Initialized);
 
    function Deadtime_Value (Timer : STM32.Timers.Timer;
                             Time  : AMC_Types.Seconds)
