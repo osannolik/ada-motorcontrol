@@ -19,15 +19,11 @@ package AMC_Types is
 
    type Angle_Rad is new Float;
 
-   type Idq is record
-      Iq : Current_A;
-      --  Quadrature component: torque
+   type Angle_Erad is new Float;
 
-      Id : Current_A;
-      --  Direct component: field flux linkage
-   end record;
-   --  Represents three phase currents in the dq-reference frame
+   type Phase is (A, B, C);
 
+   type PWM_Alignment is (Edge, Center);
 
    type Angle is tagged record
       Angle : Angle_Rad;
