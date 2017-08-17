@@ -71,16 +71,14 @@ package body AMC.Board is
          ((ADC_Voltage - Ina240_Offset) * Phase_Ampere_Per_ADC_Voltage);
    end To_Current;
 
-   function To_Currents_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
-                             ADC_Voltage_B : AMC_Types.Voltage_V;
-                             ADC_Voltage_C : AMC_Types.Voltage_V)
-                             return AMC_Types.Abc
+   function To_Phase_Currents (ADC_Voltage : AMC_Types.Abc)
+                               return AMC_Types.Abc
    is
    begin
-      return AMC_Types.Abc'(A => To_Current (ADC_Voltage => ADC_Voltage_A),
-                            B => To_Current (ADC_Voltage => ADC_Voltage_B),
-                            C => To_Current (ADC_Voltage => ADC_Voltage_C));
-   end To_Currents_Abc;
+      return AMC_Types.Abc'(A => To_Current (ADC_Voltage => ADC_Voltage.A),
+                            B => To_Current (ADC_Voltage => ADC_Voltage.B),
+                            C => To_Current (ADC_Voltage => ADC_Voltage.C));
+   end To_Phase_Currents;
 
    function To_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
                         return AMC_Types.Voltage_V
@@ -92,16 +90,14 @@ package body AMC.Board is
 
    end To_Voltage;
 
-   function To_Voltages_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
-                             ADC_Voltage_B : AMC_Types.Voltage_V;
-                             ADC_Voltage_C : AMC_Types.Voltage_V)
-                             return AMC_Types.Abc
+   function To_Phase_Voltages (ADC_Voltage : AMC_Types.Abc)
+                               return AMC_Types.Abc
    is
    begin
-      return AMC_Types.Abc'(A => To_Voltage (ADC_Voltage => ADC_Voltage_A),
-                            B => To_Voltage (ADC_Voltage => ADC_Voltage_B),
-                            C => To_Voltage (ADC_Voltage => ADC_Voltage_C));
-   end To_Voltages_Abc;
+      return AMC_Types.Abc'(A => To_Voltage (ADC_Voltage => ADC_Voltage.A),
+                            B => To_Voltage (ADC_Voltage => ADC_Voltage.B),
+                            C => To_Voltage (ADC_Voltage => ADC_Voltage.C));
+   end To_Phase_Voltages;
 
    function To_Vbus (ADC_Voltage : AMC_Types.Voltage_V)
                      return AMC_Types.Voltage_V

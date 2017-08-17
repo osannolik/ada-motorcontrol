@@ -9,22 +9,6 @@ package AMC.ADC is
    --  Analog to digital conversion
    --  Interfaces the mcu adc peripheral
 
-   ADC_V_Per_Lsb : constant Float := AMC.Board.ADC_Vref / 4095.0; --  12 bit
-
-   Regular_Conversion_Frequency : constant Positive := 14_000;
-
-   Regulars_ADC : STM32.ADC.Analog_To_Digital_Converter renames STM32.Device.ADC_1;
-   Multi_Main_ADC : STM32.ADC.Analog_To_Digital_Converter renames STM32.Device.ADC_1;
-
-   DMA_Ctrl : STM32.DMA.DMA_Controller renames STM32.Device.DMA_2;
-
-   DMA_Stream : constant STM32.DMA.DMA_Stream_Selector := STM32.DMA.Stream_0;
-
-
-   Sampling_Time_Regular : STM32.ADC.Channel_Sampling_Times renames
-      STM32.ADC.Sample_480_Cycles;
-   Sampling_Time_Injected : STM32.ADC.Channel_Sampling_Times renames
-      STM32.ADC.Sample_3_Cycles;
 
    type ADC_Readings is
       (I_A, I_B, I_C, EMF_A, EMF_B, EMF_C, Bat_Sense, Board_Temp);
@@ -34,6 +18,33 @@ package AMC.ADC is
 
    type Injected_Samples_Array is
       array (ADC_Readings_Inj'Range) of AMC_Types.Voltage_V;
+
+
+   function Get_Sample (Reading : in ADC_Readings)
+      return AMC_Types.Voltage_V;
+
+   function Is_Initialized
+      return Boolean;
+
+   procedure Initialize;
+
+   protected Handler is
+      pragma Interrupt_Priority(ADC_ISR_Prio);
+
+      function Get_Injected_Samples return Injected_Samples_Array;
+      entry Await_New_Samples (Phase_Voltage_Samples : out AMC_Types.Abc;
+                               Phase_Current_Samples : out AMC_Types.Abc);
+   private
+
+      Samples : Injected_Samples_Array := (others => 0.0);
+      New_Samples : Boolean := False;
+
+      procedure ISR with
+        Attach_Handler => Ada.Interrupts.Names.ADC_Interrupt;
+
+   end Handler;
+
+private
 
    type Regular_Samples_Array is
       array (ADC_Readings_Reg'Range) of UInt16;
@@ -50,41 +61,25 @@ package AMC.ADC is
 
    type ADC_Readings_Array is array (ADC_Readings'Range) of ADC_Reading;
 
-   type Object is tagged limited record
-      Initialized  : Boolean := False;
-   end record;
+   Initialized : Boolean := False;
 
-   function Get_Sample (Reading : in ADC_Readings)
-      return AMC_Types.Voltage_V;
+   ADC_V_Per_Lsb : constant Float := AMC.Board.ADC_Vref / 4095.0; --  12 bit
 
-   function Is_Initialized (This : in Object)
-      return Boolean;
+   Regular_Conversion_Frequency : constant Positive := 14_000;
 
-   function To_Voltage (Adc_Value : in UInt16)
-                        return AMC_Types.Voltage_V
-   with
-      Inline;
+   Regulars_ADC : STM32.ADC.Analog_To_Digital_Converter renames STM32.Device.ADC_1;
 
-   procedure Initialize (This : in out Object);
+   Multi_Main_ADC : STM32.ADC.Analog_To_Digital_Converter renames STM32.Device.ADC_1;
 
-   protected Handler is
-      pragma Interrupt_Priority(ADC_ISR_Prio);
+   DMA_Ctrl : STM32.DMA.DMA_Controller renames STM32.Device.DMA_2;
 
-      function Get_Injected_Samples return Injected_Samples_Array;
-      entry Await_New_Samples (Injected_Samples : out Injected_Samples_Array);
+   DMA_Stream : constant STM32.DMA.DMA_Stream_Selector := STM32.DMA.Stream_0;
 
-   private
+   Sampling_Time_Regular : STM32.ADC.Channel_Sampling_Times renames
+      STM32.ADC.Sample_480_Cycles;
 
-      Samples : Injected_Samples_Array := (others => 0.0);
-      New_Samples : Boolean := False;
-
-      procedure ISR with
-        Attach_Handler => Ada.Interrupts.Names.ADC_Interrupt;
-
-   end Handler;
-
-
-private
+   Sampling_Time_Injected : STM32.ADC.Channel_Sampling_Times renames
+      STM32.ADC.Sample_3_Cycles;
 
    --  Mapping between reading enum and corresponding pin etc.
    Readings_ADC_Settings : constant ADC_Readings_Array :=
@@ -114,5 +109,15 @@ private
                         Channel_Rank => 2));
 
    Regular_Samples : Regular_Samples_Array := (others => 0) with Volatile;
+
+--     Phase_Voltage_To_Reading : constant array (AMC_Types.Phase'Range) of ADC_Readings :=
+--        ((AMC_Types.A) => EMF_A,
+--         (AMC_Types.B) => EMF_B,
+--         (AMC_Types.C) => EMF_C);
+--
+--     Phase_Current_To_Reading : constant array (AMC_Types.Phase'Range) of ADC_Readings :=
+--        ((AMC_Types.A) => I_A,
+--         (AMC_Types.B) => I_B,
+--         (AMC_Types.C) => I_C);
 
 end AMC.ADC;

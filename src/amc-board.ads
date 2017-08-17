@@ -122,10 +122,8 @@ package AMC.Board is
    with
       Inline;
 
-   function To_Currents_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
-                             ADC_Voltage_B : AMC_Types.Voltage_V;
-                             ADC_Voltage_C : AMC_Types.Voltage_V)
-                             return AMC_Types.Abc
+   function To_Phase_Currents (ADC_Voltage : AMC_Types.Abc)
+                               return AMC_Types.Abc
    with
       Inline;
 
@@ -134,11 +132,9 @@ package AMC.Board is
    with
       Inline;
 
-   function To_Voltages_Abc (ADC_Voltage_A : AMC_Types.Voltage_V;
-                             ADC_Voltage_B : AMC_Types.Voltage_V;
-                             ADC_Voltage_C : AMC_Types.Voltage_V)
-                             return AMC_Types.Abc
-   with
+   function To_Phase_Voltages (ADC_Voltage : AMC_Types.Abc)
+                               return AMC_Types.Abc
+      with
       Inline;
 
    function To_Vbus (ADC_Voltage : AMC_Types.Voltage_V)

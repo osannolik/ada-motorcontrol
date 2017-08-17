@@ -5,7 +5,6 @@ with AMC_Math;
 package body AMC.Encoder is
 
    procedure Initialize
-      (This : in out Object)
    is
       use STM32.Timers;
 
@@ -59,36 +58,36 @@ package body AMC.Encoder is
 
       Enable (Counting_Timer);
 
-      This.Initialized := True;
+      Initialized := True;
    end Initialize;
 
-   function Is_Initialized (This : Object) return Boolean is
-      (This.Initialized);
+   function Is_Initialized return Boolean is
+      (Initialized);
 
-   function Get_Counter (This : in Object) return UInt32 is
+   function Get_Counter return UInt32 is
       (STM32.Timers.Current_Counter (Counting_Timer));
 
-   function Get_Angle (This : in Object) return AMC_Types.Angle_Rad is
+   function Get_Angle return AMC_Types.Angle_Rad is
       use STM32.Timers;
    begin
       return AMC_Types.Angle_Rad
          (Float (2*(Current_Counter (Counting_Timer))) * AMC_Math.PI / Counts_Per_Revolution);
    end Get_Angle;
 
-   function Get_Angle (This : in Object) return AMC_Types.Angle_Deg is
+   function Get_Angle return AMC_Types.Angle_Deg is
       use STM32.Timers;
    begin
       return AMC_Types.Angle_Deg
          (Float (Current_Counter (Counting_Timer)) * 360.0 / Counts_Per_Revolution);
    end Get_Angle;
 
-   function Get_Angle (This : in Object) return AMC_Types.Angle is
+   function Get_Angle return AMC_Types.Angle is
       use AMC_Types;
    begin
-      return Compose (Angle_Rad'(Get_Angle (This)));
+      return Compose (Angle_Rad'(Get_Angle));
    end Get_Angle;
 
-   function Get_Direction (This : in Object) return Float is
+   function Get_Direction return Float is
       use STM32.Timers;
    begin
       case Current_Counter_Mode (Counting_Timer) is

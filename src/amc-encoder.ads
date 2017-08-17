@@ -5,29 +5,25 @@ package AMC.Encoder is
    --  Quadrature Encoder
    --  Interfaces the mcu timer peripheral
 
-   PPR : constant Positive := 2048;
+   function Is_Initialized return Boolean;
 
-   type Object is tagged limited record
-      Initialized        : Boolean := False;
-   end record;
+   procedure Initialize;
 
-   function Is_Initialized (This : Object)
-      return Boolean;
+   function Get_Counter return UInt32;
 
-   procedure Initialize
-      (This : in out Object);
+   function Get_Angle return AMC_Types.Angle_Rad;
 
-   function Get_Counter (This : in Object) return UInt32;
+   function Get_Angle return AMC_Types.Angle_Deg;
 
-   function Get_Angle (This : in Object) return AMC_Types.Angle_Rad;
+   function Get_Angle return AMC_Types.Angle;
 
-   function Get_Angle (This : in Object) return AMC_Types.Angle_Deg;
-
-   function Get_Angle (This : in Object) return AMC_Types.Angle;
-
-   function Get_Direction (This : in Object) return Float;
+   function Get_Direction  return Float;
 
 private
+
+   Initialized : Boolean := False;
+
+   PPR : constant Positive := 2048;
 
    Counting_Timer : STM32.Timers.Timer renames STM32.Device.Timer_4;
 

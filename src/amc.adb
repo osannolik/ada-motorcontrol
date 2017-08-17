@@ -16,11 +16,6 @@ with ZSM;
 
 package body AMC is
 
-   ADC_Peripheral : AMC.ADC.Object;
-   package PWM_Peripheral renames AMC.PWM;
-   ENC_Peripheral : AMC.Encoder.Object;
-
-
    task body Inverter_System is
       Period       : constant Time_Span := Milliseconds (Inverter_System_Period_Ms);
       Next_Release : Time := Clock;
@@ -42,11 +37,11 @@ package body AMC is
             BT : AMC_Types.Temperature_DegC :=
                AMC.Board.To_Board_Temp (Board_Temp_Data);
 
-            Encoder_Counter : UInt32 := ENC_Peripheral.Get_Counter;
+            Encoder_Counter : UInt32 := AMC.Encoder.Get_Counter;
 
-            Encoder_Angle : AMC_Types.Angle_Rad := ENC_Peripheral.Get_Angle;
+            Encoder_Angle : AMC_Types.Angle_Rad := AMC.Encoder.Get_Angle;
 
-            Encoder_Dir : Float := ENC_Peripheral.Get_Direction;
+            Encoder_Dir : Float := AMC.Encoder.Get_Direction;
          begin
             null;
          end;
@@ -69,37 +64,31 @@ package body AMC is
       Nominal_Period_s  : constant AMC_Types.Seconds :=
          1.0 / AMC.Config.PWM_Frequency_Hz;
 
-      Samples    : AMC.ADC.Injected_Samples_Array := (others => 0.0);
+      V_Samples  : Abc;
+      I_Samples  : Abc;
       Vbus       : Voltage_V;
       Iabc_Raw   : Abc;
       V_Ctrl_Abc : Abc;
       Duty       : Abc;
-      --  Vabc_Raw : Abc;
    begin
 
       delay until Clock + Milliseconds(10);
 
       loop
-         AMC.ADC.Handler.Await_New_Samples (Injected_Samples => Samples);
+         AMC.ADC.Handler.Await_New_Samples
+            (Phase_Voltage_Samples => V_Samples,
+             Phase_Current_Samples => I_Samples);
 
          AMC.Board.Turn_On (AMC.Board.Led_Green);
 
---           Vabc_Raw := AMC.Board.To_Voltages_Abc
---              (ADC_Voltage_A => Samples (AMC.ADC.EMF_A),
---               ADC_Voltage_B => Samples (AMC.ADC.EMF_B),
---               ADC_Voltage_C => Samples (AMC.ADC.EMF_C));
-
-         Iabc_Raw := AMC.Board.To_Currents_Abc
-            (ADC_Voltage_A => Samples (AMC.ADC.I_A),
-             ADC_Voltage_B => Samples (AMC.ADC.I_B),
-             ADC_Voltage_C => Samples (AMC.ADC.I_C));
+         Iabc_Raw := AMC.Board.To_Phase_Currents (ADC_Voltage => I_Samples);
 
          Vbus := Inverter_System_Outputs.Vbus.Get;
 
          V_Ctrl_Abc := FOC.Calculate_Voltage
             (Iabc          => Iabc_Raw,
              I_Set_Point   => Inverter_System_Outputs.Idq_CC_Request.Get,
-             Current_Angle => ENC_Peripheral.Get_Angle,
+             Current_Angle => AMC.Encoder.Get_Angle,
              Vbus          => Vbus,
              Vmax          => 0.5*Vbus*ZSM.Modulation_Index_Max(ZSM.Sinusoidal),
              Period        => Nominal_Period_s);
@@ -122,9 +111,9 @@ package body AMC is
 
       AMC.Board.Initialize;
 
-      ENC_Peripheral.Initialize;
+      AMC.Encoder.Initialize;
 
-      ADC_Peripheral.Initialize;
+      AMC.ADC.Initialize;
 
       AMC.PWM.Initialize (Frequency => AMC.Config.PWM_Frequency_Hz,
                                  Deadtime  => AMC.Config.PWM_Gate_Deadtime_S,
@@ -142,9 +131,9 @@ package body AMC is
 
       Initialized :=
          AMC.Board.Is_Initialized and
-         ADC_Peripheral.Is_Initialized and
+         AMC.ADC.Is_Initialized and
          AMC.PWM.Is_Initialized and
-         ENC_Peripheral.Is_Initialized;
+         AMC.Encoder.Is_Initialized;
       --  and AMC.Child.Is_initialized;
 
    end Initialize;

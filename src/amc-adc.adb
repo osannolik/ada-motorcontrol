@@ -5,6 +5,11 @@ with STM32_SVD.ADC;
 
 package body AMC.ADC is
 
+   function To_Voltage (Adc_Value : in UInt16)
+                        return AMC_Types.Voltage_V
+   with
+      Inline;
+
    function Get_Sample (Reading : in ADC_Readings)
       return AMC_Types.Voltage_V is
    begin
@@ -17,7 +22,7 @@ package body AMC.ADC is
       end if;
    end Get_Sample;
 
-   procedure Initialize (This : in out Object)
+   procedure Initialize
    is
       type ADCs is (ADC1, ADC2, ADC3);
       type ADCs_Access is array (ADCs'Range) of access STM32.ADC.Analog_To_Digital_Converter;
@@ -38,7 +43,7 @@ package body AMC.ADC is
          STM32.Device.Enable_Clock (Reading.Pin);
          Reading.Pin.Configure_IO
             (Config =>
-                STM32.GPIO.GPIO_Port_Configuration'(Mode        => STM32.GPIO.Mode_Analog,
+                STM32.GPIO.GPIO_Port_Configuration'(Mode   => STM32.GPIO.Mode_Analog,
                                                     others => <>));
       end loop;
 
@@ -203,11 +208,11 @@ package body AMC.ADC is
 
       Regular_Conv_Trigger.Enable_Output;
 
-      This.Initialized := True;
+      Initialized := True;
    end Initialize;
 
-   function Is_Initialized (This : in Object)
-      return Boolean is (This.Initialized);
+   function Is_Initialized
+      return Boolean is (Initialized);
 
    function To_Voltage (Adc_Value : in UInt16)
                         return AMC_Types.Voltage_V
@@ -223,9 +228,15 @@ package body AMC.ADC is
          return Samples;
       end Get_Injected_Samples;
 
-      entry Await_New_Samples (Injected_Samples : out Injected_Samples_Array) when New_Samples is
+      entry Await_New_Samples (Phase_Voltage_Samples : out AMC_Types.Abc;
+                               Phase_Current_Samples : out AMC_Types.Abc) when New_Samples is
       begin
-         Injected_Samples := Samples;
+         Phase_Voltage_Samples := AMC_Types.Abc'(A => Samples(EMF_A),
+                                                 B => Samples(EMF_B),
+                                                 C => Samples(EMF_C));
+         Phase_Current_Samples := AMC_Types.Abc'(A => Samples(I_A),
+                                                 B => Samples(I_B),
+                                                 C => Samples(I_C));
          New_Samples := False;
       end Await_New_Samples;
 
@@ -240,8 +251,8 @@ package body AMC.ADC is
             for R in ADC_Readings_Inj'Range loop
                Samples(R) := To_Voltage
                   (STM32.ADC.Injected_Conversion_Value
-                     (This => Readings_ADC_Settings(R).ADC_Point.ADC.all,
-                      Rank => Injected_Channel_Rank(Readings_ADC_Settings(R).Channel_Rank)));
+                      (This => Readings_ADC_Settings(R).ADC_Point.ADC.all,
+                       Rank => Injected_Channel_Rank(Readings_ADC_Settings(R).Channel_Rank)));
             end loop;
 
             New_Samples := True;
