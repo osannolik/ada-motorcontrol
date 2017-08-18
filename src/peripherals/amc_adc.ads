@@ -3,9 +3,11 @@ with STM32.ADC;
 with STM32.GPIO;
 with STM32.DMA;
 with Ada.Interrupts.Names;
-with AMC.Board;
+with AMC_Types;
+with AMC_Board;
+with Config;
 
-package AMC.ADC is
+package AMC_ADC is
    --  Analog to digital conversion
    --  Interfaces the mcu adc peripheral
 
@@ -29,7 +31,7 @@ package AMC.ADC is
    procedure Initialize;
 
    protected Handler is
-      pragma Interrupt_Priority(ADC_ISR_Prio);
+      pragma Interrupt_Priority(Config.ADC_ISR_Prio);
 
       function Get_Injected_Samples return Injected_Samples_Array;
       entry Await_New_Samples (Phase_Voltage_Samples : out AMC_Types.Abc;
@@ -47,7 +49,7 @@ package AMC.ADC is
 private
 
    type Regular_Samples_Array is
-      array (ADC_Readings_Reg'Range) of UInt16;
+      array (ADC_Readings_Reg'Range) of AMC_Types.UInt16;
 
    for Regular_Samples_Array'Component_Size use 16;
 
@@ -63,7 +65,7 @@ private
 
    Initialized : Boolean := False;
 
-   ADC_V_Per_Lsb : constant Float := AMC.Board.ADC_Vref / 4095.0; --  12 bit
+   ADC_V_Per_Lsb : constant Float := AMC_Board.ADC_Vref / 4095.0; --  12 bit
 
    Regular_Conversion_Frequency : constant Positive := 14_000;
 
@@ -83,29 +85,29 @@ private
 
    --  Mapping between reading enum and corresponding pin etc.
    Readings_ADC_Settings : constant ADC_Readings_Array :=
-      ((I_A)        => (Pin          => AMC.Board.ADC_I_A_Pin,
-                        ADC_Point    => AMC.Board.ADC_I_A_Point,
+      ((I_A)        => (Pin          => AMC_Board.ADC_I_A_Pin,
+                        ADC_Point    => AMC_Board.ADC_I_A_Point,
                         Channel_Rank => 1),
-       (I_B)        => (Pin          => AMC.Board.ADC_I_B_Pin,
-                        ADC_Point    => AMC.Board.ADC_I_B_Point,
+       (I_B)        => (Pin          => AMC_Board.ADC_I_B_Pin,
+                        ADC_Point    => AMC_Board.ADC_I_B_Point,
                         Channel_Rank => 1),
-       (I_C)        => (Pin          => AMC.Board.ADC_I_C_Pin,
-                        ADC_Point    => AMC.Board.ADC_I_C_Point,
+       (I_C)        => (Pin          => AMC_Board.ADC_I_C_Pin,
+                        ADC_Point    => AMC_Board.ADC_I_C_Point,
                         Channel_Rank => 1),
-       (EMF_A)      => (Pin          => AMC.Board.ADC_EMF_A_Pin,
-                        ADC_Point    => AMC.Board.ADC_EMF_A_Point,
+       (EMF_A)      => (Pin          => AMC_Board.ADC_EMF_A_Pin,
+                        ADC_Point    => AMC_Board.ADC_EMF_A_Point,
                         Channel_Rank => 2),
-       (EMF_B)      => (Pin          => AMC.Board.ADC_EMF_B_Pin,
-                        ADC_Point    => AMC.Board.ADC_EMF_B_Point,
+       (EMF_B)      => (Pin          => AMC_Board.ADC_EMF_B_Pin,
+                        ADC_Point    => AMC_Board.ADC_EMF_B_Point,
                         Channel_Rank => 2),
-       (EMF_C)      => (Pin          => AMC.Board.ADC_EMF_C_Pin,
-                        ADC_Point    => AMC.Board.ADC_EMF_C_Point,
+       (EMF_C)      => (Pin          => AMC_Board.ADC_EMF_C_Pin,
+                        ADC_Point    => AMC_Board.ADC_EMF_C_Point,
                         Channel_Rank => 2),
-       (Bat_Sense)  => (Pin          => AMC.Board.ADC_Bat_Sense_Pin,
-                        ADC_Point    => AMC.Board.ADC_Bat_Sense_Point,
+       (Bat_Sense)  => (Pin          => AMC_Board.ADC_Bat_Sense_Pin,
+                        ADC_Point    => AMC_Board.ADC_Bat_Sense_Point,
                         Channel_Rank => 1),
-       (Board_Temp) => (Pin          => AMC.Board.ADC_Board_Temp_Pin,
-                        ADC_Point    => AMC.Board.ADC_Board_Temp_Point,
+       (Board_Temp) => (Pin          => AMC_Board.ADC_Board_Temp_Pin,
+                        ADC_Point    => AMC_Board.ADC_Board_Temp_Point,
                         Channel_Rank => 2));
 
    Regular_Samples : Regular_Samples_Array := (others => 0) with Volatile;
@@ -120,4 +122,4 @@ private
 --         (AMC_Types.B) => I_B,
 --         (AMC_Types.C) => I_C);
 
-end AMC.ADC;
+end AMC_ADC;

@@ -1,0 +1,20 @@
+with AMC_Types;
+with System;
+with ZSM;
+
+package Config is
+   --  Ada Motor Controller configuration parameters
+
+   PWM_Frequency_Hz : constant AMC_Types.Frequency_Hz := 20_000.0;
+
+   PWM_Gate_Deadtime_S : constant AMC_Types.Seconds := 166.0e-9;
+
+   Modulation_Method : constant ZSM.Modulation_Method := ZSM.Sinusoidal;
+
+   ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
+   Current_Control_Prio : constant System.Priority := System.Priority'Last;
+   Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;
+
+   Inverter_System_Period_Ms : constant Positive := 10;
+
+end Config;

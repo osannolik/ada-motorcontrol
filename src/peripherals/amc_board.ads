@@ -4,7 +4,7 @@ with STM32.Timers;
 with STM32.ADC;
 with AMC_Types;
 
-package AMC.Board is
+package AMC_Board is
    --  Ada Motor Controller board specifics
 
    ADC_Vref      : constant Float := 3.3;
@@ -117,8 +117,8 @@ package AMC.Board is
       Pre  => not Is_Initialized,
       Post => Is_Initialized;
 
-   function To_Current (ADC_Voltage : AMC_Types.Voltage_V)
-                        return AMC_Types.Current_A
+   function To_Phase_Current (ADC_Voltage : AMC_Types.Voltage_V)
+                              return AMC_Types.Current_A
    with
       Inline;
 
@@ -127,8 +127,8 @@ package AMC.Board is
    with
       Inline;
 
-   function To_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
-                        return AMC_Types.Voltage_V
+   function To_Phase_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
+                              return AMC_Types.Voltage_V
    with
       Inline;
 
@@ -157,4 +157,4 @@ private
    Vbus_Voltage_Per_ADC_Voltage : constant Float :=
       (R_Vbus_1 + R_Vbus_2) / R_Vbus_2;
 
-end AMC.Board;
+end AMC_Board;

@@ -3,9 +3,9 @@ with STM32.Timers;
 with STM32.PWM;
 with Ada.Interrupts.Names;
 with AMC_Types;
-with AMC.Board;
+with AMC_Board;
 
-package AMC.PWM is
+package AMC_PWM is
    --  Pulse width modulation
    --  Interfaces the mcu pwm peripheral
 
@@ -65,28 +65,28 @@ private
 
    Initialized : Boolean := False;
 
-   PWM_Timer_Ref : access STM32.Timers.Timer := AMC.Board.PWM_Timer'Access;
+   PWM_Timer_Ref : access STM32.Timers.Timer := AMC_Board.PWM_Timer'Access;
 
    Modulators : array (AMC_Types.Phase'Range) of STM32.PWM.PWM_Modulator;
 
    Gate_Phase_Settings : constant Gate_Settings :=
-      ((AMC_Types.A) => Gate_Setting'(Channel => AMC.Board.PWM_Gate_A_Ch,
-                                      Pin_H   => AMC.Board.PWM_Gate_H_A_Pin,
-                                      Pin_L   => AMC.Board.PWM_Gate_L_A_Pin,
-                                      Pin_AF  => AMC.Board.PWM_Gate_GPIO_AF),
-       (AMC_Types.B) => Gate_Setting'(Channel => AMC.Board.PWM_Gate_B_Ch,
-                                      Pin_H   => AMC.Board.PWM_Gate_H_B_Pin,
-                                      Pin_L   => AMC.Board.PWM_Gate_L_B_Pin,
-                                      Pin_AF  => AMC.Board.PWM_Gate_GPIO_AF),
-       (AMC_Types.C) => Gate_Setting'(Channel => AMC.Board.PWM_Gate_C_Ch,
-                                      Pin_H   => AMC.Board.PWM_Gate_H_C_Pin,
-                                      Pin_L   => AMC.Board.PWM_Gate_L_C_Pin,
-                                      Pin_AF  => AMC.Board.PWM_Gate_GPIO_AF));
+      ((AMC_Types.A) => Gate_Setting'(Channel => AMC_Board.PWM_Gate_A_Ch,
+                                      Pin_H   => AMC_Board.PWM_Gate_H_A_Pin,
+                                      Pin_L   => AMC_Board.PWM_Gate_L_A_Pin,
+                                      Pin_AF  => AMC_Board.PWM_Gate_GPIO_AF),
+       (AMC_Types.B) => Gate_Setting'(Channel => AMC_Board.PWM_Gate_B_Ch,
+                                      Pin_H   => AMC_Board.PWM_Gate_H_B_Pin,
+                                      Pin_L   => AMC_Board.PWM_Gate_L_B_Pin,
+                                      Pin_AF  => AMC_Board.PWM_Gate_GPIO_AF),
+       (AMC_Types.C) => Gate_Setting'(Channel => AMC_Board.PWM_Gate_C_Ch,
+                                      Pin_H   => AMC_Board.PWM_Gate_H_C_Pin,
+                                      Pin_L   => AMC_Board.PWM_Gate_L_C_Pin,
+                                      Pin_AF  => AMC_Board.PWM_Gate_GPIO_AF));
 
    Trigger_Modulator : STM32.PWM.PWM_Modulator;
 
    Trigger_Channel : constant STM32.Timers.Timer_Channel :=
-      AMC.Board.PWM_Trigger_Ch;
+      AMC_Board.PWM_Trigger_Ch;
 
 
    protected Break is
@@ -99,4 +99,4 @@ private
 
    end Break;
 
-end AMC.PWM;
+end AMC_PWM;

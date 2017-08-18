@@ -1,15 +1,16 @@
 with STM32.GPIO;
-with AMC.Board;
+with AMC_Board;
 with AMC_Math;
+with HAL; use HAL;
 
-package body AMC.Encoder is
+package body AMC_Encoder is
 
    procedure Initialize
    is
       use STM32.Timers;
 
       Input_Pins : constant STM32.GPIO.GPIO_Points :=
-         (AMC.Board.Encoder_A_Pin, AMC.Board.Encoder_B_Pin);
+         (AMC_Board.Encoder_A_Pin, AMC_Board.Encoder_B_Pin);
 
    begin
 
@@ -31,7 +32,7 @@ package body AMC.Encoder is
 
       Configure (This          => Counting_Timer,
                  Prescaler     => 0,
-                 Period        => UInt32 (Counts_Per_Revolution) - 1,
+                 Period        => AMC_Types.UInt32 (Counts_Per_Revolution) - 1,
                  Clock_Divisor => Div1,
                  Counter_Mode  => Up);
 
@@ -51,7 +52,7 @@ package body AMC.Encoder is
 
 
 
-      Set_Counter (Counting_Timer, UInt16'(0));
+      Set_Counter (Counting_Timer, AMC_Types.UInt16'(0));
 
       Enable_Channel (Counting_Timer, Channel_1);
       Enable_Channel (Counting_Timer, Channel_2);
@@ -64,7 +65,7 @@ package body AMC.Encoder is
    function Is_Initialized return Boolean is
       (Initialized);
 
-   function Get_Counter return UInt32 is
+   function Get_Counter return AMC_Types.UInt32 is
       (STM32.Timers.Current_Counter (Counting_Timer));
 
    function Get_Angle return AMC_Types.Angle_Rad is
@@ -97,4 +98,4 @@ package body AMC.Encoder is
       end case;
    end Get_Direction;
 
-end AMC.Encoder;
+end AMC_Encoder;

@@ -1,7 +1,7 @@
 with AMC_Utils;
 with AMC_Math;
 
-package body AMC.Board is
+package body AMC_Board is
 
    procedure Set_Gate_Driver_Power (Enabled : in Boolean)
    is
@@ -63,40 +63,40 @@ package body AMC.Board is
    function Is_Initialized
       return Boolean is (Initialized);
 
-   function To_Current (ADC_Voltage : AMC_Types.Voltage_V)
+   function To_Phase_Current (ADC_Voltage : AMC_Types.Voltage_V)
                         return AMC_Types.Current_A
    is
    begin
       return AMC_Types.Current_A
          ((ADC_Voltage - Ina240_Offset) * Phase_Ampere_Per_ADC_Voltage);
-   end To_Current;
+   end To_Phase_Current;
 
    function To_Phase_Currents (ADC_Voltage : AMC_Types.Abc)
                                return AMC_Types.Abc
    is
    begin
-      return AMC_Types.Abc'(A => To_Current (ADC_Voltage => ADC_Voltage.A),
-                            B => To_Current (ADC_Voltage => ADC_Voltage.B),
-                            C => To_Current (ADC_Voltage => ADC_Voltage.C));
+      return AMC_Types.Abc'(A => To_Phase_Current (ADC_Voltage => ADC_Voltage.A),
+                            B => To_Phase_Current (ADC_Voltage => ADC_Voltage.B),
+                            C => To_Phase_Current (ADC_Voltage => ADC_Voltage.C));
    end To_Phase_Currents;
 
-   function To_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
-                        return AMC_Types.Voltage_V
+   function To_Phase_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
+                              return AMC_Types.Voltage_V
    is
    begin
       --  Assumes steady state measurement
       return AMC_Types.Voltage_V
          (ADC_Voltage * Phase_Voltage_Per_ADC_Voltage);
 
-   end To_Voltage;
+   end To_Phase_Voltage;
 
    function To_Phase_Voltages (ADC_Voltage : AMC_Types.Abc)
                                return AMC_Types.Abc
    is
    begin
-      return AMC_Types.Abc'(A => To_Voltage (ADC_Voltage => ADC_Voltage.A),
-                            B => To_Voltage (ADC_Voltage => ADC_Voltage.B),
-                            C => To_Voltage (ADC_Voltage => ADC_Voltage.C));
+      return AMC_Types.Abc'(A => To_Phase_Voltage (ADC_Voltage => ADC_Voltage.A),
+                            B => To_Phase_Voltage (ADC_Voltage => ADC_Voltage.B),
+                            C => To_Phase_Voltage (ADC_Voltage => ADC_Voltage.C));
    end To_Phase_Voltages;
 
    function To_Vbus (ADC_Voltage : AMC_Types.Voltage_V)
@@ -129,4 +129,4 @@ package body AMC.Board is
 
    end To_Board_Temp;
 
-end AMC.Board;
+end AMC_Board;

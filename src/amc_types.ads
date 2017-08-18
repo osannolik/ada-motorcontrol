@@ -1,5 +1,11 @@
+with HAL;
+
 package AMC_Types is
    --  Ada Motor Controller common types
+
+   subtype UInt32 is HAL.UInt32;
+   subtype UInt16 is HAL.UInt16;
+   subtype UInt8 is HAL.UInt8;
 
    subtype Frequency_Hz is Float;
    subtype Seconds is Float;

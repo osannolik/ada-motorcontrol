@@ -1,10 +1,11 @@
 with STM32.Device;
+with HAL; use HAL;
 
-package body AMC.PWM is
+package body AMC_PWM is
 
    function Deadtime_Value (Timer : STM32.Timers.Timer;
                             Time  : AMC_Types.Seconds)
-                            return Uint8;
+                            return AMC_Types.Uint8;
    --  Returns the DTG bit-field for timer register BDTR such that
    --  the requested deadtime Time is obtained.
    --  Please refer to STM32F4 reference manual for details.
@@ -100,7 +101,7 @@ package body AMC.PWM is
              when AMC_Types.Center => Center_Aligned3);
    begin
       STM32.PWM.Configure_PWM_Timer (Generator    => PWM_Timer_Ref,
-                                     Frequency    => UInt32(Frequency),
+                                     Frequency    => AMC_Types.UInt32(Frequency),
                                      Counter_Mode => Counter_Mode);
 
       --  TODO: Make inactive state configurable.
@@ -172,8 +173,8 @@ package body AMC.PWM is
        Value : AMC_Types.Duty_Cycle)
    is
       use STM32.Timers;
-      CCR : constant UInt16 :=
-         UInt16(Value * Float(Current_Autoreload (PWM_Timer_Ref.all)) / 100.0);
+      CCR : constant AMC_Types.UInt16 := AMC_Types.UInt16
+         (Value * Float(Current_Autoreload (PWM_Timer_Ref.all)) / 100.0);
    begin
       Set_Compare_Value
          (This    => PWM_Timer_Ref.all,
@@ -185,8 +186,8 @@ package body AMC.PWM is
       (Value : AMC_Types.Duty_Cycle)
    is
       use STM32.Timers;
-      CCR : constant UInt16 :=
-         UInt16(Value * Float(Current_Autoreload (PWM_Timer_Ref.all)) / 100.0);
+      CCR : constant AMC_Types.UInt16 := AMC_Types.UInt16
+         (Value * Float(Current_Autoreload (PWM_Timer_Ref.all)) / 100.0);
    begin
       Set_Compare_Value
          (This    => PWM_Timer_Ref.all,
@@ -205,17 +206,17 @@ package body AMC.PWM is
       Set_Compare_Value
          (This    => PWM_Timer_Ref.all,
           Channel => Gate_Phase_Settings(AMC_Types.A).Channel,
-          Value   => UInt16(Dabc.A * CCR_Per_Duty));
+          Value   => AMC_Types.UInt16(Dabc.A * CCR_Per_Duty));
 
       Set_Compare_Value
          (This    => PWM_Timer_Ref.all,
           Channel => Gate_Phase_Settings(AMC_Types.B).Channel,
-          Value   => UInt16(Dabc.B * CCR_Per_Duty));
+          Value   => AMC_Types.UInt16(Dabc.B * CCR_Per_Duty));
 
       Set_Compare_Value
          (This    => PWM_Timer_Ref.all,
           Channel => Gate_Phase_Settings(AMC_Types.C).Channel,
-          Value   => UInt16(Dabc.C * CCR_Per_Duty));
+          Value   => AMC_Types.UInt16(Dabc.C * CCR_Per_Duty));
    end Set_Duty_Cycle;
 
    procedure Generate_Break_Event is
@@ -228,12 +229,12 @@ package body AMC.PWM is
 
    function Deadtime_Value (Timer : STM32.Timers.Timer;
                             Time  : AMC_Types.Seconds)
-                            return Uint8
+                            return AMC_Types.Uint8
    is
       use STM32.Timers;
 
       Clock_Divisor   : Float;
-      Timer_Frequency : UInt32;
+      Timer_Frequency : AMC_Types.UInt32;
       Clocks          : constant STM32.Device.RCC_System_Clocks := STM32.Device.System_Clock_Frequencies;
    begin
 
@@ -291,4 +292,4 @@ package body AMC.PWM is
 
    end Break;
 
-end AMC.PWM;
+end AMC_PWM;

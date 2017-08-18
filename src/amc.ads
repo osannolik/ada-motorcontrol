@@ -1,17 +1,14 @@
 with HAL;       use HAL;
 with System;
 with AMC_Types;
+with Config;
 
-private with Generic_PO;
+with Generic_PO;
 
 package AMC is
    --  Ada Motor Controller
 
-   ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
-   Current_Control_Prio : constant System.Priority := System.Priority'Last;
-   Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;
 
-   Inverter_System_Period_Ms : constant Positive := 10;
 
    procedure Initialize;
    --  Initialization to be performed during elaboration
@@ -22,22 +19,20 @@ package AMC is
    procedure Safe_State;
 
    task Inverter_System with
-      Priority => Inverter_System_Prio,
+      Priority => Config.Inverter_System_Prio,
       Storage_Size => (4 * 1024);
 
-   task Current_Control with
-      Priority => Current_Control_Prio,
-      Storage_Size => (4 * 1024);
 
-private
+
+
 
    package Dq_PO is new Generic_PO (AMC_Types.Dq);
    package Voltage_PO is new Generic_PO (AMC_Types.Voltage_V);
 
-   subtype Dq_PO_Shared_With_CC is Dq_PO.Shared_Data(Current_Control_Prio);
+   subtype Dq_PO_Shared_With_CC is Dq_PO.Shared_Data(Config.Current_Control_Prio);
    --  Provides mutually exclusive access to a Dq type
 
-   subtype Voltage_PO_Shared_With_CC is Voltage_PO.Shared_Data(Current_Control_Prio);
+   subtype Voltage_PO_Shared_With_CC is Voltage_PO.Shared_Data(Config.Current_Control_Prio);
    --  Provides mutually exclusive access to a Voltage_V type
 
    type Inverter_System_States is record
@@ -49,8 +44,15 @@ private
    end record;
    --  Collects protected objects set by the Inverter_System task
 
+
    Inverter_System_Outputs : Inverter_System_States;
    --  Inverter_System task outputs
 
    Initialized : Boolean := False;
+
+
+
+
+
+
 end AMC;

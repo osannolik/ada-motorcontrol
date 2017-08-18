@@ -3,9 +3,9 @@ with STM32.Timers;
 
 with STM32_SVD.ADC;
 
-package body AMC.ADC is
+package body AMC_ADC is
 
-   function To_Voltage (Adc_Value : in UInt16)
+   function To_Voltage (Adc_Value : in AMC_Types.UInt16)
                         return AMC_Types.Voltage_V
    with
       Inline;
@@ -214,7 +214,7 @@ package body AMC.ADC is
    function Is_Initialized
       return Boolean is (Initialized);
 
-   function To_Voltage (Adc_Value : in UInt16)
+   function To_Voltage (Adc_Value : in AMC_Types.UInt16)
                         return AMC_Types.Voltage_V
    is
    begin
@@ -243,7 +243,7 @@ package body AMC.ADC is
       procedure ISR is
          use STM32.ADC;
       begin
-         --  AMC.Board.Turn_On (AMC.Board.Led_Green);
+         --  AMC_Board.Turn_On (AMC_Board.Led_Green);
 
          if Status (Multi_Main_ADC, Injected_Channel_Conversion_Complete) then
             Clear_Interrupt_Pending (Multi_Main_ADC, Injected_Channel_Conversion_Complete);
@@ -261,4 +261,4 @@ package body AMC.ADC is
 
    end Handler;
 
-end AMC.ADC;
+end AMC_ADC;
