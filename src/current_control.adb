@@ -12,9 +12,13 @@ package body Current_Control is
 
    function Voltage_To_Duty (V    : in Abc;
                              Vbus : in Voltage_V)
+                             return Abc;
+
+   function Voltage_To_Duty (V    : in Abc;
+                             Vbus : in Voltage_V)
                              return Abc
    is
-      Duty : constant Abc := Float((100.0 / Vbus)) * V + (50.0, 50.0, 50.0);
+      Duty : constant Abc := (100.0 / Vbus) * V + (50.0, 50.0, 50.0);
    begin
       return ZSM.Modulate (X      => Duty,
                            Method => Config.Modulation_Method);
@@ -31,7 +35,7 @@ package body Current_Control is
       Duty       : Abc;
    begin
 
-      delay until Clock + Milliseconds(10);
+      delay until Clock + Milliseconds (10);
 
       loop
          AMC_ADC.Handler.Await_New_Samples
@@ -43,13 +47,12 @@ package body Current_Control is
          Iabc_Raw := AMC_Board.To_Phase_Currents (I_Samples);
 
          Vbus := AMC.Inverter_System_Outputs.Vbus.Get;
-         Vmax := 0.5 * Vbus * ZSM.Modulation_Index_Max(Config.Modulation_Method);
+         Vmax := 0.5 * Vbus * ZSM.Modulation_Index_Max (Config.Modulation_Method);
 
          V_Ctrl_Abc := FOC.Calculate_Voltage
             (Iabc          => Iabc_Raw,
              I_Set_Point   => AMC.Inverter_System_Outputs.Idq_CC_Request.Get,
              Current_Angle => AMC_Encoder.Get_Angle,
-             Vbus          => Vbus,
              Vmax          => Vmax,
              Period        => Nominal_Period);
 

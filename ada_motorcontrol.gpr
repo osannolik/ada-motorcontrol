@@ -22,9 +22,7 @@ project Ada_MotorControl is
       for Default_Switches ("ada") use ("--create-map-file");
    end Builder;
 
-   package Compiler extends Config.Compiler is
-      for Default_Switches ("ada") use ("-O0", "-g", "-gnatQ", "-ffunction-sections", "-fdata-sections");
-   end Compiler;
+   package Compiler renames Config.Compiler;
 
    package Linker is
       for Default_Switches ("ada") use ("-Wl,--gc-sections", "-Wl,--print-memory-usage");

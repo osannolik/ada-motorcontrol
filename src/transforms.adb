@@ -7,6 +7,7 @@ package body Transforms is
                     K : in Float := Factor_Default)
                     return AMC_Types.Alfa_Beta
    is
+      pragma Unreferenced (K);
       use AMC_Utils;
    begin
       return AMC_Types.Alfa_Beta'
@@ -18,6 +19,7 @@ package body Transforms is
                         K : in Float := Factor_Default)
                         return AMC_Types.Abc
    is
+      pragma Unreferenced (K);
       use AMC_Utils;
       Tmp1 : constant Float := -0.5 * X.Alfa;
       Tmp2 : constant Float := Sqrt3_Over_Two * X.Beta;
@@ -33,8 +35,8 @@ package body Transforms is
                   Angle : in AMC_Types.Angle_Rad)
                   return AMC_Types.Dq
    is
-      s : constant Float := AMC_Math.Sin (Float(Angle));
-      c : constant Float := AMC_Math.Cos (Float(Angle));
+      s : constant Float := AMC_Math.Sin (Float (Angle));
+      c : constant Float := AMC_Math.Cos (Float (Angle));
    begin
       return AMC_Types.Dq'(D =>  c * X.Alfa + s * X.Beta,
                            Q => -s * X.Alfa + c * X.Beta);
@@ -53,8 +55,8 @@ package body Transforms is
                       Angle : in AMC_Types.Angle_Rad)
                       return AMC_Types.Alfa_Beta
    is
-      s : constant Float := AMC_Math.Sin (Float(Angle));
-      c : constant Float := AMC_Math.Cos (Float(Angle));
+      s : constant Float := AMC_Math.Sin (Float (Angle));
+      c : constant Float := AMC_Math.Cos (Float (Angle));
    begin
       return AMC_Types.Alfa_Beta'(Alfa => c * X.D - s * X.Q,
                                   Beta => s * X.D + c * X.Q);

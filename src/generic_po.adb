@@ -6,7 +6,7 @@ package body Generic_PO is
          return Data;
       end Get;
 
-      procedure Set(Value : in Datatype) is
+      procedure Set (Value : in Datatype) is
       begin
          Data := Value;
       end Set;

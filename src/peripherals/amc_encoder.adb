@@ -72,7 +72,7 @@ package body AMC_Encoder is
       use STM32.Timers;
    begin
       return AMC_Types.Angle_Rad
-         (Float (2*(Current_Counter (Counting_Timer))) * AMC_Math.PI / Counts_Per_Revolution);
+         (Float (2 * (Current_Counter (Counting_Timer))) * AMC_Math.Pi / Counts_Per_Revolution);
    end Get_Angle;
 
    function Get_Angle return AMC_Types.Angle_Deg is

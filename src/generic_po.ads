@@ -7,11 +7,11 @@ package Generic_PO is
 
       function Get return Datatype;
 
-      procedure Set(Value : in Datatype);
+      procedure Set (Value : in Datatype);
 
    private
       pragma Priority (Ceiling);
-      -- All callers must have priority no greater than Ceiling
+      --  All callers must have priority no greater than Ceiling
 
       Data : Datatype;
 

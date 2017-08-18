@@ -1,8 +1,5 @@
-with System;
-with AMC_Types; use AMC_Types;
 with AMC_Types_PO;
 with Config;
-
 
 package AMC is
    --  Ada Motor Controller

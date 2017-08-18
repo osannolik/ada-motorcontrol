@@ -1,12 +1,12 @@
 with Ada.Real_Time; use Ada.Real_Time;
+with AMC_Types; use AMC_Types;
 
 with AMC_Board;
-with Config;
 with AMC_ADC;
 with AMC_PWM;
 with AMC_Encoder;
 
-with Current_Control;
+with Current_Control; pragma Unreferenced (Current_Control);
 
 package body AMC is
 
@@ -23,23 +23,6 @@ package body AMC is
       loop
          AMC_Board.Set_Gate_Driver_Power
             (Enabled => AMC_Board.Is_Pressed (AMC_Board.User_Button));
-
-         declare
-            Bat_Sense_Data  : AMC_Types.Voltage_V :=
-               AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense);
-            Board_Temp_Data : AMC_Types.Voltage_V :=
-               AMC_ADC.Get_Sample (AMC_ADC.Board_Temp);
-            BT : AMC_Types.Temperature_DegC :=
-               AMC_Board.To_Board_Temp (Board_Temp_Data);
-
-            Encoder_Counter : UInt32 := AMC_Encoder.Get_Counter;
-
-            Encoder_Angle : AMC_Types.Angle_Rad := AMC_Encoder.Get_Angle;
-
-            Encoder_Dir : Float := AMC_Encoder.Get_Direction;
-         begin
-            null;
-         end;
 
          Inverter_System_Outputs.Vbus.Set
             (Value => AMC_Board.To_Vbus

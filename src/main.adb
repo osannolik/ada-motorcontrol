@@ -11,8 +11,6 @@ procedure Main is
    pragma Priority (System.Priority'First);
 begin
 
-   --  AMC.Initialize;
-
    loop
       null;
    end loop;

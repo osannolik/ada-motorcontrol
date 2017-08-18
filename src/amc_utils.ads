@@ -8,22 +8,22 @@ package AMC_Utils is
 
    Two_Over_Sqrt3 : constant Float := 1.0 / Sqrt3_Over_Two;
 
-   function Max (X,Y : in Float)
+   function Max (X, Y : in Float)
                  return Float
    with
       Inline;
 
-   function Min (X,Y : in Float)
+   function Min (X, Y : in Float)
                  return Float
    with
       Inline;
 
-   function Max (X,Y : in Integer)
+   function Max (X, Y : in Integer)
                  return Integer
    with
       Inline;
 
-   function Min (X,Y : in Integer)
+   function Min (X, Y : in Integer)
                  return Integer
    with
       Inline;

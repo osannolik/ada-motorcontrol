@@ -15,9 +15,6 @@ package FOC is
        Current_Angle : Angle_Rad;
        --  Stator-rotor electrical angle in radians
 
-       Vbus          : Voltage_V;
-       --  DC bus voltage
-
        Vmax          : Voltage_V;
        --  Maximum allowed phase to neutral voltage
 

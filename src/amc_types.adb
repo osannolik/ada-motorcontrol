@@ -3,21 +3,21 @@ with Transforms;
 
 package body AMC_Types is
 
-   procedure Set(X : in out Angle; Angle_In : in Angle_Rad) is
+   procedure Set (X : in out Angle; Angle_In : in Angle_Rad) is
    begin
       X := (Angle => Angle_In,
-            Sin   => AMC_Math.Sin(Float(Angle_In)),
-            Cos   => AMC_Math.Cos(Float(Angle_In)));
+            Sin   => AMC_Math.Sin (Float (Angle_In)),
+            Cos   => AMC_Math.Cos (Float (Angle_In)));
    end Set;
 
-   function Compose(Angle_In : in Angle_Rad) return Angle is
+   function Compose (Angle_In : in Angle_Rad) return Angle is
    begin
       return Angle'(Angle => Angle_In,
-                    Sin   => AMC_Math.Sin(Float(Angle_In)),
-                    Cos   => AMC_Math.Cos(Float(Angle_In)));
+                    Sin   => AMC_Math.Sin (Float (Angle_In)),
+                    Cos   => AMC_Math.Cos (Float (Angle_In)));
    end Compose;
 
-   function "+"(X,Y : in Abc) return Abc is
+   function "+"(X, Y : in Abc) return Abc is
    begin
       return Abc'(A => X.A + Y.A,
                   B => X.B + Y.B,
@@ -34,7 +34,7 @@ package body AMC_Types is
    function "+"(c : in Float; X : in Abc) return Abc is
       (X + c);
 
-   function "-"(X,Y : in Abc) return Abc is
+   function "-"(X, Y : in Abc) return Abc is
    begin
       return Abc'(A => X.A - Y.A,
                   B => X.B - Y.B,
@@ -52,43 +52,43 @@ package body AMC_Types is
    end "*";
 
    function "/"(X : in Abc; c : in Float) return Abc is
-      (Float'(1.0)/c * X);
+      (Float'(1.0) / c * X);
 
-   function Magnitude(X : in Abc) return Float is
+   function Magnitude (X : in Abc) return Float is
    begin
-      return Float
-         (AMC_Math.Sqrt (Float (X.A * X.A + X.B * X.B + X.C * X.C)));
+      return AMC_Math.Sqrt (X.A * X.A + X.B * X.B + X.C * X.C);
    end Magnitude;
 
-   procedure Normalize(X : in out Abc)
+   procedure Normalize (X : in out Abc)
    is
    begin
       if X.A /= Float'(0.0) or else
          X.B /= Float'(0.0) or else
-         X.C /= Float'(0.0) then
+         X.C /= Float'(0.0)
+      then
          X := X / X.Magnitude;
       end if;
    end Normalize;
 
-   function To_Alfa_Beta(X : in Abc'Class) return Alfa_Beta is
+   function To_Alfa_Beta (X : in Abc'Class) return Alfa_Beta is
    begin
-      return Transforms.Clarke (Abc(X));
+      return Transforms.Clarke (Abc (X));
    end To_Alfa_Beta;
 
-   function To_Dq(X : in Abc'Class;
-                  Angle : in Angle_Rad) return Dq is
+   function To_Dq (X : in Abc'Class;
+                   Angle : in Angle_Rad) return Dq is
    begin
-      return X.To_Alfa_Beta.To_Dq(Angle);
+      return X.To_Alfa_Beta.To_Dq (Angle);
    end To_Dq;
 
 
-   function "+"(X,Y : in Alfa_Beta) return Alfa_Beta is
+   function "+"(X, Y : in Alfa_Beta) return Alfa_Beta is
    begin
       return Alfa_Beta'(Alfa => X.Alfa + Y.Alfa,
                         Beta => X.Beta + Y.Beta);
    end "+";
 
-   function "-"(X,Y : in Alfa_Beta) return Alfa_Beta is
+   function "-"(X, Y : in Alfa_Beta) return Alfa_Beta is
    begin
       return Alfa_Beta'(Alfa => X.Alfa - Y.Alfa,
                         Beta => X.Beta - Y.Beta);
@@ -104,46 +104,47 @@ package body AMC_Types is
    end "*";
 
    function "/"(X : in Alfa_Beta; c : in Float) return Alfa_Beta is
-      (Float'(1.0)/c * X);
+      (Float'(1.0) / c * X);
 
-   function Magnitude(X : in Alfa_Beta) return Float is
+   function Magnitude (X : in Alfa_Beta) return Float is
    begin
-      return AMC_Math.Sqrt (Float (X.Alfa * X.Alfa + X.Beta * X.Beta));
+      return AMC_Math.Sqrt (X.Alfa * X.Alfa + X.Beta * X.Beta);
    end Magnitude;
 
-   procedure Normalize(X : in out Alfa_Beta)
+   procedure Normalize (X : in out Alfa_Beta)
    is
    begin
       if X.Alfa /= Float'(0.0) or else
-         X.Beta /= Float'(0.0) then
+         X.Beta /= Float'(0.0)
+      then
          X := X / X.Magnitude;
       end if;
    end Normalize;
 
-   function To_Abc(X : in Alfa_Beta'Class) return Abc is
+   function To_Abc (X : in Alfa_Beta'Class) return Abc is
    begin
-      return Transforms.Clarke_Inv (Alfa_Beta(X));
+      return Transforms.Clarke_Inv (Alfa_Beta (X));
    end To_Abc;
 
-   function To_Dq(X : in Alfa_Beta'Class;
-                  Angle : in Angle_Rad) return Dq is
+   function To_Dq (X : in Alfa_Beta'Class;
+                   Angle : in Angle_Rad) return Dq is
    begin
-      return Transforms.Park (Alfa_Beta(X), Angle);
+      return Transforms.Park (Alfa_Beta (X), Angle);
    end To_Dq;
 
-   function To_Dq(X : in Alfa_Beta'Class;
-                  Angle_In : in Angle'Class) return Dq is
+   function To_Dq (X : in Alfa_Beta'Class;
+                   Angle_In : in Angle'Class) return Dq is
    begin
-      return Transforms.Park (Alfa_Beta(X), Angle(Angle_In));
+      return Transforms.Park (Alfa_Beta (X), Angle (Angle_In));
    end To_Dq;
 
-   function "+"(X,Y : in Dq) return Dq is
+   function "+"(X, Y : in Dq) return Dq is
    begin
       return Dq'(D => X.D + Y.D,
                  Q => X.Q + Y.Q);
    end "+";
 
-   function "-"(X,Y : in Dq) return Dq is
+   function "-"(X, Y : in Dq) return Dq is
    begin
       return Dq'(D => X.D - Y.D,
                  Q => X.Q - Y.Q);
@@ -159,38 +160,39 @@ package body AMC_Types is
    end "*";
 
    function "/"(X : in Dq; c : in Float) return Dq is
-      (Float'(1.0)/c * X);
+      (Float'(1.0) / c * X);
 
-   function Magnitude(X : in Dq) return Float is
+   function Magnitude (X : in Dq) return Float is
    begin
-      return AMC_Math.Sqrt (Float (X.D * X.D + X.Q * X.Q));
+      return AMC_Math.Sqrt (X.D * X.D + X.Q * X.Q);
    end Magnitude;
 
-   procedure Normalize(X : in out Dq)
+   procedure Normalize (X : in out Dq)
    is
    begin
       if X.D /= Float'(0.0) or else
-         X.Q /= Float'(0.0) then
+         X.Q /= Float'(0.0)
+      then
          X := X / X.Magnitude;
       end if;
    end Normalize;
 
-   function To_Abc(X : in Dq'Class;
-                   Angle : in Angle_Rad) return Abc is
+   function To_Abc (X : in Dq'Class;
+                    Angle : in Angle_Rad) return Abc is
    begin
-      return X.To_Alfa_Beta(Angle).To_Abc;
+      return X.To_Alfa_Beta (Angle).To_Abc;
    end To_Abc;
 
-   function To_Alfa_Beta(X : in Dq'Class;
-                         Angle : in Angle_Rad) return Alfa_Beta is
+   function To_Alfa_Beta (X : in Dq'Class;
+                          Angle : in Angle_Rad) return Alfa_Beta is
    begin
-      return Transforms.Park_Inv (Dq(X), Angle);
+      return Transforms.Park_Inv (Dq (X), Angle);
    end To_Alfa_Beta;
 
-   function To_Alfa_Beta(X : in Dq'Class;
-                         Angle_In : in Angle'Class) return Alfa_Beta is
+   function To_Alfa_Beta (X : in Dq'Class;
+                          Angle_In : in Angle'Class) return Alfa_Beta is
    begin
-      return Transforms.Park_Inv (Dq(X), Angle(Angle_In));
+      return Transforms.Park_Inv (Dq (X), Angle (Angle_In));
    end To_Alfa_Beta;
 
 end AMC_Types;

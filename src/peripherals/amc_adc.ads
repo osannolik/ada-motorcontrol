@@ -31,7 +31,7 @@ package AMC_ADC is
    procedure Initialize;
 
    protected Handler is
-      pragma Interrupt_Priority(Config.ADC_ISR_Prio);
+      pragma Interrupt_Priority (Config.ADC_ISR_Prio);
 
       function Get_Injected_Samples return Injected_Samples_Array;
       entry Await_New_Samples (Phase_Voltage_Samples : out AMC_Types.Abc;
