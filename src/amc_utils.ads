@@ -1,4 +1,4 @@
-with AMC_Types;
+with AMC_Types; use AMC_Types;
 
 package AMC_Utils is
 
@@ -7,6 +7,10 @@ package AMC_Utils is
    Sqrt3_Over_Two : constant Float := 0.866025404;
 
    Two_Over_Sqrt3 : constant Float := 1.0 / Sqrt3_Over_Two;
+
+   procedure Saturate (X       : in out Dq;
+                       Maximum : in Float;
+                       Is_Sat  : out Boolean);
 
    function Max (X, Y : in Float)
                  return Float
@@ -28,13 +32,13 @@ package AMC_Utils is
    with
       Inline;
 
-   function To_Kelvin (DegC : in AMC_Types.Temperature_DegC)
-                       return AMC_Types.Temperature_K
+   function To_Kelvin (DegC : in Temperature_DegC)
+                       return Temperature_K
    with
       Inline;
 
-   function To_DegC (Kelvin : in AMC_Types.Temperature_K)
-                     return AMC_Types.Temperature_DegC
+   function To_DegC (Kelvin : in Temperature_K)
+                     return Temperature_DegC
    with
       Inline;
 

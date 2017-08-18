@@ -1,6 +1,9 @@
 with Transforms;
+with AMC_Utils;
 
 package body FOC is
+
+   Is_Saturated : Boolean := False;
 
    function Calculate_Voltage (Iabc          : Abc;
                                I_Set_Point   : Dq;
@@ -9,7 +12,7 @@ package body FOC is
                                Period        : Seconds)
                                return Abc
    is
-      pragma Unreferenced (I_Set_Point, Vmax, Period);
+      pragma Unreferenced (I_Set_Point, Period);
       Angle_Obj : constant Angle :=
          Compose (Current_Angle);
 
@@ -21,6 +24,10 @@ package body FOC is
 
       --  PID
       Vdq := (0.0, 0.0);
+
+      AMC_Utils.Saturate (X       => Vdq,
+                          Maximum => Vmax,
+                          Is_Sat  => Is_Saturated);
 
       return Transforms.Clarke_Inv (Transforms.Park_Inv (Vdq, Angle_Obj));
    end Calculate_Voltage;
