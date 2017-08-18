@@ -11,9 +11,16 @@ package Config is
 
    Modulation_Method : constant ZSM.Modulation_Method := ZSM.Sinusoidal;
 
+
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
+
    Current_Control_Prio : constant System.Priority := System.Priority'Last;
+
    Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;
+
+   Protected_Object_Prio : constant System.Priority := System.Priority'Last;
+   --  Should be set to the highest prio of all object-using tasks
+
 
    Inverter_System_Period_Ms : constant Positive := 10;
 

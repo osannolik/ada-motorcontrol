@@ -11,7 +11,7 @@ with Current_Control;
 package body AMC is
 
    task body Inverter_System is
-      Period       : constant Time_Span :=
+      Period : constant Time_Span :=
          Milliseconds (Config.Inverter_System_Period_Ms);
       Next_Release : Time := Clock;
 
@@ -54,6 +54,12 @@ package body AMC is
    end Inverter_System;
 
 
+   procedure Safe_State is
+   begin
+      AMC_PWM.Generate_Break_Event;
+      AMC_Board.Set_Gate_Driver_Power (Enabled => False);
+   end Safe_State;
+
 
    procedure Initialize
    is
@@ -86,12 +92,6 @@ package body AMC is
          AMC_Encoder.Is_Initialized;
 
    end Initialize;
-
-   procedure Safe_State is
-   begin
-      AMC_PWM.Generate_Break_Event;
-      AMC_Board.Set_Gate_Driver_Power (Enabled => False);
-   end Safe_State;
 
 
    function Is_Initialized

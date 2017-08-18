@@ -25,6 +25,7 @@ package body Current_Control is
       V_Samples  : Abc;
       I_Samples  : Abc;
       Vbus       : Voltage_V;
+      Vmax       : Voltage_V;
       Iabc_Raw   : Abc;
       V_Ctrl_Abc : Abc;
       Duty       : Abc;
@@ -42,13 +43,14 @@ package body Current_Control is
          Iabc_Raw := AMC_Board.To_Phase_Currents (I_Samples);
 
          Vbus := AMC.Inverter_System_Outputs.Vbus.Get;
+         Vmax := 0.5 * Vbus * ZSM.Modulation_Index_Max(Config.Modulation_Method);
 
          V_Ctrl_Abc := FOC.Calculate_Voltage
             (Iabc          => Iabc_Raw,
              I_Set_Point   => AMC.Inverter_System_Outputs.Idq_CC_Request.Get,
              Current_Angle => AMC_Encoder.Get_Angle,
              Vbus          => Vbus,
-             Vmax          => 0.5*Vbus*ZSM.Modulation_Index_Max(ZSM.Sinusoidal),
+             Vmax          => Vmax,
              Period        => Nominal_Period);
 
          Duty := Voltage_To_Duty (V_Ctrl_Abc, Vbus);
