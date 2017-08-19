@@ -29,18 +29,15 @@ package body Position is
       end case;
    end Get_Angle;
 
-   function Wrap_To_360 (Angle : in Angle_Deg)
-                         return Angle_Deg
-   is (Angle_Deg (AMC_Utils.Wrap_To (Float (Angle), 360.0)));
+   function Wrap_To_360 (Angle : in Angle_Deg) return Angle_Deg is
+      (Angle_Deg (AMC_Utils.Wrap_To (Float (Angle), 360.0)));
 
    function Wrap_To_180 (Angle : in Angle_Deg)
                          return Angle_Deg
    is
    begin
 
-      if Angle > 180.0 or else
-         Angle < -180.0
-      then
+      if Angle < -180.0 or else 180.0 < Angle  then
          return Wrap_To_360 (Angle + 180.0) - 180.0;
       end if;
 
@@ -48,18 +45,15 @@ package body Position is
 
    end Wrap_To_180;
 
-   function Wrap_To_2Pi (Angle : in Angle_Rad)
-                         return Angle_Rad
-   is (Angle_Rad (AMC_Utils.Wrap_To (Float (Angle), Float (Two_Pi))));
+   function Wrap_To_2Pi (Angle : in Angle_Rad) return Angle_Rad is
+      (Angle_Rad (AMC_Utils.Wrap_To (Float (Angle), Float (Two_Pi))));
 
    function Wrap_To_Pi (Angle : in Angle_Rad)
                         return Angle_Rad
    is
    begin
 
-      if Angle > Pi or else
-         Angle < -Pi
-      then
+      if Angle < -Pi or else Pi < Angle then
          return Wrap_To_2Pi (Angle + Pi) - Pi;
       end if;
 

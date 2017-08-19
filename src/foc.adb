@@ -1,9 +1,15 @@
 with Transforms;
 with AMC_Utils;
+with PID;
 
 package body FOC is
 
    Is_Saturated : Boolean := False;
+
+   PID_Iq : PID.Kpid := PID.Compose (Kp => 1.0,
+                                     Ki => 0.0,
+                                     Kd => 0.0);
+   PID_Id : PID.Kpid := PID_Iq;
 
    function Calculate_Voltage (Iabc          : Abc;
                                I_Set_Point   : Dq;
@@ -12,18 +18,26 @@ package body FOC is
                                Period        : Seconds)
                                return Abc
    is
-      pragma Unreferenced (I_Set_Point, Period);
       Angle_Obj : constant Angle :=
          Compose (Angle_Rad (Current_Angle));
 
       Idq : constant Dq :=
          Transforms.Park (Transforms.Clarke (Iabc), Angle_Obj);
-      pragma Unreferenced (Idq);
+
       Vdq : Dq;
    begin
+      PID_Iq.Update (Setpoint => I_Set_Point.Q,
+                     Actual   => Idq.Q,
+                     Ts       => Period,
+                     Is_Sat   => Is_Saturated);
 
-      --  PID
-      Vdq := (0.0, 0.0);
+      PID_Id.Update (Setpoint => I_Set_Point.D,
+                     Actual   => Idq.D,
+                     Ts       => Period,
+                     Is_Sat   => Is_Saturated);
+
+      Vdq := Dq'(D => PID_Id.Get_Output,
+                 Q => PID_Iq.Get_Output);
 
       AMC_Utils.Saturate (X       => Vdq,
                           Maximum => Vmax,

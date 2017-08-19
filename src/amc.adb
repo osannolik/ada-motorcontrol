@@ -7,8 +7,6 @@ with AMC_PWM;
 with AMC_Encoder;
 
 with Current_Control; pragma Unreferenced (Current_Control);
-with AMC_Utils;
-with Position;
 
 package body AMC is
 
@@ -16,54 +14,13 @@ package body AMC is
       Period : constant Time_Span :=
          Milliseconds (Config.Inverter_System_Period_Ms);
       Next_Release : Time := Clock;
-      M : Float := 0.0 with Volatile; pragma Unreferenced (M);
-      A : Angle_Deg := 0.0 with Volatile; pragma Unreferenced (A);
    begin
-
-      A := Position.Wrap_To_180 (0.0);
-      A := Position.Wrap_To_180 (10.0);
-      A := Position.Wrap_To_180 (180.0);
-      A := Position.Wrap_To_180 (181.0);
-      A := Position.Wrap_To_180 (360.0);
-      A := Position.Wrap_To_180 (361.0);
-      A := Position.Wrap_To_180 (-10.0);
-      A := Position.Wrap_To_180 (-180.0);
-      A := Position.Wrap_To_180 (-181.0);
-      A := Position.Wrap_To_180 (-360.0);
-      A := Position.Wrap_To_180 (-361.0);
-
-      M := AMC_Utils.Fmod (X => 0.0,
-                           Y => 360.0);
-
-      M := AMC_Utils.Fmod (X => 10.0,
-                           Y => 360.0);
-
-      M := AMC_Utils.Fmod (X => 350.0,
-                           Y => 360.0);
-
-      M := AMC_Utils.Fmod (X => 360.0,
-                           Y => 360.0);
-
-      M := AMC_Utils.Fmod (X => 370.0,
-                           Y => 360.0);
-
-
-      M := AMC_Utils.Fmod (X => -10.0,
-                           Y => 360.0);
-
-      M := AMC_Utils.Fmod (X => -350.0,
-                           Y => 360.0);
-
-      M := AMC_Utils.Fmod (X => -360.0,
-                           Y => 360.0);
-
-      M := AMC_Utils.Fmod (X => -370.0,
-                           Y => 360.0);
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
       AMC_Board.Turn_Off (AMC_Board.Led_Green);
 
       loop
+
          AMC_Board.Set_Gate_Driver_Power
             (Enabled => AMC_Board.Is_Pressed (AMC_Board.User_Button));
 
