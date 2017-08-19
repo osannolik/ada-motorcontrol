@@ -7,14 +7,14 @@ package body FOC is
 
    function Calculate_Voltage (Iabc          : Abc;
                                I_Set_Point   : Dq;
-                               Current_Angle : Angle_Rad;
+                               Current_Angle : Angle_Erad;
                                Vmax          : Voltage_V;
                                Period        : Seconds)
                                return Abc
    is
       pragma Unreferenced (I_Set_Point, Period);
       Angle_Obj : constant Angle :=
-         Compose (Current_Angle);
+         Compose (Angle_Rad (Current_Angle));
 
       Idq : constant Dq :=
          Transforms.Park (Transforms.Clarke (Iabc), Angle_Obj);

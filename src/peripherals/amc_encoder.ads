@@ -13,10 +13,16 @@ package AMC_Encoder is
    function Get_Counter return AMC_Types.UInt32;
 
    function Get_Angle return AMC_Types.Angle_Rad;
+   --  Returns an angle related to mechanical rotations, i.e. it is not
+   --  compensated for the motor's pole pairs
 
    function Get_Angle return AMC_Types.Angle_Deg;
+   --  Returns an angle related to mechanical rotations, i.e. it is not
+   --  compensated for the motor's pole pairs
 
    function Get_Angle return AMC_Types.Angle;
+   --  Returns an angle related to mechanical rotations, i.e. it is not
+   --  compensated for the motor's pole pairs
 
    function Get_Direction  return Float;
 

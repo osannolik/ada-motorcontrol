@@ -2,9 +2,9 @@ with Ada.Real_Time; use Ada.Real_Time;
 
 with AMC_ADC;
 with AMC_PWM;
-with AMC_Encoder;
 with AMC_Board;
 with AMC;
+with Position;
 with FOC;
 with ZSM;
 
@@ -13,17 +13,6 @@ package body Current_Control is
    function Voltage_To_Duty (V    : in Abc;
                              Vbus : in Voltage_V)
                              return Abc;
-
-   function Voltage_To_Duty (V    : in Abc;
-                             Vbus : in Voltage_V)
-                             return Abc
-   is
-      Duty : constant Abc := (100.0 / Vbus) * V + (50.0, 50.0, 50.0);
-   begin
-      return ZSM.Modulate (X      => Duty,
-                           Method => Config.Modulation_Method);
-   end Voltage_To_Duty;
-
 
    task body Current_Control is
       V_Samples  : Abc;
@@ -52,7 +41,7 @@ package body Current_Control is
          V_Ctrl_Abc := FOC.Calculate_Voltage
             (Iabc          => Iabc_Raw,
              I_Set_Point   => AMC.Inverter_System_Outputs.Idq_CC_Request.Get,
-             Current_Angle => AMC_Encoder.Get_Angle,
+             Current_Angle => Position.Get_Angle,
              Vmax          => Vmax,
              Period        => Nominal_Period);
 
@@ -64,6 +53,16 @@ package body Current_Control is
 
       end loop;
    end Current_Control;
+
+   function Voltage_To_Duty (V    : in Abc;
+                             Vbus : in Voltage_V)
+                             return Abc
+   is
+      Duty : constant Abc := (100.0 / Vbus) * V + (50.0, 50.0, 50.0);
+   begin
+      return ZSM.Modulate (X      => Duty,
+                           Method => Config.Modulation_Method);
+   end Voltage_To_Duty;
 
    procedure Initialize
    is

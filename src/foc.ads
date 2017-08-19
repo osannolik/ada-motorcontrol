@@ -12,7 +12,7 @@ package FOC is
        I_Set_Point   : Dq;
        --  Requested current setpoint in the Dq-frame
 
-       Current_Angle : Angle_Rad;
+       Current_Angle : Angle_Erad;
        --  Stator-rotor electrical angle in radians
 
        Vmax          : Voltage_V;

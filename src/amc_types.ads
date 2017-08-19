@@ -25,7 +25,8 @@ package AMC_Types is
 
    type Angle_Rad is new Float;
 
-   type Angle_Erad is new Float;
+   subtype Angle_Erad is Angle_Rad;
+   --  Electrical angle, i.e. the rotor angle compensated for motor pole pairs
 
    type Phase is (A, B, C);
 

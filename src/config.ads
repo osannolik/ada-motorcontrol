@@ -1,6 +1,7 @@
 with AMC_Types;
 with System;
 with ZSM;
+with Position;
 
 package Config is
    --  Ada Motor Controller configuration parameters
@@ -10,6 +11,8 @@ package Config is
    PWM_Gate_Deadtime_S : constant AMC_Types.Seconds := 166.0e-9;
 
    Modulation_Method : constant ZSM.Modulation_Method := ZSM.Sinusoidal;
+
+   Position_Sensor : constant Position.Position_Sensor := Position.Encoder;
 
 
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;

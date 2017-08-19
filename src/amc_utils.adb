@@ -16,6 +16,43 @@ package body AMC_Utils is
 
    end Saturate;
 
+   function Sign (X : in Float)
+                  return Float
+   is
+   begin
+      if X > 0.0 then
+         return 1.0;
+      elsif X < 0.0 then
+         return -1.0;
+      else
+         return 0.0;
+      end if;
+   end Sign;
+
+   function Fmod (X, Y : in Float)
+                   return Float
+   is
+   begin
+      return X - Float'Floor (X / Y) * Y;
+   end Fmod;
+
+   function Wrap_To (X     : in Float;
+                     Upper : in Float)
+                     return Float
+   is
+      Y : constant Float := Fmod (X, Upper);
+   begin
+
+      if Y = 0.0 and then
+         X > 0.0
+      then
+         return Upper;
+      end if;
+
+      return Y;
+
+   end Wrap_To;
+
    function Max (X, Y : in Float)
                  return Float
    is

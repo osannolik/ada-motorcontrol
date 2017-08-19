@@ -12,6 +12,25 @@ package AMC_Utils is
                        Maximum : in Float;
                        Is_Sat  : out Boolean);
 
+   function Sign (X : in Float)
+                  return Float
+   with
+      Inline;
+
+   function Fmod (X, Y : in Float)
+                  return Float
+   with
+      Inline;
+
+   function Wrap_To (X     : in Float;
+                     Upper : in Float)
+                     return Float
+   with
+      Inline;
+   --  Wraps input X into [0, Upper] such that positive multiples of Upper map
+   --  to Upper and negative multiples of Upper map to zero.
+   --  Zero wraps to zero and Upper wraps to Upper
+
    function Max (X, Y : in Float)
                  return Float
    with
