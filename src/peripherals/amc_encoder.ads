@@ -24,6 +24,9 @@ package AMC_Encoder is
    --  Returns an angle related to mechanical rotations, i.e. it is not
    --  compensated for the motor's pole pairs
 
+   procedure Set_Angle (Angle : in AMC_Types.Angle_Rad);
+   --  Define the current sensor position as the specified angle
+
    function Get_Direction  return Float;
 
 private

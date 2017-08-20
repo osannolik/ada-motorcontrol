@@ -4,21 +4,36 @@ with AMC_Board;
 with AMC_ADC;
 with AMC_PWM;
 with AMC_Encoder;
+with Position;
 
 with Current_Control; pragma Unreferenced (Current_Control);
 
 package body AMC is
 
+   procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
+                          Button_Pressed : in Boolean;
+                          Period         : in AMC_Types.Seconds;
+                          Is_Aligned     : in Boolean);
+
+   procedure Update_Outputs (Outputs      : in out Inverter_System_States;
+                             Enable_Gates : out Boolean;
+                             Is_Aligned   : out Boolean;
+                             Mode         : in Ctrl_Mode;
+                             Period       : in AMC_Types.Seconds);
+
    task body Inverter_System is
+      Period_s : constant AMC_Types.Seconds :=
+         AMC_Types.Seconds (Float (Config.Inverter_System_Period_Ms) / 1000.0);
       Period : constant Time_Span :=
          Milliseconds (Config.Inverter_System_Period_Ms);
       Next_Release : Time := Clock;
 
-      Mode            : Ctrl_Mode := Off;
-      Alignment_Angle : Angle_Erad := 0.0;
       Vbus            : Voltage_V := 0.0;
-      Idq_CC_Request  : Dq := Dq'(D => 0.0, Q => 0.0);
+
       Enable_Gates    : Boolean := False;
+      Outputs : Inverter_System_States;
+      Is_Aligned : Boolean := False;
+      Mode : Ctrl_Mode := Off;
    begin
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
@@ -29,30 +44,21 @@ package body AMC is
          Vbus := AMC_Board.To_Vbus (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)); --  TODO: filter
 
          --  Update current Mode
-         if AMC_Board.Is_Pressed (AMC_Board.User_Button) then
-            Mode := Alignment;
-         else
-            Mode := Off;
-         end if;
+         Update_Mode (Current_Mode   => Mode,
+                      Button_Pressed => AMC_Board.Is_Pressed (AMC_Board.User_Button),
+                      Period         => Period_s,
+                      Is_Aligned     => Is_Aligned);
 
          --  Perform actions based on inputs and Mode
-         case Mode is
-            when Off | Normal =>
-               Idq_CC_Request := Dq'(D => 0.0, Q => 0.0);
-               Enable_Gates := False;
-
-            when Alignment =>
-               Alignment_Angle := 0.0;
-               Idq_CC_Request := Dq'(D => 12.0, Q => 0.0);
-               Enable_Gates := True;
-         end case;
+         Update_Outputs (Outputs      => Outputs,
+                         Enable_Gates => Enable_Gates,
+                         Is_Aligned   => Is_Aligned,
+                         Mode         => Mode,
+                         Period       => Period_s);
+         Outputs.Vbus := Vbus;
 
          --  Atomically, set the task's outputs
-         Inverter_System_Outputs.Set
-            ((Idq_CC_Request  => Idq_CC_Request,
-              Vbus            => Vbus,
-              Alignment_Angle => Alignment_Angle,
-              Mode            => Mode));
+         Inverter_System_Outputs.Set (Outputs);
 
          AMC_Board.Set_Gate_Driver_Power (Enable_Gates);
 
@@ -61,6 +67,71 @@ package body AMC is
       end loop;
    end Inverter_System;
 
+   --  Mode_Prev : Ctrl_Mode;
+   Cnt : AMC_Types.Seconds := 0.0;
+
+   procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
+                          Button_Pressed : in Boolean;
+                          Period         : in AMC_Types.Seconds;
+                          Is_Aligned     : in Boolean) is
+   begin
+      case Current_Mode is
+         when Off =>
+            if Button_Pressed then
+               Cnt := Cnt + Period;
+               if Cnt > 2.0 then
+                  Current_Mode := Alignment;
+               end if;
+            else
+               Cnt := 0.0;
+            end if;
+
+         when Alignment =>
+            if Is_Aligned then
+               Current_Mode := Normal;
+            end if;
+
+         when Normal =>
+            null;
+      end case;
+
+      --  Mode_Prev := Current_Mode;
+   end Update_Mode;
+
+   Cnt2 : AMC_Types.Seconds := 0.0;
+
+   procedure Update_Outputs (Outputs      : in out Inverter_System_States;
+                             Enable_Gates : out Boolean;
+                             Is_Aligned   : out Boolean;
+                             Mode         : in Ctrl_Mode;
+                             Period       : in AMC_Types.Seconds) is
+   begin
+      case Mode is
+         when Normal =>
+            Outputs.Idq_CC_Request := Dq'(D => 0.0, Q => 0.0);
+            Enable_Gates := True;
+            Is_Aligned := False;
+
+         when Off =>
+            Outputs.Idq_CC_Request := Dq'(D => 0.0, Q => 0.0);
+            Enable_Gates := False;
+            Is_Aligned := False;
+
+         when Alignment =>
+            Outputs.Alignment_Angle := 0.0;
+            Outputs.Idq_CC_Request := Dq'(D => 12.0, Q => 0.0);
+            Enable_Gates := True;
+
+            Cnt2 := Cnt2 + Period;
+            Is_Aligned := Cnt2 > 2.0;
+            if Is_Aligned then
+               Cnt2 := 0.0;
+               Position.Set_Angle (0.0);
+            end if;
+      end case;
+
+      Outputs.Mode := Mode;
+   end Update_Outputs;
 
    procedure Safe_State is
    begin

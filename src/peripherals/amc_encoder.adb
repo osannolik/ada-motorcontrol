@@ -88,6 +88,13 @@ package body AMC_Encoder is
       return Compose (Angle_Rad'(Get_Angle));
    end Get_Angle;
 
+   procedure Set_Angle (Angle : in AMC_Types.Angle_Rad) is
+      Counter : constant AMC_Types.UInt16 :=
+         AMC_Types.UInt16 (Float (Angle) * Counts_Per_Revolution / (2.0 * AMC_Math.Pi));
+   begin
+      STM32.Timers.Set_Counter (Counting_Timer, Counter);
+   end Set_Angle;
+
    function Get_Direction return Float is
       use STM32.Timers;
    begin

@@ -29,6 +29,26 @@ package body Position is
       end case;
    end Get_Angle;
 
+   procedure Set_Angle (Angle : in Angle_Erad)
+   is
+   begin
+      case Config.Position_Sensor is
+         when None =>
+            null;
+
+         when Hall =>
+            null;
+
+         when Encoder =>
+            declare
+               A : constant Float :=
+                  Float (Wrap_To_2Pi (Angle_Rad (Angle))) / Motor.Pole_Pairs;
+            begin
+               AMC_Encoder.Set_Angle (Angle_Rad (A));
+            end;
+      end case;
+   end Set_Angle;
+
    function Wrap_To_360 (Angle : in Angle_Deg) return Angle_Deg is
       (Angle_Deg (AMC_Utils.Wrap_To (Float (Angle), 360.0)));
 

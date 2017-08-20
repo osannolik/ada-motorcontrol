@@ -12,6 +12,9 @@ package Position is
 
    function Get_Angle return Angle_Erad;
 
+   procedure Set_Angle (Angle : in Angle_Erad);
+   --  Define the current rotor position as the specified electrical angle
+
    function Wrap_To_180 (Angle : in Angle_Deg)
                          return Angle_Deg;
    --  Wraps Angle into [-180, 180] degrees.
