@@ -28,7 +28,7 @@ package AMC_Types is
    subtype Angle_Erad is Angle_Rad;
    --  Electrical angle, i.e. the rotor angle compensated for motor pole pairs
 
-   type Mode is (Off, Normal, Alignment);
+   type Ctrl_Mode is (Off, Normal, Alignment);
 
    type Phase is (A, B, C);
 

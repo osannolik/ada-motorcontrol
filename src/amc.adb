@@ -1,5 +1,4 @@
 with Ada.Real_Time; use Ada.Real_Time;
-with AMC_Types; use AMC_Types;
 
 with AMC_Board;
 with AMC_ADC;
@@ -14,28 +13,48 @@ package body AMC is
       Period : constant Time_Span :=
          Milliseconds (Config.Inverter_System_Period_Ms);
       Next_Release : Time := Clock;
+
+      Mode            : Ctrl_Mode := Off;
+      Alignment_Angle : Angle_Erad := 0.0;
+      Vbus            : Voltage_V := 0.0;
+      Idq_CC_Request  : Dq := Dq'(D => 0.0, Q => 0.0);
+      Enable_Gates    : Boolean := False;
    begin
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
       AMC_Board.Turn_Off (AMC_Board.Led_Green);
 
       loop
+         --  Get inputs dependent upon
+         Vbus := AMC_Board.To_Vbus (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)); --  TODO: filter
 
-         Inverter_System_Outputs.Vbus.Set
-            (AMC_Board.To_Vbus (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)));
-
+         --  Update current Mode
          if AMC_Board.Is_Pressed (AMC_Board.User_Button) then
-            Inverter_System_Outputs.Alignment_Angle.Set (Angle_Erad'(0.0));
-            Inverter_System_Outputs.Idq_CC_Request.Set (Dq'(D => 12.0,
-                                                            Q => 0.0));
-            Inverter_System_Outputs.Mode.Set (Mode'(Alignment));
-            AMC_Board.Set_Gate_Driver_Power (True);
+            Mode := Alignment;
          else
-            Inverter_System_Outputs.Idq_CC_Request.Set (Dq'(D => 0.0,
-                                                            Q => 0.0));
-            Inverter_System_Outputs.Mode.Set (Mode'(Off));
-            AMC_Board.Set_Gate_Driver_Power (False);
+            Mode := Off;
          end if;
+
+         --  Perform actions based on inputs and Mode
+         case Mode is
+            when Off | Normal =>
+               Idq_CC_Request := Dq'(D => 0.0, Q => 0.0);
+               Enable_Gates := False;
+
+            when Alignment =>
+               Alignment_Angle := 0.0;
+               Idq_CC_Request := Dq'(D => 12.0, Q => 0.0);
+               Enable_Gates := True;
+         end case;
+
+         --  Atomically, set the task's outputs
+         Inverter_System_Outputs.Set
+            ((Idq_CC_Request  => Idq_CC_Request,
+              Vbus            => Vbus,
+              Alignment_Angle => Alignment_Angle,
+              Mode            => Mode));
+
+         AMC_Board.Set_Gate_Driver_Power (Enable_Gates);
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;
@@ -80,10 +99,11 @@ package body AMC is
          AMC_PWM.Is_Initialized and
          AMC_Encoder.Is_Initialized;
 
-      Inverter_System_Outputs.Idq_CC_Request.Set (Dq'(0.0, 0.0));
-      Inverter_System_Outputs.Vbus.Set (Voltage_V'(0.0));
-      Inverter_System_Outputs.Alignment_Angle.Set (Angle_Erad'(0.0));
-      Inverter_System_Outputs.Mode.Set (Mode'(Off));
+      Inverter_System_Outputs.Set
+         ((Idq_CC_Request  => Dq'(0.0, 0.0),
+           Vbus            => 0.0,
+           Alignment_Angle => 0.0,
+           Mode            => Off));
 
    end Initialize;
 

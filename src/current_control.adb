@@ -23,7 +23,7 @@ package body Current_Control is
       Current_Angle : Angle_Erad;
       V_Ctrl_Abc    : Abc;
       Duty          : Abc;
-      Mode          : AMC_Types.Mode;
+      System_Out    : AMC.Inverter_System_States;
    begin
 
       delay until Clock + Milliseconds (10);
@@ -35,24 +35,25 @@ package body Current_Control is
 
          AMC_Board.Turn_On (AMC_Board.Led_Green);
 
-         Mode := AMC.Inverter_System_Outputs.Mode.Get;
+         System_Out := AMC.Inverter_System_Outputs.Get;
 
-         if Mode /= Off then
 
-            if Mode = Alignment then
-               Current_Angle := AMC.Inverter_System_Outputs.Alignment_Angle.Get;
+         if System_Out.Mode /= Off then
+
+            if System_Out.Mode = Alignment then
+               Current_Angle := System_Out.Alignment_Angle;
             else
                Current_Angle := Position.Get_Angle;
             end if;
 
             Iabc_Raw := AMC_Board.To_Phase_Currents (I_Samples);
 
-            Vbus := AMC.Inverter_System_Outputs.Vbus.Get;
+            Vbus := System_Out.Vbus;
             Vmax := 0.5 * Vbus * ZSM.Modulation_Index_Max (Config.Modulation_Method);
 
             V_Ctrl_Abc := FOC.Calculate_Voltage
                (Iabc          => Iabc_Raw,
-                I_Set_Point   => AMC.Inverter_System_Outputs.Idq_CC_Request.Get,
+                I_Set_Point   => System_Out.Idq_CC_Request,
                 Current_Angle => Current_Angle,
                 Vmax          => Vmax,
                 Period        => Nominal_Period);

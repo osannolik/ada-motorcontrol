@@ -1,4 +1,5 @@
-with AMC_Types_PO;
+with Generic_PO;
+with AMC_Types; use AMC_Types;
 with Config;
 
 package AMC is
@@ -19,21 +20,25 @@ package AMC is
 
    --  Collects protected objects set by the Inverter_System task
    type Inverter_System_States is record
-      Idq_CC_Request : AMC_Types_PO.Dq_PO;
+      Idq_CC_Request : Dq;
       --  Holds the Idq value that is used as set-point for the current controller
 
-      Vbus : AMC_Types_PO.Voltage_PO;
+      Vbus : Voltage_V;
       --  DC bus voltage
 
-      Alignment_Angle : AMC_Types_PO.Angle_Erad_PO;
+      Alignment_Angle : Angle_Erad;
       --  In Alignment mode, the current controller aligns rotor to this angle
 
-      Mode : AMC_Types_PO.Mode_PO;
+      Mode : Ctrl_Mode;
       --  Holds the current control mode
    end record;
 
+   package System_States_PO_Pack is new Generic_PO (Inverter_System_States);
 
-   Inverter_System_Outputs : Inverter_System_States;
+   subtype Inverter_Output is
+      System_States_PO_Pack.Shared_Data (Config.Protected_Object_Prio);
+
+   Inverter_System_Outputs : Inverter_Output;
    --  Inverter_System task outputs
 
 private
