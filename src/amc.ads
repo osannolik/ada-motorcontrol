@@ -24,6 +24,12 @@ package AMC is
 
       Vbus : AMC_Types_PO.Voltage_PO;
       --  DC bus voltage
+
+      Alignment_Angle : AMC_Types_PO.Angle_Erad_PO;
+      --  In Alignment mode, the current controller aligns rotor to this angle
+
+      Mode : AMC_Types_PO.Mode_PO;
+      --  Holds the current control mode
    end record;
 
 

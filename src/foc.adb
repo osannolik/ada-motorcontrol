@@ -6,7 +6,7 @@ package body FOC is
 
    Is_Saturated : Boolean := False;
 
-   PID_Iq : PID.Kpid := PID.Compose (Kp => 1.0,
+   PID_Iq : PID.Kpid := PID.Compose (Kp => 0.1,
                                      Ki => 0.0,
                                      Kd => 0.0);
    PID_Id : PID.Kpid := PID_Iq;

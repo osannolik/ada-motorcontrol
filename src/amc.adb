@@ -21,15 +21,21 @@ package body AMC is
 
       loop
 
-         AMC_Board.Set_Gate_Driver_Power
-            (Enabled => AMC_Board.Is_Pressed (AMC_Board.User_Button));
-
          Inverter_System_Outputs.Vbus.Set
-            (Value => AMC_Board.To_Vbus
-                (ADC_Voltage => AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)));
+            (AMC_Board.To_Vbus (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)));
 
-         Inverter_System_Outputs.Idq_CC_Request.Set (Value => (D => 0.0,
-                                                               Q => 0.0));
+         if AMC_Board.Is_Pressed (AMC_Board.User_Button) then
+            Inverter_System_Outputs.Alignment_Angle.Set (Angle_Erad'(0.0));
+            Inverter_System_Outputs.Idq_CC_Request.Set (Dq'(D => 12.0,
+                                                            Q => 0.0));
+            Inverter_System_Outputs.Mode.Set (Mode'(Alignment));
+            AMC_Board.Set_Gate_Driver_Power (True);
+         else
+            Inverter_System_Outputs.Idq_CC_Request.Set (Dq'(D => 0.0,
+                                                            Q => 0.0));
+            Inverter_System_Outputs.Mode.Set (Mode'(Off));
+            AMC_Board.Set_Gate_Driver_Power (False);
+         end if;
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;
@@ -74,8 +80,12 @@ package body AMC is
          AMC_PWM.Is_Initialized and
          AMC_Encoder.Is_Initialized;
 
-   end Initialize;
+      Inverter_System_Outputs.Idq_CC_Request.Set (Dq'(0.0, 0.0));
+      Inverter_System_Outputs.Vbus.Set (Voltage_V'(0.0));
+      Inverter_System_Outputs.Alignment_Angle.Set (Angle_Erad'(0.0));
+      Inverter_System_Outputs.Mode.Set (Mode'(Off));
 
+   end Initialize;
 
    function Is_Initialized
       return Boolean is (Initialized);

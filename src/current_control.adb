@@ -15,13 +15,15 @@ package body Current_Control is
                              return Abc;
 
    task body Current_Control is
-      V_Samples  : Abc;
-      I_Samples  : Abc;
-      Vbus       : Voltage_V;
-      Vmax       : Voltage_V;
-      Iabc_Raw   : Abc;
-      V_Ctrl_Abc : Abc;
-      Duty       : Abc;
+      V_Samples     : Abc;
+      I_Samples     : Abc;
+      Vbus          : Voltage_V;
+      Vmax          : Voltage_V;
+      Iabc_Raw      : Abc;
+      Current_Angle : Angle_Erad;
+      V_Ctrl_Abc    : Abc;
+      Duty          : Abc;
+      Mode          : AMC_Types.Mode;
    begin
 
       delay until Clock + Milliseconds (10);
@@ -33,19 +35,35 @@ package body Current_Control is
 
          AMC_Board.Turn_On (AMC_Board.Led_Green);
 
-         Iabc_Raw := AMC_Board.To_Phase_Currents (I_Samples);
+         Mode := AMC.Inverter_System_Outputs.Mode.Get;
 
-         Vbus := AMC.Inverter_System_Outputs.Vbus.Get;
-         Vmax := 0.5 * Vbus * ZSM.Modulation_Index_Max (Config.Modulation_Method);
+         if Mode /= Off then
 
-         V_Ctrl_Abc := FOC.Calculate_Voltage
-            (Iabc          => Iabc_Raw,
-             I_Set_Point   => AMC.Inverter_System_Outputs.Idq_CC_Request.Get,
-             Current_Angle => Position.Get_Angle,
-             Vmax          => Vmax,
-             Period        => Nominal_Period);
+            if Mode = Alignment then
+               Current_Angle := AMC.Inverter_System_Outputs.Alignment_Angle.Get;
+            else
+               Current_Angle := Position.Get_Angle;
+            end if;
 
-         Duty := Voltage_To_Duty (V_Ctrl_Abc, Vbus);
+            Iabc_Raw := AMC_Board.To_Phase_Currents (I_Samples);
+
+            Vbus := AMC.Inverter_System_Outputs.Vbus.Get;
+            Vmax := 0.5 * Vbus * ZSM.Modulation_Index_Max (Config.Modulation_Method);
+
+            V_Ctrl_Abc := FOC.Calculate_Voltage
+               (Iabc          => Iabc_Raw,
+                I_Set_Point   => AMC.Inverter_System_Outputs.Idq_CC_Request.Get,
+                Current_Angle => Current_Angle,
+                Vmax          => Vmax,
+                Period        => Nominal_Period);
+
+            Duty := Voltage_To_Duty (V_Ctrl_Abc, Vbus);
+
+         else
+
+            Duty := Abc'(50.0, 50.0, 50.0);
+
+         end if;
 
          AMC_PWM.Set_Duty_Cycle (Duty);
 
