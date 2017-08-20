@@ -105,4 +105,34 @@ package body AMC_Utils is
                      return Temperature_DegC is
       (Temperature_DegC (Kelvin - 273.15));
 
+
+   function Create (Timeout : in Seconds) return Timer is
+      (Timer'(Time    => 0.0,
+              Timeout => Timeout));
+
+   procedure Reset (T : in out Timer)
+   is
+   begin
+      T.Time := 0.0;
+   end Reset;
+
+   function Tick (T         : in out Timer;
+                  Time_Step : in Seconds) return Boolean
+   is
+   begin
+      T.Time := T.Time + Time_Step;
+      return T.Is_Done;
+   end Tick;
+
+   procedure Tick (T         : in out Timer;
+                   Time_Step : in Seconds)
+   is
+   begin
+      T.Time := T.Time + Time_Step;
+   end Tick;
+
+   function Is_Done (T : in out Timer) return Boolean is
+      (T.Time >= T.Timeout);
+
+
 end AMC_Utils;

@@ -5,6 +5,7 @@ with AMC_ADC;
 with AMC_PWM;
 with AMC_Encoder;
 with Position;
+with AMC_Utils;
 
 with Current_Control; pragma Unreferenced (Current_Control);
 
@@ -28,12 +29,11 @@ package body AMC is
          Milliseconds (Config.Inverter_System_Period_Ms);
       Next_Release : Time := Clock;
 
-      Vbus            : Voltage_V := 0.0;
-
-      Enable_Gates    : Boolean := False;
-      Outputs : Inverter_System_States;
-      Is_Aligned : Boolean := False;
-      Mode : Ctrl_Mode := Off;
+      Vbus         : Voltage_V := 0.0;
+      Enable_Gates : Boolean := False;
+      Outputs      : Inverter_System_States;
+      Is_Aligned   : Boolean := False;
+      Mode         : Ctrl_Mode := Off;
    begin
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
@@ -67,8 +67,7 @@ package body AMC is
       end loop;
    end Inverter_System;
 
-   --  Mode_Prev : Ctrl_Mode;
-   Cnt : AMC_Types.Seconds := 0.0;
+   Mode_Tmr : AMC_Utils.Timer := AMC_Utils.Create (2.0);
 
    procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
                           Button_Pressed : in Boolean;
@@ -78,12 +77,12 @@ package body AMC is
       case Current_Mode is
          when Off =>
             if Button_Pressed then
-               Cnt := Cnt + Period;
-               if Cnt > 2.0 then
+               if Mode_Tmr.Tick (Period) then
+                  Mode_Tmr.Reset;
                   Current_Mode := Alignment;
                end if;
             else
-               Cnt := 0.0;
+               Mode_Tmr.Reset;
             end if;
 
          when Alignment =>
@@ -92,13 +91,14 @@ package body AMC is
             end if;
 
          when Normal =>
-            null;
-      end case;
+            if Button_Pressed then
+               Current_Mode := Off;
+            end if;
 
-      --  Mode_Prev := Current_Mode;
+      end case;
    end Update_Mode;
 
-   Cnt2 : AMC_Types.Seconds := 0.0;
+   Align_Tmr : AMC_Utils.Timer := AMC_Utils.Create (2.0);
 
    procedure Update_Outputs (Outputs      : in out Inverter_System_States;
                              Enable_Gates : out Boolean;
@@ -122,10 +122,9 @@ package body AMC is
             Outputs.Idq_CC_Request := Dq'(D => 12.0, Q => 0.0);
             Enable_Gates := True;
 
-            Cnt2 := Cnt2 + Period;
-            Is_Aligned := Cnt2 > 2.0;
+            Is_Aligned := Align_Tmr.Tick (Period);
             if Is_Aligned then
-               Cnt2 := 0.0;
+               Align_Tmr.Reset;
                Position.Set_Angle (0.0);
             end if;
       end case;

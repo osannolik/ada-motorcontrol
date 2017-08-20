@@ -61,4 +61,21 @@ package AMC_Utils is
    with
       Inline;
 
+   type Timer is tagged limited record
+      Time    : Seconds := 0.0;
+      Timeout : Seconds := 0.0;
+   end record;
+
+   function Create (Timeout : in Seconds) return Timer;
+
+   procedure Reset (T : in out Timer);
+
+   function Tick (T         : in out Timer;
+                  Time_Step : in Seconds) return Boolean;
+
+   procedure Tick (T         : in out Timer;
+                   Time_Step : in Seconds);
+
+   function Is_Done (T : in out Timer) return Boolean;
+
 end AMC_Utils;
