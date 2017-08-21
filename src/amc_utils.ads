@@ -12,6 +12,11 @@ package AMC_Utils is
                        Maximum : in Float;
                        Is_Sat  : out Boolean);
 
+   function Saturate (X       : in Float;
+                      Maximum : in Float;
+                      Minimum : in Float)
+                      return Float;
+
    function Sign (X : in Float)
                   return Float
    with

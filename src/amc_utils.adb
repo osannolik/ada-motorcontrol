@@ -16,6 +16,13 @@ package body AMC_Utils is
 
    end Saturate;
 
+   function Saturate (X       : in Float;
+                      Maximum : in Float;
+                      Minimum : in Float)
+                      return Float
+   is
+      (Max (Min (X, Maximum), Minimum));
+
    function Sign (X : in Float)
                   return Float
    is

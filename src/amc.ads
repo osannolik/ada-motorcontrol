@@ -5,6 +5,9 @@ with Config;
 package AMC is
    --  Ada Motor Controller
 
+   function External_Voltage_To_Iq_Req (ADC_Voltage : in Voltage_V)
+                                        return Dq;
+
    procedure Initialize;
    --  Initialization to be performed during elaboration
 

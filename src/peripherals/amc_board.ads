@@ -58,8 +58,9 @@ package AMC_Board is
    ADC_EMF_B_Pin    : STM32.GPIO.GPIO_Point renames STM32.Device.PA1;
    ADC_EMF_C_Pin    : STM32.GPIO.GPIO_Point renames STM32.Device.PA2;
 
-   ADC_Bat_Sense_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PC0;
+   ADC_Bat_Sense_Pin  : STM32.GPIO.GPIO_Point renames STM32.Device.PC0;
    ADC_Board_Temp_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PC4;
+   ADC_Ext_V_Pin      : STM32.GPIO.GPIO_Point renames STM32.Device.PA4;
 
    ADC_I_A_Point    : constant STM32.ADC.ADC_Point :=
       (STM32.Device.ADC_1'Access, Channel => 11);
@@ -84,6 +85,9 @@ package AMC_Board is
 
    ADC_Board_Temp_Point : constant STM32.ADC.ADC_Point :=
       (STM32.Device.ADC_1'Access, Channel => 14);
+
+   ADC_Ext_V_Point : constant STM32.ADC.ADC_Point :=
+      (STM32.Device.ADC_1'Access, Channel => 4);
 
    Encoder_A_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB6;
    Encoder_B_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB7;

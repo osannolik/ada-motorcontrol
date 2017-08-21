@@ -13,10 +13,10 @@ package AMC_ADC is
 
 
    type ADC_Readings is
-      (I_A, I_B, I_C, EMF_A, EMF_B, EMF_C, Bat_Sense, Board_Temp);
+      (I_A, I_B, I_C, EMF_A, EMF_B, EMF_C, Bat_Sense, Board_Temp, Ext_V);
 
    subtype ADC_Readings_Inj is ADC_Readings range I_A .. EMF_C;
-   subtype ADC_Readings_Reg is ADC_Readings range Bat_Sense .. Board_Temp;
+   subtype ADC_Readings_Reg is ADC_Readings range Bat_Sense .. Ext_V;
 
    type Injected_Samples_Array is
       array (ADC_Readings_Inj'Range) of AMC_Types.Voltage_V;
@@ -108,7 +108,10 @@ private
                         Channel_Rank => 1),
        (Board_Temp) => (Pin          => AMC_Board.ADC_Board_Temp_Pin,
                         ADC_Point    => AMC_Board.ADC_Board_Temp_Point,
-                        Channel_Rank => 2));
+                        Channel_Rank => 2),
+       (Ext_V)      => (Pin          => AMC_Board.ADC_Ext_V_Pin,
+                        ADC_Point    => AMC_Board.ADC_Ext_V_Point,
+                        Channel_Rank => 3));
 
    Regular_Samples : Regular_Samples_Array := (others => 0) with Volatile;
 
