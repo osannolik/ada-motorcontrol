@@ -23,12 +23,15 @@ package body AMC is
                              Idq_Req      : in Dq;
                              Period       : in AMC_Types.Seconds);
 
-   --   Temporary for test
+   --  Temporary for test
    function External_Voltage_To_Iq_Req (ADC_Voltage : in Voltage_V)
                                         return Dq
    is
       Iq : constant Float := Float (ADC_Voltage) * 20.0 / 3.3;
    begin
+      if Iq < 2.0 then
+         return Dq'(0.0, 0.0);
+      end if;
 
       return Dq'(D => 0.0, Q => AMC_Utils.Saturate (X       => Iq,
                                                     Maximum => 20.0,
