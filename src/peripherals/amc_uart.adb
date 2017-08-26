@@ -140,7 +140,7 @@ package body AMC_UART is
       end if;
    end Send_Data;
 
-   function Receive_Data_2 return Data_Rx is
+   function Receive_Data return Data_Rx is
       N : constant Positive := Current_Rx_Index;
       Data : Data_Rx (Buffer_Rx_Index_Range'First .. N - 1);
    begin
@@ -158,42 +158,6 @@ package body AMC_UART is
       --  TODO: Make it a double buffered?
 
       return Data;
-   end Receive_Data_2;
-
-   --  Kind of a crappy function, but works:
-   --  Uses global data although it is a function, not thread safe, ugly,
-   --  don't handle case if DMA fills more than a full buffer since last call etc...
-   function Receive_Data return Data_Rx is
-      N     : constant Positive := Current_Rx_Index;
-      First : constant Positive := Buffer_Rx_Index_Range'First;
-      Last  : constant Positive := Buffer_Rx_Index_Range'Last;
-   begin
-      if N = N_Prev then
-         --  No new data
-         N_Prev := N;
-         return Empty_Rx_Data;
-      end if;
-
-      if N > N_Prev then
-         declare
-            Data : constant Buffer_Rx_Type (First .. First + N - 1 - N_Prev) :=
-               Buffer_Rx (N_Prev .. (N - 1));
-         begin
-            N_Prev := N;
-            return Data;
-         end;
-      end if;
-
-      --  Else, wrapped: N < N_Prev
-      declare
-         End_Index : constant Positive := Last - (N_Prev - N);
-         Data : Buffer_Rx_Type (First .. End_Index);
-      begin
-         Data (First .. First + Last - N_Prev) := Buffer_Rx (N_Prev .. Last);
-         Data (First + Last - N_Prev + 1 .. End_Index) := Buffer_Rx (First .. N - 1);
-         N_Prev := N;
-         return Data;
-      end;
    end Receive_Data;
 
    function Is_Initialized

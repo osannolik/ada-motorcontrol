@@ -1,6 +1,8 @@
 with STM32.Timers;
 with STM32.Device;
+with STM32.GPIO;
 with AMC_Types;
+with AMC_Board;
 
 package AMC_Encoder is
    --  Quadrature Encoder
@@ -34,6 +36,9 @@ private
    Initialized : Boolean := False;
 
    PPR : constant Positive := 2048;
+
+   Input_Pins : constant STM32.GPIO.GPIO_Points :=
+      (AMC_Board.Encoder_A_Pin, AMC_Board.Encoder_B_Pin);
 
    Counting_Timer : STM32.Timers.Timer renames STM32.Device.Timer_4;
 

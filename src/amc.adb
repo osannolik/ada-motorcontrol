@@ -1,6 +1,7 @@
 with Ada.Real_Time; use Ada.Real_Time;
 
 with AMC_Board;
+with AMC_UART;
 with AMC_ADC;
 with AMC_PWM;
 with AMC_Encoder;
@@ -57,6 +58,15 @@ package body AMC is
       AMC_Board.Turn_Off (AMC_Board.Led_Green);
 
       loop
+         --  Test simple loop-back
+         declare
+            Din : constant AMC_UART.Data_Rx := AMC_UART.Receive_Data;
+            D   : aliased AMC_UART.Data_Tx  := AMC_UART.Data_Tx (Din);
+         begin
+
+            AMC_UART.Send_Data (D'Access);
+         end;
+
          --  Get inputs dependent upon
          Vbus := AMC_Board.To_Vbus
             (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)); --  TODO: filter
@@ -167,6 +177,8 @@ package body AMC is
 
       AMC_Board.Initialize;
 
+      AMC_UART.Initialize;
+
       AMC_Encoder.Initialize;
 
       AMC_ADC.Initialize;
@@ -187,6 +199,7 @@ package body AMC is
 
       Initialized :=
          AMC_Board.Is_Initialized and
+         AMC_UART.Is_Initialized and
          AMC_ADC.Is_Initialized and
          AMC_PWM.Is_Initialized and
          AMC_Encoder.Is_Initialized;

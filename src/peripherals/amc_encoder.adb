@@ -1,5 +1,3 @@
-with STM32.GPIO;
-with AMC_Board;
 with AMC_Math;
 with HAL; use HAL;
 
@@ -8,10 +6,6 @@ package body AMC_Encoder is
    procedure Initialize
    is
       use STM32.Timers;
-
-      Input_Pins : constant STM32.GPIO.GPIO_Points :=
-         (AMC_Board.Encoder_A_Pin, AMC_Board.Encoder_B_Pin);
-
    begin
 
       STM32.Device.Enable_Clock (Input_Pins);

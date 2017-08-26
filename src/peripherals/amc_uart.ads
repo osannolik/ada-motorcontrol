@@ -13,7 +13,7 @@ package AMC_UART is
    type Buffer_Tx_Type is array (Buffer_Tx_Index_Range range <>) of AMC_Types.UInt8;
    for Buffer_Tx_Type'Component_Size use 8;
 
-   Buffer_Rx_Max_Length : constant Positive := 8;
+   Buffer_Rx_Max_Length : constant Positive := 256;
    subtype Buffer_Rx_Index_Range is Positive range 1 .. Buffer_Rx_Max_Length;
    type Buffer_Rx_Type is array (Buffer_Rx_Index_Range range <>) of AMC_Types.UInt8;
    for Buffer_Rx_Type'Component_Size use 8;
@@ -33,8 +33,6 @@ package AMC_UART is
    procedure Send_Data (Data : access Data_Tx);
 
    function Receive_Data return Data_Rx;
-
-   function Receive_Data_2 return Data_Rx;
 
    Busy_Transmitting : exception;
    No_New_Data : exception;
