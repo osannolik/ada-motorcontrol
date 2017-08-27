@@ -9,8 +9,9 @@ with AMC_Types;
 package AMC_UART is
 
    Buffer_Max_Length : constant Positive := 256;
+   subtype Buffer_Element is AMC_Types.UInt8;
    subtype Buffer_Index_Range is Positive range 1 .. Buffer_Max_Length;
-   type Buffer_Type is array (Buffer_Index_Range range <>) of AMC_Types.UInt8;
+   type Buffer_Type is array (Buffer_Index_Range range <>) of Buffer_Element;
    for Buffer_Type'Component_Size use 8;
 
    subtype Data_TxRx is Buffer_Type;
