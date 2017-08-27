@@ -60,10 +60,8 @@ package body AMC is
       loop
          --  Test simple loop-back
          declare
-            Din : constant AMC_UART.Data_Rx := AMC_UART.Receive_Data;
-            D   : aliased AMC_UART.Data_Tx  := AMC_UART.Data_Tx (Din);
+            D : aliased AMC_UART.Data_TxRx := AMC_UART.Receive_Data;
          begin
-
             AMC_UART.Send_Data (D'Access);
          end;
 

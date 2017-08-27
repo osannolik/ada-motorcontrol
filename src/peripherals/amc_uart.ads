@@ -8,20 +8,14 @@ with AMC_Types;
 
 package AMC_UART is
 
-   Buffer_Tx_Max_Length : constant Positive := 256;
-   subtype Buffer_Tx_Index_Range is Positive range 1 .. Buffer_Tx_Max_Length;
-   type Buffer_Tx_Type is array (Buffer_Tx_Index_Range range <>) of AMC_Types.UInt8;
-   for Buffer_Tx_Type'Component_Size use 8;
+   Buffer_Max_Length : constant Positive := 256;
+   subtype Buffer_Index_Range is Positive range 1 .. Buffer_Max_Length;
+   type Buffer_Type is array (Buffer_Index_Range range <>) of AMC_Types.UInt8;
+   for Buffer_Type'Component_Size use 8;
 
-   Buffer_Rx_Max_Length : constant Positive := 256;
-   subtype Buffer_Rx_Index_Range is Positive range 1 .. Buffer_Rx_Max_Length;
-   type Buffer_Rx_Type is array (Buffer_Rx_Index_Range range <>) of AMC_Types.UInt8;
-   for Buffer_Rx_Type'Component_Size use 8;
+   subtype Data_TxRx is Buffer_Type;
 
-   subtype Data_Tx is Buffer_Tx_Type;
-   subtype Data_Rx is Buffer_Rx_Type;
-
-   Empty_Rx_Data : constant Data_Rx (1 .. 0) := (others => 0);
+   Empty_Data : constant Data_TxRx (1 .. 0) := (others => 0);
 
    function Is_Initialized
       return Boolean;
@@ -30,9 +24,9 @@ package AMC_UART is
 
    function Is_Busy_Tx return Boolean;
 
-   procedure Send_Data (Data : access Data_Tx);
+   procedure Send_Data (Data : access Data_TxRx);
 
-   function Receive_Data return Data_Rx;
+   function Receive_Data return Data_TxRx;
 
    Busy_Transmitting : exception;
    No_New_Data : exception;
@@ -62,8 +56,8 @@ private
 
    N_Prev : Positive;
 
-   Buffer_Tx : aliased Buffer_Tx_Type (Buffer_Tx_Index_Range'Range);
-   Buffer_Rx : aliased Buffer_Rx_Type (Buffer_Rx_Index_Range'Range);
+   Buffer_Tx : aliased Buffer_Type (Buffer_Index_Range'Range);
+   Buffer_Rx : aliased Buffer_Type (Buffer_Index_Range'Range);
    Buffer_Tx_Address : constant System.Address := Buffer_Tx'Address;
 
 end AMC_UART;

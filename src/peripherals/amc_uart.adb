@@ -114,7 +114,7 @@ package body AMC_UART is
    function Is_Busy_Tx return Boolean is
       (STM32.DMA.Enabled (DMA_Ctrl, DMA_Stream_Tx));
 
-   procedure Send_Data (Data : access Data_Tx)
+   procedure Send_Data (Data : access Data_TxRx)
    is
    begin
       --  Make sure the stream is not busy
@@ -140,13 +140,13 @@ package body AMC_UART is
       end if;
    end Send_Data;
 
-   function Receive_Data return Data_Rx is
+   function Receive_Data return Data_TxRx is
       N : constant Positive := Current_Rx_Index;
-      Data : Data_Rx (Buffer_Rx_Index_Range'First .. N - 1);
+      Data : Data_TxRx (Buffer_Index_Range'First .. N - 1);
    begin
       STM32.DMA.Disable (DMA_Ctrl, DMA_Stream_Rx);
 
-      Data := Buffer_Rx (Buffer_Rx_Index_Range'First .. N - 1);
+      Data := Buffer_Rx (Buffer_Index_Range'First .. N - 1);
 
       STM32.DMA.Set_NDT (This       => DMA_Ctrl,
                          Stream     => DMA_Stream_Rx,
