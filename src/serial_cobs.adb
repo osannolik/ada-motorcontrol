@@ -3,16 +3,6 @@ with HAL; use HAL;
 package body Serial_COBS is
 
 
-
-   Delimiter : constant AMC_UART.Buffer_Element := 0;
-
-   Decode_Buffer : Data (Buffer_Index'Range);
-
-   Decode_Index : Positive := 1;
-
-   pragma Unreferenced (Decode_Buffer, Decode_Index);
-
-
    function COBS_Encode (Input : access Data)
                          return Data
    is
@@ -25,6 +15,10 @@ package body Serial_COBS is
       Idx_Out      : Buffer_Index := Buffer_Index'First + 1;
       Code         : AMC_UART.Buffer_Element := 1;
    begin
+      if Input'Length = 0 then
+         return AMC_UART.Empty_Data;
+      end if;
+
       for D of Input.all loop
          if D = 0 then
             Encoded_Data (Idx_Code) := Code;
@@ -47,6 +41,7 @@ package body Serial_COBS is
       Encoded_Data (Idx_Code) := Code;
 
       return Encoded_Data;
+
    end COBS_Encode;
 
 
@@ -64,14 +59,12 @@ package body Serial_COBS is
    begin
       loop
          Length := Natural (Encoded_Data (Idx)) - 1;
-
          Idx_End := Idx + Length;
 
          Decoded_Data (Idx_Out .. Idx_Out + Length - 1) :=
             Encoded_Data (Idx + 1 .. Idx_End);
 
          Idx := Idx_End + 1;
-
          Idx_Out := Idx_Out + Length;
 
          exit when not (Idx < Buffer_Index'First + Encoded_Data'Length);
@@ -83,30 +76,39 @@ package body Serial_COBS is
       end loop;
 
       return Decoded_Data;
+
    end COBS_Decode;
 
 
-   procedure Receive_Handler is
+   function Receive_Handler (Obj : in out COBS_Object;
+                             Encoded_Rx : in Data)
+                             return Data
+   is
+      Decoded_Data : Data (Buffer_Index'Range);
+      Idx_Decode   : Positive := 1;
    begin
 
-      declare
-         Encoded_Rx : constant AMC_UART.Data_TxRx := AMC_UART.Receive_Data;
-         --  N : constant Natural := Encoded_Rx'Length;
-         I : Positive := 1;
-      begin
+      for Idx_Rx in Encoded_Rx'Range loop
+         if Encoded_Rx (Idx_Rx) = Delimiter then
+            declare
+               Encoded_Data : aliased Data :=
+                  Obj.Buffer_Incomplete (Buffer_Index'First .. Obj.Idx_Buffer - 1);
+               Decoded_Length : constant Natural :=
+                  Obj.Idx_Buffer - 1 - Buffer_Index'First; -- Enc len minus one
+            begin
+               Decoded_Data (Idx_Decode .. Idx_Decode + Decoded_Length - 1) :=
+                  COBS_Decode (Encoded_Data'Access);
+               Idx_Decode := Idx_Decode + Decoded_Length;
+            end;
 
-         for B of Encoded_Rx loop
-            if B = Delimiter then
-               --  Decode_Buffer (Decode_Index .. I) := Encoded_Rx (1 ..
-               null;
-            else
-               I := I + 1;
-            end if;
+            Obj.Idx_Buffer := Buffer_Index'First;
+         else
+            Obj.Buffer_Incomplete (Obj.Idx_Buffer) := Encoded_Rx (Idx_Rx);
+            Obj.Idx_Buffer := Obj.Idx_Buffer + 1;
+         end if;
+      end loop;
 
-         end loop;
-
-
-      end;
+      return Decoded_Data (Buffer_Index'First .. Idx_Decode - 1);
 
    end Receive_Handler;
 

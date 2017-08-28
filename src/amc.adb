@@ -54,15 +54,19 @@ package body AMC is
       Outputs      : Inverter_System_States;
       Is_Aligned   : Boolean := False;
       Mode         : Ctrl_Mode := Off;
+
+      COBS : Serial_COBS.COBS_Object;
    begin
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
       AMC_Board.Turn_Off (AMC_Board.Led_Green);
 
       loop
-         AMC_Board.Turn_On (AMC_Board.Led_Red);
+         --  AMC_Board.Turn_On (AMC_Board.Led_Red);
          for I in 1 .. 100 loop
             declare
+               D0 : aliased Serial_COBS.Data := AMC_UART.Empty_Data;
+               Dout0 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D0'Access);
                D1 : aliased Serial_COBS.Data := (1 => 16#00#);
                Dout1 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D1'Access);
                D2 : aliased Serial_COBS.Data := (16#00#, 16#00#);
@@ -73,13 +77,13 @@ package body AMC is
                Dout4 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D4'Access);
                D5 : aliased Serial_COBS.Data := (16#11#, 16#00#, 16#00#, 16#00#);
                Dout5 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D5'Access);
-               pragma Unreferenced (Dout1, Dout2, Dout3, Dout4, Dout5);
+               pragma Unreferenced (Dout0, Dout1, Dout2, Dout3, Dout4, Dout5);
             begin
                null;
             end;
          end loop;
 
-         AMC_Board.Turn_Off (AMC_Board.Led_Red);
+         --  AMC_Board.Turn_Off (AMC_Board.Led_Red);
 
          declare
             D1 : aliased Serial_COBS.Data := (16#03#, 16#2F#, 16#A2#, 16#04#, 16#92#, 16#73#, 16#26#);
@@ -97,7 +101,19 @@ package body AMC is
             null;
          end;
 
-         --  Serial_COBS.Receive_Handler;
+         declare
+            Dout0 : constant Serial_COBS.Data :=
+               COBS.Receive_Handler (AMC_UART.Empty_Data);
+            Dout1 : constant Serial_COBS.Data :=
+               COBS.Receive_Handler ((16#03#, 16#1#, 16#2#, 16#04#, 16#3#, 16#4#, 16#5#, 16#00#,
+                                     16#02#, 16#6#, 16#01#, 16#1#, 16#1#, 16#00#,
+                                     16#03#, 16#1#));
+            Dout2 : constant Serial_COBS.Data :=
+               COBS.Receive_Handler ((16#2#, 16#04#, 16#3#, 16#4#, 16#5#, 16#00#));
+            pragma Unreferenced (Dout0, Dout1, Dout2);
+         begin
+            null;
+         end;
 
          --  Test simple loop-back
 --           declare
