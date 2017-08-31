@@ -3,9 +3,9 @@ with HAL; use HAL;
 package body AMC_UART is
 
    --  Gets the rx buffer index where the next data byte will be written
-   function Current_Rx_Index return Positive is
-      (1 + Buffer_Rx'Length - Positive (STM32.DMA.Items_Transferred (This   => DMA_Ctrl,
-                                                           Stream => DMA_Stream_Rx)));
+   function Current_Rx_Index return Natural is
+      (Buffer_Rx'Length - Natural (STM32.DMA.Items_Transferred (This   => DMA_Ctrl,
+                                                                Stream => DMA_Stream_Rx)));
 
    procedure Initialize
    is
@@ -104,8 +104,6 @@ package body AMC_UART is
           Destination => Buffer_Rx'Address,
           Data_Count  => Buffer_Rx'Length);
 
-      N_Prev := Current_Rx_Index;
-
       Enable (UART);
 
       Initialized := True;
@@ -114,7 +112,7 @@ package body AMC_UART is
    function Is_Busy_Tx return Boolean is
       (STM32.DMA.Enabled (DMA_Ctrl, DMA_Stream_Tx));
 
-   procedure Send_Data (Data : access Data_TxRx)
+   procedure Send_Data (Data : access Byte_Array)
    is
    begin
       --  Make sure the stream is not busy
@@ -122,8 +120,8 @@ package body AMC_UART is
          raise Busy_Transmitting;
       end if;
 
-      if Data.all'Length > 0 then
-         Buffer_Tx (1 .. Data.all'Length) := Data.all;
+      if Data'Length > 0 then
+         Buffer_Tx (Data'Range) := Data.all;
 
          STM32.DMA.Clear_All_Status (DMA_Ctrl, DMA_Stream_Tx);
 
@@ -134,19 +132,19 @@ package body AMC_UART is
              DMA_Stream_Tx,
              Source      => Buffer_Tx_Address,
              Destination => UART_Data_Address,
-             Data_Count  => Data.all'Length);
+             Data_Count  => Data'Length);
 
          STM32.DMA.Enable (DMA_Ctrl, DMA_Stream_Tx);
       end if;
    end Send_Data;
 
-   function Receive_Data return Data_TxRx is
-      N : constant Positive := Current_Rx_Index;
-      Data : Data_TxRx (Buffer_Index_Range'First .. N - 1);
+   function Receive_Data return Byte_Array is
+      N : constant Natural := Current_Rx_Index;
+      Data : Byte_Array (Buffer_Index'First .. N - 1);
    begin
       STM32.DMA.Disable (DMA_Ctrl, DMA_Stream_Rx);
 
-      Data := Buffer_Rx (Buffer_Index_Range'First .. N - 1);
+      Data := Buffer_Rx (Buffer_Index'First .. N - 1);
 
       STM32.DMA.Set_NDT (This       => DMA_Ctrl,
                          Stream     => DMA_Stream_Rx,

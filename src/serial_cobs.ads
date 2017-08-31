@@ -1,26 +1,27 @@
-with AMC_UART;
+with AMC_Types;
 
 package Serial_COBS is
    --  Consistent Overhead Byte Stuffing
 
-   Delimiter : constant AMC_UART.Buffer_Element := AMC_UART.Buffer_Element'(0);
-
-   subtype Buffer_Index is AMC_UART.Buffer_Index_Range;
-   subtype Data is AMC_UART.Data_TxRx;
-
-   type COBS_Object is tagged limited record
-      Buffer_Incomplete : Data (Buffer_Index'Range);
-      Idx_Buffer        : Positive := Buffer_Index'First;
-   end record;
-
-   Data_Length_Max : constant Buffer_Index := 253;
+   Data_Length_Max : constant Natural := 253;
    --  COBS always adds 1 byte to the message length.
    --  Additionally, for longer packets of length n,
    --  it may add floor(n/254) additional bytes to the encoded packet size.
    --  Hence, by setting data len to max 253, the stuffing size is always 1 byte.
 
-   function COBS_Encode (Input : access Data)
-                         return Data
+   subtype Buffer_Index is Natural range 0 .. Data_Length_Max;
+
+   type COBS_Object is tagged limited record
+      Buffer_Incomplete : AMC_Types.Byte_Array (Buffer_Index'Range);
+      Idx_Buffer        : Natural := Buffer_Index'First;
+   end record;
+
+
+   function Is_Delimiter (X : in AMC_Types.UInt8) return Boolean
+   with Inline;
+
+   function COBS_Encode (Input : access AMC_Types.Byte_Array)
+                         return AMC_Types.Byte_Array
    with
       Pre => Input'Length <= Data_Length_Max,
       Post => (if Input'Length > 0 then
@@ -28,8 +29,8 @@ package Serial_COBS is
                else
                   Input'Length = COBS_Encode'Result'Length);
 
-   function COBS_Decode (Encoded_Data : access Data)
-                         return Data
+   function COBS_Decode (Encoded_Data : access AMC_Types.Byte_Array)
+                         return AMC_Types.Byte_Array
    with
       Pre => Encoded_Data'Length <= Data_Length_Max + 1,
       Post => (if Encoded_Data'Length > 0 then
@@ -38,8 +39,11 @@ package Serial_COBS is
                   Encoded_Data'Length = COBS_Decode'Result'Length);
 
    function Receive_Handler (Obj : in out COBS_Object;
-                             Encoded_Rx : in Data)
-                             return Data;
+                             Encoded_Rx : in AMC_Types.Byte_Array)
+                             return AMC_Types.Byte_Array;
 
+private
+
+   Delimiter : constant := AMC_Types.UInt8'(0);
 
 end Serial_COBS;

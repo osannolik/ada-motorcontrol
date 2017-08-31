@@ -6,6 +6,9 @@ package AMC_Types is
    subtype UInt32 is HAL.UInt32;
    subtype UInt16 is HAL.UInt16;
    subtype UInt8 is HAL.UInt8;
+   subtype Byte_Array is HAL.UInt8_Array;
+
+   Empty_Byte_Array : constant Byte_Array (1 .. 0) := (others => 0);
 
    subtype Frequency_Hz is Float;
    subtype Seconds is Float;

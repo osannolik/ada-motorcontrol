@@ -65,18 +65,18 @@ package body AMC is
          --  AMC_Board.Turn_On (AMC_Board.Led_Red);
          for I in 1 .. 100 loop
             declare
-               D0 : aliased Serial_COBS.Data := AMC_UART.Empty_Data;
-               Dout0 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D0'Access);
-               D1 : aliased Serial_COBS.Data := (1 => 16#00#);
-               Dout1 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D1'Access);
-               D2 : aliased Serial_COBS.Data := (16#00#, 16#00#);
-               Dout2 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D2'Access);
-               D3 : aliased Serial_COBS.Data := (16#11#, AMC_Types.UInt8 (I), 16#00#, 16#33#);
-               Dout3 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D3'Access);
-               D4 : aliased Serial_COBS.Data := (16#11#, 16#22#, 16#33#, 16#44#);
-               Dout4 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D4'Access);
-               D5 : aliased Serial_COBS.Data := (16#11#, 16#00#, 16#00#, 16#00#);
-               Dout5 : constant Serial_COBS.Data := Serial_COBS.COBS_Encode (D5'Access);
+               D0 : aliased AMC_Types.Byte_Array := AMC_Types.Empty_Byte_Array;
+               Dout0 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Encode (D0'Access);
+               D1 : aliased AMC_Types.Byte_Array := (1 => 16#00#);
+               Dout1 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Encode (D1'Access);
+               D2 : aliased AMC_Types.Byte_Array := (16#00#, 16#00#);
+               Dout2 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Encode (D2'Access);
+               D3 : aliased AMC_Types.Byte_Array := (16#11#, AMC_Types.UInt8 (I), 16#00#, 16#33#);
+               Dout3 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Encode (D3'Access);
+               D4 : aliased AMC_Types.Byte_Array := (16#11#, 16#22#, 16#33#, 16#44#);
+               Dout4 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Encode (D4'Access);
+               D5 : aliased AMC_Types.Byte_Array := (16#11#, 16#00#, 16#00#, 16#00#);
+               Dout5 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Encode (D5'Access);
                pragma Unreferenced (Dout0, Dout1, Dout2, Dout3, Dout4, Dout5);
             begin
                null;
@@ -86,29 +86,29 @@ package body AMC is
          --  AMC_Board.Turn_Off (AMC_Board.Led_Red);
 
          declare
-            D1 : aliased Serial_COBS.Data := (16#03#, 16#2F#, 16#A2#, 16#04#, 16#92#, 16#73#, 16#26#);
-            Dout1 : constant Serial_COBS.Data := Serial_COBS.COBS_Decode (D1'Access);
-            D2 : aliased Serial_COBS.Data := (16#01#, 16#01#);
-            Dout2 : constant Serial_COBS.Data := Serial_COBS.COBS_Decode (D2'Access);
-            D3 : aliased Serial_COBS.Data := (16#01#, 16#01#, 16#01#);
-            Dout3 : constant Serial_COBS.Data := Serial_COBS.COBS_Decode (D3'Access);
-            D4 : aliased Serial_COBS.Data := (16#05#, 16#11#, 16#22#, 16#33#, 16#44#);
-            Dout4 : constant Serial_COBS.Data := Serial_COBS.COBS_Decode (D4'Access);
-            D5 : aliased Serial_COBS.Data := (16#02#, 16#11#, 16#01#, 16#01#, 16#01#);
-            Dout5 : constant Serial_COBS.Data := Serial_COBS.COBS_Decode (D5'Access);
+            D1 : aliased AMC_Types.Byte_Array := (16#03#, 16#2F#, 16#A2#, 16#04#, 16#92#, 16#73#, 16#26#);
+            Dout1 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Decode (D1'Access);
+            D2 : aliased AMC_Types.Byte_Array := (16#01#, 16#01#);
+            Dout2 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Decode (D2'Access);
+            D3 : aliased AMC_Types.Byte_Array := (16#01#, 16#01#, 16#01#);
+            Dout3 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Decode (D3'Access);
+            D4 : aliased AMC_Types.Byte_Array := (16#05#, 16#11#, 16#22#, 16#33#, 16#44#);
+            Dout4 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Decode (D4'Access);
+            D5 : aliased AMC_Types.Byte_Array := (16#02#, 16#11#, 16#01#, 16#01#, 16#01#);
+            Dout5 : constant AMC_Types.Byte_Array := Serial_COBS.COBS_Decode (D5'Access);
             pragma Unreferenced (Dout1, Dout2, Dout3, Dout4, Dout5);
          begin
             null;
          end;
 
          declare
-            Dout0 : constant Serial_COBS.Data :=
-               COBS.Receive_Handler (AMC_UART.Empty_Data);
-            Dout1 : constant Serial_COBS.Data :=
+            Dout0 : constant AMC_Types.Byte_Array :=
+               COBS.Receive_Handler (AMC_Types.Empty_Byte_Array);
+            Dout1 : constant AMC_Types.Byte_Array :=
                COBS.Receive_Handler ((16#03#, 16#1#, 16#2#, 16#04#, 16#3#, 16#4#, 16#5#, 16#00#,
                                      16#02#, 16#6#, 16#01#, 16#1#, 16#1#, 16#00#,
                                      16#03#, 16#1#));
-            Dout2 : constant Serial_COBS.Data :=
+            Dout2 : constant AMC_Types.Byte_Array :=
                COBS.Receive_Handler ((16#2#, 16#04#, 16#3#, 16#4#, 16#5#, 16#00#));
             pragma Unreferenced (Dout0, Dout1, Dout2);
          begin
@@ -116,11 +116,11 @@ package body AMC is
          end;
 
          --  Test simple loop-back
---           declare
---              D : aliased AMC_UART.Data_TxRx := AMC_UART.Receive_Data;
---           begin
---              AMC_UART.Send_Data (D'Access);
---           end;
+         declare
+            D : aliased AMC_Types.Byte_Array := AMC_UART.Receive_Data;
+         begin
+            AMC_UART.Send_Data (D'Access);
+         end;
 
          --  Get inputs dependent upon
          Vbus := AMC_Board.To_Vbus

@@ -4,19 +4,13 @@ with STM32.DMA;
 with AMC_Board;
 with STM32.Device;
 with System;
-with AMC_Types;
+with AMC_Types; use AMC_Types;
 
 package AMC_UART is
 
-   Buffer_Max_Length : constant Positive := 256;
-   subtype Buffer_Element is AMC_Types.UInt8;
-   subtype Buffer_Index_Range is Positive range 1 .. Buffer_Max_Length;
-   type Buffer_Type is array (Buffer_Index_Range range <>) of Buffer_Element;
-   for Buffer_Type'Component_Size use 8;
+   Buffer_Max_Length : constant Natural := 256;
 
-   subtype Data_TxRx is Buffer_Type;
-
-   Empty_Data : constant Data_TxRx (1 .. 0) := (others => 0);
+   subtype Buffer_Index is Natural range 0 .. Buffer_Max_Length - 1;
 
    function Is_Initialized
       return Boolean;
@@ -25,20 +19,20 @@ package AMC_UART is
 
    function Is_Busy_Tx return Boolean;
 
-   procedure Send_Data (Data : access Data_TxRx);
+   procedure Send_Data (Data : access Byte_Array);
 
-   function Receive_Data return Data_TxRx;
+   function Receive_Data return Byte_Array;
 
    Busy_Transmitting : exception;
    No_New_Data : exception;
 
 private
 
-   UART   : STM32.USARTs.USART renames AMC_Board.Uart_Peripheral;
+   UART : STM32.USARTs.USART renames AMC_Board.Uart_Peripheral;
 
    Baud_Rate : constant STM32.USARTs.Baud_Rates := 115_200;
 
-   AF     : constant STM32.GPIO_Alternate_Function := AMC_Board.Uart_GPIO_AF;
+   AF : constant STM32.GPIO_Alternate_Function := AMC_Board.Uart_GPIO_AF;
 
    Pins : constant STM32.GPIO.GPIO_Points :=
       (AMC_Board.Uart_Tx_Pin, AMC_Board.Uart_Rx_Pin);
@@ -55,10 +49,8 @@ private
 
    Initialized : Boolean := False;
 
-   N_Prev : Positive;
-
-   Buffer_Tx : aliased Buffer_Type (Buffer_Index_Range'Range);
-   Buffer_Rx : aliased Buffer_Type (Buffer_Index_Range'Range);
+   Buffer_Tx : aliased Byte_Array (Buffer_Index'Range);
+   Buffer_Rx : aliased Byte_Array (Buffer_Index'Range);
    Buffer_Tx_Address : constant System.Address := Buffer_Tx'Address;
 
 end AMC_UART;
