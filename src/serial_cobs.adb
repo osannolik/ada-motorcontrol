@@ -85,10 +85,11 @@ package body Serial_COBS is
    end COBS_Decode;
 
 
-   function Receive_Handler (Obj : in out COBS_Object;
-                             Encoded_Rx : in Byte_Array)
+   function Receive_Handler (Obj    : in out COBS_Object;
+                             Stream : in out Stream_Interface.Base_Stream'Class)
                              return Byte_Array
    is
+      Encoded_Rx   : constant Byte_Array := Stream.Read;
       Decoded_Data : Byte_Array (Buffer_Index'Range);
       Idx_Decode   : Natural := Buffer_Index'First;
    begin

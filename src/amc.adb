@@ -14,6 +14,8 @@ with Serial_COBS;
 
 package body AMC is
 
+   Serial : AMC_UART.UART_Stream;
+
    procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
                           Button_Pressed : in Boolean;
                           Period         : in AMC_Types.Seconds;
@@ -55,7 +57,8 @@ package body AMC is
       Is_Aligned   : Boolean := False;
       Mode         : Ctrl_Mode := Off;
 
-      COBS : Serial_COBS.COBS_Object;
+      --  COBS : Serial_COBS.COBS_Object;
+
    begin
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
@@ -101,26 +104,17 @@ package body AMC is
             null;
          end;
 
-         declare
-            Dout0 : constant AMC_Types.Byte_Array :=
-               COBS.Receive_Handler (AMC_Types.Empty_Byte_Array);
-            Dout1 : constant AMC_Types.Byte_Array :=
-               COBS.Receive_Handler ((16#03#, 16#1#, 16#2#, 16#04#, 16#3#, 16#4#, 16#5#, 16#00#,
-                                     16#02#, 16#6#, 16#01#, 16#1#, 16#1#, 16#00#,
-                                     16#03#, 16#1#));
-            Dout2 : constant AMC_Types.Byte_Array :=
-               COBS.Receive_Handler ((16#2#, 16#04#, 16#3#, 16#4#, 16#5#, 16#00#));
-            pragma Unreferenced (Dout0, Dout1, Dout2);
-         begin
-            null;
-         end;
+--           declare
+--              Dout0 : constant AMC_Types.Byte_Array :=
+--                 COBS.Receive_Handler (Serial);
+--              pragma Unreferenced (Dout0);
+--           begin
+--              null;
+--           end;
 
          --  Test simple loop-back
-         declare
-            D : aliased AMC_Types.Byte_Array := AMC_UART.Receive_Data;
-         begin
-            AMC_UART.Send_Data (D'Access);
-         end;
+         Serial.Write (Data => Serial.Read);
+
 
          --  Get inputs dependent upon
          Vbus := AMC_Board.To_Vbus
@@ -232,7 +226,7 @@ package body AMC is
 
       AMC_Board.Initialize;
 
-      AMC_UART.Initialize;
+      AMC_UART.Initialize_Default (Stream => Serial);
 
       AMC_Encoder.Initialize;
 
@@ -254,7 +248,7 @@ package body AMC is
 
       Initialized :=
          AMC_Board.Is_Initialized and
-         AMC_UART.Is_Initialized and
+         AMC_UART.Is_Initialized (Stream => Serial) and
          AMC_ADC.Is_Initialized and
          AMC_PWM.Is_Initialized and
          AMC_Encoder.Is_Initialized;

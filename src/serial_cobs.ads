@@ -1,4 +1,5 @@
 with AMC_Types;
+with Stream_Interface;
 
 package Serial_COBS is
    --  Consistent Overhead Byte Stuffing
@@ -38,8 +39,8 @@ package Serial_COBS is
                else
                   Encoded_Data'Length = COBS_Decode'Result'Length);
 
-   function Receive_Handler (Obj : in out COBS_Object;
-                             Encoded_Rx : in AMC_Types.Byte_Array)
+   function Receive_Handler (Obj    : in out COBS_Object;
+                             Stream : in out Stream_Interface.Base_Stream'Class)
                              return AMC_Types.Byte_Array;
 
 private
