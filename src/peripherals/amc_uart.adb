@@ -168,13 +168,16 @@ package body AMC_UART is
 
    overriding
    procedure Write (Stream : in out UART_Stream;
-                    Data   : in AMC_Types.Byte_Array) is
+                    Data   : in AMC_Types.Byte_Array;
+                    Sent   : out Natural) is
       DMA_Ctrl : STM32.DMA.DMA_Controller renames Stream.DMA_Ctrl.all;
    begin
       --  Make sure the stream is not busy
       if Is_Busy_Tx (Stream) then
          raise Busy_Transmitting;
       end if;
+
+      Sent := Data'Length; --  Assume all are sent...
 
       if Data'Length > 0 then
          Stream.Buffer_Tx (Data'Range) := Data;

@@ -5,10 +5,18 @@ package body Serial_COBS is
    function Is_Delimiter (X : in AMC_Types.UInt8) return Boolean is
       use type AMC_Types.UInt8;
    begin
-      return X = AMC_Types.UInt8'(Delimiter);
+      return X = Delimiter;
    end Is_Delimiter;
 
-   function COBS_Encode (Input : access Byte_Array)
+   procedure Initialize (Stream : in out COBS_Stream;
+                         IO_Stream_Access : in Stream_Interface.Base_Stream_Access)
+   is
+   begin
+      Stream.Idx_Buffer := Buffer_Index'First;
+      Stream.IO_Stream_Access := IO_Stream_Access;
+   end Initialize;
+
+   function COBS_Encode (Input : in Byte_Array)
                          return Byte_Array
    is
       --  Output length is always 1 element longer than Input
@@ -24,7 +32,7 @@ package body Serial_COBS is
          return Empty_Byte_Array;
       end if;
 
-      for D of Input.all loop
+      for D of Input loop
          if Is_Delimiter (D) then
             Encoded_Data (Idx_Code) := AMC_Types.UInt8 (Code);
             Idx_Code := Idx_Out;
@@ -50,7 +58,7 @@ package body Serial_COBS is
    end COBS_Encode;
 
 
-   function COBS_Decode (Encoded_Data : access Byte_Array)
+   function COBS_Decode (Encoded_Data : in Byte_Array)
                          return Byte_Array
    is
       --  Output length is always 1 element less than Encoded_Data
@@ -84,12 +92,11 @@ package body Serial_COBS is
 
    end COBS_Decode;
 
-
-   function Receive_Handler (Obj    : in out COBS_Object;
-                             Stream : in out Stream_Interface.Base_Stream'Class)
-                             return Byte_Array
+   function Receive_Handler (Stream    : in out COBS_Stream;
+                             IO_Stream : in out Stream_Interface.Base_Stream'Class)
+                             return AMC_Types.Byte_Array
    is
-      Encoded_Rx   : constant Byte_Array := Stream.Read;
+      Encoded_Rx   : constant Byte_Array := IO_Stream.Read;
       Decoded_Data : Byte_Array (Buffer_Index'Range);
       Idx_Decode   : Natural := Buffer_Index'First;
    begin
@@ -97,25 +104,51 @@ package body Serial_COBS is
       for Data of Encoded_Rx loop
          if Is_Delimiter (Data) then
             declare
-               Encoded_Data : aliased Byte_Array :=
-                  Obj.Buffer_Incomplete (Buffer_Index'First .. Obj.Idx_Buffer - 1);
+               Encoded_Data : constant Byte_Array :=
+                  Stream.Buffer_Incomplete (Buffer_Index'First .. Stream.Idx_Buffer - 1);
                Decoded_Length : constant Natural :=
-                  Obj.Idx_Buffer - 1 - Buffer_Index'First; -- Enc len minus one
+                  Stream.Idx_Buffer - 1 - Buffer_Index'First; -- Enc len minus one
             begin
                Decoded_Data (Idx_Decode .. Idx_Decode + Decoded_Length - 1) :=
-                  COBS_Decode (Encoded_Data'Access);
+                  COBS_Decode (Encoded_Data);
                Idx_Decode := Idx_Decode + Decoded_Length;
             end;
 
-            Obj.Idx_Buffer := Buffer_Index'First;
+            Stream.Idx_Buffer := Buffer_Index'First;
          else
-            Obj.Buffer_Incomplete (Obj.Idx_Buffer) := Data;
-            Obj.Idx_Buffer := Obj.Idx_Buffer + 1;
+            Stream.Buffer_Incomplete (Stream.Idx_Buffer) := Data;
+            Stream.Idx_Buffer := Stream.Idx_Buffer + 1;
          end if;
       end loop;
 
       return Decoded_Data (Buffer_Index'First .. Idx_Decode - 1);
 
    end Receive_Handler;
+
+
+   overriding
+   procedure Write (Stream : in out COBS_Stream;
+                    Data   : in AMC_Types.Byte_Array;
+                    Sent   : out Natural) is
+      use type AMC_Types.Byte_Array;
+      Encoded_Data : constant AMC_Types.Byte_Array := COBS_Encode (Data);
+   begin
+      if Encoded_Data'Length > 0 then
+         Stream.IO_Stream_Access.Write (Data => Encoded_Data & Delimiter,
+                                        Sent => Sent);
+      else
+         Sent := 0;
+      end if;
+   end Write;
+
+
+   overriding
+   function Read (Stream : in out COBS_Stream)
+                  return AMC_Types.Byte_Array is
+   begin
+      return Receive_Handler (Stream    => Stream,
+                              IO_Stream => Stream.IO_Stream_Access.all);
+   end Read;
+
 
 end Serial_COBS;

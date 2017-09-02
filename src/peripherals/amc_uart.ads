@@ -40,7 +40,8 @@ package AMC_UART is
 
    overriding
    procedure Write (Stream : in out UART_Stream;
-                    Data   : in AMC_Types.Byte_Array)
+                    Data   : in AMC_Types.Byte_Array;
+                    Sent   : out Natural)
    with
       Pre => Data'Length <= Buffer_Max_Length;
    --  Writes byte data to the specified UART_Stream.
