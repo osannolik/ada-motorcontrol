@@ -11,6 +11,7 @@ with AMC_Utils;
 with Current_Control; pragma Unreferenced (Current_Control);
 
 with Serial_COBS;
+with Communication; pragma Unreferenced (Communication);
 
 package body AMC is
 
@@ -59,8 +60,24 @@ package body AMC is
 
       COBS : Serial_COBS.COBS_Stream;
 
+      B : constant Byte_Array := (3, 2, 1);
 
    begin
+
+      declare
+         A : constant Communication.QP.Item_Array := Communication.QP.Item_Array (B);
+      begin
+         Communication.A_Queue.Push (Items => A);
+      end;
+
+      declare
+         C : aliased Communication.QP.Item_Array := (0, 0, 0);
+      begin
+         Communication.A_Queue.Pull (N            => 3,
+                                     Items_Access => C'Access);
+         Communication.A_Queue.Flush_All;
+         null;
+      end;
 
       COBS.Initialize (IO_Stream_Access => Serial'Access);
 
