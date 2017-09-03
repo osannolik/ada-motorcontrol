@@ -29,7 +29,7 @@ package Generic_Queue is
       procedure Pull (N : in Natural;
                       Items_Access : access Item_Array);
 
-      function Peek (N : in Natural) return Item_Type;
+      function Peek (N : in Positive) return Item_Type;
 
       function Peek return Item_Type;
 
@@ -40,16 +40,6 @@ package Generic_Queue is
       procedure Flush (N : in Natural);
 
       procedure Flush_All;
-
---        procedure Add (Item : in Item_Type);
---
---        procedure Pop;
---
---        function Get_Front return Item_Type;
---
---        function Is_Empty return Boolean;
---
---        function Is_Full return Boolean;
 
    private
       pragma Priority (Ceiling);

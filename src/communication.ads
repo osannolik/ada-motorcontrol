@@ -6,7 +6,7 @@ package Communication is
 
    type Port_Type is tagged limited private;
 
-   package QP is new Generic_Queue (Item_Type => AMC_Types.UInt8, Items_Max => 10);
+   package QP is new Generic_Queue (Item_Type => AMC_Types.UInt8, Items_Max => 8);
 
    A_Queue : QP.Protected_Queue (Config.Protected_Object_Prio);
 

@@ -60,14 +60,102 @@ package body AMC is
 
       COBS : Serial_COBS.COBS_Stream;
 
-      B : constant Byte_Array := (3, 2, 1);
+      --  B : constant Byte_Array := (3, 2, 1);
 
    begin
 
       declare
-         A : constant Communication.QP.Item_Array := Communication.QP.Item_Array (B);
+         --  A : constant Communication.QP.Item_Array := Communication.QP.Item_Array (B);
+         Empty, Full : Boolean := False;
+         X : AMC_Types.UInt8 := 0;
+         N_Occupied : Natural := 0;
+         N_Available : Natural := 0;
+         pragma Unreferenced (N_Available);
       begin
-         Communication.A_Queue.Push (Items => A);
+         Empty := Communication.A_Queue.Is_Empty;
+         Full := Communication.A_Queue.Is_Full;
+         N_Occupied := Communication.A_Queue.Occupied_Slots;
+         N_Available := Communication.A_Queue.Empty_Slots;
+
+         Communication.A_Queue.Push (Item => 0);
+
+         Empty := Communication.A_Queue.Is_Empty;
+         Full := Communication.A_Queue.Is_Full;
+         N_Occupied := Communication.A_Queue.Occupied_Slots;
+         N_Available := Communication.A_Queue.Empty_Slots;
+
+         Communication.A_Queue.Push (Items => (1, 2, 3, 4, 5, 6, 7));
+
+         Empty := Communication.A_Queue.Is_Empty;
+         Full := Communication.A_Queue.Is_Full;
+         N_Occupied := Communication.A_Queue.Occupied_Slots;
+         N_Available := Communication.A_Queue.Empty_Slots;
+
+         begin
+            Communication.A_Queue.Push (Item => 8);
+         exception
+            when others =>
+               null;
+         end;
+
+         begin
+            Communication.A_Queue.Push (Items => (8, 9));
+         exception
+            when others =>
+               null;
+         end;
+
+         Communication.A_Queue.Pull (Item => X);
+         Communication.A_Queue.Pull (Item => X);
+
+         declare
+            X_Array : aliased Communication.QP.Item_Array := (0, 0);
+         begin
+            Communication.A_Queue.Pull (N            => 2,
+                                        Items_Access => X_Array'Access);
+         end;
+
+         Empty := Communication.A_Queue.Is_Empty;
+         Full := Communication.A_Queue.Is_Full;
+         N_Occupied := Communication.A_Queue.Occupied_Slots;
+         N_Available := Communication.A_Queue.Empty_Slots;
+
+
+         begin
+            Communication.A_Queue.Push (Items => (20, 21, 22));
+         exception
+            when others =>
+               null;
+         end;
+
+         Empty := Communication.A_Queue.Is_Empty;
+         Full := Communication.A_Queue.Is_Full;
+         N_Occupied := Communication.A_Queue.Occupied_Slots;
+         N_Available := Communication.A_Queue.Empty_Slots;
+
+         X := Communication.A_Queue.Peek;
+         X := Communication.A_Queue.Peek (N => 1);
+         X := Communication.A_Queue.Peek (N => 2);
+         X := Communication.A_Queue.Peek (N => N_Occupied);
+
+         begin
+            X := Communication.A_Queue.Peek (N => N_Occupied + 1);
+         exception
+            when others =>
+               null;
+         end;
+
+         Communication.A_Queue.Flush (N => Communication.A_Queue.Occupied_Slots);
+
+         Empty := Communication.A_Queue.Is_Empty;
+         Full := Communication.A_Queue.Is_Full;
+         N_Occupied := Communication.A_Queue.Occupied_Slots;
+         N_Available := Communication.A_Queue.Empty_Slots;
+
+         Empty := not Full;
+         Full := Empty;
+         Empty := not Full;
+         pragma Unreferenced (Empty);
       end;
 
       declare

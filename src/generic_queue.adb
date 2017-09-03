@@ -50,8 +50,8 @@ package body Generic_Queue is
          end loop;
       end Pull;
 
-      function Peek (N : in Natural) return Item_Type is
-         Idx_Peek : constant Index := (Idx_Old + N) mod (Index'Last + 1);
+      function Peek (N : in Positive) return Item_Type is
+         Idx_Peek : constant Index := (Idx_Old + N - 1) mod (Index'Last + 1);
       begin
          if Is_Empty then
             raise Queue_Is_Empty;
@@ -92,42 +92,6 @@ package body Generic_Queue is
       begin
          Idx_Old := Idx_New;
       end Flush_All;
-
-
---        procedure Add (Item : in Item_Type) is
---        begin
---           --  pragma Assert (To.Length < To.Size);
---           Items (B) := Item;
---           B := B mod Size + 1;
---           Length := Length + 1;
---        end Add;
---
---
---        procedure Pop is
---        begin
---           --  pragma Assert (Queue.Length > 0);
---           F := F mod Size + 1;
---           Length := Length - 1;
---        end Pop;
---
---
---        function Get_Front return Item_Type is
---        begin
---           --  pragma Assert (Queue.Length > 0);
---           return Items (F);
---        end Get_Front;
---
---
---        function Is_Empty return Boolean is
---        begin
---           return Length = 0;
---        end Is_Empty;
---
---
---        function Is_Full return Boolean is
---        begin
---           return Length = Size;
---        end Is_Full;
 
    end Protected_Queue;
 
