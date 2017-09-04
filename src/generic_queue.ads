@@ -33,6 +33,8 @@ package Generic_Queue is
 
       function Peek return Item_Type;
 
+      function Peek (N : in Positive) return Item_Array;
+
       function Occupied_Slots return Natural;
 
       function Empty_Slots return Natural;
