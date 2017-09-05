@@ -136,6 +136,7 @@ package body Serial_COBS is
       if Encoded_Data'Length > 0 then
          Stream.IO_Stream_Access.Write (Data => Encoded_Data & Delimiter,
                                         Sent => Sent);
+         Sent := Sent - Total_Overhead_Size;
       else
          Sent := 0;
       end if;

@@ -6,7 +6,8 @@ package Serial_COBS is
 
    type COBS_Stream is limited new Stream_Interface.Base_Stream with private;
 
-   Data_Length_Max : constant Natural := 253;
+   Data_Length_Max      : constant Natural := 253;
+   COBS_Overhead_Size   : constant Natural := 1;
    --  COBS always adds 1 byte to the message length.
    --  Additionally, for longer packets of length n,
    --  it may add floor(n/254) additional bytes to the encoded packet size.
@@ -60,7 +61,10 @@ package Serial_COBS is
 
 private
 
-   Delimiter : constant := AMC_Types.UInt8'(0);
+   subtype Delimiter_Type is AMC_Types.UInt8;
+   Delimiter : constant := Delimiter_Type'(0);
+
+   Total_Overhead_Size : constant Natural := Delimiter_Type'Size / 8 - COBS_Overhead_Size;
 
    type COBS_Stream is limited new Stream_Interface.Base_Stream with record
       Buffer_Incomplete : AMC_Types.Byte_Array (Buffer_Index'Range);

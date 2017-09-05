@@ -12,7 +12,6 @@ with Current_Control; pragma Unreferenced (Current_Control);
 
 with Serial_COBS;
 with Communication; pragma Unreferenced (Communication);
-with Generic_Queue;
 
 package body AMC is
 
@@ -24,11 +23,6 @@ package body AMC is
 
    An_Interface : aliased Communication.Interface_Type;
 
-   package BQ is new Generic_Queue (Item_Type => UInt8,
-                                    Items_Max => 8);
-
-   Q : BQ.Protected_Queue (Ceiling => Config.Protected_Object_Prio);
-   pragma Unreferenced (Q);
 
    procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
                           Button_Pressed : in Boolean;
@@ -57,6 +51,20 @@ package body AMC is
                                                     Minimum => 0.0));
    end External_Voltage_To_Iq_Req;
 
+
+   procedure CB (Identifier : in Communication.Identifier_Type;
+                 Data       : access Byte_Array);
+
+   procedure CB (Identifier : in Communication.Identifier_Type;
+                 Data       : access Byte_Array)
+   is
+      pragma Unreferenced (Identifier, Data);
+   begin
+      null;
+   end CB;
+
+
+
    task body Inverter_System is
       Period_s : constant AMC_Types.Seconds :=
          AMC_Types.Seconds (Float (Config.Inverter_System_Period_Ms) / 1000.0);
@@ -71,25 +79,17 @@ package body AMC is
       Is_Aligned   : Boolean := False;
       Mode         : Ctrl_Mode := Off;
 
-
-
-      --  B : constant Byte_Array := (3, 2, 1);
-
    begin
+
 
       COBS.Initialize (IO_Stream_Access => Serial'Access);
 
       Port.Initialize (IO_Stream_Access => COBS'Access);
 
-      An_Interface.Initialize (Interface_Number => 1);
+      An_Interface.Initialize (Interface_Number => 3);
 
-      Port.Attach_Interface (Interface_Obj => An_Interface);
-
-
-      Port.Put (Interface_Number => 1,
-                Identifier       => 5,
-                Data             => (1, 2, 3, 4));
-
+      Port.Attach_Interface (Interface_Obj     => An_Interface,
+                             New_Data_Callback => CB'Access);
 
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
@@ -97,11 +97,14 @@ package body AMC is
 
       loop
 
-         declare
-            N : Natural := 0;
-         begin
-            COBS.Write (Data => COBS.Read, Sent => N);
-         end;
+         Port.Receive_Handler;
+         Port.Transmit_Handler;
+
+--           declare
+--              N : Natural := 0;
+--           begin
+--              COBS.Write (Data => COBS.Read, Sent => N);
+--           end;
 
          --  Test simple loop-back
 --           declare
