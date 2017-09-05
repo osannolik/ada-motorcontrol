@@ -3,8 +3,8 @@ with AMC_Types;
 package CRC is
    --  CRC calculation
 
-   function Calculate (Crc  : in AMC_Types.UInt8;
-                       Data : in AMC_Types.Byte_Array)
+   function Calculate (Crc_Init : in AMC_Types.UInt8;
+                       Data     : in AMC_Types.Byte_Array)
                        return AMC_Types.UInt8;
 
    function Calculate (Data : in AMC_Types.Byte_Array)

@@ -1,3 +1,5 @@
+with CRC;
+
 package body Communication is
 
    function To_Byte_Array (Items : in Byte_Queue.Item_Array) return Byte_Array;
@@ -61,6 +63,7 @@ package body Communication is
                   Interface_Number : in Interface_Number_Type;
                   Identifier       : in Identifier_Type;
                   Data             : in Byte_Array)
+
    is
       Header : constant Header_Type :=
          Header_Type'(As_Array  => False,
@@ -68,8 +71,15 @@ package body Communication is
                                     Data_Length => AMC_Types.UInt16 (Data'Length),
                                     Status      => (Interface_Number => Interface_Number,
                                                     Identifier       => Identifier)));
+      Status_Byte : constant Byte_Array := ((0) => Header.Arr (3)); --  Well...
+      Crc_Byte    : AMC_Types.UInt8;
    begin
-      Port.Tx_Queue.Push (Items => Byte_Queue.Item_Array (Header.Arr & Data));
+      if Port.Use_Tx_CRC then
+         Crc_Byte := CRC.Calculate (Data => Status_Byte & Data);
+         Port.Tx_Queue.Push (Items => Byte_Queue.Item_Array (Header.Arr & Data & Crc_Byte));
+      else
+         Port.Tx_Queue.Push (Items => Byte_Queue.Item_Array (Header.Arr & Data));
+      end if;
    end Put;
 
 
