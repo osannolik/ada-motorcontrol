@@ -21,10 +21,14 @@ package Config is
 
    Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;
 
+   Logger_Prio : constant System.Priority := System.Priority'Last - 4;
+
    Protected_Object_Prio : constant System.Priority := System.Priority'Last;
    --  Should be set to the highest prio of all object-using tasks
 
 
    Inverter_System_Period_Ms : constant Positive := 10;
+
+   Logger_Period_Ms : constant Positive := 10;
 
 end Config;

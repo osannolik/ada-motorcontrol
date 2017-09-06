@@ -1,28 +1,14 @@
 with Ada.Real_Time; use Ada.Real_Time;
 
 with AMC_Board;
-with AMC_UART;
 with AMC_ADC;
 with AMC_PWM;
 with AMC_Encoder;
 with Position;
 with AMC_Utils;
 
-with Current_Control; pragma Unreferenced (Current_Control);
-
-with Serial_COBS;
-with Communication; pragma Unreferenced (Communication);
 
 package body AMC is
-
-   COBS : aliased Serial_COBS.COBS_Stream;
-
-   Serial : aliased AMC_UART.UART_Stream;
-
-   Port : aliased Communication.Port_Type;
-
-   An_Interface : aliased Communication.Interface_Type;
-
 
    procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
                           Button_Pressed : in Boolean;
@@ -52,19 +38,6 @@ package body AMC is
    end External_Voltage_To_Iq_Req;
 
 
-   procedure CB (Identifier : in Communication.Identifier_Type;
-                 Data       : access Byte_Array);
-
-   procedure CB (Identifier : in Communication.Identifier_Type;
-                 Data       : access Byte_Array)
-   is
-      pragma Unreferenced (Identifier, Data);
-   begin
-      null;
-   end CB;
-
-
-
    task body Inverter_System is
       Period_s : constant AMC_Types.Seconds :=
          AMC_Types.Seconds (Float (Config.Inverter_System_Period_Ms) / 1000.0);
@@ -81,25 +54,10 @@ package body AMC is
 
    begin
 
-
-      COBS.Initialize (IO_Stream_Access => Serial'Access);
-
-      Port.Initialize (IO_Stream_Access => COBS'Access);
-
-      An_Interface.Initialize (Interface_Number => 3);
-
-      Port.Attach_Interface (Interface_Obj     => An_Interface,
-                             New_Data_Callback => CB'Access);
-
-
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
       AMC_Board.Turn_Off (AMC_Board.Led_Green);
 
       loop
-
-         Port.Receive_Handler;
-         Port.Transmit_Handler;
-
          --  Get inputs dependent upon
          Vbus := AMC_Board.To_Vbus
             (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)); --  TODO: filter
@@ -210,8 +168,6 @@ package body AMC is
 
       AMC_Board.Initialize;
 
-      AMC_UART.Initialize_Default (Stream => Serial);
-
       AMC_Encoder.Initialize;
 
       AMC_ADC.Initialize;
@@ -232,7 +188,6 @@ package body AMC is
 
       Initialized :=
          AMC_Board.Is_Initialized and
-         AMC_UART.Is_Initialized (Stream => Serial) and
          AMC_ADC.Is_Initialized and
          AMC_PWM.Is_Initialized and
          AMC_Encoder.Is_Initialized;

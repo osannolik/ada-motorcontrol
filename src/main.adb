@@ -5,7 +5,9 @@ with Last_Chance_Handler;  pragma Unreferenced (Last_Chance_Handler);
 
 with System;
 
-with AMC; pragma Unreferenced (AMC);
+with AMC;             pragma Unreferenced (AMC);
+with Current_Control; pragma Unreferenced (Current_Control);
+with Logging;         pragma Unreferenced (Logging);
 
 procedure Main is
    pragma Priority (System.Priority'First);
