@@ -18,7 +18,7 @@ package AMC is
 
    task Inverter_System with
       Priority => Config.Inverter_System_Prio,
-      Storage_Size => (4 * 1024);
+      Storage_Size => (8 * 1024);
 
 
    --  Collects protected objects set by the Inverter_System task

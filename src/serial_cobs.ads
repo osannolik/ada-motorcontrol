@@ -64,7 +64,7 @@ private
    subtype Delimiter_Type is AMC_Types.UInt8;
    Delimiter : constant := Delimiter_Type'(0);
 
-   Total_Overhead_Size : constant Natural := Delimiter_Type'Size / 8 - COBS_Overhead_Size;
+   Total_Overhead_Size : constant Natural := Delimiter_Type'Size / 8 + COBS_Overhead_Size;
 
    type COBS_Stream is limited new Stream_Interface.Base_Stream with record
       Buffer_Incomplete : AMC_Types.Byte_Array (Buffer_Index'Range);

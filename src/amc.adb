@@ -100,20 +100,6 @@ package body AMC is
          Port.Receive_Handler;
          Port.Transmit_Handler;
 
---           declare
---              N : Natural := 0;
---           begin
---              COBS.Write (Data => COBS.Read, Sent => N);
---           end;
-
-         --  Test simple loop-back
---           declare
---              N : Natural := 0;
---           begin
---              Serial.Write (Data => Serial.Read, Sent => N);
---           end;
-
-
          --  Get inputs dependent upon
          Vbus := AMC_Board.To_Vbus
             (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)); --  TODO: filter

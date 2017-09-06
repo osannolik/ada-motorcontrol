@@ -17,14 +17,8 @@ private
    subtype Table_Index is Natural range 0 .. 255;
 
    --  name="CRC-8/MAXIM"
-   --  width=8
    --  poly=0x31
    --  init=0x00
-   --  refin=true
-   --  refout=true
-   --  xorout=0x00
-   --  check=0xa1
-   --  residue=0x00
    Crc8_Table : constant AMC_Types.Byte_Array (Table_Index'Range) :=
       (16#00#, 16#5E#, 16#BC#, 16#E2#, 16#61#, 16#3F#, 16#DD#, 16#83#, 16#C2#,
        16#9C#, 16#7E#, 16#20#, 16#A3#, 16#FD#, 16#1F#, 16#41#, 16#9D#, 16#C3#,

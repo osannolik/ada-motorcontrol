@@ -132,11 +132,12 @@ package body Serial_COBS is
                     Sent   : out Natural) is
       use type AMC_Types.Byte_Array;
       Encoded_Data : constant AMC_Types.Byte_Array := COBS_Encode (Data);
+      Loc_Sent : Natural;
    begin
       if Encoded_Data'Length > 0 then
          Stream.IO_Stream_Access.Write (Data => Encoded_Data & Delimiter,
-                                        Sent => Sent);
-         Sent := Sent - Total_Overhead_Size;
+                                        Sent => Loc_Sent);
+         Sent := Loc_Sent - Total_Overhead_Size;
       else
          Sent := 0;
       end if;

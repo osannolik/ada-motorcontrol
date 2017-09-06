@@ -38,7 +38,9 @@ package Communication is
 
 
    procedure Initialize (Port             : access Port_Type;
-                         IO_Stream_Access : in Stream_Interface.Base_Stream_Access);
+                         IO_Stream_Access : in Stream_Interface.Base_Stream_Access;
+                         Enable_Tx_Crc    : in Boolean := False;
+                         Enable_Rx_Crc    : in Boolean := True);
 
    procedure Attach_Interface (Port              : in out Port_Type;
                                Interface_Obj     : in out Interface_Type'Class;
@@ -141,8 +143,8 @@ private
       Parser_State   : Parser_State_Type := Wait_For_Start;
       Buffer_Idx     : Buffer_Index := 0;
 
-      Use_Rx_CRC     : Boolean := False;
-      Use_Tx_CRC     : Boolean := False;
+      Use_Rx_CRC     : Boolean;
+      Use_Tx_CRC     : Boolean;
    end record;
 
 end Communication;
