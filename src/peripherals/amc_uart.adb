@@ -224,4 +224,8 @@ package body AMC_UART is
    function Is_Initialized (Stream : in UART_Stream)
       return Boolean is (Stream.Initialized);
 
+begin
+
+   Initialize_Default (Stream => Stream);
+
 end AMC_UART;

@@ -12,6 +12,7 @@ package Communication is
    subtype Data_Size_Type is AMC_Types.UInt16;
 
    subtype Interface_Number_Type is HAL.UInt4;
+   subtype Interface_Numbers is Interface_Number_Type range 1 .. Interface_Number_Type'Last;
    subtype Identifier_Type is HAL.UInt4;
 
 
@@ -26,7 +27,7 @@ package Communication is
    type Interface_Type is tagged limited private;
 
    procedure Initialize (Interface_Obj    : access Interface_Type'Class;
-                         Interface_Number : in Interface_Number_Type);
+                         Interface_Number : in Interface_Numbers);
 
    procedure Send (Interface_Obj : access Interface_Type'Class;
                    Port          : access Port_Type;
@@ -146,5 +147,13 @@ private
       Use_Rx_CRC     : Boolean;
       Use_Tx_CRC     : Boolean;
    end record;
+
+   Commands_Interface_Number : constant Interface_Number_Type := 0;
+
+   Com_Id_Error     : constant Identifier_Type := 0;
+   Com_Id_Write_To  : constant Identifier_Type := 1;
+   Com_Id_Read_From : constant Identifier_Type := 2;
+
+   Commands_Interface : aliased Interface_Type;
 
 end Communication;

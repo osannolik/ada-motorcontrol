@@ -9,7 +9,7 @@ package body Logging is
 
    COBS   : aliased Serial_COBS.COBS_Stream;
 
-   Serial : aliased AMC_UART.UART_Stream;
+
 
    Port   : aliased Communication.Port_Type;
 
@@ -26,9 +26,8 @@ package body Logging is
          delay until Next_Release;
       end loop;
 
-      AMC_UART.Initialize_Default (Stream => Serial);
 
-      COBS.Initialize (IO_Stream_Access => Serial'Access);
+      COBS.Initialize (IO_Stream_Access => AMC_UART.Stream'Access);
 
       Port.Initialize (IO_Stream_Access => COBS'Access);
 

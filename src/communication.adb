@@ -18,9 +18,11 @@ package body Communication is
                                    Status : in Status_Type;
                                    Data   : access Byte_Array);
 
+   procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
+                                        Data       : access Byte_Array);
 
    procedure Initialize (Interface_Obj    : access Interface_Type'Class;
-                         Interface_Number : in Interface_Number_Type) is
+                         Interface_Number : in Interface_Numbers) is
    begin
       Interface_Obj.Interface_Number := Interface_Number;
    end Initialize;
@@ -49,6 +51,10 @@ package body Communication is
       Port.Parser_State := Wait_For_Start;
       Port.Buffer_Idx   := Buffer_Index'First;
       Port.Tx_Queue.Flush_All;
+
+      --  Reserved interface (0) for memory read/writes
+      Port.Attach_Interface (Interface_Obj     => Commands_Interface,
+                             New_Data_Callback => Commands_Callback_Handler'Access);
    end Initialize;
 
 
@@ -100,6 +106,23 @@ package body Communication is
                    Data       => Data);
       end if;
    end Do_New_Data_Callback;
+
+
+   procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
+                                        Data       : access Byte_Array) is
+      pragma Unreferenced (Data);
+   begin
+      case Identifier is
+         when Com_Id_Error =>
+            null;
+         when Com_Id_Write_To =>
+            null;
+         when Com_Id_Read_From =>
+            null;
+         when others =>
+            null;
+      end case;
+   end Commands_Callback_Handler;
 
 
    procedure Receive_Handler (Port : in out Port_Type) is
@@ -226,5 +249,9 @@ package body Communication is
          end;
       end if;
    end Transmit_Handler;
+
+begin
+
+   Commands_Interface.Interface_Number := Commands_Interface_Number;
 
 end Communication;

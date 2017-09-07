@@ -6,10 +6,26 @@ with Stream_Interface;
 
 package AMC_UART is
 
-   type UART_Stream is limited new Stream_Interface.Base_Stream with private;
-
    Buffer_Max_Length : constant Natural := 256;
    subtype Buffer_Index is Natural range 0 .. Buffer_Max_Length - 1;
+
+   type UART_Stream is limited new Stream_Interface.Base_Stream with record
+      Initialized    : Boolean;
+      Buffer_Tx      : aliased Byte_Array (Buffer_Index'Range);
+      Buffer_Rx      : aliased Byte_Array (Buffer_Index'Range);
+
+      Baud_Rate      : STM32.USARTs.Baud_Rates;
+      UART           : access STM32.USARTs.USART;
+      AF             : STM32.GPIO_Alternate_Function;
+      Tx_Pin         : STM32.GPIO.GPIO_Point;
+      Rx_Pin         : STM32.GPIO.GPIO_Point;
+      DMA_Ctrl       : access STM32.DMA.DMA_Controller;
+      DMA_Stream_Tx  : STM32.DMA.DMA_Stream_Selector;
+      DMA_Channel_Tx : STM32.DMA.DMA_Channel_Selector;
+      DMA_Stream_Rx  : STM32.DMA.DMA_Stream_Selector;
+      DMA_Channel_Rx : STM32.DMA.DMA_Channel_Selector;
+   end record;
+
 
    function Is_Initialized (Stream : in UART_Stream)
       return Boolean;
@@ -55,23 +71,6 @@ package AMC_UART is
       Post => Read'Result'Length <= Buffer_Max_Length;
    --  Reads byte data from the specified UART_Stream
 
-private
-
-   type UART_Stream is limited new Stream_Interface.Base_Stream with record
-      Initialized    : Boolean;
-      Buffer_Tx      : aliased Byte_Array (Buffer_Index'Range);
-      Buffer_Rx      : aliased Byte_Array (Buffer_Index'Range);
-
-      Baud_Rate      : STM32.USARTs.Baud_Rates;
-      UART           : access STM32.USARTs.USART;
-      AF             : STM32.GPIO_Alternate_Function;
-      Tx_Pin         : STM32.GPIO.GPIO_Point;
-      Rx_Pin         : STM32.GPIO.GPIO_Point;
-      DMA_Ctrl       : access STM32.DMA.DMA_Controller;
-      DMA_Stream_Tx  : STM32.DMA.DMA_Stream_Selector;
-      DMA_Channel_Tx : STM32.DMA.DMA_Channel_Selector;
-      DMA_Stream_Rx  : STM32.DMA.DMA_Stream_Selector;
-      DMA_Channel_Rx : STM32.DMA.DMA_Channel_Selector;
-   end record;
+   Stream : aliased UART_Stream;
 
 end AMC_UART;
