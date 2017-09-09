@@ -21,6 +21,9 @@ package body Communication is
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
                                         Data       : access Byte_Array);
 
+   procedure Commands_Send_Error (Port                     : in out Port_Type;
+                                  Causing_Interface_Number : in Interface_Number_Type);
+
    procedure Initialize (Interface_Obj    : access Interface_Type'Class;
                          Interface_Number : in Interface_Numbers) is
    begin
@@ -73,6 +76,7 @@ package body Communication is
       return CRC.Calculate (Byte_Array'(((0) => Header.Arr (3))) & Data);
    end Calculate_CRC;
 
+
    procedure Put (Port             : access Port_Type;
                   Interface_Number : in Interface_Number_Type;
                   Identifier       : in Identifier_Type;
@@ -108,16 +112,26 @@ package body Communication is
    end Do_New_Data_Callback;
 
 
+   procedure Commands_Send_Error (Port                     : in out Port_Type;
+                                  Causing_Interface_Number : in Interface_Number_Type) is
+      Data : constant Byte_Array := (0 => AMC_Types.UInt8 (Causing_Interface_Number));
+   begin
+      Port.Put (Interface_Number => Commands_Interface_Number,
+                Identifier       => Com_Id_Error,
+                Data             => Data);
+   end Commands_Send_Error;
+
+
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
                                         Data       : access Byte_Array) is
       pragma Unreferenced (Data);
    begin
       case Identifier is
-         when Com_Id_Error =>
-            null;
          when Com_Id_Write_To =>
             null;
          when Com_Id_Read_From =>
+            null;
+         when Com_Id_Error =>
             null;
          when others =>
             null;
@@ -177,8 +191,25 @@ package body Communication is
          end if;
       end Fill_Data;
 
+      pragma Style_Checks (Off); --  No spec is OK
+      procedure Do_Crc (Port        : in out Port_Type;
+                        Message_Crc : in AMC_Types.UInt8) is
+         pragma Style_Checks (On);
+         New_Data : aliased Byte_Array :=
+            Port.Buffer_Rx_Data (Data_Start_Idx .. Port.Buffer_Idx - 1);
+      begin
+         if Message_Crc = Calculate_CRC (Port.Header_Rx, New_Data) then
+            Port.Do_New_Data_Callback (Status => Port.Header_Rx.Msg.Status,
+                                       Data   => New_Data'Access);
+         else
+            Commands_Send_Error
+               (Port                     => Port,
+                Causing_Interface_Number =>
+                   Port.Header_Rx.Msg.Status.Interface_Number);
+         end if;
+      end Do_Crc;
+
    begin
-      --  TODO: Rewrite, looks nasty...
       loop
          declare
             Data : constant Byte_Array := Port.Stream.Read;
@@ -202,29 +233,19 @@ package body Communication is
                      Port.Parser_State := Get_Header;
 
                   when Get_Header =>
-                     Fill_Header (Port       => Port,
-                                  D          => D,
+                     Fill_Header (Port => Port,
+                                  D    => D,
                                   Next_State => Port.Parser_State);
 
                   when Get_Data =>
-                     Fill_Data (Port       => Port,
-                                D          => D,
+                     Fill_Data (Port => Port,
+                                D    => D,
                                 Next_State => Port.Parser_State);
 
                   when Calc_Crc =>
-                     declare
-                        New_Data : aliased Byte_Array :=
-                           Port.Buffer_Rx_Data (Data_Start_Idx .. Port.Buffer_Idx - 1);
-                     begin
-                        if D = Calculate_CRC (Port.Header_Rx, New_Data) then
-                           Port.Do_New_Data_Callback (Status => Port.Header_Rx.Msg.Status,
-                                                      Data   => New_Data'Access);
-                        else
-                           --  Crc error!
-                           null;
-                        end if;
-                        Port.Parser_State := Wait_For_Start;
-                     end;
+                     Do_Crc (Port        => Port,
+                             Message_Crc => D);
+                     Port.Parser_State := Wait_For_Start;
 
                end case;
             end loop;
