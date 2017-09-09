@@ -18,7 +18,8 @@ package Communication is
 
 
    type Callback_Access is access procedure (Identifier : in Identifier_Type;
-                                             Data       : access Byte_Array);
+                                             Data       : access Byte_Array;
+                                             From_Port  : in out Port_Type);
 
 
 

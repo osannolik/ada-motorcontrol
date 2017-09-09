@@ -19,13 +19,18 @@ package body Communication is
                                    Data   : access Byte_Array);
 
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
-                                        Data       : access Byte_Array);
+                                        Data       : access Byte_Array;
+                                        From_Port  : in out Port_Type);
 
    procedure Commands_Send_Error (Port                     : in out Port_Type;
                                   Causing_Interface_Number : in Interface_Number_Type);
 
    procedure Commands_Write_To (Data  : access Byte_Array;
                                 Error : out Boolean);
+
+   procedure Commands_Read_From (Data         : access Byte_Array;
+                                 Send_To_Port : in out Port_Type;
+                                 Error        : out Boolean);
 
 
 
@@ -112,7 +117,8 @@ package body Communication is
    begin
       if Callback /= null then
          Callback (Identifier => Status.Identifier,
-                   Data       => Data);
+                   Data       => Data,
+                   From_Port  => Port);
       end if;
    end Do_New_Data_Callback;
 
@@ -127,41 +133,41 @@ package body Communication is
    end Commands_Send_Error;
 
 
+   type Commands_Mem_Range_Cmd is record
+      To_Address : access Byte_Array := null;
+      Length     : AMC_Types.UInt16 := 16#0#;
+   end record
+      with Size => 48;
+
+   for Commands_Mem_Range_Cmd use record
+      To_Address at 0 range 0  .. 31;
+      Length     at 0 range 32 .. 47;
+   end record;
+
+   type Commands_Mem_Range_Type
+      (As_Array : Boolean := False)
+   is record
+      case As_Array is
+         when False =>
+            Cmd : Commands_Mem_Range_Cmd;
+
+         when True =>
+            Arr : Byte_Array (0 .. 5);
+
+      end case;
+   end record
+      with Unchecked_Union, Size => 48;
+
+
    procedure Commands_Write_To (Data  : access Byte_Array;
                                 Error : out Boolean) is
-
-      type Commands_Write_To_Cmd is record
-         To_Address : access Byte_Array := null;
-         Length     : AMC_Types.UInt16 := 16#0#;
-      end record
-         with Size => 48;
-
-      for Commands_Write_To_Cmd use record
-         To_Address at 0 range 0  .. 31;
-         Length     at 0 range 32 .. 47;
-      end record;
-
-      type Commands_Write_To_Type
-         (As_Array : Boolean := False)
-      is record
-         case As_Array is
-            when False =>
-               Cmd : Commands_Write_To_Cmd;
-
-            when True =>
-               Arr : Byte_Array (0 .. 5);
-
-         end case;
-      end record
-         with Unchecked_Union, Size => 48;
-
-      Write  : Commands_Write_To_Type;
-      Cmd_Length : constant Natural := Commands_Write_To_Cmd'Size / 8;
+      Write  : Commands_Mem_Range_Type;
+      Cmd_Length : constant Natural := Commands_Mem_Range_Cmd'Size / 8;
    begin
       Error := True;
       if Data'Length >= Cmd_Length then
-         Write := Commands_Write_To_Type'(As_Array => True,
-                                          Arr      => Data (0 .. Cmd_Length - 1));
+         Write := Commands_Mem_Range_Type'(As_Array => True,
+                                           Arr      => Data (0 .. Cmd_Length - 1));
          if Natural (Write.Cmd.Length) = Data'Length - Cmd_Length then
             declare
                To_Ref : constant access Byte_Array := Write.Cmd.To_Address;
@@ -178,8 +184,35 @@ package body Communication is
    end Commands_Write_To;
 
 
+   procedure Commands_Read_From (Data         : access Byte_Array;
+                                 Send_To_Port : in out Port_Type;
+                                 Error        : out Boolean) is
+      Read  : Commands_Mem_Range_Type;
+      Cmd_Length : constant Natural := Commands_Mem_Range_Cmd'Size / 8;
+   begin
+      Error := (Data'Length /= Cmd_Length);
+      if not Error then
+         Read := Commands_Mem_Range_Type'(As_Array => True,
+                                          Arr      => Data (0 .. Cmd_Length - 1));
+         declare
+            From_Ref : constant access Byte_Array := Read.Cmd.To_Address;
+            Len : constant Natural := Natural (Read.Cmd.Length);
+         begin
+            Send_To_Port.Put (Interface_Number => Commands_Interface_Number,
+                              Identifier       => Com_Id_Read_From,
+                              Data             => From_Ref.all (0 .. Len - 1));
+         end;
+      end if;
+   end Commands_Read_From;
+
+
+   --  Some_Data : aliased Byte_Array := (16#DE#, 16#AD#, 16#BE#, 16#EF#);
+   --  Addr : System.Address := Some_Data'Address;
+
+
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
-                                        Data       : access Byte_Array) is
+                                        Data       : access Byte_Array;
+                                        From_Port  : in out Port_Type) is
       Error : Boolean;
    begin
       case Identifier is
@@ -188,7 +221,9 @@ package body Communication is
                                Error => Error);
 
          when Com_Id_Read_From =>
-            null;
+            Commands_Read_From (Data         => Data,
+                                Send_To_Port => From_Port,
+                                Error        => Error);
 
          when Com_Id_Error =>
             null;
@@ -196,10 +231,11 @@ package body Communication is
          when others =>
             null;
       end case;
---        if Error then
---           --  TODO: Do something
---           null;
---        end if;
+
+      if Error then
+         Commands_Send_Error (Port                     => From_Port,
+                              Causing_Interface_Number => Commands_Interface_Number);
+      end if;
    end Commands_Callback_Handler;
 
 
