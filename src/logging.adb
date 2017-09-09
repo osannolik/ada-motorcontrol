@@ -1,11 +1,20 @@
 with Ada.Real_Time; use Ada.Real_Time;
---  with AMC_Types; use AMC_Types;
+with AMC_Types; use AMC_Types;
 with AMC_UART;
 with Serial_COBS;
 with Communication;
+with Calmeas;
 with AMC_Board;
 with AMC;
+with System;
+
 package body Logging is
+
+   My_Crap : aliased AMC_Types.UInt8 := 200;
+
+   My_Crap_2 : aliased AMC_Types.Int16 := 100;
+
+   My_Crap_3 : aliased Float := 1337.1337;
 
    COBS   : aliased Serial_COBS.COBS_Stream;
 
@@ -18,6 +27,9 @@ package body Logging is
    task body Logger is
       Period : constant Time_Span := Milliseconds (Config.Logger_Period_Ms);
       Next_Release : Time := Clock;
+
+      Addr_Of_My_Crap : System.Address := My_Crap'Address;
+      pragma Unreferenced (Addr_Of_My_Crap);
    begin
 
       loop
@@ -35,6 +47,28 @@ package body Logging is
 
       Port.Attach_Interface (Interface_Obj     => An_Interface,
                              New_Data_Callback => null);
+
+
+
+
+      Calmeas.Add (Symbol => My_Crap'Access,
+                   Name   => "My_Crap");
+
+      Calmeas.Add (Symbol => My_Crap_2'Access,
+                   Name   => "My_Crap_2");
+
+      Calmeas.Add (Symbol => My_Crap_3'Access,
+                   Name   => "My_Crap_3");
+
+      declare
+         B : constant Byte_Array := Calmeas.Get_Symbol_Value (0);
+         B2 : constant Byte_Array := Calmeas.Get_Symbol_Value (1);
+         B3 : constant Byte_Array := Calmeas.Get_Symbol_Value (2);
+         pragma Unreferenced (B, B2, B3);
+      begin
+         null;
+      end;
+
 
       loop
 

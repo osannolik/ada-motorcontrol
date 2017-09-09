@@ -1,4 +1,5 @@
 with HAL;
+with Interfaces;
 
 package AMC_Types is
    --  Ada Motor Controller common types
@@ -6,6 +7,9 @@ package AMC_Types is
    subtype UInt32 is HAL.UInt32;
    subtype UInt16 is HAL.UInt16;
    subtype UInt8 is HAL.UInt8;
+   subtype Int32 is Interfaces.Integer_32;
+   subtype Int16 is Interfaces.Integer_16;
+   subtype Int8 is Interfaces.Integer_8;
    subtype Byte_Array is HAL.UInt8_Array;
 
    Empty_Byte_Array : constant Byte_Array (1 .. 0) := (others => 0);
