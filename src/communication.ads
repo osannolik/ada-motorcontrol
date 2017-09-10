@@ -52,6 +52,9 @@ package Communication is
    --  NOTE: Keep New_Data_Callback short. It is called in the context of
    --        Port.Receive_Handler
 
+   procedure Commands_Send_Error (Port                     : in out Port_Type;
+                                  Causing_Interface_Number : in Interface_Number_Type);
+
    procedure Put (Port             : access Port_Type;
                   Interface_Number : in Interface_Number_Type;
                   Identifier       : in Identifier_Type;

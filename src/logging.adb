@@ -16,13 +16,11 @@ package body Logging is
 
    My_Crap_3 : aliased Float := 1337.1337;
 
+
    COBS   : aliased Serial_COBS.COBS_Stream;
-
-
 
    Port   : aliased Communication.Port_Type;
 
-   An_Interface : aliased Communication.Interface_Type;
 
    task body Logger is
       Period : constant Time_Span := Milliseconds (Config.Logger_Period_Ms);
@@ -43,32 +41,19 @@ package body Logging is
 
       Port.Initialize (IO_Stream_Access => COBS'Access);
 
-      An_Interface.Initialize (Interface_Number => 3);
 
-      Port.Attach_Interface (Interface_Obj     => An_Interface,
-                             New_Data_Callback => null);
-
-
+      Port.Attach_Interface (Interface_Obj     => Calmeas.Communication_Interface,
+                             New_Data_Callback => Calmeas.Callback_Handler'Access);
 
 
       Calmeas.Add (Symbol => My_Crap'Access,
-                   Name   => "My_Crap");
+                   Name   => "My_Foo_Ab");
 
       Calmeas.Add (Symbol => My_Crap_2'Access,
-                   Name   => "My_Crap_2");
+                   Name   => "My_Bar_Cd");
 
       Calmeas.Add (Symbol => My_Crap_3'Access,
-                   Name   => "My_Crap_3");
-
-      declare
-         B : constant Byte_Array := Calmeas.Get_Symbol_Value (0);
-         B2 : constant Byte_Array := Calmeas.Get_Symbol_Value (1);
-         B3 : constant Byte_Array := Calmeas.Get_Symbol_Value (2);
-         pragma Unreferenced (B, B2, B3);
-      begin
-         null;
-      end;
-
+                   Name   => "My_Goo_Ef");
 
       loop
 

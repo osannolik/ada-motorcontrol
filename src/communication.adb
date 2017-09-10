@@ -22,9 +22,6 @@ package body Communication is
                                         Data       : access Byte_Array;
                                         From_Port  : in out Port_Type);
 
-   procedure Commands_Send_Error (Port                     : in out Port_Type;
-                                  Causing_Interface_Number : in Interface_Number_Type);
-
    procedure Commands_Write_To (Data  : access Byte_Array;
                                 Error : out Boolean);
 
