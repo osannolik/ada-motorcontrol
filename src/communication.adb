@@ -131,13 +131,13 @@ package body Communication is
 
 
    type Commands_Mem_Range_Cmd is record
-      To_Address : access Byte_Array := null;
+      At_Address : System.Address;
       Length     : AMC_Types.UInt16 := 16#0#;
    end record
       with Size => 48;
 
    for Commands_Mem_Range_Cmd use record
-      To_Address at 0 range 0  .. 31;
+      At_Address at 0 range 0  .. 31;
       Length     at 0 range 32 .. 47;
    end record;
 
@@ -161,21 +161,27 @@ package body Communication is
       Write  : Commands_Mem_Range_Type;
       Cmd_Length : constant Natural := Commands_Mem_Range_Cmd'Size / 8;
    begin
-      Error := True;
-      if Data'Length >= Cmd_Length then
+      Error := (Data'Length < Cmd_Length);
+      if not Error then
          Write := Commands_Mem_Range_Type'(As_Array => True,
                                            Arr      => Data (0 .. Cmd_Length - 1));
-         if Natural (Write.Cmd.Length) = Data'Length - Cmd_Length then
+         Error := (Natural (Write.Cmd.Length) = Data'Length - Cmd_Length);
+         if not Error then
             declare
-               To_Ref : constant access Byte_Array := Write.Cmd.To_Address;
-               I : Natural := 0;
+               subtype Write_Array is Byte_Array (0 .. Natural (Write.Cmd.Length) - 1);
+
+               procedure Write_Unsafe (A : System.Address; Data : in Byte_Array);
+               procedure Write_Unsafe (A : System.Address; Data : in Byte_Array) is
+                  Result : Write_Array;
+                  for Result'Address use A;
+                  pragma Import (Convention => Ada, Entity => Result);
+               begin
+                  Result := Data;
+               end Write_Unsafe;
             begin
-               for D of Data (Cmd_Length .. Data'Length - 1) loop
-                  To_Ref (I) := D;
-                  I := I + 1;
-               end loop;
+               Write_Unsafe (A    => Write.Cmd.At_Address,
+                             Data => Data (Cmd_Length .. Data'Length - 1));
             end;
-            Error := False;
          end if;
       end if;
    end Commands_Write_To;
@@ -192,19 +198,24 @@ package body Communication is
          Read := Commands_Mem_Range_Type'(As_Array => True,
                                           Arr      => Data (0 .. Cmd_Length - 1));
          declare
-            From_Ref : constant access Byte_Array := Read.Cmd.To_Address;
-            Len : constant Natural := Natural (Read.Cmd.Length);
+            subtype Read_Array is Byte_Array (0 .. Natural (Read.Cmd.Length) - 1);
+
+            function Read_Unsafe (A : System.Address) return Read_Array;
+            function Read_Unsafe (A : System.Address) return Read_Array is
+               Result : constant Read_Array;
+               for Result'Address use A;
+               pragma Import (Convention => Ada, Entity => Result);
+            begin
+               return Result;
+            end Read_Unsafe;
+
          begin
             Send_To_Port.Put (Interface_Number => Commands_Interface_Number,
                               Identifier       => Com_Id_Read_From,
-                              Data             => From_Ref.all (0 .. Len - 1));
+                              Data             => Read_Unsafe (Read.Cmd.At_Address));
          end;
       end if;
    end Commands_Read_From;
-
-
-   --  Some_Data : aliased Byte_Array := (16#DE#, 16#AD#, 16#BE#, 16#EF#);
-   --  Addr : System.Address := Some_Data'Address;
 
 
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
