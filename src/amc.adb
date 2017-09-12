@@ -6,9 +6,13 @@ with AMC_PWM;
 with AMC_Encoder;
 with Position;
 with AMC_Utils;
-
+with Calmeas;
 
 package body AMC is
+
+   --  Variables available for measurement
+   V_Bus_Log  : aliased Voltage_V;
+   Iq_Ref_Log : aliased Float;
 
    procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
                           Button_Pressed : in Boolean;
@@ -83,6 +87,10 @@ package body AMC is
          Inverter_System_Outputs.Set (Outputs);
 
          AMC_Board.Set_Gate_Driver_Power (Enable_Gates);
+
+         --  Log some data
+         V_Bus_Log := Vbus;
+         Iq_Ref_Log := Idq_Req.Q;
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;
@@ -206,5 +214,13 @@ package body AMC is
 begin
 
    Initialize;
+
+   Calmeas.Add (Symbol      => V_Bus_Log'Access,
+                Name        => "V_Bus",
+                Description => "Bus Voltage [V]");
+
+   Calmeas.Add (Symbol      => Iq_Ref_Log'Access,
+                Name        => "Iq_Ref",
+                Description => "Quadrature current reference [A]");
 
 end AMC;

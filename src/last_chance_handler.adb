@@ -29,10 +29,10 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
---  Note this version is for use with the ravenscar-sfp runtime.
+--  Note this version is for use with the ravenscar-full runtime.
 
 with Ada.Real_Time; use Ada.Real_Time;
-with Error;
+with Error_Handling;
 
 package body Last_Chance_Handler is
 
@@ -40,12 +40,11 @@ package body Last_Chance_Handler is
    -- Last_Chance_Handler --
    -------------------------
 
-   procedure Last_Chance_Handler (Msg : System.Address; Line : Integer) is
+   procedure Last_Chance_Handler (Error : Exception_Occurrence) is
    begin
       --  No-return procedure...
       loop
-         Error.Handler (Msg  => Msg,
-                        Line => Line);
+         Error_Handling.Handler (Error);
          delay until Clock + Milliseconds (500);
       end loop;
    end Last_Chance_Handler;

@@ -6,64 +6,83 @@ package Calmeas is
 
    Nof_Symbols_Max : constant Positive := 32;
 
-   subtype Symbol_Index is Natural range Natural'First .. Nof_Symbols_Max - 1;
-
+   --  Returns the number of symbols that has been added
    function Nof_Symbols_Added return Natural;
 
-   procedure Add (Symbol : access AMC_Types.UInt8;
-                  Name   : String)
+   --  Make a UInt8 type symbol available for logging and tuning using the
+   --  Calmeas host gui
+   procedure Add (Symbol      : access AMC_Types.UInt8;
+                  Name        : String;
+                  Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
 
-   procedure Add (Symbol : access AMC_Types.UInt16;
-                  Name   : String)
+   --  Make a UInt16 type symbol available for logging and tuning using the
+   --  Calmeas host gui
+   procedure Add (Symbol      : access AMC_Types.UInt16;
+                  Name        : String;
+                  Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
 
-   procedure Add (Symbol : access AMC_Types.UInt32;
-                  Name   : String)
+   --  Make a UInt32 type symbol available for logging and tuning using the
+   --  Calmeas host gui
+   procedure Add (Symbol      : access AMC_Types.UInt32;
+                  Name        : String;
+                  Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
 
-   procedure Add (Symbol : access AMC_Types.Int8;
-                  Name   : String)
+   --  Make a Int8 type symbol available for logging and tuning using the
+   --  Calmeas host gui
+   procedure Add (Symbol      : access AMC_Types.Int8;
+                  Name        : String;
+                  Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
 
-
-   procedure Add (Symbol : access AMC_Types.Int16;
-                  Name   : String)
+   --  Make a Int16 type symbol available for logging and tuning using the
+   --  Calmeas host gui
+   procedure Add (Symbol      : access AMC_Types.Int16;
+                  Name        : String;
+                  Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
 
-
-   procedure Add (Symbol : access AMC_Types.Int32;
-                  Name   : String)
+   --  Make a Int32 type symbol available for logging and tuning using the
+   --  Calmeas host gui
+   procedure Add (Symbol      : access AMC_Types.Int32;
+                  Name        : String;
+                  Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
 
-   procedure Add (Symbol : access Float;
-                  Name   : String)
+   --  Make a Float type symbol available for logging and tuning using the
+   --  Calmeas host gui
+   procedure Add (Symbol      : access Float;
+                  Name        : String;
+                  Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
 
-   function Get_Symbol_Value (Index : in Symbol_Index)
-                              return AMC_Types.Byte_Array
-   with
-      Pre => Index < Nof_Symbols_Added;
+   --  Samples the added symbols and sends the data to the specified Port.
+   --  Note: This needs to be run at a periodicity at least as short as the
+   --  fastest raster period.
+   procedure Sample (To_Port : access Communication.Port_Type);
 
-
+   --  An instance of an interface used to connect to a Communication.Port_Type
    Communication_Interface : aliased Communication.Interface_Type;
 
+   --  This is called when new data is received on From_Port.
+   --  Requests send available symbols, start raster sampling etc. is done via
+   --  this callback.
    procedure Callback_Handler (Identifier : in Communication.Identifier_Type;
                                Data       : access Byte_Array;
-                               From_Port  : in out Communication.Port_Type);
+                               From_Port  : access Communication.Port_Type);
 
    Must_Provide_Symbol_Name : exception;
 
 private
-
-
 
    type Typecode is (Tc_Address,
                      Tc_UInt8,
@@ -118,7 +137,7 @@ private
 
    Name_Length_Max : constant Positive := 20;
 
-   Desc_Length_Max : constant Positive := 20;
+   Desc_Length_Max : constant Positive := 40;
 
    subtype Name_String_Index is Positive range Positive'First .. Name_Length_Max;
 
@@ -131,14 +150,28 @@ private
       Symbol_Access : Type_Access;
    end record;
 
+   subtype Symbol_Index is Natural range Natural'First .. Nof_Symbols_Max - 1;
+
    type Symbol_Table is array (Symbol_Index'Range) of Symbol_Meta;
 
-   type Rasters is (Raster_1, Raster_2, Raster_3);
+   subtype Raster_Index is Natural range 0 .. 2;
 
-   Raster_Periods : array (Rasters'Range) of Positive :=
-      (10, 100, 1000);
+   Raster_Periods : array (Raster_Index'Range) of Positive :=
+      (1, 10, 100);
+
+   Raster_List_Length_Max : constant Natural := 256;
+
+   type Raster_List is array (1 .. Raster_List_Length_Max) of Symbol_Index;
+
+   type Raster is record
+      Cnt           : Natural := 0;
+      Nof_Selected  : Natural := 0;
+      List          : Raster_List;
+      Buffer_Length : Natural := 0;
+   end record;
 
 
+   Rasters     : array (Raster_Index'Range) of Raster;
    Symbols     : Symbol_Table;
    Nof_Symbols : Natural := 0;
 

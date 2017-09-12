@@ -29,6 +29,6 @@ package Config is
 
    Inverter_System_Period_Ms : constant Positive := 10;
 
-   Logger_Period_Ms : constant Positive := 10;
+   Logger_Period_Ms : constant Positive := 1;
 
 end Config;

@@ -14,19 +14,19 @@ package body Communication is
                            Data   : in Byte_Array)
                            return AMC_Types.UInt8;
 
-   procedure Do_New_Data_Callback (Port   : in out Port_Type;
+   procedure Do_New_Data_Callback (Port   : access Port_Type;
                                    Status : in Status_Type;
                                    Data   : access Byte_Array);
 
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
                                         Data       : access Byte_Array;
-                                        From_Port  : in out Port_Type);
+                                        From_Port  : access Port_Type);
 
    procedure Commands_Write_To (Data  : access Byte_Array;
                                 Error : out Boolean);
 
    procedure Commands_Read_From (Data         : access Byte_Array;
-                                 Send_To_Port : in out Port_Type;
+                                 Send_To_Port : access Port_Type;
                                  Error        : out Boolean);
 
 
@@ -68,7 +68,7 @@ package body Communication is
    end Initialize;
 
 
-   procedure Attach_Interface (Port              : in out Port_Type;
+   procedure Attach_Interface (Port              : access Port_Type;
                                Interface_Obj     : in out Interface_Type'Class;
                                New_Data_Callback : in Callback_Access) is
    begin
@@ -107,7 +107,7 @@ package body Communication is
    end Put;
 
 
-   procedure Do_New_Data_Callback (Port   : in out Port_Type;
+   procedure Do_New_Data_Callback (Port   : access Port_Type;
                                    Status : in Status_Type;
                                    Data   : access Byte_Array) is
       Callback : constant Callback_Access := Port.New_Data_CB (Status.Interface_Number);
@@ -120,7 +120,7 @@ package body Communication is
    end Do_New_Data_Callback;
 
 
-   procedure Commands_Send_Error (Port                     : in out Port_Type;
+   procedure Commands_Send_Error (Port                     : access Port_Type;
                                   Causing_Interface_Number : in Interface_Number_Type) is
       Data : constant Byte_Array := (0 => AMC_Types.UInt8 (Causing_Interface_Number));
    begin
@@ -165,7 +165,7 @@ package body Communication is
       if not Error then
          Write := Commands_Mem_Range_Type'(As_Array => True,
                                            Arr      => Data (0 .. Cmd_Length - 1));
-         Error := (Natural (Write.Cmd.Length) = Data'Length - Cmd_Length);
+         Error := (Natural (Write.Cmd.Length) /= Data'Length - Cmd_Length);
          if not Error then
             declare
                subtype Write_Array is Byte_Array (0 .. Natural (Write.Cmd.Length) - 1);
@@ -188,7 +188,7 @@ package body Communication is
 
 
    procedure Commands_Read_From (Data         : access Byte_Array;
-                                 Send_To_Port : in out Port_Type;
+                                 Send_To_Port : access Port_Type;
                                  Error        : out Boolean) is
       Read  : Commands_Mem_Range_Type;
       Cmd_Length : constant Natural := Commands_Mem_Range_Cmd'Size / 8;
@@ -220,7 +220,7 @@ package body Communication is
 
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
                                         Data       : access Byte_Array;
-                                        From_Port  : in out Port_Type) is
+                                        From_Port  : access Port_Type) is
       Error : Boolean;
    begin
       case Identifier is
@@ -252,7 +252,7 @@ package body Communication is
       Data_Start_Idx : constant Buffer_Index := Buffer_Index'First;
 
       pragma Style_Checks (Off); --  No spec is OK
-      procedure Fill_Header (Port       : in out Port_Type;
+      procedure Fill_Header (Port       : access Port_Type;
                              D          : in AMC_Types.UInt8;
                              Next_State : out Parser_State_Type) is
          pragma Style_Checks (On);
@@ -274,7 +274,7 @@ package body Communication is
       end Fill_Header;
 
       pragma Style_Checks (Off); --  No spec is OK
-      procedure Fill_Data (Port       : in out Port_Type;
+      procedure Fill_Data (Port       : access Port_Type;
                            D          : in AMC_Types.UInt8;
                            Next_State : out Parser_State_Type) is
          pragma Style_Checks (On);
@@ -300,7 +300,7 @@ package body Communication is
       end Fill_Data;
 
       pragma Style_Checks (Off); --  No spec is OK
-      procedure Do_Crc (Port        : in out Port_Type;
+      procedure Do_Crc (Port        : access Port_Type;
                         Message_Crc : in AMC_Types.UInt8) is
          pragma Style_Checks (On);
          New_Data : aliased Byte_Array :=
@@ -341,17 +341,17 @@ package body Communication is
                      Port.Parser_State := Get_Header;
 
                   when Get_Header =>
-                     Fill_Header (Port => Port,
+                     Fill_Header (Port => Port'Access,
                                   D    => D,
                                   Next_State => Port.Parser_State);
 
                   when Get_Data =>
-                     Fill_Data (Port => Port,
+                     Fill_Data (Port => Port'Access,
                                 D    => D,
                                 Next_State => Port.Parser_State);
 
                   when Calc_Crc =>
-                     Do_Crc (Port        => Port,
+                     Do_Crc (Port        => Port'Access,
                              Message_Crc => D);
                      Port.Parser_State := Wait_For_Start;
 

@@ -125,7 +125,7 @@ package body AMC_UART is
    procedure Initialize_Default (Stream : in out UART_Stream) is
    begin
       Initialize (Stream         => Stream,
-                  Baud_Rate      => 115_200,
+                  Baud_Rate      => 2_000_000,
                   UART           => AMC_Board.Uart_Peripheral'Access,
                   AF             => AMC_Board.Uart_GPIO_AF,
                   Tx_Pin         => AMC_Board.Uart_Tx_Pin,

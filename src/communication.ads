@@ -19,7 +19,7 @@ package Communication is
 
    type Callback_Access is access procedure (Identifier : in Identifier_Type;
                                              Data       : access Byte_Array;
-                                             From_Port  : in out Port_Type);
+                                             From_Port  : access Port_Type);
 
 
 
@@ -44,7 +44,7 @@ package Communication is
                          Enable_Tx_Crc    : in Boolean := False;
                          Enable_Rx_Crc    : in Boolean := True);
 
-   procedure Attach_Interface (Port              : in out Port_Type;
+   procedure Attach_Interface (Port              : access Port_Type;
                                Interface_Obj     : in out Interface_Type'Class;
                                New_Data_Callback : in Callback_Access);
    --  Attaching an interface to a port enables a callback subprogram to be
@@ -52,7 +52,7 @@ package Communication is
    --  NOTE: Keep New_Data_Callback short. It is called in the context of
    --        Port.Receive_Handler
 
-   procedure Commands_Send_Error (Port                     : in out Port_Type;
+   procedure Commands_Send_Error (Port                     : access Port_Type;
                                   Causing_Interface_Number : in Interface_Number_Type);
 
    procedure Put (Port             : access Port_Type;

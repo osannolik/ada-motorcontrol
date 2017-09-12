@@ -1,12 +1,16 @@
 with Transforms;
 with AMC_Utils;
 with PID;
+with Calmeas;
 
 package body FOC is
 
+   Kp_Param : aliased Float := 0.1;
+   Iq_Log   : aliased Voltage_V;
+
    Is_Saturated : Boolean := False;
 
-   PID_Iq : PID.Kpid := PID.Compose (Kp => 0.1,
+   PID_Iq : PID.Kpid := PID.Compose (Kp => Kp_Param,
                                      Ki => 0.0,
                                      Kd => 0.0);
    PID_Id : PID.Kpid := PID_Iq;
@@ -26,6 +30,11 @@ package body FOC is
 
       Vdq : Dq;
    begin
+      PID_Iq.Kp := Kp_Param;
+      PID_Id.Kp := Kp_Param;
+
+      Iq_Log := Idq.Q;
+
       PID_Iq.Update (Setpoint => I_Set_Point.Q,
                      Actual   => Idq.Q,
                      Ts       => Period,
@@ -45,5 +54,15 @@ package body FOC is
 
       return Transforms.Clarke_Inv (Transforms.Park_Inv (Vdq, Angle_Obj));
    end Calculate_Voltage;
+
+begin
+
+   Calmeas.Add (Symbol      => Kp_Param'Access,
+                Name        => "Kp",
+                Description => "PID proportional gain");
+
+   Calmeas.Add (Symbol      => Iq_Log'Access,
+                Name        => "Iq",
+                Description => "Quadrature current [A]");
 
 end FOC;
