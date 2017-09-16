@@ -55,5 +55,9 @@ project Ada_MotorControl is
       end case;
    end Ide;
 
+   package Documentation is
+      for Documentation_Dir use "doc/html";
+   end Documentation;
+
 end Ada_MotorControl;
 

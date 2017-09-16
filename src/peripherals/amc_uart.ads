@@ -5,6 +5,14 @@ with AMC_Types; use AMC_Types;
 with Stream_Interface;
 
 package AMC_UART is
+   --  @summary
+   --  Serial Port
+   --
+   --  @description
+   --  Interfaces the a microcontroller UART peripheral using common AMC types.
+   --
+   --  Multiple instances may be declared, but a default is declared in this package.
+   --
 
    Buffer_Max_Length : constant Natural := 256;
    subtype Buffer_Index is Natural range 0 .. Buffer_Max_Length - 1;
@@ -29,9 +37,11 @@ package AMC_UART is
 
    function Is_Initialized (Stream : in UART_Stream)
       return Boolean;
+   --  @return True when initialized.
 
    procedure Initialize_Default (Stream : in out UART_Stream);
    --  Initialise the UART_Stream using settings as per AMC_Board (and a few hard codeds)
+   --  @param Stream The UART object
 
    procedure Initialize (Stream         : in out UART_Stream;
                          Baud_Rate      : STM32.USARTs.Baud_Rates;
@@ -47,10 +57,12 @@ package AMC_UART is
    with
       Pre => not Is_Initialized (Stream),
       Post => Is_Initialized (Stream);
-   --  Initialize a UART_Stream given the specified settings
+   --  Initialize a UART_Stream given the specified settings.
 
    function Is_Busy_Tx (Stream : in UART_Stream) return Boolean;
-   --  Indicates if the peripheral is currently transmitting any data
+   --  Indicates if the peripheral is currently transmitting any data.
+   --  @param Stream The UART object
+   --  @return True if the peripheral is transmitting.
 
    Busy_Transmitting : exception;
 
@@ -61,16 +73,21 @@ package AMC_UART is
    with
       Pre => Data'Length <= Buffer_Max_Length;
    --  Writes byte data to the specified UART_Stream.
-   --  If the peripheral is busy transmitting previous data the exception
-   --  Busy_Transmitting is raised.
+   --  @param Stream The UART object
+   --  @param Data The data to be sent.
+   --  @param Sent The number of bytes of Data that were sent.
+   --  @exception Busy_Transmitting raised if the peripheral is busy.
 
    overriding
    function Read (Stream : in out UART_Stream)
                   return AMC_Types.Byte_Array
    with
       Post => Read'Result'Length <= Buffer_Max_Length;
-   --  Reads byte data from the specified UART_Stream
+   --  Reads byte data from the specified UART_Stream.
+   --  @param Stream The UART object.
+   --  @return The new data.
 
    Stream : aliased UART_Stream;
+   --  Default instance.
 
 end AMC_UART;

@@ -29,8 +29,6 @@ package body Transforms is
                             C => Tmp1 - Tmp2);
    end Clarke_Inv;
 
-   function Factor return Float is (Factor_Default);
-
    function Park (X : in AMC_Types.Alfa_Beta;
                   Angle : in AMC_Types.Angle_Rad)
                   return AMC_Types.Dq

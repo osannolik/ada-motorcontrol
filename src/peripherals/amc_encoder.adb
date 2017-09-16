@@ -59,9 +59,6 @@ package body AMC_Encoder is
    function Is_Initialized return Boolean is
       (Initialized);
 
-   function Get_Counter return AMC_Types.UInt32 is
-      (STM32.Timers.Current_Counter (Counting_Timer));
-
    function Get_Angle return AMC_Types.Angle_Rad is
       use STM32.Timers;
    begin

@@ -31,6 +31,12 @@ build:
 $(LISTFILE): $(OUTFILE)
 	$(V) $(OD) -S $< > $@
 
+doc: clean_doc
+	gnatdoc --no-subprojects --enable-build --symlinks -b -P $(ADA_PRJ)
+
+clean_doc:
+	rm -rf doc/html
+
 target_connect:
 	st-util --listen_port=$(PORT_REM) &
 

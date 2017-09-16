@@ -6,48 +6,58 @@ with AMC_Types;
 with AMC_Board;
 
 package AMC_PWM is
-   --  Pulse width modulation
-   --  Interfaces the mcu pwm peripheral
-
-   type Gate_Setting is private;
-
-   type Gate_Settings is private;
-
+   --  @summary
+   --  Pulse Width Modulation
+   --
+   --  @description
+   --  Interfaces the microcontroller's PWM peripheral using common AMC types.
+   --
 
    function Is_Initialized
       return Boolean;
+   --  @return True when initialized.
 
    procedure Initialize
-   --  Initialize the peripheral.
-   --  Each phase need to be enabled manually after this.
       (Frequency : AMC_Types.Frequency_Hz;
        Deadtime  : AMC_Types.Seconds;
        Alignment : AMC_Types.PWM_Alignment);
+   --  Initialize the peripheral.
+   --  Each phase need to be enabled manually after this.
+   --  @param Frequency Switching frequency.
+   --  @param Deadtime If complementary switching is used, sets the deadtime.
+   --  @param Alignment Aslignment of PWM waveforms.
 
    procedure Enable
-   --  Enable PWM generation for the specified phase
       (Phase : AMC_Types.Phase);
+   --  Enable PWM generation for the specified phase.
+   --  @param Phase The specified phase.
 
    procedure Disable
-   --  Disable PWM generation for the specified phase
       (Phase : AMC_Types.Phase);
+   --  Disable PWM generation for the specified phase.
+   --  @param Phase The specified phase.
 
    function Get_Duty_Resolution
-   --  Get the minimum step that the duty can be changed
       return AMC_Types.Duty_Cycle;
+   --  @return The minimum step that the duty can be changed, in percent.
 
    procedure Set_Duty_Cycle
-   --  Sets the duty cycle for the specified Phase
       (Phase : AMC_Types.Phase;
        Value : AMC_Types.Duty_Cycle);
+   --  Sets the duty cycle for the specified Phase.
+   --  @param Phase The specified phase.
+   --  @param Value The duty cycle percentage 0-100.
 
    procedure Set_Duty_Cycle
-   --  Sets the duty cycle for all phases
       (Dabc : AMC_Types.Abc);
+   --  Sets the duty cycle for all phases.
+   --  @param Dabc Duty cycle percentages 0-100.
 
    procedure Set_Trigger_Cycle
-   --  Sets where over the PWM cycle the trigger shall occur.
       (Value : AMC_Types.Duty_Cycle);
+   --  Sets where over the PWM cycle the trigger shall occur. Trigger occurs at
+   --  the positive edge of the waveform. Setting this to 0 disables the triggering.
+   --  @param Value Duty cycle defined the same way as for the phase duty.
 
    procedure Generate_Break_Event;
    --  Sets the pwm outputs to an inactive state, e.g. all low.

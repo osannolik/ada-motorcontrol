@@ -3,84 +3,147 @@ with System;
 with Communication;
 
 package Calmeas is
+   --  @summary
+   --  Calibration and Measurement
+   --
+   --  @description
+   --  A tool that allows the user to add which variables that shall be
+   --  available for logging and/or tuning.
+   --
+   --  The following example would declare X as a Calmeas symbol:
+   --
+   --   X : aliased Float;
+   --   Calmeas.Add
+   --     (Symbol      => X'Access,
+   --      Name        => "X_Name",
+   --      Description => "My X variable");
+   --
+   --  X is can then be found in the host gui.
+   --
+   --  See https://github.com/osannolik/calmeas for more info
+   --
 
    Nof_Symbols_Max : constant Positive := 32;
 
-   --  Returns the number of symbols that has been added
-   function Nof_Symbols_Added return Natural;
 
-   --  Make a UInt8 type symbol available for logging and tuning using the
-   --  Calmeas host gui
+   function Nof_Symbols_Added return Natural;
+   --  @return The number of symbols that has been added
+
+
    procedure Add (Symbol      : access AMC_Types.UInt8;
                   Name        : String;
                   Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
+   --  Make a UInt8 type symbol available for logging and tuning using the
+   --  Calmeas host gui.
+   --  @param Symbol An access to the variable to be added
+   --  @param Name The name of the variable as seen on the gui
+   --  @param Description An optional description string
+   --  @exception Must_Provide_Symbol_Name raised
+   --     if Name is empty.
 
-   --  Make a UInt16 type symbol available for logging and tuning using the
-   --  Calmeas host gui
    procedure Add (Symbol      : access AMC_Types.UInt16;
                   Name        : String;
                   Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
+   --  Make a UInt16 type symbol available for logging and tuning using the
+   --  Calmeas host gui.
+   --  @param Symbol An access to the variable to be added
+   --  @param Name The name of the variable as seen on the gui
+   --  @param Description An optional description string
+   --  @exception Must_Provide_Symbol_Name raised
+   --     if Name is empty.
 
-   --  Make a UInt32 type symbol available for logging and tuning using the
-   --  Calmeas host gui
    procedure Add (Symbol      : access AMC_Types.UInt32;
                   Name        : String;
                   Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
+   --  Make a UInt32 type symbol available for logging and tuning using the
+   --  Calmeas host gui.
+   --  @param Symbol An access to the variable to be added
+   --  @param Name The name of the variable as seen on the gui
+   --  @param Description An optional description string
+   --  @exception Must_Provide_Symbol_Name raised
+   --     if Name is empty.
 
-   --  Make a Int8 type symbol available for logging and tuning using the
-   --  Calmeas host gui
    procedure Add (Symbol      : access AMC_Types.Int8;
                   Name        : String;
                   Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
+   --  Make a Int8 type symbol available for logging and tuning using the
+   --  Calmeas host gui.
+   --  @param Symbol An access to the variable to be added
+   --  @param Name The name of the variable as seen on the gui
+   --  @param Description An optional description string
+   --  @exception Must_Provide_Symbol_Name raised
+   --     if Name is empty.
 
-   --  Make a Int16 type symbol available for logging and tuning using the
-   --  Calmeas host gui
    procedure Add (Symbol      : access AMC_Types.Int16;
                   Name        : String;
                   Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
+   --  Make a Int16 type symbol available for logging and tuning using the
+   --  Calmeas host gui.
+   --  @param Symbol An access to the variable to be added
+   --  @param Name The name of the variable as seen on the gui
+   --  @param Description An optional description string
+   --  @exception Must_Provide_Symbol_Name raised
+   --     if Name is empty.
 
-   --  Make a Int32 type symbol available for logging and tuning using the
-   --  Calmeas host gui
    procedure Add (Symbol      : access AMC_Types.Int32;
                   Name        : String;
                   Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
+   --  Make a Int32 type symbol available for logging and tuning using the
+   --  Calmeas host gui.
+   --  @param Symbol An access to the variable to be added
+   --  @param Name The name of the variable as seen on the gui
+   --  @param Description An optional description string
+   --  @exception Must_Provide_Symbol_Name raised
+   --     if Name is empty.
 
-   --  Make a Float type symbol available for logging and tuning using the
-   --  Calmeas host gui
    procedure Add (Symbol      : access Float;
                   Name        : String;
                   Description : String := "")
    with
       Pre => Nof_Symbols_Added < Nof_Symbols_Max;
+   --  Make a Float type symbol available for logging and tuning using the
+   --  Calmeas host gui.
+   --  @param Symbol An access to the variable to be added
+   --  @param Name The name of the variable as seen on the gui
+   --  @param Description An optional description string
+   --  @exception Must_Provide_Symbol_Name raised
+   --     if Name is empty.
 
+   procedure Sample (To_Port : access Communication.Port_Type);
    --  Samples the added symbols and sends the data to the specified Port.
    --  Note: This needs to be run at a periodicity at least as short as the
    --  fastest raster period.
-   procedure Sample (To_Port : access Communication.Port_Type);
+   --  @param To_Port Where to send the logged data
 
-   --  An instance of an interface used to connect to a Communication.Port_Type
+
    Communication_Interface : aliased Communication.Interface_Type;
+   --  An instance of an interface used to connect to a Communication.Port_Type
 
-   --  This is called when new data is received on From_Port.
-   --  Requests send available symbols, start raster sampling etc. is done via
-   --  this callback.
+
    procedure Callback_Handler (Identifier : in Communication.Identifier_Type;
                                Data       : access Byte_Array;
                                From_Port  : access Communication.Port_Type);
+   --  This is called when new data is received on From_Port.
+   --  Requests send available symbols, start raster sampling etc. is done via
+   --  this callback.
+   --  @param Identifier The Id number of the callback.
+   --  @param Data An array containing the received data. It could be empty.
+   --  @param From_Port The port from wich the data triggering the callback origins.
 
    Must_Provide_Symbol_Name : exception;
+   --  Raised if the name string is empty
 
 private
 

@@ -28,6 +28,8 @@ package body AMC is
 
    --  Temporary for test
    function External_Voltage_To_Iq_Req (ADC_Voltage : in Voltage_V)
+                                        return Dq;
+   function External_Voltage_To_Iq_Req (ADC_Voltage : in Voltage_V)
                                         return Dq
    is
       Iq : constant Float := Float (ADC_Voltage) * 20.0 / 3.3;
@@ -125,6 +127,10 @@ package body AMC is
                Current_Mode := Off;
             end if;
 
+         when Speed =>
+            raise Constraint_Error;
+            --  Not Implemented
+
       end case;
    end Update_Mode;
 
@@ -158,10 +164,17 @@ package body AMC is
                Align_Tmr.Reset;
                Position.Set_Angle (0.0);
             end if;
+
+         when Speed =>
+            raise Constraint_Error;
+            --  Not Implemented
       end case;
 
       Outputs.Mode := Mode;
    end Update_Outputs;
+
+   function Get_Inverter_System_Output return Inverter_System_States is
+      (Inverter_System_Outputs.Get);
 
    procedure Safe_State is
    begin

@@ -4,7 +4,14 @@ with ZSM;
 with Position;
 
 package Config is
+   --  @summary
    --  Ada Motor Controller configuration parameters
+   --
+   --  @description
+   --  Collects a set of parameters used to configure the controller.
+   --  The user can e.g. select what type of position sensor or the method of
+   --  modulationto to use.
+   --
 
    PWM_Frequency_Hz : constant AMC_Types.Frequency_Hz := 20_000.0;
 

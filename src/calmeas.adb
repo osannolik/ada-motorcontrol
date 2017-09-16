@@ -58,9 +58,9 @@ package body Calmeas is
                         Idx := Idx + Symbol_Size;
                      end loop;
                      if To_Port /= null then
-                        To_Port.Put (Interface_Number => Interface_Number,
-                                     Identifier       => Id_Raster,
-                                     Data             => Buffer);
+                        Communication_Interface.Send (Port       => To_Port,
+                                                      Identifier => Id_Raster,
+                                                      Data       => Buffer);
                      end if;
                   end;
                end if;
@@ -115,14 +115,16 @@ package body Calmeas is
                subtype Desc_String is String (1 .. Stop_Idx);
                function To_Array is new Ada.Unchecked_Conversion (Source => Desc_String,  Target => Desc_Array);
             begin
-               To_Port.Put (Interface_Number => Interface_Number,
-                            Identifier       => Id_Symbol_Desc,
-                            Data             => To_Array (Symbols (Index).Description (1 .. Stop_Idx)));
+               Communication_Interface.Send
+                  (Port       => To_Port,
+                   Identifier => Id_Symbol_Desc,
+                   Data       => To_Array (Symbols (Index).Description (1 .. Stop_Idx)));
             end;
          else
-            To_Port.Put (Interface_Number => Interface_Number,
-                         Identifier       => Id_Symbol_Desc,
-                         Data             => AMC_Types.Empty_Byte_Array);
+            Communication_Interface.Send
+               (Port       => To_Port,
+                Identifier => Id_Symbol_Desc,
+                Data       => AMC_Types.Empty_Byte_Array);
          end if;
       end if;
    end Send_Symbol_Description;
@@ -150,9 +152,10 @@ package body Calmeas is
             subtype Name_String is String (1 .. Stop_Idx);
             function To_Array is new Ada.Unchecked_Conversion (Source => Name_String,  Target => Name_Array);
          begin
-            To_Port.Put (Interface_Number => Interface_Number,
-                         Identifier       => Id_Symbol_Name,
-                         Data             => To_Array (Symbols (Index).Name (1 .. Stop_Idx)));
+            Communication_Interface.Send
+               (Port       => To_Port,
+                Identifier => Id_Symbol_Name,
+                Data       => To_Array (Symbols (Index).Name (1 .. Stop_Idx)));
          end;
       end if;
    end Send_Symbol_Name;
@@ -177,9 +180,10 @@ package body Calmeas is
          Idx := Natural'Succ (Idx);
       end loop;
 
-      To_Port.Put (Interface_Number => Interface_Number,
-                   Identifier       => Id_Raster_Periods,
-                   Data             => To_Array (Raster_Data));
+      Communication_Interface.Send
+         (Port       => To_Port,
+          Identifier => Id_Raster_Periods,
+          Data       => To_Array (Raster_Data));
 
       Error := False;
    end Send_Raster_Periods;
@@ -224,9 +228,10 @@ package body Calmeas is
          end if;
       end loop;
 
-      To_Port.Put (Interface_Number => Interface_Number,
-                   Identifier       => Id_Meta,
-                   Data             => Meta_Data);
+      Communication_Interface.Send
+         (Port       => To_Port,
+          Identifier => Id_Meta,
+          Data       => Meta_Data);
 
       Error := False;
    end Send_Meta;

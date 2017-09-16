@@ -8,10 +8,14 @@ with AMC_Board;
 with Config;
 
 package AMC_ADC is
+   --  @summary
    --  Analog to digital conversion
-   --  Interfaces the mcu adc peripheral
+   --
+   --  @description
+   --  Interfaces the microcontroller's ADC peripheral using common AMC types.
+   --
 
-
+   --  Specifies the available readings
    type ADC_Readings is
       (I_A, I_B, I_C, EMF_A, EMF_B, EMF_C, Bat_Sense, Board_Temp, Ext_V);
 
@@ -21,21 +25,30 @@ package AMC_ADC is
    type Injected_Samples_Array is
       array (ADC_Readings_Inj'Range) of AMC_Types.Voltage_V;
 
-
    function Get_Sample (Reading : in ADC_Readings)
-      return AMC_Types.Voltage_V;
+                        return AMC_Types.Voltage_V;
+   --  Get the specified ADC reading.
+   --  @param Reading The reading,
+   --  @return The sampled value.
 
    function Is_Initialized
       return Boolean;
+   --  @return True when initialized.
 
    procedure Initialize;
+   --  Initializes the peripheral
 
    protected Handler is
       pragma Interrupt_Priority (Config.ADC_ISR_Prio);
 
       function Get_Injected_Samples return Injected_Samples_Array;
+
       entry Await_New_Samples (Phase_Voltage_Samples : out AMC_Types.Abc;
                                Phase_Current_Samples : out AMC_Types.Abc);
+      --  Suspend the caller and wake it up again as soon as new samples arrive.
+      --  @param Phase_Voltage_Samples New voltage samples.
+      --  @param Phase_Current_Samples New current samples.
+
    private
 
       Samples : Injected_Samples_Array := (others => 0.0);
@@ -115,14 +128,5 @@ private
 
    Regular_Samples : Regular_Samples_Array := (others => 0) with Volatile;
 
---     Phase_Voltage_To_Reading : constant array (AMC_Types.Phase'Range) of ADC_Readings :=
---        ((AMC_Types.A) => EMF_A,
---         (AMC_Types.B) => EMF_B,
---         (AMC_Types.C) => EMF_C);
---
---     Phase_Current_To_Reading : constant array (AMC_Types.Phase'Range) of ADC_Readings :=
---        ((AMC_Types.A) => I_A,
---         (AMC_Types.B) => I_B,
---         (AMC_Types.C) => I_C);
 
 end AMC_ADC;

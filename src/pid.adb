@@ -16,7 +16,7 @@ package body PID is
                      Setpoint : in Float;
                      Actual   : in Float;
                      Ts       : in Float;
-                     Is_Sat   : in Boolean)
+                     Is_Sat   : in Boolean := False)
    is
       E : Float := Setpoint - Actual;
       D_Term : constant Float := (E - This.E_Prev) / Ts; --  TODO: Filter!

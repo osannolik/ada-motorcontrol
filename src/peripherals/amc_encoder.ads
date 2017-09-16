@@ -5,31 +5,40 @@ with AMC_Types;
 with AMC_Board;
 
 package AMC_Encoder is
+   --  @summary
    --  Quadrature Encoder
-   --  Interfaces the mcu timer peripheral
+   --
+   --  @description
+   --  Interfaces the encoder using common AMC types.
+   --
 
    function Is_Initialized return Boolean;
+   --  @return True if initialized.
 
    procedure Initialize;
-
-   function Get_Counter return AMC_Types.UInt32;
+   --  Initialize the encoder, i.e. timer peripheral.
 
    function Get_Angle return AMC_Types.Angle_Rad;
-   --  Returns an angle related to mechanical rotations, i.e. it is not
+   --  Get the angle related to mechanical rotations, i.e. it is not
    --  compensated for the motor's pole pairs
+   --  @return Mechanical angle in radians.
 
    function Get_Angle return AMC_Types.Angle_Deg;
-   --  Returns an angle related to mechanical rotations, i.e. it is not
+   --  Get the angle related to mechanical rotations, i.e. it is not
    --  compensated for the motor's pole pairs
+   --  @return Mechanical angle in degrees.
 
    function Get_Angle return AMC_Types.Angle;
-   --  Returns an angle related to mechanical rotations, i.e. it is not
+   --  Get the angle related to mechanical rotations, i.e. it is not
    --  compensated for the motor's pole pairs
+   --  @return Mechanical angle object.
 
    procedure Set_Angle (Angle : in AMC_Types.Angle_Rad);
-   --  Define the current sensor position as the specified angle
+   --  Define the current sensor position as the specified angle.
+   --  @param Angle Set angle in radians.
 
-   function Get_Direction  return Float;
+   function Get_Direction return Float;
+   --  @return 1.0 if forward, else -1.0
 
 private
 

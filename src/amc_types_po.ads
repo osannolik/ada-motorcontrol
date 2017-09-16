@@ -5,6 +5,8 @@ with Config;
 package AMC_Types_PO is
    --  Protected variants of various types
 
+   pragma Pure;
+
    package Dq_PO_Pack         is new Generic_PO (AMC_Types.Dq);
    package Voltage_PO_Pack    is new Generic_PO (AMC_Types.Voltage_V);
    package Angle_Erad_PO_Pack is new Generic_PO (AMC_Types.Angle_Erad);

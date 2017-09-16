@@ -6,43 +6,81 @@ with Config;
 with Stream_Interface;
 
 package Communication is
+   --  @summary
+   --  Communication package
+   --
+   --  @description
+   --  Provides a layer that abstracts away the different available senders
+   --  and receivers. It implements a simple protocol with a packet divided
+   --  into a header and a data field. The header is consisting of a number
+   --  indicating what "application" (interface) the packet belongs to,
+   --  another number that is application defined, and the total data length.
+   --  The data field is appended with an optional CRC byte.
+   --
+   --  A data sender/receiver is created by declaring an object of the type
+   --  Port_type:
+   --
+   --   Serial_Port : aliased Communication.Port_Type;
+   --
+   --  The declared port then need to know which stream interface to use for IO.
+   --  UART is here an overriding type of Stream_Interface.Base_Stream.
+   --
+   --   Serial_Port.Initialize (IO_Stream_Access => UART'Access);
+   --
+   --  An application wanting to use the created port type need to declare an
+   --  interface of type Interface_Type, and to provide an access to a callback
+   --  handler that will be called when new data is received:
+   --
+   --   Serial_Port.Attach_Interface
+   --   (Interface_Obj     => Application_Interface,
+   --    New_Data_Callback => Callback_Handler'Access);
 
    type Port_Type is tagged limited private;
 
-   subtype Data_Size_Type is AMC_Types.UInt16;
+   type Interface_Type is tagged limited private;
+
 
    subtype Interface_Number_Type is HAL.UInt4;
-   subtype Interface_Numbers is Interface_Number_Type range 1 .. Interface_Number_Type'Last;
-   subtype Identifier_Type is HAL.UInt4;
+   --  A number that identifies the interface
 
+   subtype Interface_Numbers is Interface_Number_Type range 1 .. Interface_Number_Type'Last;
+   --  A number that identifies the interface
+
+   subtype Identifier_Type is HAL.UInt4;
+   --  A number that the application may use to identify the type of data sent/received
 
 
    type Callback_Access is access procedure (Identifier : in Identifier_Type;
                                              Data       : access Byte_Array;
                                              From_Port  : access Port_Type);
 
-
-
-
-
-   type Interface_Type is tagged limited private;
-
    procedure Initialize (Interface_Obj    : access Interface_Type'Class;
                          Interface_Number : in Interface_Numbers);
+   --  Initializes the provided interface object to use the specified interface number
+   --  @param Interface_Obj The interface object
+   --  @param Interface_Number The specified interface number. Must be unique for each Interface.
 
    procedure Send (Interface_Obj : access Interface_Type'Class;
                    Port          : access Port_Type;
                    Identifier    : in Identifier_Type;
                    Data          : in Byte_Array);
-
-
-
-
+   --  Enqueue Data to be sent from the provided interface to the specified Port using an Id.
+   --  The actual sending is performed when calling Transmit_Handler.
+   --  @param Interface_Obj The interface object
+   --  @param Port The port to use for sending
+   --  @param Identifier Specified Id
+   --  @param Data The data to be sent
 
    procedure Initialize (Port             : access Port_Type;
                          IO_Stream_Access : in Stream_Interface.Base_Stream_Access;
                          Enable_Tx_Crc    : in Boolean := False;
                          Enable_Rx_Crc    : in Boolean := True);
+   --  Initialize the provided Port to use the specified stream for sending/receiving.
+   --  @param Port The Port object to be initialized
+   --  @param IO_Stream_Access The stream that will be used for data IO
+   --  @param Enable_Tx_Crc Adds a checksum byte after the sent data
+   --  @param Enable_Rx_Crc The receiver will assume that the received data is
+   --  appended with a checksum byte
 
    procedure Attach_Interface (Port              : access Port_Type;
                                Interface_Obj     : in out Interface_Type'Class;
@@ -50,32 +88,33 @@ package Communication is
    --  Attaching an interface to a port enables a callback subprogram to be
    --  called when new data is received for the specified interface.
    --  NOTE: Keep New_Data_Callback short. It is called in the context of
-   --        Port.Receive_Handler
+   --  Port.Receive_Handler
+   --  @param Port The port object which to attach the interface callback to
+   --  @param Interface_Obj Corresponding interface
+   --  @param New_Data_Callback The subprogram that shall be called when new
+   --  data arrives on the specified interface.
 
    procedure Commands_Send_Error (Port                     : access Port_Type;
                                   Causing_Interface_Number : in Interface_Number_Type);
-
-   procedure Put (Port             : access Port_Type;
-                  Interface_Number : in Interface_Number_Type;
-                  Identifier       : in Identifier_Type;
-                  Data             : in Byte_Array);
+   --  Send an error indication on the provided port.
+   --  @param Port Send the error to this port
+   --  @param Causing_Interface_Number The interface that sends the error.
 
    procedure Receive_Handler (Port : in out Port_Type);
+   --  Checks for new data on the specified port. Should be called periodically.
+   --  If new data is found, then the callback for the corresponding interface will
+   --  be called.
+   --  @param Port Poll for new data on this port.
 
    procedure Transmit_Handler (Port : in out Port_Type);
-
-
-
+   --  Send all data that has been enqueued for transmission using the provided port.
+   --  @param Port Send to the stream assigned to this port.
 
 private
 
    type Interface_Type is tagged limited record
       Interface_Number : Interface_Number_Type;
    end record;
-
-
-
-
 
    Packet_Start : constant AMC_Types.UInt8 := 16#73#;  --  's'
    Data_Length_Max : constant Natural := 1024;  --  Natural (Data_Size_Type'Last - 1);
@@ -152,11 +191,12 @@ private
       Use_Tx_CRC     : Boolean;
    end record;
 
-   Commands_Interface_Number : constant Interface_Number_Type := 0;
-
    Com_Id_Error     : constant Identifier_Type := 0;
    Com_Id_Write_To  : constant Identifier_Type := 1;
    Com_Id_Read_From : constant Identifier_Type := 2;
+
+   Commands_Interface_Number : constant Interface_Number_Type := 0;
+   --  A reserved interface for errors and memory read/writes...
 
    Commands_Interface : aliased Interface_Type;
 

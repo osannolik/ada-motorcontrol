@@ -47,7 +47,7 @@ package body Current_Control is
 
          AMC_Board.Turn_On (AMC_Board.Led_Green);
 
-         System_Out := AMC.Inverter_System_Outputs.Get;
+         System_Out := AMC.Get_Inverter_System_Output;
 
 
          if System_Out.Mode /= Off then
@@ -94,16 +94,5 @@ package body Current_Control is
       return ZSM.Modulate (X      => Duty,
                            Method => Config.Modulation_Method);
    end Voltage_To_Duty;
-
-   procedure Initialize
-   is
-   begin
-
-      Initialized := True;
-   end Initialize;
-
-   function Is_Initialized return Boolean is
-      (Initialized);
-
 
 end Current_Control;

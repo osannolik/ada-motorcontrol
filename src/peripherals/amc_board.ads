@@ -6,9 +6,17 @@ with STM32.USARTs;
 with AMC_Types;
 
 package AMC_Board is
+   --  @summary
    --  Ada Motor Controller board specifics
+   --
+   --  @description
+   --  Defines parameters and configurations related to the used board.
+   --
+   --  https://github.com/osannolik/MotCtrl
+   --
 
    ADC_Vref      : constant Float := 3.3;
+   --  ADC full scale voltage
 
    R_Shunt       : constant Float := 0.5e-3;  --  R26, R27, R28
    Ina240_Gain   : constant Float := 50.0;
@@ -101,59 +109,89 @@ package AMC_Board is
    procedure Set_Gate_Driver_Power (Enabled : in Boolean)
    with
       Pre => Is_Initialized;
+   --  Enable or disable the power to the gate drivers.
+   --  @param Enabled Enables the power if True
 
    procedure Turn_On  (Led : in out Led_Pin)
    with
       Pre => Is_Initialized;
+   --  Turns on the specified LED.
+   --  @param Led The specified LED.
 
    procedure Turn_Off (Led : in out Led_Pin)
    with
       Pre => Is_Initialized;
+   --  Turns off the specified LED.
+   --  @param Led The specified LED.
 
    procedure Toggle   (Led : in out Led_Pin)
    with
       Pre => Is_Initialized;
+   --  Toggles the specified LED.
+   --  @param Led The specified LED.
 
    function Is_Pressed (Button : Button_Pin)
       return Boolean
    with
       Pre => Is_Initialized;
+   --  @param Button Specifies the button.
+   --  @return True if the button is pressed.
 
    function Is_Initialized
       return Boolean;
+   --  @return True if the board specifics are initialized.
 
    procedure Initialize
    with
       Pre  => not Is_Initialized,
       Post => Is_Initialized;
+   --  Initializes the board specifics.
 
    function To_Phase_Current (ADC_Voltage : AMC_Types.Voltage_V)
                               return AMC_Types.Current_A
    with
       Inline;
+   --  Convert an ADC reading to the corresponding phase current.
+   --  @param ADC_Voltage ADC reading in volts
+   --  @return Corresponding phase current in amperes
 
    function To_Phase_Currents (ADC_Voltage : AMC_Types.Abc)
                                return AMC_Types.Abc
    with
       Inline;
+   --  Convert ADC readings to the corresponding phase currents.
+   --  @param ADC_Voltage ADC readings in volts
+   --  @return Corresponding phase currents in amperes
 
    function To_Phase_Voltage (ADC_Voltage : AMC_Types.Voltage_V)
                               return AMC_Types.Voltage_V
    with
       Inline;
+   --  Convert an ADC reading to the corresponding phase voltage.
+   --  @param ADC_Voltage ADC reading in volts
+   --  @return Corresponding phase voltage
 
    function To_Phase_Voltages (ADC_Voltage : AMC_Types.Abc)
                                return AMC_Types.Abc
       with
       Inline;
+   --  Convert ADC readings to the corresponding phase voltages.
+   --  @param ADC_Voltage ADC readings in volts
+   --  @return Corresponding phase voltages
 
    function To_Vbus (ADC_Voltage : AMC_Types.Voltage_V)
                      return AMC_Types.Voltage_V
    with
       Inline;
+   --  Convert an ADC reading to the corresponding bus voltage.
+   --  @param ADC_Voltage ADC reading in volts
+   --  @return Corresponding bus voltage
 
    function To_Board_Temp (ADC_Voltage : AMC_Types.Voltage_V)
                            return AMC_Types.Temperature_DegC;
+   --  Convert an ADC reading to the corresponding temperature.
+   --  @param ADC_Voltage ADC reading in volts
+   --  @return Corresponding temperature
 
 private
    Initialized : Boolean := False;

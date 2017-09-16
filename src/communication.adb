@@ -29,7 +29,10 @@ package body Communication is
                                  Send_To_Port : access Port_Type;
                                  Error        : out Boolean);
 
-
+   procedure Put (Port             : access Port_Type;
+                  Interface_Number : in Interface_Number_Type;
+                  Identifier       : in Identifier_Type;
+                  Data             : in Byte_Array);
 
    procedure Initialize (Interface_Obj    : access Interface_Type'Class;
                          Interface_Number : in Interface_Numbers) is

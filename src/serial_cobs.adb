@@ -2,6 +2,9 @@ with AMC_Types; use AMC_Types;
 
 package body Serial_COBS is
 
+   function Is_Delimiter (X : in AMC_Types.UInt8) return Boolean
+      with Inline;
+
    function Is_Delimiter (X : in AMC_Types.UInt8) return Boolean is
       use type AMC_Types.UInt8;
    begin
@@ -15,6 +18,13 @@ package body Serial_COBS is
       Stream.Idx_Buffer := Buffer_Index'First;
       Stream.IO_Stream_Access := IO_Stream_Access;
    end Initialize;
+
+   function Receive_Handler (Stream    : in out COBS_Stream;
+                             IO_Stream : in out Stream_Interface.Base_Stream'Class)
+                             return AMC_Types.Byte_Array;
+   --  Reads encoded data from IO_Stream and returns decoded data.
+   --  If incomplete packets (i.e. no delimiter is found), the data read so far
+   --  is kept in a buffer.
 
    function COBS_Encode (Input : in Byte_Array)
                          return Byte_Array
