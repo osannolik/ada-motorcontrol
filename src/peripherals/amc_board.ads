@@ -101,6 +101,10 @@ package AMC_Board is
    Encoder_A_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB6;
    Encoder_B_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB7;
 
+   Hall_1_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB6;
+   Hall_2_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB7;
+   Hall_3_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PB8;
+
    Uart_Tx_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PC6;
    Uart_Rx_Pin : STM32.GPIO.GPIO_Point renames STM32.Device.PC7;
    Uart_Peripheral : STM32.USARTs.USART renames STM32.Device.USART_6;

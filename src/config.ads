@@ -24,6 +24,8 @@ package Config is
 
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
 
+   Hall_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last - 1;
+
    Current_Control_Prio : constant System.Priority := System.Priority'Last;
 
    Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;

@@ -3,7 +3,8 @@ with Ada.Real_Time; use Ada.Real_Time;
 with AMC_Board;
 with AMC_ADC;
 with AMC_PWM;
-with AMC_Encoder;
+--  with AMC_Encoder;
+with AMC_Hall;
 with Position;
 with AMC_Utils;
 with Calmeas;
@@ -189,7 +190,9 @@ package body AMC is
 
       AMC_Board.Initialize;
 
-      AMC_Encoder.Initialize;
+      --  AMC_Encoder.Initialize;
+
+      AMC_Hall.Initialize;
 
       AMC_ADC.Initialize;
 
@@ -211,7 +214,8 @@ package body AMC is
          AMC_Board.Is_Initialized and
          AMC_ADC.Is_Initialized and
          AMC_PWM.Is_Initialized and
-         AMC_Encoder.Is_Initialized;
+         --  AMC_Encoder.Is_Initialized;
+         AMC_Hall.Is_Initialized;
 
       Inverter_System_Outputs.Set
          ((Idq_CC_Request  => Dq'(0.0, 0.0),
