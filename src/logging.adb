@@ -3,7 +3,7 @@ with AMC_UART;
 with Serial_COBS;
 with Communication;
 with Calmeas;
-with AMC_Board;
+--  with AMC_Board;
 with AMC;
 
 package body Logging is
@@ -41,7 +41,7 @@ package body Logging is
           New_Data_Callback => Calmeas.Callback_Handler'Access);
 
       loop
-         AMC_Board.Turn_On (AMC_Board.Led_Red);
+         --  AMC_Board.Turn_On (AMC_Board.Led_Red);
 
          --  Sample all variables (symbols) added to Calmeas and enabled via host gui
          Calmeas.Sample (To_Port => Serial_COBS_Port'Access);
@@ -55,7 +55,7 @@ package body Logging is
             Serial_COBS_Port.Transmit_Handler;
          end if;
 
-         AMC_Board.Turn_Off (AMC_Board.Led_Red);
+         --  AMC_Board.Turn_Off (AMC_Board.Led_Red);
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;

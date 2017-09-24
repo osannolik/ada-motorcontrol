@@ -35,11 +35,17 @@ package AMC_Board is
    Temperature_Default : constant AMC_Types.Temperature_DegC := 25.0;
 
    subtype Led_Pin is STM32.GPIO.GPIO_Point;
+   subtype Debug_Pin is STM32.GPIO.GPIO_Point;
    subtype Button_Pin is STM32.GPIO.GPIO_Point;
    subtype Mcu_Pin is STM32.GPIO.GPIO_Point;
 
    Led_Green : Led_Pin renames STM32.Device.PB10;
    Led_Red   : Led_Pin renames STM32.Device.PC10;
+
+   Debug_Pin_1 : Debug_Pin renames STM32.Device.PB12;
+   Debug_Pin_2 : Debug_Pin renames STM32.Device.PB13;
+   Debug_Pin_3 : Debug_Pin renames STM32.Device.PB14;
+   Debug_Pin_4 : Debug_Pin renames STM32.Device.PB15;
 
    User_Button : Button_Pin renames STM32.Device.PB2;
 

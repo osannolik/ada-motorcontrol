@@ -1,15 +1,22 @@
 with HAL; use HAL;
-with AMC_Types;
+--  with AMC_Types;
+
+with Calmeas;
+
 package body AMC_Hall is
 
+   function Is_Valid_Pattern (H : in Hall_Pattern) return Boolean;
+   function Get_Hall_Pin_Pattern return Hall_Pattern;
 
+   Speed_Counter_Max : constant UInt32 := UInt32 (UInt16'Last);
+
+   Comm_Del_Param : aliased UInt32 := 0;
+
+   Hall_Cntr : aliased UInt32 := 0;
 
    procedure Initialize
    is
       use STM32.Timers;
-
-      Speed_Counter_Max : constant AMC_Types.UInt32 := 16#FFFF#;
-      Prescaler         : constant AMC_Types.UInt16 := 225;
    begin
 
       STM32.Device.Enable_Clock (Input_Pins);
@@ -27,12 +34,17 @@ package body AMC_Hall is
 
       STM32.Device.Enable_Clock (Hall_Timer);
 
+      STM32.Device.Reset (Hall_Timer);
+
       Configure (This          => Hall_Timer,
                  Prescaler     => Prescaler - 1,
                  Period        => Speed_Counter_Max,
                  Clock_Divisor => Div1,
                  Counter_Mode  => Up);
 
+      Configure_Prescaler (This        => Hall_Timer,
+                           Prescaler   => Prescaler - 1,
+                           Reload_Mode => Immediate);
 
       Configure_Channel_Input (This      => Hall_Timer,
                                Channel   => Channel_1,
@@ -51,19 +63,24 @@ package body AMC_Hall is
                                 Channel  => Channel_2,
                                 Mode     => PWM2,
                                 State    => Disable,
-                                Pulse    => 1,
+                                Pulse    => 0,
                                 Polarity => High);
-
-      Select_Output_Trigger (Hall_Timer, OC2Ref);
 
       Set_UpdateRequest (Hall_Timer, Regular);
 
+      Set_Output_Preload_Enable (Hall_Timer, Channel_2, False);
 
-      Enable_Interrupt (Hall_Timer, Timer_Update_Interrupt);
-      Enable_Interrupt (Hall_Timer, Timer_CC1_Interrupt);
+      for Irq in Timer_Interrupt'Range loop
+         Clear_Pending_Interrupt (Hall_Timer, Irq);
+      end loop;
 
-      Enable_Channel (Hall_Timer, Channel_1);
-      Enable_Channel (Hall_Timer, Channel_2);
+      Enable_Interrupt  (Hall_Timer, Timer_CC1_Interrupt);
+      Disable_Interrupt (Hall_Timer, Timer_CC2_Interrupt);
+      Disable_Interrupt (Hall_Timer, Timer_Update_Interrupt);
+
+      Enable_Channel  (Hall_Timer, Channel_1);
+
+      Handler.Update_State;
 
       Enable (Hall_Timer);
 
@@ -73,35 +90,92 @@ package body AMC_Hall is
    function Is_Initialized return Boolean is
       (Initialized);
 
+   function Get_Hall_Pin_Pattern return Hall_Pattern is
+      (Hall_Pattern'(As_Pattern => False,
+                     H1         => H1_Pin.Set,
+                     H2         => H2_Pin.Set,
+                     H3         => H3_Pin.Set));
+
+   function Is_Valid_Pattern (H : in Hall_Pattern) return Boolean is
+      (not (H.Pattern = Hall_Bits'(2#000#) or H.Pattern = Hall_Bits'(2#111#)));
+
    protected body Handler is
+
+      procedure Update_State is
+      begin
+         State := Hall_State'(Current  => Get_Hall_Pin_Pattern,
+                              Previous => State.Current);
+      end Update_State;
 
       procedure ISR is
          use STM32.Timers;
+
+         Commutation_Delay_Compare : AMC_Types.UInt32 := 0;
       begin
+         AMC_Board.Turn_On (AMC_Board.Debug_Pin_1);
 
          --  Input capture (xor of hall sensor):
          --  Determine current position and calculate speed!
-         if Status (Hall_Timer, Timer_CC1_Indicated) then
+         if Status (Hall_Timer, Timer_CC1_Indicated) and then
+            Interrupt_Enabled (Hall_Timer, Timer_CC1_Interrupt)
+         then
             Clear_Pending_Interrupt (Hall_Timer, Timer_CC1_Interrupt);
 
-            Enable_Interrupt (Hall_Timer, Timer_CC2_Interrupt);
+            --  Get time period since last hall state change
+            Speed_Timer_Counter := Current_Capture_Value (Hall_Timer, Channel_1);
+
+            Update_State;
+
+            Hall_State_Is_Updated := True;
+
+            AMC_Board.Turn_On  (AMC_Board.Debug_Pin_2);
+            AMC_Board.Turn_Off (AMC_Board.Debug_Pin_2);
+
+
+            Commutation_Delay_Compare := Comm_Del_Param;
+
+            Clear_Pending_Interrupt (Hall_Timer, Timer_Update_Interrupt);
             Enable_Interrupt (Hall_Timer, Timer_Update_Interrupt);
+
+            --  Prepare for commutation.
+            --  Assume we need to wait a factor of the latest hall period
+            Clear_Pending_Interrupt (Hall_Timer, Timer_CC2_Interrupt);
+            Hall_Cntr := Current_Counter (Hall_Timer);
+            Set_Compare_Value (Hall_Timer, Channel_2, Commutation_Delay_Compare);
+            Enable_Interrupt (Hall_Timer, Timer_CC2_Interrupt);
          end if;
 
          --  Output compare is creating a pulse delayed from the input capture event:
-         --  Trigger a BLDC commutation!
-         if Status (Hall_Timer, Timer_CC2_Indicated) then
-            Clear_Pending_Interrupt (Hall_Timer, Timer_CC2_Interrupt);
+         --  Trigger a commutation!
+         if (Status (Hall_Timer, Timer_CC2_Indicated) or else
+             --  Somehow, setting compare when counter >= compare does not generate interrupt
+             --  even though preload is disabled, so check manually...
+             Current_Counter (Hall_Timer) >= Commutation_Delay_Compare) and then
+            Interrupt_Enabled (Hall_Timer, Timer_CC2_Interrupt)
+         then
+
+            AMC_Board.Turn_On  (AMC_Board.Debug_Pin_3);
+            AMC_Board.Turn_Off (AMC_Board.Debug_Pin_3);
+
+            Is_Commutation := True;
 
             Disable_Interrupt (Hall_Timer, Timer_CC2_Interrupt);
          end if;
 
          --  Input capture timer has overflowed, assume speed is zero
-         if Status (Hall_Timer, Timer_Update_Indicated) then
-            Clear_Pending_Interrupt (Hall_Timer, Timer_Update_Interrupt);
+         if Status (Hall_Timer, Timer_Update_Indicated) and then
+            Interrupt_Enabled (Hall_Timer, Timer_Update_Interrupt)
+         then
+
+            AMC_Board.Turn_On  (AMC_Board.Debug_Pin_4);
+            AMC_Board.Turn_Off (AMC_Board.Debug_Pin_4);
+
+            Capture_Overflow := True;
 
             Disable_Interrupt (Hall_Timer, Timer_Update_Interrupt);
          end if;
+
+         AMC_Board.Turn_Off (AMC_Board.Debug_Pin_1);
 
       end ISR;
 
@@ -144,4 +218,11 @@ package body AMC_Hall is
 --        end case;
 --     end Get_Direction;
 
+begin
+   Calmeas.Add (Symbol      => Comm_Del_Param'Access,
+                Name        => "Comm_Delay",
+                Description => "");
+   Calmeas.Add (Symbol      => Hall_Cntr'Access,
+                Name        => "Hall_Cntr",
+                Description => "");
 end AMC_Hall;

@@ -37,7 +37,10 @@ package body AMC_Board is
    procedure Initialize
    is
       Configuration : STM32.GPIO.GPIO_Port_Configuration;
-      All_PP_Outputs : constant STM32.GPIO.GPIO_Points := (Led_Red, Led_Green, Gate_Power_Enable);
+      All_PP_Outputs : constant STM32.GPIO.GPIO_Points :=
+         (Led_Red, Led_Green,
+          Gate_Power_Enable,
+          Debug_Pin_1, Debug_Pin_2, Debug_Pin_3, Debug_Pin_4);
    begin
       STM32.Device.Enable_Clock (All_PP_Outputs);
 

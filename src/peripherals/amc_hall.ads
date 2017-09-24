@@ -1,8 +1,9 @@
 with Ada.Interrupts.Names;
+with HAL;
 with STM32.Timers;
 with STM32.Device;
 with STM32.GPIO;
---  with AMC_Types;
+with AMC_Types;
 with AMC_Board;
 with Config;
 
@@ -13,6 +14,34 @@ package AMC_Hall is
    --  @description
    --  Interfaces peripherals used for hall sensor handling using common AMC types.
    --
+
+   subtype Hall_Bits is HAL.UInt3;
+
+
+
+   type Hall_Pattern (As_Pattern : Boolean := True) is
+      record
+         case As_Pattern is
+            when True =>
+               Pattern : Hall_Bits;
+            when False =>
+               H1 : Boolean;
+               H2 : Boolean;
+               H3 : Boolean;
+         end case;
+      end record with Unchecked_Union, Size => Hall_Bits'Size;
+
+   for Hall_Pattern use record
+      Pattern at 0 range 0 .. 2;
+      H1      at 0 range 0 .. 0;
+      H2      at 0 range 1 .. 1;
+      H3      at 0 range 2 .. 2;
+   end record;
+
+   type Hall_State is record
+      Current  : Hall_Pattern;
+      Previous : Hall_Pattern;
+   end record;
 
    function Is_Initialized return Boolean;
    --  @return True if initialized.
@@ -46,10 +75,29 @@ package AMC_Hall is
    protected Handler is
       pragma Interrupt_Priority (Config.Hall_ISR_Prio);
 
+      procedure Update_State;
+
    private
+
+
 
       procedure ISR with
         Attach_Handler => Ada.Interrupts.Names.TIM4_Interrupt;
+
+      Hall_State_Is_Updated : Boolean := False;
+      --  True when hall sensor has changed state
+
+      Is_Commutation : Boolean := False;
+      --  True when commutation event occurs
+
+      Capture_Overflow : Boolean := False;
+      --  True when speed timer has overflowed, i.e. very slow rotation
+
+      State : Hall_State;
+      --  Holds the state of the hall sensor
+
+      Speed_Timer_Counter : AMC_Types.UInt32 := 0;
+      --  Timer counts since last hall state change
 
    end Handler;
 
@@ -77,10 +125,15 @@ package AMC_Hall is
 
 private
 
+   Prescaler : constant AMC_Types.UInt16 := 225;
+
    Initialized : Boolean := False;
 
-   Input_Pins : constant STM32.GPIO.GPIO_Points :=
-      (AMC_Board.Hall_1_Pin, AMC_Board.Hall_2_Pin, AMC_Board.Hall_3_Pin);
+   H1_Pin : STM32.GPIO.GPIO_Point renames AMC_Board.Hall_1_Pin;
+   H2_Pin : STM32.GPIO.GPIO_Point renames AMC_Board.Hall_2_Pin;
+   H3_Pin : STM32.GPIO.GPIO_Point renames AMC_Board.Hall_3_Pin;
+
+   Input_Pins : constant STM32.GPIO.GPIO_Points := (H1_Pin, H2_Pin, H3_Pin);
 
    Hall_Timer : STM32.Timers.Timer renames STM32.Device.Timer_4;
 
