@@ -104,15 +104,6 @@ package body AMC_Utils is
       return Y;
    end Min;
 
-   function To_Kelvin (DegC : in Temperature_DegC)
-                       return Temperature_K is
-      (Temperature_K (DegC + 273.15));
-
-   function To_DegC (Kelvin : in Temperature_K)
-                     return Temperature_DegC is
-      (Temperature_DegC (Kelvin - 273.15));
-
-
    function Create (Timeout : in Seconds) return Timer is
       (Timer'(Time    => 0.0,
               Timeout => Timeout));

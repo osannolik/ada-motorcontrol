@@ -91,20 +91,6 @@ package AMC_Utils is
    --  @param Y Input value
    --  @return The smallest value of X and Y
 
-   function To_Kelvin (DegC : in Temperature_DegC)
-                       return Temperature_K
-   with
-      Inline;
-   --  @param DegC Input value represented in degrees celcius
-   --  @return Corresponding temperature in Kelvin
-
-   function To_DegC (Kelvin : in Temperature_K)
-                     return Temperature_DegC
-   with
-      Inline;
-   --  @param Kelvin Input value represented in Kelvin
-   --  @return Corresponding temperature in degrees celcius
-
    --  A timer object
    type Timer is tagged limited record
       Time    : Seconds := 0.0;

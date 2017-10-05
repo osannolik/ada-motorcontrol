@@ -22,7 +22,19 @@ project Ada_MotorControl is
       for Default_Switches ("ada") use ("--create-map-file");
    end Builder;
 
-   package Compiler renames Config.Compiler;
+   package Compiler is
+      case Platform_Build is
+         when "Production" =>
+            for Default_Switches ("Ada") use
+              ("-g", "-O3", "-gnatp", "-gnatn");
+         when "Debug" =>
+            for Default_Switches ("Ada") use
+              ("-g", "-O0", "-gnata");
+      end case;
+      for Default_Switches ("ada") use Compiler'Default_Switches ("Ada") &
+        ("-gnatwa", "-gnatwe", "-gnatQ", "-gnatw.X", "-gnaty-s", "-gnatyO",
+         "-gnatyM120", "-ffunction-sections", "-fdata-sections");
+   end Compiler;
 
    package Linker is
       for Default_Switches ("ada") use ("-Wl,--gc-sections", "-Wl,--print-memory-usage");

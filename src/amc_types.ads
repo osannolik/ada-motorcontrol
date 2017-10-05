@@ -22,7 +22,9 @@ package AMC_Types is
    subtype Frequency_Hz is Float;
    subtype Seconds is Float;
 
-   subtype Duty_Cycle is Float range 0.0 .. 100.0;
+   subtype Percent is Float range 0.0 .. 100.0;
+
+   subtype Duty_Cycle is Percent;
    --  Represents duty cycle given in percent 0 - 100
 
    subtype Voltage_V is Float;
@@ -44,6 +46,19 @@ package AMC_Types is
    subtype Angle_Erad is Angle_Rad;
    --  Electrical angle, i.e. the rotor angle compensated for motor pole pairs
 
+   type Speed_Rpm is new Float;
+   --  Angular velocity of rotor given in mechanical angle domain
+
+   subtype Speed_Erpm is Speed_Rpm;
+   --  Angular velocity of rotor given in electrical angle domain
+
+   type Speed_Radps is new Float;
+   --  Angular velocity of rotor given in mechanical angle domain
+
+   subtype Speed_Eradps is Speed_Radps;
+   --  Angular velocity of rotor given in electrical angle domain
+
+
    --  Defines a set of controller modes
    type Ctrl_Mode is
       (Off,
@@ -56,6 +71,9 @@ package AMC_Types is
        --  Control the motor speed to a specified set-point
       );
 
+   --  Define the type of available sensors
+   type Position_Sensor is (None, Hall, Encoder);
+
    --  Defines the phases
    type Phase is (A, B, C);
 
@@ -66,6 +84,20 @@ package AMC_Types is
        Center
        --  Center of positive part
       );
+
+   function To_Kelvin (DegC : in Temperature_DegC)
+                       return Temperature_K
+   with
+      Inline;
+   --  @param DegC Input value represented in degrees celcius
+   --  @return Corresponding temperature in Kelvin
+
+   function To_DegC (Kelvin : in Temperature_K)
+                     return Temperature_DegC
+   with
+      Inline;
+   --  @param Kelvin Input value represented in Kelvin
+   --  @return Corresponding temperature in degrees celcius
 
    --  This angle type contains calculated values of Sin(Angle) and Cos(Angle)
    type Angle is tagged record

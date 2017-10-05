@@ -2,32 +2,15 @@ with CRC;
 
 package body Communication is
 
-   function To_Byte_Array (Items : in Byte_Queue.Item_Array) return Byte_Array;
-
    function To_Byte_Array (Items : in Byte_Queue.Item_Array) return Byte_Array is
       (Byte_Array (Items));
 
    function Is_Packet_Start (Byte : in AMC_Types.UInt8) return Boolean is
       (Byte = Packet_Start);
 
-   function Calculate_CRC (Header : in Header_Type;
-                           Data   : in Byte_Array)
-                           return AMC_Types.UInt8;
-
-   procedure Do_New_Data_Callback (Port   : access Port_Type;
-                                   Status : in Status_Type;
-                                   Data   : access Byte_Array);
-
    procedure Commands_Callback_Handler (Identifier : in Identifier_Type;
                                         Data       : access Byte_Array;
                                         From_Port  : access Port_Type);
-
-   procedure Commands_Write_To (Data  : access Byte_Array;
-                                Error : out Boolean);
-
-   procedure Commands_Read_From (Data         : access Byte_Array;
-                                 Send_To_Port : access Port_Type;
-                                 Error        : out Boolean);
 
    procedure Put (Port             : access Port_Type;
                   Interface_Number : in Interface_Number_Type;
@@ -173,7 +156,6 @@ package body Communication is
             declare
                subtype Write_Array is Byte_Array (0 .. Natural (Write.Cmd.Length) - 1);
 
-               procedure Write_Unsafe (A : System.Address; Data : in Byte_Array);
                procedure Write_Unsafe (A : System.Address; Data : in Byte_Array) is
                   Result : Write_Array;
                   for Result'Address use A;
@@ -203,7 +185,6 @@ package body Communication is
          declare
             subtype Read_Array is Byte_Array (0 .. Natural (Read.Cmd.Length) - 1);
 
-            function Read_Unsafe (A : System.Address) return Read_Array;
             function Read_Unsafe (A : System.Address) return Read_Array is
                Result : constant Read_Array;
                for Result'Address use A;
@@ -254,11 +235,9 @@ package body Communication is
 
       Data_Start_Idx : constant Buffer_Index := Buffer_Index'First;
 
-      pragma Style_Checks (Off); --  No spec is OK
       procedure Fill_Header (Port       : access Port_Type;
                              D          : in AMC_Types.UInt8;
                              Next_State : out Parser_State_Type) is
-         pragma Style_Checks (On);
          No_Data : aliased Byte_Array := AMC_Types.Empty_Byte_Array;
       begin
          Port.Header_Rx.Arr (3) := D;
@@ -276,11 +255,9 @@ package body Communication is
          end if;
       end Fill_Header;
 
-      pragma Style_Checks (Off); --  No spec is OK
       procedure Fill_Data (Port       : access Port_Type;
                            D          : in AMC_Types.UInt8;
                            Next_State : out Parser_State_Type) is
-         pragma Style_Checks (On);
       begin
          Port.Buffer_Rx_Data (Port.Buffer_Idx) := D;
          Port.Buffer_Idx := Port.Buffer_Idx + 1;
@@ -302,10 +279,8 @@ package body Communication is
          end if;
       end Fill_Data;
 
-      pragma Style_Checks (Off); --  No spec is OK
       procedure Do_Crc (Port        : access Port_Type;
                         Message_Crc : in AMC_Types.UInt8) is
-         pragma Style_Checks (On);
          New_Data : aliased Byte_Array :=
             Port.Buffer_Rx_Data (Data_Start_Idx .. Port.Buffer_Idx - 1);
       begin

@@ -1,5 +1,8 @@
 with AMC_Types; use AMC_Types;
 with AMC_Math;
+with AMC_Hall;
+with Config;
+with Generic_PO;
 
 package Position is
    --  @summary
@@ -14,9 +17,10 @@ package Position is
    --  - Todo: Sensorless, i.e. No sensor at all
    --
 
-   --  Define the type of available sensors
-   type Position_Sensor is (None, Hall, Encoder);
 
+   task Hall_State_Handler with
+      Priority => Config.Hall_State_Handler_Prio,
+      Storage_Size => (2 * 1024);
 
    function To_Erad (Angle : in Angle_Rad)
                      return Angle_Erad;
@@ -64,5 +68,15 @@ private
 
    Pi     : constant Angle_Rad := Angle_Rad (AMC_Math.Pi);
    Two_Pi : constant Angle_Rad := Angle_Rad (2.0 * AMC_Math.Pi);
+
+   type Position_Hall_Data is record
+      Hall_State : AMC_Hall.Hall_State;
+      Angle      : Angle_Erad;
+      Speed_Raw  : Speed_Eradps;
+   end record;
+
+   package Position_Hall_PO_Pack is new Generic_PO (Position_Hall_Data);
+
+   Hall_Data : Position_Hall_PO_Pack.Shared_Data (Config.Protected_Object_Prio);
 
 end Position;

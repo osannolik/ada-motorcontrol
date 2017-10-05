@@ -1,5 +1,3 @@
-with Ada.Real_Time; use Ada.Real_Time;
-
 with AMC_ADC;
 with AMC_PWM;
 with AMC_Board;
@@ -14,18 +12,6 @@ package body Current_Control is
                              Vbus : in Voltage_V)
                              return Abc;
 
-   procedure Wait_Until_Initialized;
-   procedure Wait_Until_Initialized is
-      Period : constant Time_Span := Milliseconds (1);
-      Next_Release : Time := Clock;
-   begin
-      loop
-         exit when AMC.Is_Initialized;
-         Next_Release := Next_Release + Period;
-         delay until Next_Release;
-      end loop;
-   end Wait_Until_Initialized;
-
    task body Current_Control is
       V_Samples     : Abc;
       I_Samples     : Abc;
@@ -38,7 +24,7 @@ package body Current_Control is
       System_Out    : AMC.Inverter_System_States;
    begin
 
-      Wait_Until_Initialized;
+      AMC.Wait_Until_Initialized;
 
       loop
          AMC_ADC.Handler.Await_New_Samples

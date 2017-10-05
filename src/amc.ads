@@ -48,6 +48,8 @@ package AMC is
    --  Get the outputs from the Inverter_System task.
    --  @return A record of type Inverter_System_States
 
+   procedure Wait_Until_Initialized;
+
 private
 
    Initialized : Boolean := False;

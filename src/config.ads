@@ -1,7 +1,6 @@
 with AMC_Types;
 with System;
 with ZSM;
-with Position;
 
 package Config is
    --  @summary
@@ -19,7 +18,7 @@ package Config is
 
    Modulation_Method : constant ZSM.Modulation_Method := ZSM.Sinusoidal;
 
-   Position_Sensor : constant Position.Position_Sensor := Position.Encoder;
+   Position_Sensor : constant AMC_Types.Position_Sensor := AMC_Types.Encoder;
 
 
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
@@ -27,6 +26,8 @@ package Config is
    Hall_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last - 1;
 
    Current_Control_Prio : constant System.Priority := System.Priority'Last;
+
+   Hall_State_Handler_Prio : constant System.Priority := System.Priority'Last - 1;
 
    Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;
 

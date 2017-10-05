@@ -228,6 +228,17 @@ package body AMC is
    function Is_Initialized
       return Boolean is (Initialized);
 
+   procedure Wait_Until_Initialized is
+      Period : constant Time_Span := Milliseconds (1);
+      Next_Release : Time := Clock;
+   begin
+      loop
+         exit when Is_Initialized;
+         Next_Release := Next_Release + Period;
+         delay until Next_Release;
+      end loop;
+   end Wait_Until_Initialized;
+
 begin
 
    Initialize;

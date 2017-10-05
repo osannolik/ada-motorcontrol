@@ -195,4 +195,12 @@ package body AMC_Types is
       return Transforms.Park_Inv (Dq (X), Angle (Angle_In));
    end To_Alfa_Beta;
 
+   function To_Kelvin (DegC : in Temperature_DegC)
+                       return Temperature_K is
+      (Temperature_K (DegC + 273.15));
+
+   function To_DegC (Kelvin : in Temperature_K)
+                     return Temperature_DegC is
+      (Temperature_DegC (Kelvin - 273.15));
+
 end AMC_Types;

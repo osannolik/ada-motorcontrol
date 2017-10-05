@@ -1,4 +1,3 @@
-with AMC_Utils;
 with AMC_Math;
 
 package body AMC_Board is
@@ -116,7 +115,7 @@ package body AMC_Board is
    is
       R  : Float;
       T0 : constant AMC_Types.Temperature_K :=
-         AMC_Utils.To_Kelvin (Temperature_Default);
+         AMC_Types.To_Kelvin (Temperature_Default);
       T  : AMC_Types.Temperature_K;
    begin
       if ADC_Voltage = 0.0 then
@@ -128,7 +127,7 @@ package body AMC_Board is
       T := AMC_Types.Temperature_K
          (1.0 / (1.0 / Float (T0) + AMC_Math.Log (R / R_NTC_1) / NTC_Beta));
 
-      return AMC_Utils.To_DegC (T);
+      return AMC_Types.To_DegC (T);
 
    end To_Board_Temp;
 
