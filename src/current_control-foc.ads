@@ -26,7 +26,6 @@ package Current_Control.FOC is
                      System_Outputs : in AMC.Inverter_System_States;
                      Duty           : out Abc);
    --  Calculates the requested inverter phase duty as per the FOC algorithm.
-
    --  @param Phase_Currents A three phase current
    --  @param System_Outputs Includes system variables such as the current set-point
    --  and the bus voltage etc.

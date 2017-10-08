@@ -45,4 +45,7 @@ package body Current_Control is
       end loop;
    end Current_Control;
 
+   function Get_Current_Control_Output return Current_Control_States is
+      (Current_Control_Outputs.Get);
+
 end Current_Control;

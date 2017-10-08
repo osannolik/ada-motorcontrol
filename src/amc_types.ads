@@ -182,6 +182,14 @@ package AMC_Types is
    --  @param Angle Stator-to-rotor angle
    --  @return The two-dimensional rotor fixed value
 
+   function To_Dq (X : in Abc'Class;
+                   Angle_In : in Angle'Class) return Dq;
+   --  Transform a three-dimensional stator fixed value to a two-dimensional
+   --  rotor fixed value, assuming a stator-to-rotor angle Angle.
+   --  @param X The three-dimensional stator fixed value
+   --  @param Angle_In Stator-to-rotor angle
+   --  @return The two-dimensional rotor fixed value
+
 
    function "+"(X, Y : in Alfa_Beta) return Alfa_Beta;
 
@@ -337,8 +345,8 @@ package AMC_Types is
       end case;
    end record;
 
-   function To_Rotor_Fixed (X     : in Space_Vector;
-                            Angle : in Angle_Rad)
+   function To_Rotor_Fixed (X        : in Space_Vector;
+                            Angle_In : in Angle'Class)
                             return Dq;
    --  Transform a space vector to its corresponding rotor fixed representation.
    --  @param X The space vector

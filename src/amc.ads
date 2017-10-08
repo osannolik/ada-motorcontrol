@@ -38,8 +38,6 @@ package AMC is
       --  Holds the current value that is used as set-point for the current controller
       Vbus : Voltage_V;
       --  DC bus voltage
-      Alignment_Angle : Angle_Erad;
-      --  In Alignment mode, the current controller aligns rotor to this angle
       Mode : Ctrl_Mode;
       --  Holds the current control mode
    end record;

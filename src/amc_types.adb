@@ -81,6 +81,11 @@ package body AMC_Types is
       return X.To_Alfa_Beta.To_Dq (Angle);
    end To_Dq;
 
+   function To_Dq (X : in Abc'Class;
+                   Angle_In : in Angle'Class) return Dq is
+   begin
+      return X.To_Alfa_Beta.To_Dq (Angle (Angle_In));
+   end To_Dq;
 
    function "+"(X, Y : in Alfa_Beta) return Alfa_Beta is
    begin
@@ -195,17 +200,17 @@ package body AMC_Types is
       return Transforms.Park_Inv (Dq (X), Angle (Angle_In));
    end To_Alfa_Beta;
 
-   function To_Rotor_Fixed (X     : in Space_Vector;
-                            Angle : in Angle_Rad)
+   function To_Rotor_Fixed (X        : in Space_Vector;
+                            Angle_In : in Angle'Class)
                             return Dq is
    begin
       case X.Reference_Frame is
          when Stator_Abc =>
-            return To_Dq (X     => X.Stator_Fixed_Abc,
-                          Angle => Angle);
+            return To_Dq (X        => X.Stator_Fixed_Abc,
+                          Angle_In => Angle_In);
          when Stator_Ab =>
-            return To_Dq (X     => X.Stator_Fixed_Ab,
-                          Angle => Angle);
+            return To_Dq (X        => X.Stator_Fixed_Ab,
+                          Angle_In => Angle_In);
          when Rotor =>
             return X.Rotor_Fixed;
       end case;
