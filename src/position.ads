@@ -75,8 +75,33 @@ private
       Speed_Raw  : Speed_Eradps;
    end record;
 
+   type Hall_Sector is (H1, H2, H3, H4, H5, H6);
+
+   type Hall_Direction is (Standstill, Cw, Ccw);
+
+   type Pattern_To_Sector_Map is array (AMC_Hall.Valid_Hall_Bits'Range) of Hall_Sector;
+
+   Hall_Sector_Angle : constant Angle_Erad := 2.0 * Pi / 6.0;
+
+   Sector_Angle_Ccw : constant array (Hall_Sector'Range) of Angle_Erad :=
+      (0.0,
+       1.0 * Pi / 3.0,
+       2.0 * Pi / 3.0,
+       3.0 * Pi / 3.0,
+       4.0 * Pi / 3.0,
+       5.0 * Pi / 3.0);
+
    package Position_Hall_PO_Pack is new Generic_PO (Position_Hall_Data);
 
+
    Hall_Data : Position_Hall_PO_Pack.Shared_Data (Config.Protected_Object_Prio);
+
+   Hall_Sector_Map : Pattern_To_Sector_Map :=
+      (2#001# => H1,
+       2#011# => H2,
+       2#010# => H3,
+       2#110# => H4,
+       2#100# => H5,
+       2#101# => H6);
 
 end Position;

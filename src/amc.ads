@@ -34,8 +34,8 @@ package AMC is
 
    --  A type that collects objects set by the Inverter_System task
    type Inverter_System_States is record
-      Idq_CC_Request : Dq;
-      --  Holds the Idq value that is used as set-point for the current controller
+      Current_Command : Space_Vector;
+      --  Holds the current value that is used as set-point for the current controller
       Vbus : Voltage_V;
       --  DC bus voltage
       Alignment_Angle : Angle_Erad;

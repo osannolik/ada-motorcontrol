@@ -17,12 +17,16 @@ package Current_Control is
    --  control mode etc. is read from the Inverter_System task.
    --
 
-   task Current_Control with
+   type Control_Method is (Field_Oriented, Six_Step);
+
+   task type Current_Control (Algorithm : Control_Method) with
       Priority => Config.Current_Control_Prio,
       Storage_Size => (4 * 1024);
 
 private
 
    Nominal_Period : constant AMC_Types.Seconds := 1.0 / Config.PWM_Frequency_Hz;
+
+   Current_Controller : Current_Control (Field_Oriented);
 
 end Current_Control;

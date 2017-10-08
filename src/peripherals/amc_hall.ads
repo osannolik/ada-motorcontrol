@@ -103,7 +103,7 @@ package AMC_Hall is
       Hall_State_Is_Updated : Boolean := False;
       --  True when hall sensor has changed state
 
-      Capture_Overflow : Boolean := False;
+      Capture_Overflow : Boolean := True;
       --  True when speed timer has overflowed, i.e. very slow rotation
 
       State : Hall_State;
@@ -139,28 +139,6 @@ package AMC_Hall is
       --  True when commutation event occurs
 
    end Commutation;
-
---     function Get_Angle return AMC_Types.Angle_Rad;
---     --  Get the angle related to mechanical rotations, i.e. it is not
---     --  compensated for the motor's pole pairs
---     --  @return Mechanical angle in radians.
---
---     function Get_Angle return AMC_Types.Angle_Deg;
---     --  Get the angle related to mechanical rotations, i.e. it is not
---     --  compensated for the motor's pole pairs
---     --  @return Mechanical angle in degrees.
---
---     function Get_Angle return AMC_Types.Angle;
---     --  Get the angle related to mechanical rotations, i.e. it is not
---     --  compensated for the motor's pole pairs
---     --  @return Mechanical angle object.
---
---     procedure Set_Angle (Angle : in AMC_Types.Angle_Rad);
---     --  Define the current sensor position as the specified angle.
---     --  @param Angle Set angle in radians.
---
---     function Get_Direction return Float;
---     --  @return 1.0 if forward, else -1.0
 
 private
 

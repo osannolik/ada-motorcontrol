@@ -5,44 +5,6 @@ with Motor;
 
 package body Position is
 
-
-   type Hall_Sector is (H1, H2, H3, H4, H5, H6);
-
-   type Hall_Direction is (Standstill, Cw, Ccw);
-
-   type Pattern_To_Sector_Map is array (AMC_Hall.Valid_Hall_Bits'Range) of Hall_Sector;
-
-   Hall_Sector_Map : Pattern_To_Sector_Map :=
-      (2#001# => H1,
-       2#011# => H2,
-       2#010# => H3,
-       2#110# => H4,
-       2#100# => H5,
-       2#101# => H6);
-
-   Hall_Sector_Angle : constant Angle_Erad := 2.0 * Pi / 6.0;
-
-   Sector_Angle_Ccw : constant array (Hall_Sector'Range) of Angle_Erad :=
-      (0.0,
-       1.0 * Pi / 3.0,
-       2.0 * Pi / 3.0,
-       3.0 * Pi / 3.0,
-       4.0 * Pi / 3.0,
-       5.0 * Pi / 3.0);
-
---     type Hall_Angle_Map is
---        array (AMC_Hall.Valid_Hall_Bits'Range, AMC_Hall.Valid_Hall_Bits'Range) of AMC_Types.Angle_Erad;
---
---     type Hall_Direction_Map is
---        array (AMC_Hall.Valid_Hall_Bits'Range, AMC_Hall.Valid_Hall_Bits'Range) of Float;
---
---     package Angle_PO is new Generic_PO (Hall_Angle_Map);
---     package Direction_PO is new Generic_PO (Hall_Direction_Map);
---
---     Hall_State_To_Angle     : Angle_PO.Shared_Data (Config.Protected_Object_Prio);
---     Hall_State_To_Direction : Direction_PO.Shared_Data (Config.Protected_Object_Prio);
-
-
    procedure Map_Pattern_To_Sector (Pattern : in AMC_Hall.Hall_Pattern;
                                     Sector  : in Hall_Sector)
    is
@@ -129,6 +91,10 @@ package body Position is
 
       Speed_Raw : Speed_Eradps;
    begin
+
+      Hall_Data.Set (Position_Hall_Data'(Hall_State => AMC_Hall.State.Get,
+                                         Angle      => 0.0,
+                                         Speed_Raw  => 0.0));
 
       AMC.Wait_Until_Initialized;
 

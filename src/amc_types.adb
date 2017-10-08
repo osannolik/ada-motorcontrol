@@ -195,6 +195,22 @@ package body AMC_Types is
       return Transforms.Park_Inv (Dq (X), Angle (Angle_In));
    end To_Alfa_Beta;
 
+   function To_Rotor_Fixed (X     : in Space_Vector;
+                            Angle : in Angle_Rad)
+                            return Dq is
+   begin
+      case X.Reference_Frame is
+         when Stator_Abc =>
+            return To_Dq (X     => X.Stator_Fixed_Abc,
+                          Angle => Angle);
+         when Stator_Ab =>
+            return To_Dq (X     => X.Stator_Fixed_Ab,
+                          Angle => Angle);
+         when Rotor =>
+            return X.Rotor_Fixed;
+      end case;
+   end To_Rotor_Fixed;
+
    function To_Kelvin (DegC : in Temperature_DegC)
                        return Temperature_K is
       (Temperature_K (DegC + 273.15));

@@ -1,6 +1,6 @@
-with AMC_Types; use AMC_Types;
+with AMC;
 
-package FOC is
+package Current_Control.FOC is
    --  @summary
    --  Field Oriented Control
    --
@@ -22,19 +22,14 @@ package FOC is
    --  For more information, see https://en.wikipedia.org/wiki/Vector_control_(motor)
    --
 
-   function Calculate_Voltage
-      (Iabc          : Abc;
-       I_Set_Point   : Dq;
-       Current_Angle : Angle_Erad;
-       Vmax          : Voltage_V;
-       Period        : Seconds)
-       return Abc;
-   --  Calculates the requested inverter phase voltages as per the FOC algorithm.
-   --  @param Iabc A three phase current
-   --  @param I_Set_Point Current set-point given in a rotor fixed reference frame
-   --  @param Current_Angle Stator-to-rotor fixed angle given in electrical radians
-   --  @param Vmax Maximum allowed phase to neutral voltage
-   --  @param Period Time since last execution
-   --  @return A three phase voltage given in a stator fixed reference frame
+   procedure Update (Phase_Currents : in Abc;
+                     System_Outputs : in AMC.Inverter_System_States;
+                     Duty           : out Abc);
+   --  Calculates the requested inverter phase duty as per the FOC algorithm.
 
-end FOC;
+   --  @param Phase_Currents A three phase current
+   --  @param System_Outputs Includes system variables such as the current set-point
+   --  and the bus voltage etc.
+   --  @param Duty A triplet of values representing the calculated duty cycles
+
+end Current_Control.FOC;

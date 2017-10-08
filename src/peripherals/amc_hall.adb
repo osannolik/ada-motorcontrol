@@ -140,8 +140,12 @@ package body AMC_Hall is
       begin
          New_State := State;
 
-         Time_Delta_s :=
-            AMC_Types.Seconds (Speed_Timer_Counter) * Speed_Timer_Resolution;
+         if Capture_Overflow then
+            Time_Delta_s := 0.0;
+         else
+            Time_Delta_s :=
+               AMC_Types.Seconds (Speed_Timer_Counter) * Speed_Timer_Resolution;
+         end if;
 
          Hall_State_Is_Updated := False;
       end Await_New;
@@ -155,6 +159,7 @@ package body AMC_Hall is
       begin
          State := Hall_State'(Current  => Get_Hall_Pin_Pattern,
                               Previous => State.Current);
+         Hall_State_Is_Updated := True;
       end Update;
 
       procedure Set_Commutation_Delay_Factor (Factor : AMC_Types.Percent) is
@@ -187,11 +192,10 @@ package body AMC_Hall is
             --  Get time period since last hall state change
             if Capture_Overflow then
                Speed_Timer_Counter := 0;
+               Capture_Overflow := False;
             else
                Speed_Timer_Counter := Current_Capture_Value (Hall_Timer, Channel_1);
             end if;
-
-            Capture_Overflow := False;
 
             Commutation_Delay_Compare := UInt32 (Delay_Factor * Float (Speed_Timer_Counter));
 
@@ -208,9 +212,6 @@ package body AMC_Hall is
             end if;
 
             Update;
-
-            Hall_State_Is_Updated := True;
-
 
             AMC_Board.Turn_Off (AMC_Board.Debug_Pin_2);
 

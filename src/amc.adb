@@ -146,18 +146,25 @@ package body AMC is
    begin
       case Mode is
          when Normal =>
-            Outputs.Idq_CC_Request := Idq_Req;
+            Outputs.Current_Command :=
+               Space_Vector'(Reference_Frame  => Rotor,
+                             Rotor_Fixed      => Idq_Req);
             Enable_Gates := True;
             Is_Aligned := False;
 
          when Off =>
-            Outputs.Idq_CC_Request := Dq'(D => 0.0, Q => 0.0);
+            Outputs.Current_Command :=
+               Space_Vector'(Reference_Frame  => Rotor,
+                             Rotor_Fixed      => Dq'(D => 0.0, Q => 0.0));
             Enable_Gates := False;
             Is_Aligned := False;
 
          when Alignment =>
             Outputs.Alignment_Angle := 0.0;
-            Outputs.Idq_CC_Request := Dq'(D => 12.0, Q => 0.0);
+            Outputs.Current_Command :=
+               Space_Vector'(Reference_Frame => Stator_Ab,
+                             Stator_Fixed_Ab => Alfa_Beta'(Alfa => 12.0,
+                                                           Beta => 0.0));
             Enable_Gates := True;
 
             Is_Aligned := Align_Tmr.Tick (Period);
@@ -218,7 +225,8 @@ package body AMC is
          AMC_Hall.Is_Initialized;
 
       Inverter_System_Outputs.Set
-         ((Idq_CC_Request  => Dq'(0.0, 0.0),
+         ((Current_Command => Space_Vector'(Reference_Frame  => Rotor,
+                                            Rotor_Fixed      => (0.0, 0.0)),
            Vbus            => 0.0,
            Alignment_Angle => 0.0,
            Mode            => Off));

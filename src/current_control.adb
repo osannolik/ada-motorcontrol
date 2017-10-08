@@ -1,27 +1,15 @@
 with AMC_ADC;
 with AMC_PWM;
 with AMC_Board;
+with Current_Control.FOC;
 with AMC;
-with Position;
-with FOC;
-with ZSM;
-
 package body Current_Control is
 
-   function Voltage_To_Duty (V    : in Abc;
-                             Vbus : in Voltage_V)
-                             return Abc;
-
    task body Current_Control is
-      V_Samples     : Abc;
-      I_Samples     : Abc;
-      Vbus          : Voltage_V;
-      Vmax          : Voltage_V;
-      Iabc_Raw      : Abc;
-      Current_Angle : Angle_Erad;
-      V_Ctrl_Abc    : Abc;
-      Duty          : Abc;
-      System_Out    : AMC.Inverter_System_States;
+      V_Samples      : Abc;
+      I_Samples      : Abc;
+      System_Outputs : AMC.Inverter_System_States;
+      Duty           : Abc;
    begin
 
       AMC.Wait_Until_Initialized;
@@ -33,35 +21,21 @@ package body Current_Control is
 
          AMC_Board.Turn_On (AMC_Board.Led_Green);
 
-         System_Out := AMC.Get_Inverter_System_Output;
+         System_Outputs := AMC.Get_Inverter_System_Output;
 
-
-         if System_Out.Mode /= Off then
-
-            if System_Out.Mode = Alignment then
-               Current_Angle := System_Out.Alignment_Angle;
-            else
-               Current_Angle := Position.Get_Angle;
-            end if;
-
-            Iabc_Raw := AMC_Board.To_Phase_Currents (I_Samples);
-
-            Vbus := System_Out.Vbus;
-            Vmax := 0.5 * Vbus * ZSM.Modulation_Index_Max (Config.Modulation_Method);
-
-            V_Ctrl_Abc := FOC.Calculate_Voltage
-               (Iabc          => Iabc_Raw,
-                I_Set_Point   => System_Out.Idq_CC_Request,
-                Current_Angle => Current_Angle,
-                Vmax          => Vmax,
-                Period        => Nominal_Period);
-
-            Duty := Voltage_To_Duty (V_Ctrl_Abc, Vbus);
-
-         else
-
+         if System_Outputs.Mode = Off then
             Duty := Abc'(50.0, 50.0, 50.0);
+         else
+            case Algorithm is
+               when Field_Oriented =>
+                  FOC.Update (Phase_Currents => AMC_Board.To_Phase_Currents (I_Samples),
+                              System_Outputs => System_Outputs,
+                              Duty           => Duty);
 
+               when Six_Step =>
+                  raise Constraint_Error; -- TODO
+
+            end case;
          end if;
 
          AMC_PWM.Set_Duty_Cycle (Duty);
@@ -70,15 +44,5 @@ package body Current_Control is
 
       end loop;
    end Current_Control;
-
-   function Voltage_To_Duty (V    : in Abc;
-                             Vbus : in Voltage_V)
-                             return Abc
-   is
-      Duty : constant Abc := (100.0 / Vbus) * V + (50.0, 50.0, 50.0);
-   begin
-      return ZSM.Modulate (X      => Duty,
-                           Method => Config.Modulation_Method);
-   end Voltage_To_Duty;
 
 end Current_Control;

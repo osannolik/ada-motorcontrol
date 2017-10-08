@@ -310,4 +310,38 @@ package AMC_Types is
    --  @param Angle_In Stator-to-rotor angle
    --  @return The two-dimensional stator fixed value
 
+   --  Defines the set of reference frames
+   type Reference_Frame_Type is
+      (Stator_Abc,
+       --  Three-dimensional stator value
+       Stator_Ab,
+       --  Three-dimensional stator value
+       Rotor
+       --  Two-dimensional rotor value
+      );
+
+   --  A variant type for respresenting a space vector value within a given
+   --  reference frame.
+   type Space_Vector
+      (Reference_Frame : Reference_Frame_Type := Rotor) is record
+      case Reference_Frame is
+         when Stator_Abc =>
+            Stator_Fixed_Abc : Abc;
+
+         when Stator_Ab =>
+            Stator_Fixed_Ab : Alfa_Beta;
+
+         when Rotor =>
+            Rotor_Fixed : Dq;
+
+      end case;
+   end record;
+
+   function To_Rotor_Fixed (X     : in Space_Vector;
+                            Angle : in Angle_Rad)
+                            return Dq;
+   --  Transform a space vector to its corresponding rotor fixed representation.
+   --  @param X The space vector
+   --  @param Angle Stator-to-rotor angle
+
 end AMC_Types;
