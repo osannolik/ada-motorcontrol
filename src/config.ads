@@ -18,7 +18,7 @@ package Config is
 
    Modulation_Method : constant ZSM.Modulation_Method := ZSM.Sinusoidal;
 
-   Position_Sensor : constant AMC_Types.Position_Sensor := AMC_Types.Encoder;
+   Position_Sensor : constant AMC_Types.Position_Sensor := AMC_Types.Hall;
 
 
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;

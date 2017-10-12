@@ -106,6 +106,12 @@ package AMC_Utils is
    --  Resets a timer object to its set timeout value.
    --  @param T A timer object
 
+   procedure Reset (T       : in out Timer;
+                    Timeout : in Seconds);
+   --  Resets a timer object to the provided timout value.
+   --  @param T A timer object
+   --  @param Timeout Time until next timeout in seconds
+
    function Tick (T         : in out Timer;
                   Time_Step : in Seconds) return Boolean;
    --  Let the timer tick with the specified time step.

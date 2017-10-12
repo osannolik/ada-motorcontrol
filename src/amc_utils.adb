@@ -114,6 +114,14 @@ package body AMC_Utils is
       T.Time := 0.0;
    end Reset;
 
+   procedure Reset (T       : in out Timer;
+                    Timeout : in Seconds)
+   is
+   begin
+      T.Time := 0.0;
+      T.Timeout := Timeout;
+   end Reset;
+
    function Tick (T         : in out Timer;
                   Time_Step : in Seconds) return Boolean
    is

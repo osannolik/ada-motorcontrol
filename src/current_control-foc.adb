@@ -3,6 +3,7 @@ with PID;
 with Transforms;
 with ZSM;
 with AMC_Utils;
+with AMC_Math;
 with Calmeas;
 
 package body Current_Control.FOC is
@@ -16,8 +17,6 @@ package body Current_Control.FOC is
                                      Ki => 0.0,
                                      Kd => 0.0);
    PID_Id : PID.Kpid := PID_Iq;
-
-   Alignment_Timer : AMC_Utils.Timer := AMC_Utils.Create (2.0);
 
    procedure Calculate_Voltage (Phase_Currents : in Abc;
                                 Set_Point      : in Dq;
@@ -70,14 +69,96 @@ package body Current_Control.FOC is
       return ZSM.Modulate (Duty, Config.Modulation_Method);
    end Voltage_To_Duty;
 
-   procedure Align_To_Sensor_Update (To_Angle          : out Angle;
-                                     Current_Set_Point : out Space_Vector;
-                                     Is_Done           : out Boolean)
+   type Hall_Alignment_State is (Not_Performed, Rotation, Probing, Done);
+
+
+
+   type Alignment_Data (Sensor : AMC_Types.Position_Sensor) is record
+      Timer : AMC_Utils.Timer;
+      Is_Done : Boolean := False;
+
+      case Sensor is
+
+         when Hall =>
+            State : Hall_Alignment_State := Not_Performed;
+            Step : Natural := Natural'First;
+
+
+         when None | Encoder =>
+            null;
+      end case;
+
+   end record;
+
+   Align_Data : Alignment_Data (Sensor => Config.Position_Sensor);
+
+   procedure Hall_Alignment_Update (Alignment         : in out Alignment_Data;
+                                    To_Angle          : out Angle;
+                                    Current_Set_Point : out Space_Vector)
+   is
+      D_Angle : constant Angle_Erad := Angle_Erad (AMC_Math.Pi) / Angle_Erad (6.0);
+      Alfa_Current : Current_A;
+   begin
+      case Alignment.State is
+         when Not_Performed =>
+            Alignment.State := Rotation;
+            Alignment.Timer.Reset (1.0);
+            Alignment.Step := Natural'First;
+            Alfa_Current := 0.0;
+
+         when Rotation =>
+            if Alignment.Timer.Tick (Nominal_Period) then
+               Alignment.Timer.Reset;
+               if Alignment.Step = 5 then
+                  Alignment.State := Probing;
+               else
+                  Alignment.Step := Natural'Succ (Alignment.Step);
+               end if;
+            end if;
+            To_Angle :=
+               Compose (Position.Wrap_To_2Pi (Angle_Erad (Alignment.Step) * D_Angle));
+            Alfa_Current := 5.0;
+
+         when Probing =>
+            if Alignment.Timer.Tick (Nominal_Period) then
+               Alignment.Timer.Reset;
+               if Alignment.Step = 0 then
+                  Alignment.State := Done;
+               else
+                  Alignment.Step := Natural'Pred (Alignment.Step);
+
+                  Position.Set_Angle (Angle_Erad (Alignment.Step) * D_Angle);
+               end if;
+            end if;
+            To_Angle :=
+               Compose (Position.Wrap_To_2Pi (Angle_Erad (Alignment.Step) * D_Angle));
+            Alfa_Current := 5.0;
+
+         when Done =>
+            Alfa_Current := 0.0;
+            To_Angle := Compose (0.0);
+
+      end case;
+
+      Current_Set_Point :=
+         Space_Vector'(Reference_Frame  => Stator_Ab,
+                       Stator_Fixed_Ab  => (Alfa => Alfa_Current,
+                                            Beta => 0.0));
+   end Hall_Alignment_Update;
+
+   procedure Align_To_Sensor_Update (Alignment         : in out Alignment_Data;
+                                     To_Angle          : out Angle;
+                                     Current_Set_Point : out Space_Vector)
    is
    begin
       case Config.Position_Sensor is
-         when None | Hall =>
+         when None =>
             raise Constraint_Error; --  TODO
+
+         when Hall =>
+            Hall_Alignment_Update (Alignment         => Alignment,
+                                   To_Angle          => To_Angle,
+                                   Current_Set_Point => Current_Set_Point);
 
          when Encoder =>
             To_Angle := Compose (0.0);
@@ -85,8 +166,8 @@ package body Current_Control.FOC is
                Space_Vector'(Reference_Frame  => Stator_Ab,
                              Stator_Fixed_Ab  => (Alfa => 12.0,
                                                   Beta => 0.0));
-            Is_Done := Alignment_Timer.Tick (Nominal_Period);
-            if Is_Done then
+            Alignment.Is_Done := Alignment.Timer.Tick (Nominal_Period);
+            if Alignment.Is_Done then
                Position.Set_Angle (To_Angle.Angle);
             end if;
 
@@ -116,9 +197,11 @@ package body Current_Control.FOC is
 
          when Alignment =>
             Align_To_Sensor_Update
-               (To_Angle          => Rotor_Angle,
-                Current_Set_Point => Current_Command,
-                Is_Done           => Alignment_Done);
+               (Alignment         => Align_Data,
+                To_Angle          => Rotor_Angle,
+                Current_Set_Point => Current_Command);
+
+            Alignment_Done := Align_Data.Is_Done;
 
             Current_Control_Outputs.Set
                (Current_Control_States'(Alignment_Done => Alignment_Done));
