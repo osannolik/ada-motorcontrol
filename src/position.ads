@@ -23,9 +23,15 @@ package Position is
 
    type Hall_Sector is (H1, H2, H3, H4, H5, H6);
 
+   type Hall_Direction is (Standstill, Cw, Ccw);
+
    task Hall_State_Handler with
       Priority => Config.Hall_State_Handler_Prio,
       Storage_Size => (2 * 1024);
+
+   function Get_Hall_Sector_Angle (Sector    : in Hall_Sector;
+                                   Direction : in Hall_Direction)
+                                   return Angle_Erad;
 
    function To_Erad (Angle : in Angle_Rad)
                      return Angle_Erad;
@@ -33,16 +39,9 @@ package Position is
    --  @param Angle Mechanical angle in radians
    --  @return Angle Electrical angle, i.e. corrected for number of motor pole-pairs.
 
-   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
-                                          return Angle_Erad;
-
    function Get_Angle return Angle_Erad;
    --  Get the current rotor electrical angle using the configured sensor.
    --  @return Angle in radians.
-
-   procedure Set_Angle (Angle : in Angle_Erad);
-   --  Define the current rotor position as the specified electrical angle.
-   --  @param Angle Set angle in radians.
 
    function Wrap_To_180 (Angle : in Angle_Deg)
                          return Angle_Deg;
@@ -82,8 +81,6 @@ private
       Angle      : Angle_Erad;
       Speed_Raw  : Speed_Eradps;
    end record;
-
-   type Hall_Direction is (Standstill, Cw, Ccw);
 
    type Pattern_To_Sector_Map is array (AMC_Hall.Valid_Hall_Bits'Range) of Hall_Sector;
 

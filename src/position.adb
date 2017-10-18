@@ -9,74 +9,6 @@ package body Position is
    Hall_State_Log : aliased UInt8;
    Direction_Log  : aliased UInt8;
 
-   procedure Map_Pattern_To_Sector (Pattern : in AMC_Hall.Hall_Pattern;
-                                    Sector  : in Hall_Sector)
-   is
-      use type AMC_Hall.Hall_Bits;
-   begin
-      for P in Hall_Sector_Map'Range loop
-         if P = Pattern.Bits then
-            Hall_Sector_Map (P) := Sector;
-            exit;
-         end if;
-      end loop;
-   end Map_Pattern_To_Sector;
-
-   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
-                                          return Angle_Erad is
-   begin
-      return Wrap_To_2Pi (Sector_Center_Angle (Sector) + Hall_Offset);
-   end Get_Hall_Sector_Center_Angle;
-
-   function Get_Hall_Sector_Angle (Sector    : in Hall_Sector;
-                                   Direction : in Hall_Direction)
-                                   return Angle_Erad is
-      Center_Angle : constant Angle_Erad := Sector_Center_Angle (Sector) + Hall_Offset;
-   begin
-      case Direction is
-         when Ccw =>
-            return Wrap_To_2Pi (Center_Angle - 0.5 * Hall_Sector_Angle);
-
-         when Cw =>
-            return Wrap_To_2Pi (Center_Angle + 0.5 * Hall_Sector_Angle);
-
-         when Standstill =>
-            --  Assume center of sector
-            return Get_Hall_Sector_Center_Angle (Sector => Sector);
-      end case;
-   end Get_Hall_Sector_Angle;
-
-   procedure Set_Hall_Angle (Angle : in Angle_Erad)
-   is
-      Hall : constant AMC_Hall.Hall_State := AMC_Hall.State.Get;
-
-      function Is_Within_Sector (Angle  : in Angle_Erad;
-                                 Sector : in Hall_Sector)
-                                 return Boolean
-      is
-         Ccw_Angle : constant Angle_Erad := Get_Hall_Sector_Angle (Sector, Ccw);
-         Cw_Angle  : constant Angle_Erad := Get_Hall_Sector_Angle (Sector, Cw);
-      begin
-         if Ccw_Angle <= Cw_Angle then
-            return Ccw_Angle <= Angle and then Angle < Cw_Angle;
-         else
-            --  Sector spans over transition from 2pi to 0
-            return Ccw_Angle <= Angle or else Angle < Cw_Angle;
-         end if;
-      end Is_Within_Sector;
-   begin
-      for Sector in Hall_Sector loop
-         --  Which sector does the angle belong to?
-         if Is_Within_Sector (Angle  => Wrap_To_2Pi (Angle),
-                              Sector => Sector)
-         then
-            Map_Pattern_To_Sector (Pattern => Hall.Current,
-                                   Sector  => Sector);
-            exit;
-         end if;
-      end loop;
-   end Set_Hall_Angle;
-
    function Get_Hall_Direction (Hall : in AMC_Hall.Hall_State)
                                 return Hall_Direction
    is
@@ -104,6 +36,30 @@ package body Position is
       return Cw;
    end Get_Hall_Direction;
 
+   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
+                                          return Angle_Erad is
+   begin
+      return Wrap_To_2Pi (Sector_Center_Angle (Sector) + Hall_Offset);
+   end Get_Hall_Sector_Center_Angle;
+
+   function Get_Hall_Sector_Angle (Sector    : in Hall_Sector;
+                                   Direction : in Hall_Direction)
+                                   return Angle_Erad is
+      Center_Angle : constant Angle_Erad := Get_Hall_Sector_Center_Angle (Sector);
+   begin
+      case Direction is
+         when Ccw =>
+            return Wrap_To_2Pi (Center_Angle - 0.5 * Hall_Sector_Angle);
+
+         when Cw =>
+            return Wrap_To_2Pi (Center_Angle + 0.5 * Hall_Sector_Angle);
+
+         when Standstill =>
+            --  Assume center of sector
+            return Center_Angle;
+      end case;
+   end Get_Hall_Sector_Angle;
+
    function Hall_State_To_Angle (Hall : in AMC_Hall.Hall_State)
                                  return Angle_Erad
    is
@@ -112,6 +68,7 @@ package body Position is
          (Sector    => Hall_Sector_Map (Hall.Current.Bits),
           Direction => Get_Hall_Direction (Hall));
    end Hall_State_To_Angle;
+
 
    task body Hall_State_Handler is
       New_State : AMC_Hall.Hall_State;
@@ -186,26 +143,6 @@ package body Position is
             return To_Erad (AMC_Encoder.Get_Angle);
       end case;
    end Get_Angle;
-
-   procedure Set_Angle (Angle : in Angle_Erad)
-   is
-   begin
-      case Config.Position_Sensor is
-         when None =>
-            null;
-
-         when Hall =>
-            Set_Hall_Angle (Wrap_To_2Pi (Angle));
-
-         when Encoder =>
-            declare
-               A : constant Float :=
-                  Float (Wrap_To_2Pi (Angle)) / Motor.Pole_Pairs;
-            begin
-               AMC_Encoder.Set_Angle (Angle_Rad (A));
-            end;
-      end case;
-   end Set_Angle;
 
    function Wrap_To_360 (Angle : in Angle_Deg) return Angle_Deg is
       (Angle_Deg (AMC_Utils.Wrap_To (Float (Angle), 360.0)));
