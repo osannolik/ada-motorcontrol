@@ -29,6 +29,9 @@ package Position is
       Priority => Config.Hall_State_Handler_Prio,
       Storage_Size => (2 * 1024);
 
+   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
+                                          return Angle_Erad;
+
    function Get_Hall_Sector_Angle (Sector    : in Hall_Sector;
                                    Direction : in Hall_Direction)
                                    return Angle_Erad;

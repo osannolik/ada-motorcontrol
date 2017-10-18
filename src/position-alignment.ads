@@ -11,7 +11,7 @@ package Position.Alignment is
 
       case Sensor is
          when Hall =>
-            Step : Natural := Natural'First;
+            To_Sector : Hall_Sector := Hall_Sector'First;
 
          when None | Encoder =>
             null;

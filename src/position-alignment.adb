@@ -62,49 +62,47 @@ package body Position.Alignment is
                                     To_Angle          : out Angle;
                                     Current_Set_Point : out Space_Vector)
    is
-      D_Angle : constant Angle_Erad := Hall_Sector_Angle;
-      Current : Current_A;
+      Current : Current_A  := 0.0;
+      Angle   : constant Angle_Erad :=
+         Get_Hall_Sector_Center_Angle (Alignment.To_Sector);
    begin
       case Alignment.State is
          when Not_Performed =>
             Alignment.State := Rotation;
             Alignment.Timer.Reset (1.0);
-            Alignment.Step := Natural'First;
-            To_Angle := Compose (0.0);
-            Current  := 0.0;
+            Alignment.To_Sector := Hall_Sector'First;
 
          when Rotation =>
             if Alignment.Timer.Tick (Period) then
                Alignment.Timer.Reset;
-               if Alignment.Step = 5 then
+               if Alignment.To_Sector = Hall_Sector'Last then
                   Alignment.State := Probing;
                else
-                  Alignment.Step := Natural'Succ (Alignment.Step);
+                  Alignment.To_Sector := Hall_Sector'Succ (Alignment.To_Sector);
                end if;
             end if;
-            To_Angle := Compose (Wrap_To_2Pi (Angle_Erad (Alignment.Step) * D_Angle));
             Current  := 12.0;
 
          when Probing =>
             if Alignment.Timer.Tick (Period) then
                Alignment.Timer.Reset;
 
-               Set_Hall_Angle (Angle_Erad (Alignment.Step) * D_Angle);
+               Set_Hall_Angle (Angle);
 
-               if Alignment.Step = 0 then
+               if Alignment.To_Sector = Hall_Sector'First then
                   Alignment.State := Done;
                else
-                  Alignment.Step := Natural'Pred (Alignment.Step);
+                  Alignment.To_Sector := Hall_Sector'Pred (Alignment.To_Sector);
                end if;
             end if;
-            To_Angle := Compose (Wrap_To_2Pi (Angle_Erad (Alignment.Step) * D_Angle));
             Current  := 12.0;
 
          when Done =>
-            To_Angle := Compose (0.0);
-            Current  := 0.0;
+            null;
 
       end case;
+
+      To_Angle := Compose (Angle);
 
       Current_Set_Point :=
          Space_Vector'(Reference_Frame  => Rotor,
