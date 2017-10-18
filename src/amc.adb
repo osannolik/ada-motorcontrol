@@ -20,26 +20,24 @@ package body AMC is
                           Period         : in AMC_Types.Seconds;
                           Is_Aligned     : in Boolean);
 
-   procedure Update_Outputs (Outputs      : in out Inverter_System_States;
+   procedure Update_Outputs (Outputs      : out Inverter_System_States;
                              Enable_Gates : out Boolean;
                              Mode         : in Ctrl_Mode;
                              Idq_Req      : in Dq);
 
    --  Temporary for test
    function External_Voltage_To_Iq_Req (ADC_Voltage : in Voltage_V)
-                                        return Dq;
-   function External_Voltage_To_Iq_Req (ADC_Voltage : in Voltage_V)
                                         return Dq
    is
-      Iq : constant Float := Float (ADC_Voltage) * 20.0 / 3.3;
+      Iq : constant Float := (Float (ADC_Voltage) - 1.65) * 20.0 / 1.65;
    begin
-      if Iq < 2.0 then
+      if abs Iq < 2.0 then
          return Dq'(0.0, 0.0);
       end if;
 
       return Dq'(D => 0.0, Q => AMC_Utils.Saturate (X       => Iq,
                                                     Maximum => 20.0,
-                                                    Minimum => 0.0));
+                                                    Minimum => -20.0));
    end External_Voltage_To_Iq_Req;
 
 
@@ -121,7 +119,8 @@ package body AMC is
             end if;
 
          when Normal =>
-            if Button_Pressed then
+            if Mode_Tmr.Tick (Period) and Button_Pressed then
+               Mode_Tmr.Reset;
                Current_Mode := Off;
             end if;
 
@@ -132,7 +131,7 @@ package body AMC is
       end case;
    end Update_Mode;
 
-   procedure Update_Outputs (Outputs      : in out Inverter_System_States;
+   procedure Update_Outputs (Outputs      : out Inverter_System_States;
                              Enable_Gates : out Boolean;
                              Mode         : in Ctrl_Mode;
                              Idq_Req      : in Dq) is

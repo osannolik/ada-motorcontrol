@@ -34,7 +34,7 @@ package AMC_Hall is
       end record with Unchecked_Union, Size => Hall_Bits'Size;
 
    for Hall_Pattern use record
-      Bits at 0 range 0 .. 2;
+      Bits    at 0 range 0 .. 2;
       H1      at 0 range 0 .. 0;
       H2      at 0 range 1 .. 1;
       H3      at 0 range 2 .. 2;
@@ -80,18 +80,20 @@ package AMC_Hall is
    protected State is
       pragma Interrupt_Priority (Config.Hall_ISR_Prio);
 
-      entry Await_New (New_State    : out Hall_State;
-                       Time_Delta_s : out AMC_Types.Seconds);
+      entry Await_New (New_State            : out Hall_State;
+                       Time_Delta_s         : out AMC_Types.Seconds;
+                       Speed_Timer_Overflow : out Boolean);
       --  Suspend the caller and wake it up again as soon as the hall sensor changes state.
       --  @param New_State New State.
-      --  @param Time_Delta_s Time since previous state change. If the timer has overflowed,
-      --  then this is set to 0 s.
+      --  @param Time_Delta_s Time since previous state change.
+      --  @param Speed_Timer_Overflow Indicates if the speed measurement has overflowed.
+      --  If true it means Time_Delta_s has reached its maximal possible value.
 
       function Get return Hall_State;
 
       procedure Update;
 
-      procedure Set_Commutation_Delay_Factor (Factor : AMC_Types.Percent);
+      procedure Set_Commutation_Delay_Factor (Factor : in AMC_Types.Percent);
 
       function Overflow return Boolean;
 
@@ -106,8 +108,12 @@ package AMC_Hall is
       Capture_Overflow : Boolean := True;
       --  True when speed timer has overflowed, i.e. very slow rotation
 
-      State : Hall_State;
+      State : Hall_State :=
       --  Holds the state of the hall sensor
+         Hall_State'(Current  => Hall_Pattern' (As_Pattern => True,
+                                                Bits => Valid_Hall_Bits'First),
+                     Previous => Hall_Pattern' (As_Pattern => True,
+                                                Bits => Valid_Hall_Bits'First));
 
       Delay_Factor : Float range 0.0 .. 1.0 := 0.0;
       --  Time for commutation will be this Factor times the time since last state change

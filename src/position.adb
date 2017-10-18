@@ -2,8 +2,12 @@ with AMC;
 with AMC_Utils;
 with AMC_Encoder;
 with Motor;
+with Calmeas;
 
 package body Position is
+
+   Hall_State_Log : aliased UInt8;
+   Direction_Log  : aliased UInt8;
 
    procedure Map_Pattern_To_Sector (Pattern : in AMC_Hall.Hall_Pattern;
                                     Sector  : in Hall_Sector)
@@ -13,9 +17,34 @@ package body Position is
       for P in Hall_Sector_Map'Range loop
          if P = Pattern.Bits then
             Hall_Sector_Map (P) := Sector;
+            exit;
          end if;
       end loop;
    end Map_Pattern_To_Sector;
+
+   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
+                                          return Angle_Erad is
+   begin
+      return Wrap_To_2Pi (Sector_Center_Angle (Sector) + Hall_Offset);
+   end Get_Hall_Sector_Center_Angle;
+
+   function Get_Hall_Sector_Angle (Sector    : in Hall_Sector;
+                                   Direction : in Hall_Direction)
+                                   return Angle_Erad is
+      Center_Angle : constant Angle_Erad := Sector_Center_Angle (Sector) + Hall_Offset;
+   begin
+      case Direction is
+         when Ccw =>
+            return Wrap_To_2Pi (Center_Angle - 0.5 * Hall_Sector_Angle);
+
+         when Cw =>
+            return Wrap_To_2Pi (Center_Angle + 0.5 * Hall_Sector_Angle);
+
+         when Standstill =>
+            --  Assume center of sector
+            return Get_Hall_Sector_Center_Angle (Sector => Sector);
+      end case;
+   end Get_Hall_Sector_Angle;
 
    procedure Set_Hall_Angle (Angle : in Angle_Erad)
    is
@@ -23,11 +52,17 @@ package body Position is
 
       function Is_Within_Sector (Angle  : in Angle_Erad;
                                  Sector : in Hall_Sector)
-                                 return Boolean is
-
+                                 return Boolean
+      is
+         Ccw_Angle : constant Angle_Erad := Get_Hall_Sector_Angle (Sector, Ccw);
+         Cw_Angle  : constant Angle_Erad := Get_Hall_Sector_Angle (Sector, Cw);
       begin
-         return Sector_Angle_Ccw (Sector) <= Angle and then
-                Angle < Sector_Angle_Ccw (Sector) + Hall_Sector_Angle;
+         if Ccw_Angle <= Cw_Angle then
+            return Ccw_Angle <= Angle and then Angle < Cw_Angle;
+         else
+            --  Sector spans over transition from 2pi to 0
+            return Ccw_Angle <= Angle or else Angle < Cw_Angle;
+         end if;
       end Is_Within_Sector;
    begin
       for Sector in Hall_Sector loop
@@ -45,11 +80,12 @@ package body Position is
    function Get_Hall_Direction (Hall : in AMC_Hall.Hall_State)
                                 return Hall_Direction
    is
+      use type AMC_Hall.Hall_Bits;
       Current_Sector  : constant Hall_Sector := Hall_Sector_Map (Hall.Current.Bits);
       Previous_Sector : constant Hall_Sector := Hall_Sector_Map (Hall.Previous.Bits);
       Is_Ccw : Boolean;
    begin
-      if AMC_Hall.Is_Standstill then
+      if AMC_Hall.Is_Standstill or else Hall.Current.Bits = Hall.Previous.Bits then
          return Standstill;
       end if;
 
@@ -58,7 +94,7 @@ package body Position is
             Is_Ccw := (Previous_Sector = H6);
 
          when H2 | H3 | H4 | H5 | H6 =>
-            Is_Ccw := (Current_Sector = Hall_Sector'Pred (Previous_Sector));
+            Is_Ccw := (Previous_Sector = Hall_Sector'Pred (Current_Sector));
       end case;
 
       if Is_Ccw then
@@ -71,15 +107,10 @@ package body Position is
    function Hall_State_To_Angle (Hall : in AMC_Hall.Hall_State)
                                  return Angle_Erad
    is
-      Sector : constant Hall_Sector := Hall_Sector_Map (Hall.Current.Bits);
    begin
-      case Get_Hall_Direction (Hall) is
-         when Ccw | Standstill =>
-            return Sector_Angle_Ccw (Sector);
-
-         when Cw =>
-            return Wrap_To_2Pi (Sector_Angle_Ccw (Sector) + Hall_Sector_Angle);
-      end case;
+      return Get_Hall_Sector_Angle
+         (Sector    => Hall_Sector_Map (Hall.Current.Bits),
+          Direction => Get_Hall_Direction (Hall));
    end Hall_State_To_Angle;
 
    task body Hall_State_Handler is
@@ -90,6 +121,8 @@ package body Position is
       Delta_T : Seconds;
 
       Speed_Raw : Speed_Eradps;
+
+      Speed_Timer_Overflow : Boolean;
    begin
 
       Hall_Data.Set (Position_Hall_Data'(Hall_State => AMC_Hall.State.Get,
@@ -99,16 +132,28 @@ package body Position is
       AMC.Wait_Until_Initialized;
 
       loop
-         AMC_Hall.State.Await_New (New_State    => New_State,
-                                   Time_Delta_s => Delta_T);
+         AMC_Hall.State.Await_New (New_State            => New_State,
+                                   Time_Delta_s         => Delta_T,
+                                   Speed_Timer_Overflow => Speed_Timer_Overflow);
+
+         Hall_State_Log := UInt8 (New_State.Current.Bits);
+
+         case Get_Hall_Direction (Hall => New_State) is
+            when Cw =>
+               Direction_Log := 2;
+            when Ccw =>
+               Direction_Log := 0;
+            when Standstill =>
+               Direction_Log := 1;
+         end case;
 
          Angle_Raw := Hall_State_To_Angle (New_State);
 
-         if not AMC_Hall.Is_Standstill and then Delta_T /= 0.0 then
+         if Speed_Timer_Overflow then
+            Speed_Raw := 0.0;
+         else
             Speed_Raw := Speed_Eradps
                (2.0 * AMC_Math.Pi / (Float (AMC_Hall.Nof_Valid_Hall_States) * Delta_T));
-         else
-            Speed_Raw := 0.0;
          end if;
 
 
@@ -193,5 +238,14 @@ package body Position is
       return Angle;
 
    end Wrap_To_Pi;
+begin
+
+   Calmeas.Add (Symbol      => Direction_Log'Access,
+                Name        => "Direction",
+                Description => "");
+
+   Calmeas.Add (Symbol      => Hall_State_Log'Access,
+                Name        => "Hall_State",
+                Description => "");
 
 end Position;

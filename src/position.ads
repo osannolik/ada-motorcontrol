@@ -17,6 +17,11 @@ package Position is
    --  - Todo: Sensorless, i.e. No sensor at all
    --
 
+   Hall_Sector_Angle : constant Angle_Erad := 2.0 * Angle_Erad (AMC_Math.Pi) / 6.0;
+
+   Hall_Offset : constant Angle_Erad := 0.0;
+
+   type Hall_Sector is (H1, H2, H3, H4, H5, H6);
 
    task Hall_State_Handler with
       Priority => Config.Hall_State_Handler_Prio,
@@ -27,6 +32,9 @@ package Position is
    --  Convert a mechanical angle to the corresponding electrical angle.
    --  @param Angle Mechanical angle in radians
    --  @return Angle Electrical angle, i.e. corrected for number of motor pole-pairs.
+
+   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
+                                          return Angle_Erad;
 
    function Get_Angle return Angle_Erad;
    --  Get the current rotor electrical angle using the configured sensor.
@@ -75,15 +83,11 @@ private
       Speed_Raw  : Speed_Eradps;
    end record;
 
-   type Hall_Sector is (H1, H2, H3, H4, H5, H6);
-
    type Hall_Direction is (Standstill, Cw, Ccw);
 
    type Pattern_To_Sector_Map is array (AMC_Hall.Valid_Hall_Bits'Range) of Hall_Sector;
 
-   Hall_Sector_Angle : constant Angle_Erad := 2.0 * Pi / 6.0;
-
-   Sector_Angle_Ccw : constant array (Hall_Sector'Range) of Angle_Erad :=
+   Sector_Center_Angle : constant array (Hall_Sector'Range) of Angle_Erad :=
       (0.0,
        1.0 * Pi / 3.0,
        2.0 * Pi / 3.0,
@@ -97,11 +101,11 @@ private
    Hall_Data : Position_Hall_PO_Pack.Shared_Data (Config.Protected_Object_Prio);
 
    Hall_Sector_Map : Pattern_To_Sector_Map :=
-      (2#001# => H1,
+      (2#001# => H3,
+       2#010# => H1,
        2#011# => H2,
-       2#010# => H3,
-       2#110# => H4,
        2#100# => H5,
-       2#101# => H6);
+       2#101# => H4,
+       2#110# => H6);
 
 end Position;

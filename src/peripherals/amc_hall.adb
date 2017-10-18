@@ -7,6 +7,12 @@ package body AMC_Hall is
 
    function Is_Valid_Pattern (H : in Hall_Pattern) return Boolean;
 
+   function Get_Hall_Pin_Pattern return Hall_Pattern is
+      (Hall_Pattern'(As_Pattern => False,
+                     H1         => H1_Pin.Set,
+                     H2         => H2_Pin.Set,
+                     H3         => H3_Pin.Set));
+
    Speed_Counter_Max : constant UInt32 := UInt32 (UInt16'Last);
 
    Speed_Timer_Resolution : AMC_Types.Seconds;
@@ -18,7 +24,6 @@ package body AMC_Hall is
    procedure Initialize
    is
       use STM32.Timers;
-
    begin
 
       Speed_Timer_Resolution := AMC_Types.Seconds
@@ -36,6 +41,7 @@ package body AMC_Hall is
       STM32.GPIO.Configure_Alternate_Function
          (Points => Input_Pins,
           AF     => STM32.Device.GPIO_AF_TIM4_2);
+
 
       STM32.Device.Enable_Clock (Hall_Timer);
 
@@ -108,7 +114,7 @@ package body AMC_Hall is
 
       Enable_Channel  (Hall_Timer, Channel_1);
 
-      State.Update;
+
 
       Enable (Hall_Timer);
       Enable (Commutation_Timer);
@@ -118,12 +124,6 @@ package body AMC_Hall is
 
    function Is_Initialized return Boolean is
       (Initialized);
-
-   function Get_Hall_Pin_Pattern return Hall_Pattern is
-      (Hall_Pattern'(As_Pattern => False,
-                     H1         => H1_Pin.Set,
-                     H2         => H2_Pin.Set,
-                     H3         => H3_Pin.Set));
 
    function Is_Valid_Pattern (H : in Hall_Pattern) return Boolean is
       (H.Bits in Valid_Hall_Bits);
@@ -135,17 +135,16 @@ package body AMC_Hall is
 
    protected body State is
 
-      entry Await_New (New_State    : out Hall_State;
-                       Time_Delta_s : out AMC_Types.Seconds) when Hall_State_Is_Updated is
+      entry Await_New (New_State            : out Hall_State;
+                       Time_Delta_s         : out AMC_Types.Seconds;
+                       Speed_Timer_Overflow : out Boolean) when Hall_State_Is_Updated is
       begin
          New_State := State;
 
-         if Capture_Overflow then
-            Time_Delta_s := 0.0;
-         else
-            Time_Delta_s :=
-               AMC_Types.Seconds (Speed_Timer_Counter) * Speed_Timer_Resolution;
-         end if;
+         Time_Delta_s :=
+            AMC_Types.Seconds (Speed_Timer_Counter) * Speed_Timer_Resolution;
+
+         Speed_Timer_Overflow := Capture_Overflow;
 
          Hall_State_Is_Updated := False;
       end Await_New;
@@ -162,7 +161,7 @@ package body AMC_Hall is
          Hall_State_Is_Updated := True;
       end Update;
 
-      procedure Set_Commutation_Delay_Factor (Factor : AMC_Types.Percent) is
+      procedure Set_Commutation_Delay_Factor (Factor : in AMC_Types.Percent) is
       begin
          Delay_Factor := Factor / AMC_Types.Percent'Last;
       end Set_Commutation_Delay_Factor;
@@ -173,7 +172,7 @@ package body AMC_Hall is
       procedure ISR is
          use STM32.Timers;
 
-         Commutation_Delay_Compare : UInt32 := 0;
+         Commutation_Delay_Compare : UInt32;
       begin
          AMC_Board.Turn_On (AMC_Board.Debug_Pin_1);
 
@@ -230,6 +229,8 @@ package body AMC_Hall is
 
             Capture_Overflow := True;
 
+            Update;
+
             Disable_Interrupt (Hall_Timer, Timer_Update_Interrupt);
          end if;
 
@@ -269,44 +270,8 @@ package body AMC_Hall is
 
    end Commutation;
 
---     function Get_Angle return AMC_Types.Angle_Rad is
---        use STM32.Timers;
---     begin
---        return AMC_Types.Angle_Rad
---           (Float (2 * (Current_Counter (Counting_Timer))) * AMC_Math.Pi / Counts_Per_Revolution);
---     end Get_Angle;
---
---     function Get_Angle return AMC_Types.Angle_Deg is
---        use STM32.Timers;
---     begin
---        return AMC_Types.Angle_Deg
---           (Float (Current_Counter (Counting_Timer)) * 360.0 / Counts_Per_Revolution);
---     end Get_Angle;
---
---     function Get_Angle return AMC_Types.Angle is
---        use AMC_Types;
---     begin
---        return Compose (Angle_Rad'(Get_Angle));
---     end Get_Angle;
---
---     procedure Set_Angle (Angle : in AMC_Types.Angle_Rad) is
---        Counter : constant AMC_Types.UInt16 :=
---           AMC_Types.UInt16 (Float (Angle) * Counts_Per_Revolution / (2.0 * AMC_Math.Pi));
---     begin
---        STM32.Timers.Set_Counter (Counting_Timer, Counter);
---     end Set_Angle;
---
---     function Get_Direction return Float is
---        use STM32.Timers;
---     begin
---        case Current_Counter_Mode (Counting_Timer) is
---           when Up     => return  1.0;
---           when Down   => return -1.0;
---           when others => return  0.0;
---        end case;
---     end Get_Direction;
-
 begin
+
    Calmeas.Add (Symbol      => Comm_Del_Param'Access,
                 Name        => "Comm_Delay",
                 Description => "");
