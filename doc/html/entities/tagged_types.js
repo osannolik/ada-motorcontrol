@@ -3,24 +3,24 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Abc",
-      "docHref": "docs/amc_types___spec.html#L91C9",
+      "docHref": "docs/amc_types___spec.html#L136C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L91"
+      "srcHref": "srcs/amc_types.ads.html#L136"
     },
     {
       "label": "Alfa_Beta",
-      "docHref": "docs/amc_types___spec.html#L104C9",
+      "docHref": "docs/amc_types___spec.html#L149C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L104"
+      "srcHref": "srcs/amc_types.ads.html#L149"
     },
     {
       "label": "Angle",
-      "docHref": "docs/amc_types___spec.html#L71C9",
+      "docHref": "docs/amc_types___spec.html#L116C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L71"
+      "srcHref": "srcs/amc_types.ads.html#L116"
     },
     {
       "label": "COBS_Stream",
@@ -31,10 +31,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Dq",
-      "docHref": "docs/amc_types___spec.html#L98C9",
+      "docHref": "docs/amc_types___spec.html#L143C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L98"
+      "srcHref": "srcs/amc_types.ads.html#L143"
     },
     {
       "label": "Interface_Type",
@@ -59,10 +59,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Timer",
-      "docHref": "docs/amc_utils___spec.html#L109C9",
+      "docHref": "docs/amc_utils___spec.html#L95C9",
       "declared": "AMC_Utils",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_utils.ads.html#L109"
+      "srcHref": "srcs/amc_utils.ads.html#L95"
     },
     {
       "label": "UART_Stream",

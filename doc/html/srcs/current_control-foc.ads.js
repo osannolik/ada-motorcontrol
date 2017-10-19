@@ -18,32 +18,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "AMC_Types"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "use"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "AMC_Types"
+          "text": "AMC"
         },
         {
           "kind": "span",
@@ -75,8 +50,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "FOC",
-          "href": "docs/foc___spec.html#L3C9"
+          "text": "Current_Control.FOC",
+          "href": "docs/current_control__foc___spec.html#L3C25"
         },
         {
           "kind": "span",
@@ -428,7 +403,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "function"
+          "text": "procedure"
         },
         {
           "kind": "span",
@@ -438,19 +413,13 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Calculate_Voltage",
-          "href": "docs/foc___spec.html#L25C13"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 26,
-      "children": [
+          "text": "Update",
+          "href": "docs/current_control__foc___spec.html#L25C14"
+        },
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "      "
+          "text": " "
         },
         {
           "kind": "span",
@@ -460,13 +429,13 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Iabc",
-          "href": "docs/foc___spec.html#L26C8"
+          "text": "Phase_Currents",
+          "href": "docs/current_control__foc___spec.html#L25C22"
         },
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "          "
+          "text": " "
         },
         {
           "kind": "span",
@@ -480,9 +449,72 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
           "cssClass": "identifier",
           "text": "Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 26,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "                     "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "System_Outputs",
+          "href": "docs/current_control__foc___spec.html#L26C22"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "AMC.Inverter_System_States",
+          "href": "docs/amc___spec.html#L36C9"
         },
         {
           "kind": "span",
@@ -498,18 +530,18 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "       "
+          "text": "                     "
         },
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "I_Set_Point",
-          "href": "docs/foc___spec.html#L27C8"
+          "text": "Duty",
+          "href": "docs/current_control__foc___spec.html#L27C22"
         },
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "   "
+          "text": "           "
         },
         {
           "kind": "span",
@@ -523,9 +555,24 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
           "cssClass": "identifier",
-          "text": "Dq",
-          "href": "docs/amc_types___spec.html#L98C9"
+          "text": "Abc",
+          "href": "docs/amc_types___spec.html#L136C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
         },
         {
           "kind": "span",
@@ -541,39 +588,12 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "       "
+          "text": "   "
         },
         {
           "kind": "span",
-          "cssClass": "identifier",
-          "text": "Current_Angle",
-          "href": "docs/foc___spec.html#L28C8"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Angle_Erad",
-          "href": "docs/amc_types___spec.html#L44C12"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
+          "cssClass": "comment",
+          "text": "--  Calculates the requested inverter phase duty as per the FOC algorithm."
         }
       ]
     },
@@ -584,39 +604,12 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "       "
+          "text": "   "
         },
         {
           "kind": "span",
-          "cssClass": "identifier",
-          "text": "Vmax",
-          "href": "docs/foc___spec.html#L29C8"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "          "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
+          "cssClass": "comment",
+          "text": "--  @param Phase_Currents A three phase current"
         }
       ]
     },
@@ -627,39 +620,12 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "       "
+          "text": "   "
         },
         {
           "kind": "span",
-          "cssClass": "identifier",
-          "text": "Period",
-          "href": "docs/foc___spec.html#L30C8"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "        "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Seconds",
-          "href": "docs/amc_types___spec.html#L23C12"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ")"
+          "cssClass": "comment",
+          "text": "--  @param System_Outputs Includes system variables such as the current set-point"
         }
       ]
     },
@@ -670,28 +636,12 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "       "
+          "text": "   "
         },
         {
           "kind": "span",
-          "cssClass": "keyword",
-          "text": "return"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
+          "cssClass": "comment",
+          "text": "--  and the bus voltage etc."
         }
       ]
     },
@@ -707,7 +657,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "--  Calculates the requested inverter phase voltages as per the FOC algorithm."
+          "text": "--  @param Duty A triplet of values representing the calculated duty cycles"
         }
       ]
     },
@@ -715,107 +665,11 @@ GNATdoc.SourceFile = {
       "kind": "line",
       "number": 33,
       "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @param Iabc A three phase current"
-        }
       ]
     },
     {
       "kind": "line",
       "number": 34,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @param I_Set_Point Current set-point given in a rotor fixed reference frame"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 35,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @param Current_Angle Stator-to-rotor fixed angle given in electrical radians"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 36,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @param Vmax Maximum allowed phase to neutral voltage"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 37,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @param Period Time since last execution"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 38,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @return A three phase voltage given in a stator fixed reference frame"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 39,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 40,
       "children": [
         {
           "kind": "span",
@@ -830,7 +684,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "FOC"
+          "text": "Current_Control.FOC"
         },
         {
           "kind": "span",
@@ -840,5 +694,5 @@ GNATdoc.SourceFile = {
       ]
     }
   ],
-  "label": "foc.ads"
+  "label": "current_control-foc.ads"
 };

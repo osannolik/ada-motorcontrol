@@ -1,5 +1,5 @@
 GNATdoc.Documentation = {
-  "label": "FOC",
+  "label": "Current_Control.FOC",
   "qualifier": "",
   "summary": [
     {
@@ -108,11 +108,11 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Calculate_Voltage",
+          "label": "Update",
           "qualifier": "",
           "line": 25,
-          "column": 13,
-          "src": "srcs/foc.ads.html",
+          "column": 14,
+          "src": "srcs/current_control-foc.ads.html",
           "summary": [
           ],
           "description": [
@@ -131,7 +131,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "function"
+                      "text": "procedure"
                     },
                     {
                       "kind": "span",
@@ -141,19 +141,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Calculate_Voltage",
-                      "href": "docs/foc___spec.html#L25C13"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 26,
-                  "children": [
+                      "text": "Update",
+                      "href": "docs/current_control__foc___spec.html#L25C14"
+                    },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "      "
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -163,13 +157,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Iabc",
-                      "href": "docs/foc___spec.html#L26C8"
+                      "text": "Phase_Currents",
+                      "href": "docs/current_control__foc___spec.html#L25C22"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "          "
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -183,9 +177,72 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 26,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                     "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "System_Outputs",
+                      "href": "docs/current_control__foc___spec.html#L26C22"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "AMC.Inverter_System_States",
+                      "href": "docs/amc___spec.html#L36C9"
                     },
                     {
                       "kind": "span",
@@ -201,18 +258,18 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "       "
+                      "text": "                     "
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "I_Set_Point",
-                      "href": "docs/foc___spec.html#L27C8"
+                      "text": "Duty",
+                      "href": "docs/current_control__foc___spec.html#L27C22"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "   "
+                      "text": "           "
                     },
                     {
                       "kind": "span",
@@ -223,162 +280,11 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "text",
                       "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 28,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Current_Angle",
-                      "href": "docs/foc___spec.html#L28C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle_Erad",
-                      "href": "docs/amc_types___spec.html#L44C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 29,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Vmax",
-                      "href": "docs/foc___spec.html#L29C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "          "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Voltage_V",
-                      "href": "docs/amc_types___spec.html#L28C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 30,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Period",
-                      "href": "docs/foc___spec.html#L30C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "        "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Seconds",
-                      "href": "docs/amc_types___spec.html#L23C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 31,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
                     },
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "return"
+                      "text": "out"
                     },
                     {
                       "kind": "span",
@@ -389,7 +295,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
                     },
                     {
                       "kind": "span",
@@ -405,19 +316,19 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "span",
-                  "text": "Calculates the requested inverter phase voltages as per the FOC algorithm.\n"
+                  "text": "Calculates the requested inverter phase duty as per the FOC algorithm.\n"
                 }
               ]
             }
           ],
           "parameters": [
             {
-              "label": "Iabc",
-              "line": 26,
-              "column": 8,
+              "label": "Phase_Currents",
+              "line": 25,
+              "column": 22,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -432,12 +343,36 @@ GNATdoc.Documentation = {
               ]
             },
             {
-              "label": "I_Set_Point",
+              "label": "System_Outputs",
+              "line": 26,
+              "column": 22,
+              "type": {
+                "label": "AMC.Inverter_System_States",
+                "docHref": "docs/amc___spec.html#L36C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Includes system variables such as the current set-point\n"
+                    },
+                    {
+                      "kind": "span",
+                      "text": "and the bus voltage etc.\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Duty",
               "line": 27,
-              "column": 8,
+              "column": 22,
               "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -445,86 +380,13 @@ GNATdoc.Documentation = {
                   "children": [
                     {
                       "kind": "span",
-                      "text": "Current set-point given in a rotor fixed reference frame\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Current_Angle",
-              "line": 28,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Angle_Erad",
-                "docHref": "docs/amc_types___spec.html#L44C12"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Stator-to-rotor fixed angle given in electrical radians\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Vmax",
-              "line": 29,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Voltage_V",
-                "docHref": "docs/amc_types___spec.html#L28C12"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Maximum allowed phase to neutral voltage\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Period",
-              "line": 30,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Seconds",
-                "docHref": "docs/amc_types___spec.html#L23C12"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Time since last execution\n"
+                      "text": "A triplet of values representing the calculated duty cycles\n"
                     }
                   ]
                 }
               ]
             }
-          ],
-          "returns": {
-            "description": [
-              {
-                "kind": "paragraph",
-                "children": [
-                  {
-                    "kind": "span",
-                    "text": "A three phase voltage given in a stator fixed reference frame\n"
-                  }
-                ]
-              }
-            ]
-          }
+          ]
         }
       ],
       "label": "Subprograms"

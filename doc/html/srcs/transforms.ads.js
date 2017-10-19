@@ -373,7 +373,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
         },
         {
           "kind": "span",
@@ -477,7 +477,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Alfa_Beta",
-          "href": "docs/amc_types___spec.html#L104C9"
+          "href": "docs/amc_types___spec.html#L149C9"
         },
         {
           "kind": "span",
@@ -642,7 +642,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Alfa_Beta",
-          "href": "docs/amc_types___spec.html#L104C9"
+          "href": "docs/amc_types___spec.html#L149C9"
         },
         {
           "kind": "span",
@@ -746,7 +746,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
         },
         {
           "kind": "span",
@@ -911,7 +911,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Alfa_Beta",
-          "href": "docs/amc_types___spec.html#L104C9"
+          "href": "docs/amc_types___spec.html#L149C9"
         },
         {
           "kind": "span",
@@ -964,7 +964,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Angle_Rad",
-          "href": "docs/amc_types___spec.html#L41C9"
+          "href": "docs/amc_types___spec.html#L43C9"
         },
         {
           "kind": "span",
@@ -996,7 +996,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Dq",
-          "href": "docs/amc_types___spec.html#L98C9"
+          "href": "docs/amc_types___spec.html#L143C9"
         },
         {
           "kind": "span",
@@ -1145,7 +1145,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Alfa_Beta",
-          "href": "docs/amc_types___spec.html#L104C9"
+          "href": "docs/amc_types___spec.html#L149C9"
         },
         {
           "kind": "span",
@@ -1198,7 +1198,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Angle",
-          "href": "docs/amc_types___spec.html#L71C9"
+          "href": "docs/amc_types___spec.html#L116C9"
         },
         {
           "kind": "span",
@@ -1230,7 +1230,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Dq",
-          "href": "docs/amc_types___spec.html#L98C9"
+          "href": "docs/amc_types___spec.html#L143C9"
         },
         {
           "kind": "span",
@@ -1379,7 +1379,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Dq",
-          "href": "docs/amc_types___spec.html#L98C9"
+          "href": "docs/amc_types___spec.html#L143C9"
         },
         {
           "kind": "span",
@@ -1432,7 +1432,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Angle_Rad",
-          "href": "docs/amc_types___spec.html#L41C9"
+          "href": "docs/amc_types___spec.html#L43C9"
         },
         {
           "kind": "span",
@@ -1464,7 +1464,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Alfa_Beta",
-          "href": "docs/amc_types___spec.html#L104C9"
+          "href": "docs/amc_types___spec.html#L149C9"
         },
         {
           "kind": "span",
@@ -1597,7 +1597,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Dq",
-          "href": "docs/amc_types___spec.html#L98C9"
+          "href": "docs/amc_types___spec.html#L143C9"
         },
         {
           "kind": "span",
@@ -1650,7 +1650,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Angle",
-          "href": "docs/amc_types___spec.html#L71C9"
+          "href": "docs/amc_types___spec.html#L116C9"
         },
         {
           "kind": "span",
@@ -1682,7 +1682,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Alfa_Beta",
-          "href": "docs/amc_types___spec.html#L104C9"
+          "href": "docs/amc_types___spec.html#L149C9"
         },
         {
           "kind": "span",

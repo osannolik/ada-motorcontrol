@@ -43,7 +43,7 @@ GNATdoc.Documentation = {
           "children": [
             {
               "kind": "span",
-              "text": "Todo: Hall sensor\n"
+              "text": "Hall sensor\n"
             }
           ]
         },
@@ -63,9 +63,9 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Position_Sensor",
+          "label": "Hall_Direction",
           "qualifier": "",
-          "line": 18,
+          "line": 22,
           "column": 9,
           "src": "srcs/position.ads.html",
           "summary": [
@@ -76,7 +76,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 18,
+                  "number": 22,
                   "children": [
                     {
                       "kind": "span",
@@ -96,8 +96,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Position_Sensor",
-                      "href": "docs/position___spec.html#L18C9"
+                      "text": "Hall_Direction",
+                      "href": "docs/position___spec.html#L22C9"
                     },
                     {
                       "kind": "span",
@@ -122,8 +122,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "None",
-                      "href": "docs/position___spec.html#L18C29"
+                      "text": "Standstill",
+                      "href": "docs/position___spec.html#L22C28"
                     },
                     {
                       "kind": "span",
@@ -138,8 +138,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Hall",
-                      "href": "docs/position___spec.html#L18C35"
+                      "text": "Cw",
+                      "href": "docs/position___spec.html#L22C40"
                     },
                     {
                       "kind": "span",
@@ -154,8 +154,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Encoder",
-                      "href": "docs/position___spec.html#L18C41"
+                      "text": "Ccw",
+                      "href": "docs/position___spec.html#L22C44"
                     },
                     {
                       "kind": "span",
@@ -166,7 +166,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/position___spec.html#L18C9"
+                      "href": "docs/position___spec.html#L22C9"
                     }
                   ]
                 }
@@ -177,30 +177,34 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "span",
-                  "text": "Define the type of available sensors\n"
+                  "text": "Defines directions measured by hall sensor.\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "Ccw is defined as an increasing angle.\n"
                 }
               ]
             }
           ],
           "literals": [
             {
-              "label": "None",
-              "line": 18,
-              "column": 29,
+              "label": "Standstill",
+              "line": 22,
+              "column": 28,
               "description": [
               ]
             },
             {
-              "label": "Hall",
-              "line": 18,
-              "column": 35,
+              "label": "Cw",
+              "line": 22,
+              "column": 40,
               "description": [
               ]
             },
             {
-              "label": "Encoder",
-              "line": 18,
-              "column": 41,
+              "label": "Ccw",
+              "line": 22,
+              "column": 44,
               "description": [
               ]
             }
@@ -212,9 +216,24 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
+          "label": "Hall_State_Handler",
+          "qualifier": "",
+          "line": 24,
+          "column": 9,
+          "src": "srcs/position.ads.html",
+          "summary": [
+          ],
+          "href": "../docs/position___hall_state_handler___spec.html#L24C9"
+        }
+      ],
+      "label": "Tasks and task types"
+    },
+    {
+      "entities": [
+        {
           "label": "Get_Angle",
           "qualifier": "",
-          "line": 27,
+          "line": 41,
           "column": 13,
           "src": "srcs/position.ads.html",
           "summary": [
@@ -225,7 +244,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 27,
+                  "number": 41,
                   "children": [
                     {
                       "kind": "span",
@@ -246,7 +265,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Get_Angle",
-                      "href": "docs/position___spec.html#L27C13"
+                      "href": "docs/position___spec.html#L41C13"
                     },
                     {
                       "kind": "span",
@@ -267,7 +286,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Erad",
-                      "href": "docs/amc_types___spec.html#L44C12"
+                      "href": "docs/amc_types___spec.html#L46C12"
                     },
                     {
                       "kind": "span",
@@ -303,140 +322,9 @@ GNATdoc.Documentation = {
           }
         },
         {
-          "label": "Set_Angle",
+          "label": "Get_Hall_Sector_Center_Angle",
           "qualifier": "",
-          "line": 31,
-          "column": 14,
-          "src": "srcs/position.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 31,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Set_Angle",
-                      "href": "docs/position___spec.html#L31C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/position___spec.html#L31C25"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle_Erad",
-                      "href": "docs/amc_types___spec.html#L44C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Define the current rotor position as the specified electrical angle.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Angle",
-              "line": 31,
-              "column": 25,
-              "type": {
-                "label": "AMC_Types.Angle_Erad",
-                "docHref": "docs/amc_types___spec.html#L44C12"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Set angle in radians.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "To_Erad",
-          "qualifier": "",
-          "line": 21,
+          "line": 28,
           "column": 13,
           "src": "srcs/position.ads.html",
           "summary": [
@@ -447,7 +335,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 21,
+                  "number": 28,
                   "children": [
                     {
                       "kind": "span",
@@ -467,8 +355,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "To_Erad",
-                      "href": "docs/position___spec.html#L21C13"
+                      "text": "Get_Hall_Sector_Center_Angle",
+                      "href": "docs/position___spec.html#L28C13"
                     },
                     {
                       "kind": "span",
@@ -483,8 +371,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/position___spec.html#L21C22"
+                      "text": "Sector",
+                      "href": "docs/position___spec.html#L28C43"
                     },
                     {
                       "kind": "span",
@@ -514,8 +402,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "text": "Hall_Sector",
+                      "href": "docs/amc_types___spec.html#L81C9"
                     },
                     {
                       "kind": "span",
@@ -526,12 +414,12 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 29,
                   "children": [
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                     "
+                      "text": "                                          "
                     },
                     {
                       "kind": "span",
@@ -547,7 +435,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Erad",
-                      "href": "docs/amc_types___spec.html#L44C12"
+                      "href": "docs/amc_types___spec.html#L46C12"
                     },
                     {
                       "kind": "span",
@@ -563,19 +451,23 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "span",
-                  "text": "Convert a mechanical angle to the corresponding electrical angle.\n"
+                  "text": "Get the angle (referenced to the stator's a-axis) to the center of the\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "specified hall sensor sector.\n"
                 }
               ]
             }
           ],
           "parameters": [
             {
-              "label": "Angle",
-              "line": 21,
-              "column": 22,
+              "label": "Sector",
+              "line": 28,
+              "column": 43,
               "type": {
-                "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "label": "AMC_Types.Hall_Sector",
+                "docHref": "docs/amc_types___spec.html#L81C9"
               },
               "description": [
                 {
@@ -583,7 +475,7 @@ GNATdoc.Documentation = {
                   "children": [
                     {
                       "kind": "span",
-                      "text": "Mechanical angle in radians\n"
+                      "text": "The hall sensor sector.\n"
                     }
                   ]
                 }
@@ -597,7 +489,7 @@ GNATdoc.Documentation = {
                 "children": [
                   {
                     "kind": "span",
-                    "text": "Angle Electrical angle, i.e. corrected for number of motor pole-pairs.\n"
+                    "text": "The angle in electrical radians in [0, 2pi).\n"
                   }
                 ]
               }
@@ -605,7 +497,7 @@ GNATdoc.Documentation = {
           }
         },
         {
-          "label": "Wrap_To_180",
+          "label": "To_Erad",
           "qualifier": "",
           "line": 35,
           "column": 13,
@@ -638,7 +530,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Wrap_To_180",
+                      "text": "To_Erad",
                       "href": "docs/position___spec.html#L35C13"
                     },
                     {
@@ -655,7 +547,178 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/position___spec.html#L35C26"
+                      "href": "docs/position___spec.html#L35C22"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle_Rad",
+                      "href": "docs/amc_types___spec.html#L43C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 36,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                     "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle_Erad",
+                      "href": "docs/amc_types___spec.html#L46C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Convert a mechanical angle to the corresponding electrical angle.\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Angle",
+              "line": 35,
+              "column": 22,
+              "type": {
+                "label": "AMC_Types.Angle_Rad",
+                "docHref": "docs/amc_types___spec.html#L43C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Mechanical angle in radians\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "Angle Electrical angle, i.e. corrected for number of motor pole-pairs.\n"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Wrap_To_180",
+          "qualifier": "",
+          "line": 45,
+          "column": 13,
+          "src": "srcs/position.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 45,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Wrap_To_180",
+                      "href": "docs/position___spec.html#L45C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle",
+                      "href": "docs/position___spec.html#L45C26"
                     },
                     {
                       "kind": "span",
@@ -686,7 +749,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Deg",
-                      "href": "docs/amc_types___spec.html#L38C9"
+                      "href": "docs/amc_types___spec.html#L40C9"
                     },
                     {
                       "kind": "span",
@@ -697,7 +760,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 36,
+                  "number": 46,
                   "children": [
                     {
                       "kind": "span",
@@ -718,7 +781,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Deg",
-                      "href": "docs/amc_types___spec.html#L38C9"
+                      "href": "docs/amc_types___spec.html#L40C9"
                     },
                     {
                       "kind": "span",
@@ -742,11 +805,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Angle",
-              "line": 35,
+              "line": 45,
               "column": 26,
               "type": {
                 "label": "AMC_Types.Angle_Deg",
-                "docHref": "docs/amc_types___spec.html#L38C9"
+                "docHref": "docs/amc_types___spec.html#L40C9"
               },
               "description": [
                 {
@@ -778,7 +841,7 @@ GNATdoc.Documentation = {
         {
           "label": "Wrap_To_2Pi",
           "qualifier": "",
-          "line": 55,
+          "line": 65,
           "column": 13,
           "src": "srcs/position.ads.html",
           "summary": [
@@ -789,7 +852,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 55,
+                  "number": 65,
                   "children": [
                     {
                       "kind": "span",
@@ -810,7 +873,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Wrap_To_2Pi",
-                      "href": "docs/position___spec.html#L55C13"
+                      "href": "docs/position___spec.html#L65C13"
                     },
                     {
                       "kind": "span",
@@ -826,7 +889,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/position___spec.html#L55C26"
+                      "href": "docs/position___spec.html#L65C26"
                     },
                     {
                       "kind": "span",
@@ -857,7 +920,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -868,7 +931,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 56,
+                  "number": 66,
                   "children": [
                     {
                       "kind": "span",
@@ -889,7 +952,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -921,11 +984,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Angle",
-              "line": 55,
+              "line": 65,
               "column": 26,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -957,7 +1020,7 @@ GNATdoc.Documentation = {
         {
           "label": "Wrap_To_360",
           "qualifier": "",
-          "line": 41,
+          "line": 51,
           "column": 13,
           "src": "srcs/position.ads.html",
           "summary": [
@@ -968,7 +1031,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 41,
+                  "number": 51,
                   "children": [
                     {
                       "kind": "span",
@@ -989,7 +1052,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Wrap_To_360",
-                      "href": "docs/position___spec.html#L41C13"
+                      "href": "docs/position___spec.html#L51C13"
                     },
                     {
                       "kind": "span",
@@ -1005,7 +1068,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/position___spec.html#L41C26"
+                      "href": "docs/position___spec.html#L51C26"
                     },
                     {
                       "kind": "span",
@@ -1036,7 +1099,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Deg",
-                      "href": "docs/amc_types___spec.html#L38C9"
+                      "href": "docs/amc_types___spec.html#L40C9"
                     },
                     {
                       "kind": "span",
@@ -1047,7 +1110,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 42,
+                  "number": 52,
                   "children": [
                     {
                       "kind": "span",
@@ -1068,7 +1131,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Deg",
-                      "href": "docs/amc_types___spec.html#L38C9"
+                      "href": "docs/amc_types___spec.html#L40C9"
                     },
                     {
                       "kind": "span",
@@ -1100,11 +1163,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Angle",
-              "line": 41,
+              "line": 51,
               "column": 26,
               "type": {
                 "label": "AMC_Types.Angle_Deg",
-                "docHref": "docs/amc_types___spec.html#L38C9"
+                "docHref": "docs/amc_types___spec.html#L40C9"
               },
               "description": [
                 {
@@ -1136,7 +1199,7 @@ GNATdoc.Documentation = {
         {
           "label": "Wrap_To_Pi",
           "qualifier": "",
-          "line": 49,
+          "line": 59,
           "column": 13,
           "src": "srcs/position.ads.html",
           "summary": [
@@ -1147,7 +1210,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 49,
+                  "number": 59,
                   "children": [
                     {
                       "kind": "span",
@@ -1168,7 +1231,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Wrap_To_Pi",
-                      "href": "docs/position___spec.html#L49C13"
+                      "href": "docs/position___spec.html#L59C13"
                     },
                     {
                       "kind": "span",
@@ -1184,7 +1247,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/position___spec.html#L49C25"
+                      "href": "docs/position___spec.html#L59C25"
                     },
                     {
                       "kind": "span",
@@ -1215,7 +1278,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -1226,7 +1289,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 50,
+                  "number": 60,
                   "children": [
                     {
                       "kind": "span",
@@ -1247,7 +1310,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -1271,11 +1334,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Angle",
-              "line": 49,
+              "line": 59,
               "column": 25,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {

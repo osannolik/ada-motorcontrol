@@ -82,7 +82,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -177,7 +177,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Angle_Deg",
-                      "href": "docs/amc_types___spec.html#L38C9"
+                      "href": "docs/amc_types___spec.html#L40C9"
                     },
                     {
                       "kind": "span",
@@ -272,7 +272,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     },
                     {
                       "kind": "span",
@@ -612,7 +612,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -645,7 +645,7 @@ GNATdoc.Documentation = {
               "column": 25,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {

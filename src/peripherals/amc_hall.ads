@@ -1,5 +1,4 @@
 with Ada.Interrupts.Names;
-with HAL;
 with STM32.Timers;
 with STM32.Device;
 with STM32.GPIO;
@@ -15,29 +14,25 @@ package AMC_Hall is
    --  Interfaces peripherals used for hall sensor handling using common AMC types.
    --
 
-   subtype Hall_Bits is HAL.UInt3;
-
-   subtype Valid_Hall_Bits is Hall_Bits range 1 .. 6;
-
    Nof_Valid_Hall_States : constant Positive := 6;
 
    type Hall_Pattern (As_Pattern : Boolean := True) is
       record
          case As_Pattern is
             when True =>
-               Bits : Hall_Bits;
+               Bits : AMC_Types.Hall_Bits;
             when False =>
-               H1 : Boolean;
-               H2 : Boolean;
-               H3 : Boolean;
+               H1_Pin : Boolean;
+               H2_Pin : Boolean;
+               H3_Pin : Boolean;
          end case;
-      end record with Unchecked_Union, Size => Hall_Bits'Size;
+      end record with Unchecked_Union, Size => AMC_Types.Hall_Bits'Size;
 
    for Hall_Pattern use record
-      Bits    at 0 range 0 .. 2;
-      H1      at 0 range 0 .. 0;
-      H2      at 0 range 1 .. 1;
-      H3      at 0 range 2 .. 2;
+      Bits        at 0 range 0 .. 2;
+      H1_Pin      at 0 range 0 .. 0;
+      H2_Pin      at 0 range 1 .. 1;
+      H3_Pin      at 0 range 2 .. 2;
    end record;
 
    type Hall_State is record
@@ -76,6 +71,7 @@ package AMC_Hall is
 
 
    function Is_Standstill return Boolean;
+   --  @return True if the hall sensor has not changed state for a while.
 
    protected State is
       pragma Interrupt_Priority (Config.Hall_ISR_Prio);
@@ -90,12 +86,20 @@ package AMC_Hall is
       --  If true it means Time_Delta_s has reached its maximal possible value.
 
       function Get return Hall_State;
+      --  @return The current hall state.
 
       procedure Update;
+      --  Reads the hall pins and updates the hall state.
 
       procedure Set_Commutation_Delay_Factor (Factor : in AMC_Types.Percent);
+      --  Set a delay time from the hall state change occurs to the commutation event.
+      --  @param Factor The delay as a factor of the time between the hall state changes.
+      --  E.g. Assume that the time between the hall changes state is 1 ms.
+      --  Setting Factor=50% then means that the commutation event triggers 0.5 ms after the
+      --  hall changes state.
 
       function Overflow return Boolean;
+      --  @return True if the speed timer has overflowed.
 
    private
 
@@ -111,9 +115,9 @@ package AMC_Hall is
       State : Hall_State :=
       --  Holds the state of the hall sensor
          Hall_State'(Current  => Hall_Pattern' (As_Pattern => True,
-                                                Bits => Valid_Hall_Bits'First),
+                                                Bits => AMC_Types.Valid_Hall_Bits'First),
                      Previous => Hall_Pattern' (As_Pattern => True,
-                                                Bits => Valid_Hall_Bits'First));
+                                                Bits => AMC_Types.Valid_Hall_Bits'First));
 
       Delay_Factor : Float range 0.0 .. 1.0 := 0.0;
       --  Time for commutation will be this Factor times the time since last state change
@@ -132,9 +136,9 @@ package AMC_Hall is
       --  Time_Delta_s * Commutation_Delay_Factor,
       --  i.e. if factor is 0.5 then commutation is halfway between two hall state changes
       --  (assuming constant speed).
-      --  @param Current_State The hall state.
 
       procedure Manual_Trigger;
+      --  Manually trigger a commutation event.
 
    private
 

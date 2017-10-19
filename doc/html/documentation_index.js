@@ -20,6 +20,11 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/amc_encoder___spec.html"
   },
   {
+    "label": "AMC_Hall",
+    "qualifier": "",
+    "file": "docs/amc_hall___spec.html"
+  },
+  {
     "label": "AMC_Math",
     "qualifier": "",
     "file": "docs/amc_math___spec.html"
@@ -65,19 +70,14 @@ GNATdoc.DocumentationIndex = [
     "file": "docs/config___spec.html"
   },
   {
-    "label": "Current_Control",
+    "label": "Current_Control.FOC",
     "qualifier": "",
-    "file": "docs/current_control___spec.html"
+    "file": "docs/current_control__foc___spec.html"
   },
   {
     "label": "Error_Handling",
     "qualifier": "",
     "file": "docs/error_handling___spec.html"
-  },
-  {
-    "label": "FOC",
-    "qualifier": "",
-    "file": "docs/foc___spec.html"
   },
   {
     "label": "Generic_PO",
@@ -113,6 +113,11 @@ GNATdoc.DocumentationIndex = [
     "label": "Position",
     "qualifier": "",
     "file": "docs/position___spec.html"
+  },
+  {
+    "label": "Position.Alignment",
+    "qualifier": "",
+    "file": "docs/position__alignment___spec.html"
   },
   {
     "label": "Serial_COBS",

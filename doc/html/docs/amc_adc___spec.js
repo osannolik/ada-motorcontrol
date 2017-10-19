@@ -645,7 +645,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Voltage_V",
-                      "href": "docs/amc_types___spec.html#L28C12"
+                      "href": "docs/amc_types___spec.html#L30C12"
                     },
                     {
                       "kind": "span",
@@ -792,7 +792,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Voltage_V",
-                      "href": "docs/amc_types___spec.html#L28C12"
+                      "href": "docs/amc_types___spec.html#L30C12"
                     },
                     {
                       "kind": "span",

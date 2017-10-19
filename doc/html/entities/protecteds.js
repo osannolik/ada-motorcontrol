@@ -2,6 +2,13 @@ GNATdoc.EntitiesCategory = {
   "label": "Protected Objects & Protected Types",
   "entities": [
     {
+      "label": "Commutation",
+      "docHref": "docs/amc_hall___commutation___spec.html#L130C14",
+      "declared": "AMC_Hall",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L130"
+    },
+    {
       "label": "Handler",
       "docHref": "docs/amc_adc___handler___spec.html#L41C14",
       "declared": "AMC_ADC",
@@ -21,6 +28,13 @@ GNATdoc.EntitiesCategory = {
       "declared": "Generic_PO",
       "declared_qualifier": "",
       "srcHref": "srcs/generic_po.ads.html#L6"
+    },
+    {
+      "label": "State",
+      "docHref": "docs/amc_hall___state___spec.html#L76C14",
+      "declared": "AMC_Hall",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L76"
     }
   ]
 };

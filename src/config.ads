@@ -1,4 +1,4 @@
-with AMC_Types;
+with AMC_Types; use AMC_Types;
 with System;
 with ZSM;
 
@@ -16,10 +16,21 @@ package Config is
 
    PWM_Gate_Deadtime_S : constant AMC_Types.Seconds := 166.0e-9;
 
+   Current_Control_Method : constant AMC_Types.Control_Method := AMC_Types.Field_Oriented;
+
    Modulation_Method : constant ZSM.Modulation_Method := ZSM.Sinusoidal;
 
    Position_Sensor : constant AMC_Types.Position_Sensor := AMC_Types.Hall;
 
+   Position_Sensor_Offset : constant AMC_Types.Angle_Erad := 0.0;
+
+   Hall_Sensor_Pin_Map : constant AMC_Types.Pattern_To_Sector_Map :=
+      (2#001# => H3,
+       2#010# => H1,
+       2#011# => H2,
+       2#100# => H5,
+       2#101# => H4,
+       2#110# => H6);
 
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
 

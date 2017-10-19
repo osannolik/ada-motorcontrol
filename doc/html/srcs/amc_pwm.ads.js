@@ -529,7 +529,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.PWM_Alignment",
-          "href": "docs/amc_types___spec.html#L63C9"
+          "href": "docs/amc_types___spec.html#L94C9"
         },
         {
           "kind": "span",
@@ -695,7 +695,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Phase",
-          "href": "docs/amc_types___spec.html#L60C9"
+          "href": "docs/amc_types___spec.html#L91C9"
         },
         {
           "kind": "span",
@@ -813,7 +813,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Phase",
-          "href": "docs/amc_types___spec.html#L60C9"
+          "href": "docs/amc_types___spec.html#L91C9"
         },
         {
           "kind": "span",
@@ -915,7 +915,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Duty_Cycle",
-          "href": "docs/amc_types___spec.html#L25C12"
+          "href": "docs/amc_types___spec.html#L27C12"
         },
         {
           "kind": "span",
@@ -1012,7 +1012,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Phase",
-          "href": "docs/amc_types___spec.html#L60C9"
+          "href": "docs/amc_types___spec.html#L91C9"
         },
         {
           "kind": "span",
@@ -1055,7 +1055,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Duty_Cycle",
-          "href": "docs/amc_types___spec.html#L25C12"
+          "href": "docs/amc_types___spec.html#L27C12"
         },
         {
           "kind": "span",
@@ -1189,7 +1189,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
         },
         {
           "kind": "span",
@@ -1307,7 +1307,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Duty_Cycle",
-          "href": "docs/amc_types___spec.html#L25C12"
+          "href": "docs/amc_types___spec.html#L27C12"
         },
         {
           "kind": "span",

@@ -71,8 +71,21 @@ package AMC_Types is
        --  Control the motor speed to a specified set-point
       );
 
+   --  Define the different current control methods
+   type Control_Method is (Field_Oriented, Six_Step);
+
    --  Define the type of available sensors
    type Position_Sensor is (None, Hall, Encoder);
+
+   --  Defines a type representing hall sensor sectors
+   type Hall_Sector is (H1, H2, H3, H4, H5, H6);
+
+   --  Bit fields containing the hall sensor pin states
+   subtype Hall_Bits       is HAL.UInt3;
+   subtype Valid_Hall_Bits is Hall_Bits range 1 .. 6;
+
+   --  An array to map valid hall bit fields to the corresponding hall sector
+   type Pattern_To_Sector_Map is array (Valid_Hall_Bits'Range) of Hall_Sector;
 
    --  Defines the phases
    type Phase is (A, B, C);
@@ -350,6 +363,6 @@ package AMC_Types is
                             return Dq;
    --  Transform a space vector to its corresponding rotor fixed representation.
    --  @param X The space vector
-   --  @param Angle Stator-to-rotor angle
+   --  @param Angle_In Stator-to-rotor angle
 
 end AMC_Types;

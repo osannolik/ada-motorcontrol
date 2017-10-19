@@ -13,16 +13,12 @@ package Position is
    --  It provides an interface to the used position sensor. Supported sensors:
    --
    --  - Quadrature encoder
-   --  - Todo: Hall sensor
+   --  - Hall sensor
    --  - Todo: Sensorless, i.e. No sensor at all
    --
 
-   Hall_Sector_Angle : constant Angle_Erad := 2.0 * Angle_Erad (AMC_Math.Pi) / 6.0;
-
-   Hall_Offset : constant Angle_Erad := 0.0;
-
-   type Hall_Sector is (H1, H2, H3, H4, H5, H6);
-
+   --  Defines directions measured by hall sensor.
+   --  Ccw is defined as an increasing angle.
    type Hall_Direction is (Standstill, Cw, Ccw);
 
    task Hall_State_Handler with
@@ -31,10 +27,10 @@ package Position is
 
    function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
                                           return Angle_Erad;
-
-   function Get_Hall_Sector_Angle (Sector    : in Hall_Sector;
-                                   Direction : in Hall_Direction)
-                                   return Angle_Erad;
+   --  Get the angle (referenced to the stator's a-axis) to the center of the
+   --  specified hall sensor sector.
+   --  @param Sector The hall sensor sector.
+   --  @return The angle in electrical radians in [0, 2pi).
 
    function To_Erad (Angle : in Angle_Rad)
                      return Angle_Erad;
@@ -79,13 +75,9 @@ private
    Pi     : constant Angle_Rad := Angle_Rad (AMC_Math.Pi);
    Two_Pi : constant Angle_Rad := Angle_Rad (2.0 * AMC_Math.Pi);
 
-   type Position_Hall_Data is record
-      Hall_State : AMC_Hall.Hall_State;
-      Angle      : Angle_Erad;
-      Speed_Raw  : Speed_Eradps;
-   end record;
+   Hall_Sector_Angle : constant Angle_Erad := Angle_Erad (Two_Pi / 6.0);
 
-   type Pattern_To_Sector_Map is array (AMC_Hall.Valid_Hall_Bits'Range) of Hall_Sector;
+   Hall_Offset : constant Angle_Erad := Config.Position_Sensor_Offset;
 
    Sector_Center_Angle : constant array (Hall_Sector'Range) of Angle_Erad :=
       (0.0,
@@ -95,17 +87,18 @@ private
        4.0 * Pi / 3.0,
        5.0 * Pi / 3.0);
 
-   package Position_Hall_PO_Pack is new Generic_PO (Position_Hall_Data);
+   type Position_Hall_Data is record
+      Hall_State : AMC_Hall.Hall_State;
+      Angle      : Angle_Erad;
+      Speed_Raw  : Speed_Eradps;
+   end record;
 
+   package Position_Hall_PO_Pack is new Generic_PO (Position_Hall_Data);
 
    Hall_Data : Position_Hall_PO_Pack.Shared_Data (Config.Protected_Object_Prio);
 
-   Hall_Sector_Map : Pattern_To_Sector_Map :=
-      (2#001# => H3,
-       2#010# => H1,
-       2#011# => H2,
-       2#100# => H5,
-       2#101# => H4,
-       2#110# => H6);
+   package Hall_Map_PO_Pack is new Generic_PO (Pattern_To_Sector_Map);
+
+   Hall_Sector_Map : Hall_Map_PO_Pack.Shared_Data (Config.Protected_Object_Prio);
 
 end Position;

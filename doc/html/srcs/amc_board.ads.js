@@ -1311,7 +1311,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Temperature_DegC",
-          "href": "docs/amc_types___spec.html#L34C9"
+          "href": "docs/amc_types___spec.html#L36C9"
         },
         {
           "kind": "span",
@@ -1420,7 +1420,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Button_Pin",
+          "text": "Debug_Pin",
           "href": "docs/amc_board___spec.html#L38C12"
         },
         {
@@ -1472,7 +1472,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Mcu_Pin",
+          "text": "Button_Pin",
           "href": "docs/amc_board___spec.html#L39C12"
         },
         {
@@ -1506,11 +1506,63 @@ GNATdoc.SourceFile = {
       "kind": "line",
       "number": 40,
       "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "subtype"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Mcu_Pin",
+          "href": "docs/amc_board___spec.html#L40C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "is"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.GPIO.GPIO_Point"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
       ]
     },
     {
       "kind": "line",
       "number": 41,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 42,
       "children": [
         {
           "kind": "span",
@@ -1521,7 +1573,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Led_Green",
-          "href": "docs/amc_board___spec.html#L41C4"
+          "href": "docs/amc_board___spec.html#L42C4"
         },
         {
           "kind": "span",
@@ -1573,7 +1625,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 42,
+      "number": 43,
       "children": [
         {
           "kind": "span",
@@ -1584,7 +1636,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Led_Red",
-          "href": "docs/amc_board___spec.html#L42C4"
+          "href": "docs/amc_board___spec.html#L43C4"
         },
         {
           "kind": "span",
@@ -1636,13 +1688,271 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 43,
+      "number": 44,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 44,
+      "number": 45,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin_1",
+          "href": "docs/amc_board___spec.html#L45C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin",
+          "href": "docs/amc_board___spec.html#L38C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "renames"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.PB12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 46,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin_2",
+          "href": "docs/amc_board___spec.html#L46C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin",
+          "href": "docs/amc_board___spec.html#L38C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "renames"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.PB13"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 47,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin_3",
+          "href": "docs/amc_board___spec.html#L47C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin",
+          "href": "docs/amc_board___spec.html#L38C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "renames"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.PB14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 48,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin_4",
+          "href": "docs/amc_board___spec.html#L48C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Debug_Pin",
+          "href": "docs/amc_board___spec.html#L38C12"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "renames"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.PB15"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 49,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 50,
       "children": [
         {
           "kind": "span",
@@ -1653,7 +1963,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "User_Button",
-          "href": "docs/amc_board___spec.html#L44C4"
+          "href": "docs/amc_board___spec.html#L50C4"
         },
         {
           "kind": "span",
@@ -1674,7 +1984,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Button_Pin",
-          "href": "docs/amc_board___spec.html#L38C12"
+          "href": "docs/amc_board___spec.html#L39C12"
         },
         {
           "kind": "span",
@@ -1705,13 +2015,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 45,
+      "number": 51,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 46,
+      "number": 52,
       "children": [
         {
           "kind": "span",
@@ -1722,7 +2032,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Gate_Power_Enable",
-          "href": "docs/amc_board___spec.html#L46C4"
+          "href": "docs/amc_board___spec.html#L52C4"
         },
         {
           "kind": "span",
@@ -1773,13 +2083,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 47,
+      "number": 53,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 48,
+      "number": 54,
       "children": [
         {
           "kind": "span",
@@ -1790,7 +2100,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Timer",
-          "href": "docs/amc_board___spec.html#L48C4"
+          "href": "docs/amc_board___spec.html#L54C4"
         },
         {
           "kind": "span",
@@ -1841,7 +2151,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 49,
+      "number": 55,
       "children": [
         {
           "kind": "span",
@@ -1852,7 +2162,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_GPIO_AF",
-          "href": "docs/amc_board___spec.html#L49C4"
+          "href": "docs/amc_board___spec.html#L55C4"
         },
         {
           "kind": "span",
@@ -1903,7 +2213,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 50,
+      "number": 56,
       "children": [
         {
           "kind": "span",
@@ -1914,7 +2224,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_A_Ch",
-          "href": "docs/amc_board___spec.html#L50C4"
+          "href": "docs/amc_board___spec.html#L56C4"
         },
         {
           "kind": "span",
@@ -1965,7 +2275,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 51,
+      "number": 57,
       "children": [
         {
           "kind": "span",
@@ -1976,7 +2286,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_B_Ch",
-          "href": "docs/amc_board___spec.html#L51C4"
+          "href": "docs/amc_board___spec.html#L57C4"
         },
         {
           "kind": "span",
@@ -2027,7 +2337,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 52,
+      "number": 58,
       "children": [
         {
           "kind": "span",
@@ -2038,7 +2348,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_C_Ch",
-          "href": "docs/amc_board___spec.html#L52C4"
+          "href": "docs/amc_board___spec.html#L58C4"
         },
         {
           "kind": "span",
@@ -2089,7 +2399,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 53,
+      "number": 59,
       "children": [
         {
           "kind": "span",
@@ -2100,7 +2410,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Trigger_Ch",
-          "href": "docs/amc_board___spec.html#L53C4"
+          "href": "docs/amc_board___spec.html#L59C4"
         },
         {
           "kind": "span",
@@ -2151,13 +2461,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 54,
+      "number": 60,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 55,
+      "number": 61,
       "children": [
         {
           "kind": "span",
@@ -2168,7 +2478,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_H_A_Pin",
-          "href": "docs/amc_board___spec.html#L55C4"
+          "href": "docs/amc_board___spec.html#L61C4"
         },
         {
           "kind": "span",
@@ -2219,7 +2529,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 56,
+      "number": 62,
       "children": [
         {
           "kind": "span",
@@ -2230,7 +2540,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_L_A_Pin",
-          "href": "docs/amc_board___spec.html#L56C4"
+          "href": "docs/amc_board___spec.html#L62C4"
         },
         {
           "kind": "span",
@@ -2281,7 +2591,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 57,
+      "number": 63,
       "children": [
         {
           "kind": "span",
@@ -2292,7 +2602,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_H_B_Pin",
-          "href": "docs/amc_board___spec.html#L57C4"
+          "href": "docs/amc_board___spec.html#L63C4"
         },
         {
           "kind": "span",
@@ -2343,7 +2653,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 58,
+      "number": 64,
       "children": [
         {
           "kind": "span",
@@ -2354,7 +2664,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_L_B_Pin",
-          "href": "docs/amc_board___spec.html#L58C4"
+          "href": "docs/amc_board___spec.html#L64C4"
         },
         {
           "kind": "span",
@@ -2405,7 +2715,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 59,
+      "number": 65,
       "children": [
         {
           "kind": "span",
@@ -2416,7 +2726,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_H_C_Pin",
-          "href": "docs/amc_board___spec.html#L59C4"
+          "href": "docs/amc_board___spec.html#L65C4"
         },
         {
           "kind": "span",
@@ -2467,7 +2777,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 60,
+      "number": 66,
       "children": [
         {
           "kind": "span",
@@ -2478,7 +2788,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "PWM_Gate_L_C_Pin",
-          "href": "docs/amc_board___spec.html#L60C4"
+          "href": "docs/amc_board___spec.html#L66C4"
         },
         {
           "kind": "span",
@@ -2529,13 +2839,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 61,
+      "number": 67,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 62,
+      "number": 68,
       "children": [
         {
           "kind": "span",
@@ -2546,7 +2856,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_I_A_Pin",
-          "href": "docs/amc_board___spec.html#L62C4"
+          "href": "docs/amc_board___spec.html#L68C4"
         },
         {
           "kind": "span",
@@ -2597,7 +2907,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 63,
+      "number": 69,
       "children": [
         {
           "kind": "span",
@@ -2608,7 +2918,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_I_B_Pin",
-          "href": "docs/amc_board___spec.html#L63C4"
+          "href": "docs/amc_board___spec.html#L69C4"
         },
         {
           "kind": "span",
@@ -2659,7 +2969,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 64,
+      "number": 70,
       "children": [
         {
           "kind": "span",
@@ -2670,7 +2980,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_I_C_Pin",
-          "href": "docs/amc_board___spec.html#L64C4"
+          "href": "docs/amc_board___spec.html#L70C4"
         },
         {
           "kind": "span",
@@ -2721,13 +3031,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 65,
+      "number": 71,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 66,
+      "number": 72,
       "children": [
         {
           "kind": "span",
@@ -2738,7 +3048,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_EMF_A_Pin",
-          "href": "docs/amc_board___spec.html#L66C4"
+          "href": "docs/amc_board___spec.html#L72C4"
         },
         {
           "kind": "span",
@@ -2789,7 +3099,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 67,
+      "number": 73,
       "children": [
         {
           "kind": "span",
@@ -2800,7 +3110,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_EMF_B_Pin",
-          "href": "docs/amc_board___spec.html#L67C4"
+          "href": "docs/amc_board___spec.html#L73C4"
         },
         {
           "kind": "span",
@@ -2851,7 +3161,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 68,
+      "number": 74,
       "children": [
         {
           "kind": "span",
@@ -2862,7 +3172,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_EMF_C_Pin",
-          "href": "docs/amc_board___spec.html#L68C4"
+          "href": "docs/amc_board___spec.html#L74C4"
         },
         {
           "kind": "span",
@@ -2913,13 +3223,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 69,
+      "number": 75,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 70,
+      "number": 76,
       "children": [
         {
           "kind": "span",
@@ -2930,7 +3240,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Bat_Sense_Pin",
-          "href": "docs/amc_board___spec.html#L70C4"
+          "href": "docs/amc_board___spec.html#L76C4"
         },
         {
           "kind": "span",
@@ -2981,7 +3291,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 71,
+      "number": 77,
       "children": [
         {
           "kind": "span",
@@ -2992,7 +3302,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Board_Temp_Pin",
-          "href": "docs/amc_board___spec.html#L71C4"
+          "href": "docs/amc_board___spec.html#L77C4"
         },
         {
           "kind": "span",
@@ -3043,7 +3353,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 72,
+      "number": 78,
       "children": [
         {
           "kind": "span",
@@ -3054,7 +3364,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Ext_V_Pin",
-          "href": "docs/amc_board___spec.html#L72C4"
+          "href": "docs/amc_board___spec.html#L78C4"
         },
         {
           "kind": "span",
@@ -3105,13 +3415,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 73,
+      "number": 79,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 74,
+      "number": 80,
       "children": [
         {
           "kind": "span",
@@ -3122,7 +3432,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_I_A_Point",
-          "href": "docs/amc_board___spec.html#L74C4"
+          "href": "docs/amc_board___spec.html#L80C4"
         },
         {
           "kind": "span",
@@ -3168,7 +3478,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 75,
+      "number": 81,
       "children": [
         {
           "kind": "span",
@@ -3244,13 +3554,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 76,
+      "number": 82,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 77,
+      "number": 83,
       "children": [
         {
           "kind": "span",
@@ -3261,7 +3571,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_I_B_Point",
-          "href": "docs/amc_board___spec.html#L77C4"
+          "href": "docs/amc_board___spec.html#L83C4"
         },
         {
           "kind": "span",
@@ -3307,7 +3617,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 78,
+      "number": 84,
       "children": [
         {
           "kind": "span",
@@ -3383,13 +3693,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 79,
+      "number": 85,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 80,
+      "number": 86,
       "children": [
         {
           "kind": "span",
@@ -3400,7 +3710,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_I_C_Point",
-          "href": "docs/amc_board___spec.html#L80C4"
+          "href": "docs/amc_board___spec.html#L86C4"
         },
         {
           "kind": "span",
@@ -3446,7 +3756,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 81,
+      "number": 87,
       "children": [
         {
           "kind": "span",
@@ -3522,13 +3832,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 82,
+      "number": 88,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 83,
+      "number": 89,
       "children": [
         {
           "kind": "span",
@@ -3539,7 +3849,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_EMF_A_Point",
-          "href": "docs/amc_board___spec.html#L83C4"
+          "href": "docs/amc_board___spec.html#L89C4"
         },
         {
           "kind": "span",
@@ -3585,7 +3895,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 84,
+      "number": 90,
       "children": [
         {
           "kind": "span",
@@ -3661,13 +3971,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 85,
+      "number": 91,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 86,
+      "number": 92,
       "children": [
         {
           "kind": "span",
@@ -3678,7 +3988,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_EMF_B_Point",
-          "href": "docs/amc_board___spec.html#L86C4"
+          "href": "docs/amc_board___spec.html#L92C4"
         },
         {
           "kind": "span",
@@ -3724,7 +4034,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 87,
+      "number": 93,
       "children": [
         {
           "kind": "span",
@@ -3800,13 +4110,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 88,
+      "number": 94,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 89,
+      "number": 95,
       "children": [
         {
           "kind": "span",
@@ -3817,7 +4127,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_EMF_C_Point",
-          "href": "docs/amc_board___spec.html#L89C4"
+          "href": "docs/amc_board___spec.html#L95C4"
         },
         {
           "kind": "span",
@@ -3863,7 +4173,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 90,
+      "number": 96,
       "children": [
         {
           "kind": "span",
@@ -3939,284 +4249,6 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 91,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 92,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "ADC_Bat_Sense_Point",
-          "href": "docs/amc_board___spec.html#L92C4"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "constant"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "STM32.ADC.ADC_Point"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":="
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 93,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "("
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "STM32.Device.ADC_1"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "'"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Access"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ","
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Channel"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "=>"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "number",
-          "text": "10"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ")"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 94,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 95,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "ADC_Board_Temp_Point",
-          "href": "docs/amc_board___spec.html#L95C4"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "constant"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "STM32.ADC.ADC_Point"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":="
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 96,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "("
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "STM32.Device.ADC_1"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "'"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Access"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ","
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Channel"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "=>"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "number",
-          "text": "14"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ")"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
       "number": 97,
       "children": [
       ]
@@ -4233,7 +4265,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "ADC_Ext_V_Point",
+          "text": "ADC_Bat_Sense_Point",
           "href": "docs/amc_board___spec.html#L98C4"
         },
         {
@@ -4340,7 +4372,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "number",
-          "text": "4"
+          "text": "10"
         },
         {
           "kind": "span",
@@ -4372,8 +4404,286 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Encoder_A_Pin",
+          "text": "ADC_Board_Temp_Point",
           "href": "docs/amc_board___spec.html#L101C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "constant"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.ADC.ADC_Point"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":="
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 102,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.ADC_1"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "'"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Access"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ","
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Channel"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "=>"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "number",
+          "text": "14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 103,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 104,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "ADC_Ext_V_Point",
+          "href": "docs/amc_board___spec.html#L104C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "constant"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.ADC.ADC_Point"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":="
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 105,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.ADC_1"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "'"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Access"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ","
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Channel"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "=>"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "number",
+          "text": "4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 106,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 107,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Encoder_A_Pin",
+          "href": "docs/amc_board___spec.html#L107C4"
         },
         {
           "kind": "span",
@@ -4424,7 +4734,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 102,
+      "number": 108,
       "children": [
         {
           "kind": "span",
@@ -4435,7 +4745,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Encoder_B_Pin",
-          "href": "docs/amc_board___spec.html#L102C4"
+          "href": "docs/amc_board___spec.html#L108C4"
         },
         {
           "kind": "span",
@@ -4486,13 +4796,205 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 103,
+      "number": 109,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 104,
+      "number": 110,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Hall_1_Pin",
+          "href": "docs/amc_board___spec.html#L110C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.GPIO.GPIO_Point"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "renames"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.PB6"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 111,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Hall_2_Pin",
+          "href": "docs/amc_board___spec.html#L111C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.GPIO.GPIO_Point"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "renames"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.PB7"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 112,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Hall_3_Pin",
+          "href": "docs/amc_board___spec.html#L112C4"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.GPIO.GPIO_Point"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "renames"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "STM32.Device.PB8"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 113,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 114,
       "children": [
         {
           "kind": "span",
@@ -4503,7 +5005,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Uart_Tx_Pin",
-          "href": "docs/amc_board___spec.html#L104C4"
+          "href": "docs/amc_board___spec.html#L114C4"
         },
         {
           "kind": "span",
@@ -4554,7 +5056,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 105,
+      "number": 115,
       "children": [
         {
           "kind": "span",
@@ -4565,7 +5067,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Uart_Rx_Pin",
-          "href": "docs/amc_board___spec.html#L105C4"
+          "href": "docs/amc_board___spec.html#L115C4"
         },
         {
           "kind": "span",
@@ -4616,7 +5118,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 106,
+      "number": 116,
       "children": [
         {
           "kind": "span",
@@ -4627,7 +5129,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Uart_Peripheral",
-          "href": "docs/amc_board___spec.html#L106C4"
+          "href": "docs/amc_board___spec.html#L116C4"
         },
         {
           "kind": "span",
@@ -4678,7 +5180,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 107,
+      "number": 117,
       "children": [
         {
           "kind": "span",
@@ -4689,7 +5191,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Uart_GPIO_AF",
-          "href": "docs/amc_board___spec.html#L107C4"
+          "href": "docs/amc_board___spec.html#L117C4"
         },
         {
           "kind": "span",
@@ -4740,13 +5242,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 108,
+      "number": 118,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 109,
+      "number": 119,
       "children": [
         {
           "kind": "span",
@@ -4767,7 +5269,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Set_Gate_Driver_Power",
-          "href": "docs/amc_board___spec.html#L109C14"
+          "href": "docs/amc_board___spec.html#L119C14"
         },
         {
           "kind": "span",
@@ -4783,7 +5285,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Enabled",
-          "href": "docs/amc_board___spec.html#L109C37"
+          "href": "docs/amc_board___spec.html#L119C37"
         },
         {
           "kind": "span",
@@ -4824,7 +5326,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 110,
+      "number": 120,
       "children": [
         {
           "kind": "span",
@@ -4840,7 +5342,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 111,
+      "number": 121,
       "children": [
         {
           "kind": "span",
@@ -4856,7 +5358,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 112,
+      "number": 122,
       "children": [
         {
           "kind": "span",
@@ -4872,7 +5374,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 113,
+      "number": 123,
       "children": [
         {
           "kind": "span",
@@ -4888,13 +5390,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 114,
+      "number": 124,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 115,
+      "number": 125,
       "children": [
         {
           "kind": "span",
@@ -4915,7 +5417,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Turn_On",
-          "href": "docs/amc_board___spec.html#L115C14"
+          "href": "docs/amc_board___spec.html#L125C14"
         },
         {
           "kind": "span",
@@ -4931,7 +5433,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Led",
-          "href": "docs/amc_board___spec.html#L115C24"
+          "href": "docs/amc_board___spec.html#L125C24"
         },
         {
           "kind": "span",
@@ -4983,7 +5485,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 116,
+      "number": 126,
       "children": [
         {
           "kind": "span",
@@ -4999,7 +5501,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 117,
+      "number": 127,
       "children": [
         {
           "kind": "span",
@@ -5015,7 +5517,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 118,
+      "number": 128,
       "children": [
         {
           "kind": "span",
@@ -5031,7 +5533,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 119,
+      "number": 129,
       "children": [
         {
           "kind": "span",
@@ -5047,13 +5549,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 120,
+      "number": 130,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 121,
+      "number": 131,
       "children": [
         {
           "kind": "span",
@@ -5074,7 +5576,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Turn_Off",
-          "href": "docs/amc_board___spec.html#L121C14"
+          "href": "docs/amc_board___spec.html#L131C14"
         },
         {
           "kind": "span",
@@ -5090,7 +5592,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Led",
-          "href": "docs/amc_board___spec.html#L121C24"
+          "href": "docs/amc_board___spec.html#L131C24"
         },
         {
           "kind": "span",
@@ -5142,7 +5644,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 122,
+      "number": 132,
       "children": [
         {
           "kind": "span",
@@ -5158,7 +5660,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 123,
+      "number": 133,
       "children": [
         {
           "kind": "span",
@@ -5174,7 +5676,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 124,
+      "number": 134,
       "children": [
         {
           "kind": "span",
@@ -5190,7 +5692,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 125,
+      "number": 135,
       "children": [
         {
           "kind": "span",
@@ -5206,13 +5708,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 126,
+      "number": 136,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 127,
+      "number": 137,
       "children": [
         {
           "kind": "span",
@@ -5233,7 +5735,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Toggle",
-          "href": "docs/amc_board___spec.html#L127C14"
+          "href": "docs/amc_board___spec.html#L137C14"
         },
         {
           "kind": "span",
@@ -5249,7 +5751,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Led",
-          "href": "docs/amc_board___spec.html#L127C24"
+          "href": "docs/amc_board___spec.html#L137C24"
         },
         {
           "kind": "span",
@@ -5301,7 +5803,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 128,
+      "number": 138,
       "children": [
         {
           "kind": "span",
@@ -5317,7 +5819,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 129,
+      "number": 139,
       "children": [
         {
           "kind": "span",
@@ -5333,7 +5835,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 130,
+      "number": 140,
       "children": [
         {
           "kind": "span",
@@ -5349,7 +5851,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 131,
+      "number": 141,
       "children": [
         {
           "kind": "span",
@@ -5365,13 +5867,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 132,
+      "number": 142,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 133,
+      "number": 143,
       "children": [
         {
           "kind": "span",
@@ -5392,7 +5894,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Is_Pressed",
-          "href": "docs/amc_board___spec.html#L133C13"
+          "href": "docs/amc_board___spec.html#L143C13"
         },
         {
           "kind": "span",
@@ -5408,7 +5910,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Button",
-          "href": "docs/amc_board___spec.html#L133C25"
+          "href": "docs/amc_board___spec.html#L143C25"
         },
         {
           "kind": "span",
@@ -5429,7 +5931,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Button_Pin",
-          "href": "docs/amc_board___spec.html#L38C12"
+          "href": "docs/amc_board___spec.html#L39C12"
         },
         {
           "kind": "span",
@@ -5440,193 +5942,17 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 134,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "return"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Boolean"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 135,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "with"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 136,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      Pre => Is_Initialized"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 137,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @param Button Specifies the button."
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 138,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @return True if the button is pressed."
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 139,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 140,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "function"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Is_Initialized",
-          "href": "docs/amc_board___spec.html#L140C13"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 141,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "return"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Boolean"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 142,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "--  @return True if the board specifics are initialized."
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 143,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
       "number": 144,
       "children": [
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "   "
+          "text": "      "
         },
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "procedure"
+          "text": "return"
         },
         {
           "kind": "span",
@@ -5636,8 +5962,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Initialize",
-          "href": "docs/amc_board___spec.html#L144C14"
+          "text": "Boolean"
         }
       ]
     },
@@ -5664,17 +5989,12 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "      Pre  => "
+          "text": "      Pre => Is_Initialized"
         },
         {
           "kind": "span",
-          "cssClass": "keyword",
-          "text": "not"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " Is_Initialized,"
+          "cssClass": "identifier",
+          "text": ";"
         }
       ]
     },
@@ -5685,12 +6005,12 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "      Post => Is_Initialized"
+          "text": "   "
         },
         {
           "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
+          "cssClass": "comment",
+          "text": "--  @param Button Specifies the button."
         }
       ]
     },
@@ -5706,7 +6026,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "--  Initializes the board specifics."
+          "text": "--  @return True if the button is pressed."
         }
       ]
     },
@@ -5738,8 +6058,190 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "To_Phase_Current",
+          "text": "Is_Initialized",
           "href": "docs/amc_board___spec.html#L150C13"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 151,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Boolean"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 152,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "--  @return True if the board specifics are initialized."
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 153,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 154,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "procedure"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Initialize",
+          "href": "docs/amc_board___spec.html#L154C14"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 155,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "with"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 156,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      Pre  => "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "not"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " Is_Initialized,"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 157,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      Post => Is_Initialized"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 158,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "--  Initializes the board specifics."
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 159,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 160,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "function"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "To_Phase_Current",
+          "href": "docs/amc_board___spec.html#L160C13"
         },
         {
           "kind": "span",
@@ -5755,7 +6257,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Voltage",
-          "href": "docs/amc_board___spec.html#L150C31"
+          "href": "docs/amc_board___spec.html#L160C31"
         },
         {
           "kind": "span",
@@ -5776,7 +6278,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
+          "href": "docs/amc_types___spec.html#L30C12"
         },
         {
           "kind": "span",
@@ -5787,7 +6289,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 151,
+      "number": 161,
       "children": [
         {
           "kind": "span",
@@ -5808,13 +6310,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Current_A",
-          "href": "docs/amc_types___spec.html#L31C12"
+          "href": "docs/amc_types___spec.html#L33C12"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 152,
+      "number": 162,
       "children": [
         {
           "kind": "span",
@@ -5830,7 +6332,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 153,
+      "number": 163,
       "children": [
         {
           "kind": "span",
@@ -5846,7 +6348,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 154,
+      "number": 164,
       "children": [
         {
           "kind": "span",
@@ -5862,7 +6364,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 155,
+      "number": 165,
       "children": [
         {
           "kind": "span",
@@ -5878,7 +6380,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 156,
+      "number": 166,
       "children": [
         {
           "kind": "span",
@@ -5894,13 +6396,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 157,
+      "number": 167,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 158,
+      "number": 168,
       "children": [
         {
           "kind": "span",
@@ -5921,7 +6423,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "To_Phase_Currents",
-          "href": "docs/amc_board___spec.html#L158C13"
+          "href": "docs/amc_board___spec.html#L168C13"
         },
         {
           "kind": "span",
@@ -5937,7 +6439,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Voltage",
-          "href": "docs/amc_board___spec.html#L158C32"
+          "href": "docs/amc_board___spec.html#L168C32"
         },
         {
           "kind": "span",
@@ -5958,7 +6460,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
         },
         {
           "kind": "span",
@@ -5969,7 +6471,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 159,
+      "number": 169,
       "children": [
         {
           "kind": "span",
@@ -5990,13 +6492,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 160,
+      "number": 170,
       "children": [
         {
           "kind": "span",
@@ -6012,7 +6514,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 161,
+      "number": 171,
       "children": [
         {
           "kind": "span",
@@ -6028,7 +6530,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 162,
+      "number": 172,
       "children": [
         {
           "kind": "span",
@@ -6044,7 +6546,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 163,
+      "number": 173,
       "children": [
         {
           "kind": "span",
@@ -6060,7 +6562,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 164,
+      "number": 174,
       "children": [
         {
           "kind": "span",
@@ -6076,13 +6578,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 165,
+      "number": 175,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 166,
+      "number": 176,
       "children": [
         {
           "kind": "span",
@@ -6103,7 +6605,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "To_Phase_Voltage",
-          "href": "docs/amc_board___spec.html#L166C13"
+          "href": "docs/amc_board___spec.html#L176C13"
         },
         {
           "kind": "span",
@@ -6119,7 +6621,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Voltage",
-          "href": "docs/amc_board___spec.html#L166C31"
+          "href": "docs/amc_board___spec.html#L176C31"
         },
         {
           "kind": "span",
@@ -6140,7 +6642,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
+          "href": "docs/amc_types___spec.html#L30C12"
         },
         {
           "kind": "span",
@@ -6151,7 +6653,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 167,
+      "number": 177,
       "children": [
         {
           "kind": "span",
@@ -6172,13 +6674,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
+          "href": "docs/amc_types___spec.html#L30C12"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 168,
+      "number": 178,
       "children": [
         {
           "kind": "span",
@@ -6194,7 +6696,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 169,
+      "number": 179,
       "children": [
         {
           "kind": "span",
@@ -6210,7 +6712,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 170,
+      "number": 180,
       "children": [
         {
           "kind": "span",
@@ -6226,7 +6728,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 171,
+      "number": 181,
       "children": [
         {
           "kind": "span",
@@ -6242,7 +6744,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 172,
+      "number": 182,
       "children": [
         {
           "kind": "span",
@@ -6258,13 +6760,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 173,
+      "number": 183,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 174,
+      "number": 184,
       "children": [
         {
           "kind": "span",
@@ -6285,7 +6787,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "To_Phase_Voltages",
-          "href": "docs/amc_board___spec.html#L174C13"
+          "href": "docs/amc_board___spec.html#L184C13"
         },
         {
           "kind": "span",
@@ -6301,7 +6803,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Voltage",
-          "href": "docs/amc_board___spec.html#L174C32"
+          "href": "docs/amc_board___spec.html#L184C32"
         },
         {
           "kind": "span",
@@ -6322,7 +6824,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
         },
         {
           "kind": "span",
@@ -6333,7 +6835,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 175,
+      "number": 185,
       "children": [
         {
           "kind": "span",
@@ -6354,13 +6856,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Abc",
-          "href": "docs/amc_types___spec.html#L91C9"
+          "href": "docs/amc_types___spec.html#L136C9"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 176,
+      "number": 186,
       "children": [
         {
           "kind": "span",
@@ -6376,7 +6878,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 177,
+      "number": 187,
       "children": [
         {
           "kind": "span",
@@ -6392,7 +6894,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 178,
+      "number": 188,
       "children": [
         {
           "kind": "span",
@@ -6408,7 +6910,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 179,
+      "number": 189,
       "children": [
         {
           "kind": "span",
@@ -6424,7 +6926,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 180,
+      "number": 190,
       "children": [
         {
           "kind": "span",
@@ -6440,13 +6942,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 181,
+      "number": 191,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 182,
+      "number": 192,
       "children": [
         {
           "kind": "span",
@@ -6467,7 +6969,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "To_Vbus",
-          "href": "docs/amc_board___spec.html#L182C13"
+          "href": "docs/amc_board___spec.html#L192C13"
         },
         {
           "kind": "span",
@@ -6483,7 +6985,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Voltage",
-          "href": "docs/amc_board___spec.html#L182C22"
+          "href": "docs/amc_board___spec.html#L192C22"
         },
         {
           "kind": "span",
@@ -6504,7 +7006,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
+          "href": "docs/amc_types___spec.html#L30C12"
         },
         {
           "kind": "span",
@@ -6515,7 +7017,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 183,
+      "number": 193,
       "children": [
         {
           "kind": "span",
@@ -6536,13 +7038,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
+          "href": "docs/amc_types___spec.html#L30C12"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 184,
+      "number": 194,
       "children": [
         {
           "kind": "span",
@@ -6558,7 +7060,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 185,
+      "number": 195,
       "children": [
         {
           "kind": "span",
@@ -6574,7 +7076,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 186,
+      "number": 196,
       "children": [
         {
           "kind": "span",
@@ -6590,7 +7092,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 187,
+      "number": 197,
       "children": [
         {
           "kind": "span",
@@ -6606,7 +7108,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 188,
+      "number": 198,
       "children": [
         {
           "kind": "span",
@@ -6622,13 +7124,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 189,
+      "number": 199,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 190,
+      "number": 200,
       "children": [
         {
           "kind": "span",
@@ -6649,7 +7151,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "To_Board_Temp",
-          "href": "docs/amc_board___spec.html#L190C13"
+          "href": "docs/amc_board___spec.html#L200C13"
         },
         {
           "kind": "span",
@@ -6665,7 +7167,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "ADC_Voltage",
-          "href": "docs/amc_board___spec.html#L190C28"
+          "href": "docs/amc_board___spec.html#L200C28"
         },
         {
           "kind": "span",
@@ -6686,7 +7188,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
+          "href": "docs/amc_types___spec.html#L30C12"
         },
         {
           "kind": "span",
@@ -6697,7 +7199,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 191,
+      "number": 201,
       "children": [
         {
           "kind": "span",
@@ -6718,7 +7220,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "AMC_Types.Temperature_DegC",
-          "href": "docs/amc_types___spec.html#L34C9"
+          "href": "docs/amc_types___spec.html#L36C9"
         },
         {
           "kind": "span",
@@ -6729,7 +7231,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 192,
+      "number": 202,
       "children": [
         {
           "kind": "span",
@@ -6745,7 +7247,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 193,
+      "number": 203,
       "children": [
         {
           "kind": "span",
@@ -6761,7 +7263,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 194,
+      "number": 204,
       "children": [
         {
           "kind": "span",
@@ -6777,13 +7279,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 195,
+      "number": 205,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 196,
+      "number": 206,
       "children": [
         {
           "kind": "span",
@@ -6794,7 +7296,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 208,
+      "number": 218,
       "children": [
         {
           "kind": "span",

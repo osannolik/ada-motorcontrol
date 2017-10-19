@@ -12,9 +12,10 @@ package body Position is
    function Get_Hall_Direction (Hall : in AMC_Hall.Hall_State)
                                 return Hall_Direction
    is
-      use type AMC_Hall.Hall_Bits;
-      Current_Sector  : constant Hall_Sector := Hall_Sector_Map (Hall.Current.Bits);
-      Previous_Sector : constant Hall_Sector := Hall_Sector_Map (Hall.Previous.Bits);
+      use type AMC_Types.Hall_Bits;
+      Hall_Map        : constant Pattern_To_Sector_Map := Hall_Sector_Map.Get;
+      Current_Sector  : constant Hall_Sector := Hall_Map (Hall.Current.Bits);
+      Previous_Sector : constant Hall_Sector := Hall_Map (Hall.Previous.Bits);
       Is_Ccw : Boolean;
    begin
       if AMC_Hall.Is_Standstill or else Hall.Current.Bits = Hall.Previous.Bits then
@@ -65,7 +66,7 @@ package body Position is
    is
    begin
       return Get_Hall_Sector_Angle
-         (Sector    => Hall_Sector_Map (Hall.Current.Bits),
+         (Sector    => Hall_Sector_Map.Get (Hall.Current.Bits),
           Direction => Get_Hall_Direction (Hall));
    end Hall_State_To_Angle;
 
@@ -176,6 +177,8 @@ package body Position is
 
    end Wrap_To_Pi;
 begin
+
+   Hall_Sector_Map.Set (Config.Hall_Sensor_Pin_Map);
 
    Calmeas.Add (Symbol      => Direction_Log'Access,
                 Name        => "Direction",

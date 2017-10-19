@@ -769,7 +769,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -801,7 +801,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -829,7 +829,7 @@ GNATdoc.Documentation = {
               "column": 27,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -940,7 +940,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -972,7 +972,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1000,7 +1000,7 @@ GNATdoc.Documentation = {
               "column": 29,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -1111,7 +1111,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1186,7 +1186,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1214,7 +1214,7 @@ GNATdoc.Documentation = {
               "column": 23,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -1511,7 +1511,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1543,7 +1543,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1571,7 +1571,7 @@ GNATdoc.Documentation = {
               "column": 25,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -1682,7 +1682,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1714,7 +1714,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1742,7 +1742,7 @@ GNATdoc.Documentation = {
               "column": 31,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -1853,7 +1853,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1885,7 +1885,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -1913,7 +1913,7 @@ GNATdoc.Documentation = {
               "column": 24,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {

@@ -86,6 +86,7 @@ package body Current_Control.FOC is
       V_Ctrl : Abc;
       Rotor_Angle : Angle;
       Current_Command : Space_Vector;
+      Align_Current : Current_A;
    begin
 
       case System_Outputs.Mode is
@@ -98,7 +99,11 @@ package body Current_Control.FOC is
                (Alignment         => Align_Data,
                 Period            => Nominal_Period,
                 To_Angle          => Rotor_Angle,
-                Current_Set_Point => Current_Command);
+                Current_Set_Point => Align_Current);
+
+            Current_Command :=
+               Space_Vector'(Reference_Frame  => Rotor,
+                             Rotor_Fixed      => (D => Align_Current, Q => 0.0));
 
             Current_Control_Outputs.Set
                ((Alignment_Done => Position.Alignment.Is_Done (Align_Data)));

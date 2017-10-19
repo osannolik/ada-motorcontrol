@@ -1,5 +1,5 @@
 GNATdoc.Documentation = {
-  "label": "AMC_PWM",
+  "label": "AMC_Hall",
   "qualifier": "",
   "summary": [
     {
@@ -7,7 +7,7 @@ GNATdoc.Documentation = {
       "children": [
         {
           "kind": "span",
-          "text": "Pulse Width Modulation\n"
+          "text": "Hall Sensor\n"
         }
       ]
     }
@@ -18,7 +18,7 @@ GNATdoc.Documentation = {
       "children": [
         {
           "kind": "span",
-          "text": "Interfaces the microcontroller's PWM peripheral using common AMC types.\n"
+          "text": "Interfaces peripherals used for hall sensor handling using common AMC types.\n"
         }
       ]
     }
@@ -27,11 +27,11 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Disable",
+          "label": "Nof_Valid_Hall_States",
           "qualifier": "",
-          "line": 35,
-          "column": 14,
-          "src": "srcs/amc_pwm.ads.html",
+          "line": 17,
+          "column": 4,
+          "src": "srcs/amc_hall.ads.html",
           "summary": [
           ],
           "description": [
@@ -40,17 +40,12 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 35,
+                  "number": 17,
                   "children": [
                     {
                       "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
+                      "cssClass": "identifier",
+                      "text": "Nof_Valid_Hall_States"
                     },
                     {
                       "kind": "span",
@@ -60,19 +55,105 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Disable",
-                      "href": "docs/amc_pwm___spec.html#L35C14"
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Positive"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "6"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
                     }
                   ]
-                },
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "Constants and variables"
+    },
+    {
+      "entities": [
+        {
+          "label": "Hall_Pattern",
+          "qualifier": "",
+          "line": 19,
+          "column": 9,
+          "src": "srcs/amc_hall.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
                 {
                   "kind": "line",
-                  "number": 36,
+                  "number": 19,
                   "children": [
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "      "
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Pattern",
+                      "href": "docs/amc_hall___spec.html#L19C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -82,8 +163,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Phase",
-                      "href": "docs/amc_pwm___spec.html#L36C8"
+                      "text": "As_Pattern",
+                      "href": "docs/amc_hall___spec.html#L19C23"
                     },
                     {
                       "kind": "span",
@@ -103,81 +184,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Phase",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Disable PWM generation for the specified phase.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Phase",
-              "line": 36,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Phase",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The specified phase.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Enable",
-          "qualifier": "",
-          "line": 30,
-          "column": 14,
-          "src": "srcs/amc_pwm.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 30,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
+                      "text": "Boolean"
                     },
                     {
                       "kind": "span",
@@ -187,14 +194,38 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Enable",
-                      "href": "docs/amc_pwm___spec.html#L30C14"
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "True"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 31,
+                  "number": 20,
                   "children": [
                     {
                       "kind": "span",
@@ -203,14 +234,97 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
+                      "cssClass": "keyword",
+                      "text": "record"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 21,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Phase",
-                      "href": "docs/amc_pwm___spec.html#L31C8"
+                      "text": "As_Pattern"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 22,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "when"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "True"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 23,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "               "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Bits",
+                      "href": "docs/amc_hall___spec.html#L23C16"
                     },
                     {
                       "kind": "span",
@@ -230,13 +344,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Phase",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
+                      "text": "AMC_Types.Hall_Bits",
+                      "href": "docs/amc_types___spec.html#L84C12"
                     },
                     {
                       "kind": "span",
@@ -244,67 +353,20 @@ GNATdoc.Documentation = {
                       "text": ";"
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Enable PWM generation for the specified phase.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Phase",
-              "line": 31,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Phase",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The specified phase.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Generate_Break_Event",
-          "qualifier": "",
-          "line": 62,
-          "column": 14,
-          "src": "srcs/amc_pwm.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
+                },
                 {
                   "kind": "line",
-                  "number": 62,
+                  "number": 24,
                   "children": [
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "   "
+                      "text": "            "
                     },
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "procedure"
+                      "text": "when"
                     },
                     {
                       "kind": "span",
@@ -314,8 +376,215 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Generate_Break_Event",
-                      "href": "docs/amc_pwm___spec.html#L62C14"
+                      "text": "False"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 25,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "               "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H1_Pin",
+                      "href": "docs/amc_hall___spec.html#L25C16"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 26,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "               "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H2_Pin",
+                      "href": "docs/amc_hall___spec.html#L26C16"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 27,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "               "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H3_Pin",
+                      "href": "docs/amc_hall___spec.html#L27C16"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 28,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "end"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 29,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "end"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "with"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " Unchecked_Union, Size => AMC_Types.Hall_Bits'Size"
                     },
                     {
                       "kind": "span",
@@ -325,30 +594,164 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
+            }
+          ],
+          "fields": [
+            {
+              "label": "As_Pattern",
+              "line": 19,
+              "column": 23,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
+              ]
             },
             {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Sets the pwm outputs to an inactive state, e.g. all low.\n"
-                }
+              "label": "Bits",
+              "line": 23,
+              "column": 16,
+              "type": {
+                "label": "AMC_Types.Hall_Bits",
+                "docHref": "docs/amc_types___spec.html#L84C12"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "H1_Pin",
+              "line": 25,
+              "column": 16,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "H2_Pin",
+              "line": 26,
+              "column": 16,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "H3_Pin",
+              "line": 27,
+              "column": 16,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
               ]
             }
           ]
         },
         {
-          "label": "Get_Duty_Resolution",
+          "label": "Hall_State",
           "qualifier": "",
-          "line": 40,
-          "column": 13,
-          "src": "srcs/amc_pwm.ads.html",
+          "line": 38,
+          "column": 9,
+          "src": "srcs/amc_hall.ads.html",
           "summary": [
           ],
           "description": [
             {
               "kind": "code",
               "children": [
+                {
+                  "kind": "line",
+                  "number": 38,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_State",
+                      "href": "docs/amc_hall___spec.html#L38C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 39,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Current",
+                      "href": "docs/amc_hall___spec.html#L39C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "  "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Pattern",
+                      "href": "docs/amc_hall___spec.html#L19C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
                 {
                   "kind": "line",
                   "number": 40,
@@ -356,12 +759,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "   "
+                      "text": "      "
                     },
                     {
                       "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
+                      "cssClass": "identifier",
+                      "text": "Previous",
+                      "href": "docs/amc_hall___spec.html#L40C7"
                     },
                     {
                       "kind": "span",
@@ -371,8 +775,23 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Get_Duty_Resolution",
-                      "href": "docs/amc_pwm___spec.html#L40C13"
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Pattern",
+                      "href": "docs/amc_hall___spec.html#L19C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
                     }
                   ]
                 },
@@ -383,12 +802,12 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "      "
+                      "text": "   "
                     },
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "return"
+                      "text": "end"
                     },
                     {
                       "kind": "span",
@@ -397,40 +816,81 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Duty_Cycle",
-                      "href": "docs/amc_types___spec.html#L27C12"
+                      "cssClass": "keyword",
+                      "text": "record"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": ";"
+                      "text": ";",
+                      "href": "docs/amc_hall___spec.html#L38C9"
                     }
                   ]
                 }
               ]
             }
           ],
-          "returns": {
-            "description": [
-              {
-                "kind": "paragraph",
-                "children": [
-                  {
-                    "kind": "span",
-                    "text": "The minimum step that the duty can be changed, in percent.\n"
-                  }
-                ]
-              }
-            ]
-          }
+          "fields": [
+            {
+              "label": "Current",
+              "line": 39,
+              "column": 7,
+              "type": {
+                "label": "AMC_Hall.Hall_Pattern",
+                "docHref": "docs/amc_hall___spec.html#L19C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Previous",
+              "line": 40,
+              "column": 7,
+              "type": {
+                "label": "AMC_Hall.Hall_Pattern",
+                "docHref": "docs/amc_hall___spec.html#L19C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "Record types"
+    },
+    {
+      "entities": [
+        {
+          "label": "Commutation",
+          "qualifier": "",
+          "line": 130,
+          "column": 14,
+          "src": "srcs/amc_hall.ads.html",
+          "summary": [
+          ],
+          "href": "../docs/amc_hall___commutation___spec.html#L130C14"
         },
+        {
+          "label": "State",
+          "qualifier": "",
+          "line": 76,
+          "column": 14,
+          "src": "srcs/amc_hall.ads.html",
+          "summary": [
+          ],
+          "href": "../docs/amc_hall___state___spec.html#L76C14"
+        }
+      ],
+      "label": "Protected objects and protected types"
+    },
+    {
+      "entities": [
         {
           "label": "Initialize",
           "qualifier": "",
-          "line": 20,
+          "line": 46,
           "column": 14,
-          "src": "srcs/amc_pwm.ads.html",
+          "src": "srcs/amc_hall.ads.html",
           "summary": [
           ],
           "description": [
@@ -439,7 +899,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 20,
+                  "number": 46,
                   "children": [
                     {
                       "kind": "span",
@@ -460,141 +920,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Initialize",
-                      "href": "docs/amc_pwm___spec.html#L20C14"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 21,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Frequency",
-                      "href": "docs/amc_pwm___spec.html#L21C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Frequency_Hz",
-                      "href": "docs/amc_types___spec.html#L22C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 22,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Deadtime",
-                      "href": "docs/amc_pwm___spec.html#L22C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Seconds",
-                      "href": "docs/amc_types___spec.html#L23C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 23,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Alignment",
-                      "href": "docs/amc_pwm___spec.html#L23C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.PWM_Alignment",
-                      "href": "docs/amc_types___spec.html#L94C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
+                      "href": "docs/amc_hall___spec.html#L46C14"
                     },
                     {
                       "kind": "span",
@@ -610,73 +936,144 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "span",
-                  "text": "Initialize the peripheral.\n"
+                  "text": "Initialize hall, i.e. timer peripheral.\n"
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Initialize TIM4 peripheral as follows:\n"
+                }
+              ]
+            },
+            {
+              "kind": "ul",
+              "children": [
+                {
+                  "kind": "li",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Hall sensor inputs are connected to Ch1, Ch2, and Ch3.\n"
+                    }
+                  ]
+                },
+                {
+                  "kind": "li",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "TI1 is xor of all three channels.\n"
+                    }
+                  ]
+                },
+                {
+                  "kind": "li",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Input capture IC1 is configured to capture at both edges of TI1.\n"
+                    }
+                  ]
+                },
+                {
+                  "kind": "li",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "TI1F_ED = TI1 is set to trigger a reset of the timer.\n"
+                    }
+                  ]
+                },
+                {
+                  "kind": "li",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "OC2 is configured to create a pulse delayed from the TRC = TI1F_ED event.\n"
+                    }
+                  ]
+                },
+                {
+                  "kind": "li",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Interrupt at input capture and delayed pulse event.\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "This way it is possible to measure the time between two consecutive\n"
                 },
                 {
                   "kind": "span",
-                  "text": "Each phase need to be enabled manually after this.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Frequency",
-              "line": 21,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Frequency_Hz",
-                "docHref": "docs/amc_types___spec.html#L22C12"
-              },
-              "description": [
+                  "text": "hall sensor changes and thus to estimate the speed of the motor.\n"
+                },
                 {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Switching frequency.\n"
-                    }
-                  ]
+                  "kind": "span",
+                  "text": "Also, it is possible to trigger the commutation of the BLDC based on\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "the IC (or delayed pulse) interrupt.\n"
                 }
               ]
             },
             {
-              "label": "Deadtime",
-              "line": 22,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Seconds",
-                "docHref": "docs/amc_types___spec.html#L23C12"
-              },
-              "description": [
+              "kind": "paragraph",
+              "children": [
                 {
-                  "kind": "paragraph",
+                  "kind": "span",
+                  "text": "Configuration:\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "APB1 is the clock source = 2*APB1 (2*45 MHz)\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "Using a prescaler of 225 and using all 16 bits yields:\n"
+                },
+                {
+                  "kind": "ul",
                   "children": [
                     {
-                      "kind": "span",
-                      "text": "If complementary switching is used, sets the deadtime.\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Alignment",
-              "line": 23,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.PWM_Alignment",
-                "docHref": "docs/amc_types___spec.html#L94C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
+                      "kind": "li",
+                      "children": [
+                        {
+                          "kind": "span",
+                          "text": "Resolution = 225 / 90 MHz = 2.5 us\n"
+                        }
+                      ]
+                    },
                     {
-                      "kind": "span",
-                      "text": "Aslignment of PWM waveforms.\n"
+                      "kind": "li",
+                      "children": [
+                        {
+                          "kind": "span",
+                          "text": "Time until overflow = 2^16 * 225 / 90 MHz = 0.16384 s\n"
+                        }
+                      ]
                     }
                   ]
+                },
+                {
+                  "kind": "span",
+                  "text": "This allows for a speed down to 61 rpm before an overflow occurs.\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "At 10000 rpm, the resolution will be approx 2.5 us * (10000^2)/10 = 25 rpm\n"
                 }
               ]
             }
@@ -685,9 +1082,9 @@ GNATdoc.Documentation = {
         {
           "label": "Is_Initialized",
           "qualifier": "",
-          "line": 16,
+          "line": 43,
           "column": 13,
-          "src": "srcs/amc_pwm.ads.html",
+          "src": "srcs/amc_hall.ads.html",
           "summary": [
           ],
           "description": [
@@ -696,7 +1093,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 16,
+                  "number": 43,
                   "children": [
                     {
                       "kind": "span",
@@ -717,18 +1114,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Is_Initialized",
-                      "href": "docs/amc_pwm___spec.html#L16C13"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 17,
-                  "children": [
+                      "href": "docs/amc_hall___spec.html#L43C13"
+                    },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "      "
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -762,7 +1153,7 @@ GNATdoc.Documentation = {
                 "children": [
                   {
                     "kind": "span",
-                    "text": "True when initialized.\n"
+                    "text": "True if initialized.\n"
                   }
                 ]
               }
@@ -770,11 +1161,11 @@ GNATdoc.Documentation = {
           }
         },
         {
-          "label": "Set_Duty_Cycle",
+          "label": "Is_Standstill",
           "qualifier": "",
-          "line": 44,
-          "column": 14,
-          "src": "srcs/amc_pwm.ads.html",
+          "line": 73,
+          "column": 13,
+          "src": "srcs/amc_hall.ads.html",
           "summary": [
           ],
           "description": [
@@ -783,7 +1174,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 44,
+                  "number": 73,
                   "children": [
                     {
                       "kind": "span",
@@ -793,7 +1184,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "procedure"
+                      "text": "function"
                     },
                     {
                       "kind": "span",
@@ -803,187 +1194,18 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Set_Duty_Cycle",
-                      "href": "docs/amc_pwm___spec.html#L44C14"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 45,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Phase",
-                      "href": "docs/amc_pwm___spec.html#L45C8"
+                      "text": "Is_Standstill",
+                      "href": "docs/amc_hall___spec.html#L73C13"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
                       "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Phase",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 46,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Value",
-                      "href": "docs/amc_pwm___spec.html#L46C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Duty_Cycle",
-                      "href": "docs/amc_types___spec.html#L27C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Sets the duty cycle for the specified Phase.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Phase",
-              "line": 45,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Phase",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The specified phase.\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Value",
-              "line": 46,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Duty_Cycle",
-                "docHref": "docs/amc_types___spec.html#L27C12"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The duty cycle percentage 0-100.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Set_Duty_Cycle",
-          "qualifier": "",
-          "line": 51,
-          "column": 14,
-          "src": "srcs/amc_pwm.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 51,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
                     },
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "procedure"
+                      "text": "return"
                     },
                     {
                       "kind": "span",
@@ -993,56 +1215,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Set_Duty_Cycle",
-                      "href": "docs/amc_pwm___spec.html#L51C14"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 52,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dabc",
-                      "href": "docs/amc_pwm___spec.html#L52C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L136C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
+                      "text": "Boolean"
                     },
                     {
                       "kind": "span",
@@ -1052,170 +1225,21 @@ GNATdoc.Documentation = {
                   ]
                 }
               ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Sets the duty cycle for all phases.\n"
-                }
-              ]
             }
           ],
-          "parameters": [
-            {
-              "label": "Dabc",
-              "line": 52,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L136C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Duty cycle percentages 0-100.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Set_Trigger_Cycle",
-          "qualifier": "",
-          "line": 56,
-          "column": 14,
-          "src": "srcs/amc_pwm.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 56,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Set_Trigger_Cycle",
-                      "href": "docs/amc_pwm___spec.html#L56C14"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 57,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Value",
-                      "href": "docs/amc_pwm___spec.html#L57C8"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Duty_Cycle",
-                      "href": "docs/amc_types___spec.html#L27C12"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Sets where over the PWM cycle the trigger shall occur. Trigger occurs at\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "the positive edge of the waveform. Setting this to 0 disables the triggering.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Value",
-              "line": 57,
-              "column": 8,
-              "type": {
-                "label": "AMC_Types.Duty_Cycle",
-                "docHref": "docs/amc_types___spec.html#L27C12"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Duty cycle defined the same way as for the phase duty.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "True if the hall sensor has not changed state for a while.\n"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ],
       "label": "Subprograms"

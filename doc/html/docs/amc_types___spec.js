@@ -186,7 +186,7 @@ GNATdoc.Documentation = {
         {
           "label": "Angle_Deg",
           "qualifier": "",
-          "line": 38,
+          "line": 40,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -197,7 +197,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 38,
+                  "number": 40,
                   "children": [
                     {
                       "kind": "span",
@@ -218,7 +218,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Deg",
-                      "href": "docs/amc_types___spec.html#L38C9"
+                      "href": "docs/amc_types___spec.html#L40C9"
                     },
                     {
                       "kind": "span",
@@ -273,7 +273,7 @@ GNATdoc.Documentation = {
         {
           "label": "Angle_Erad",
           "qualifier": "",
-          "line": 44,
+          "line": 46,
           "column": 12,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -284,7 +284,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 44,
+                  "number": 46,
                   "children": [
                     {
                       "kind": "span",
@@ -305,7 +305,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Erad",
-                      "href": "docs/amc_types___spec.html#L44C12"
+                      "href": "docs/amc_types___spec.html#L46C12"
                     },
                     {
                       "kind": "span",
@@ -326,7 +326,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -351,7 +351,7 @@ GNATdoc.Documentation = {
         {
           "label": "Angle_Rad",
           "qualifier": "",
-          "line": 41,
+          "line": 43,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -362,7 +362,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 41,
+                  "number": 43,
                   "children": [
                     {
                       "kind": "span",
@@ -383,7 +383,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -504,9 +504,9 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Ctrl_Mode",
+          "label": "Control_Method",
           "qualifier": "",
-          "line": 48,
+          "line": 75,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -517,7 +517,128 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 48,
+                  "number": 75,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Control_Method",
+                      "href": "docs/amc_types___spec.html#L75C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Field_Oriented",
+                      "href": "docs/amc_types___spec.html#L75C28"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Six_Step",
+                      "href": "docs/amc_types___spec.html#L75C44"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/amc_types___spec.html#L75C9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Define the different current control methods\n"
+                }
+              ]
+            }
+          ],
+          "literals": [
+            {
+              "label": "Field_Oriented",
+              "line": 75,
+              "column": 28,
+              "description": [
+              ]
+            },
+            {
+              "label": "Six_Step",
+              "line": 75,
+              "column": 44,
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Ctrl_Mode",
+          "qualifier": "",
+          "line": 63,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 63,
                   "children": [
                     {
                       "kind": "span",
@@ -538,7 +659,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Ctrl_Mode",
-                      "href": "docs/amc_types___spec.html#L48C9"
+                      "href": "docs/amc_types___spec.html#L63C9"
                     },
                     {
                       "kind": "span",
@@ -554,7 +675,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 49,
+                  "number": 64,
                   "children": [
                     {
                       "kind": "span",
@@ -570,7 +691,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Off",
-                      "href": "docs/amc_types___spec.html#L49C8"
+                      "href": "docs/amc_types___spec.html#L64C8"
                     },
                     {
                       "kind": "span",
@@ -581,7 +702,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 50,
+                  "number": 65,
                   "children": [
                     {
                       "kind": "span",
@@ -597,7 +718,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 51,
+                  "number": 66,
                   "children": [
                     {
                       "kind": "span",
@@ -608,7 +729,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Normal",
-                      "href": "docs/amc_types___spec.html#L51C8"
+                      "href": "docs/amc_types___spec.html#L66C8"
                     },
                     {
                       "kind": "span",
@@ -619,7 +740,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 52,
+                  "number": 67,
                   "children": [
                     {
                       "kind": "span",
@@ -635,7 +756,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 53,
+                  "number": 68,
                   "children": [
                     {
                       "kind": "span",
@@ -646,7 +767,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alignment",
-                      "href": "docs/amc_types___spec.html#L53C8"
+                      "href": "docs/amc_types___spec.html#L68C8"
                     },
                     {
                       "kind": "span",
@@ -657,7 +778,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 54,
+                  "number": 69,
                   "children": [
                     {
                       "kind": "span",
@@ -673,7 +794,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 55,
+                  "number": 70,
                   "children": [
                     {
                       "kind": "span",
@@ -684,13 +805,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Speed",
-                      "href": "docs/amc_types___spec.html#L55C8"
+                      "href": "docs/amc_types___spec.html#L70C8"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 56,
+                  "number": 71,
                   "children": [
                     {
                       "kind": "span",
@@ -706,7 +827,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 57,
+                  "number": 72,
                   "children": [
                     {
                       "kind": "span",
@@ -722,7 +843,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_types___spec.html#L48C9"
+                      "href": "docs/amc_types___spec.html#L63C9"
                     }
                   ]
                 }
@@ -741,7 +862,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "Off",
-              "line": 49,
+              "line": 64,
               "column": 8,
               "description": [
                 {
@@ -757,7 +878,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Normal",
-              "line": 51,
+              "line": 66,
               "column": 8,
               "description": [
                 {
@@ -773,7 +894,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Alignment",
-              "line": 53,
+              "line": 68,
               "column": 8,
               "description": [
                 {
@@ -789,7 +910,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Speed",
-              "line": 55,
+              "line": 70,
               "column": 8,
               "description": [
                 {
@@ -808,7 +929,7 @@ GNATdoc.Documentation = {
         {
           "label": "Current_A",
           "qualifier": "",
-          "line": 31,
+          "line": 33,
           "column": 12,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -819,7 +940,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 31,
+                  "number": 33,
                   "children": [
                     {
                       "kind": "span",
@@ -840,7 +961,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Current_A",
-                      "href": "docs/amc_types___spec.html#L31C12"
+                      "href": "docs/amc_types___spec.html#L33C12"
                     },
                     {
                       "kind": "span",
@@ -885,7 +1006,7 @@ GNATdoc.Documentation = {
         {
           "label": "Duty_Cycle",
           "qualifier": "",
-          "line": 25,
+          "line": 27,
           "column": 12,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -896,7 +1017,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 25,
+                  "number": 27,
                   "children": [
                     {
                       "kind": "span",
@@ -917,7 +1038,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Duty_Cycle",
-                      "href": "docs/amc_types___spec.html#L25C12"
+                      "href": "docs/amc_types___spec.html#L27C12"
                     },
                     {
                       "kind": "span",
@@ -937,47 +1058,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Float"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "range"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "number",
-                      "text": "0.0"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ".."
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "number",
-                      "text": "100.0"
+                      "text": "Percent",
+                      "href": "docs/amc_types___spec.html#L25C12"
                     },
                     {
                       "kind": "span",
@@ -1063,6 +1145,296 @@ GNATdoc.Documentation = {
                     }
                   ]
                 }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Hall_Bits",
+          "qualifier": "",
+          "line": 84,
+          "column": 12,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 84,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "subtype"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Bits",
+                      "href": "docs/amc_types___spec.html#L84C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "HAL.UInt3"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Bit fields containing the hall sensor pin states\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Hall_Sector",
+          "qualifier": "",
+          "line": 81,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 81,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Sector",
+                      "href": "docs/amc_types___spec.html#L81C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H1",
+                      "href": "docs/amc_types___spec.html#L81C25"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H2",
+                      "href": "docs/amc_types___spec.html#L81C29"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H3",
+                      "href": "docs/amc_types___spec.html#L81C33"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H4",
+                      "href": "docs/amc_types___spec.html#L81C37"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H5",
+                      "href": "docs/amc_types___spec.html#L81C41"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H6",
+                      "href": "docs/amc_types___spec.html#L81C45"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/amc_types___spec.html#L81C9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Defines a type representing hall sensor sectors\n"
+                }
+              ]
+            }
+          ],
+          "literals": [
+            {
+              "label": "H1",
+              "line": 81,
+              "column": 25,
+              "description": [
+              ]
+            },
+            {
+              "label": "H2",
+              "line": 81,
+              "column": 29,
+              "description": [
+              ]
+            },
+            {
+              "label": "H3",
+              "line": 81,
+              "column": 33,
+              "description": [
+              ]
+            },
+            {
+              "label": "H4",
+              "line": 81,
+              "column": 37,
+              "description": [
+              ]
+            },
+            {
+              "label": "H5",
+              "line": 81,
+              "column": 41,
+              "description": [
+              ]
+            },
+            {
+              "label": "H6",
+              "line": 81,
+              "column": 45,
+              "description": [
               ]
             }
           ]
@@ -1272,9 +1644,9 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Phase",
+          "label": "Pattern_To_Sector_Map",
           "qualifier": "",
-          "line": 60,
+          "line": 88,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -1285,7 +1657,244 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 60,
+                  "number": 88,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Pattern_To_Sector_Map",
+                      "href": "docs/amc_types___spec.html#L88C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "array"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Valid_Hall_Bits",
+                      "href": "docs/amc_types___spec.html#L85C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Range"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "of"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Sector",
+                      "href": "docs/amc_types___spec.html#L81C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "An array to map valid hall bit fields to the corresponding hall sector\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Percent",
+          "qualifier": "",
+          "line": 25,
+          "column": 12,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 25,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "subtype"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Percent",
+                      "href": "docs/amc_types___spec.html#L25C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "range"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "0.0"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ".."
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "100.0"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Phase",
+          "qualifier": "",
+          "line": 91,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 91,
                   "children": [
                     {
                       "kind": "span",
@@ -1306,7 +1915,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Phase",
-                      "href": "docs/amc_types___spec.html#L60C9"
+                      "href": "docs/amc_types___spec.html#L91C9"
                     },
                     {
                       "kind": "span",
@@ -1332,7 +1941,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "A",
-                      "href": "docs/amc_types___spec.html#L60C19"
+                      "href": "docs/amc_types___spec.html#L91C19"
                     },
                     {
                       "kind": "span",
@@ -1348,7 +1957,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "B",
-                      "href": "docs/amc_types___spec.html#L60C22"
+                      "href": "docs/amc_types___spec.html#L91C22"
                     },
                     {
                       "kind": "span",
@@ -1364,7 +1973,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "C",
-                      "href": "docs/amc_types___spec.html#L60C25"
+                      "href": "docs/amc_types___spec.html#L91C25"
                     },
                     {
                       "kind": "span",
@@ -1375,7 +1984,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_types___spec.html#L60C9"
+                      "href": "docs/amc_types___spec.html#L91C9"
                     }
                   ]
                 }
@@ -1394,21 +2003,21 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "A",
-              "line": 60,
+              "line": 91,
               "column": 19,
               "description": [
               ]
             },
             {
               "label": "B",
-              "line": 60,
+              "line": 91,
               "column": 22,
               "description": [
               ]
             },
             {
               "label": "C",
-              "line": 60,
+              "line": 91,
               "column": 25,
               "description": [
               ]
@@ -1416,9 +2025,9 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "PWM_Alignment",
+          "label": "Position_Sensor",
           "qualifier": "",
-          "line": 63,
+          "line": 78,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -1429,7 +2038,151 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 63,
+                  "number": 78,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Position_Sensor",
+                      "href": "docs/amc_types___spec.html#L78C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "None",
+                      "href": "docs/amc_types___spec.html#L78C29"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall",
+                      "href": "docs/amc_types___spec.html#L78C35"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Encoder",
+                      "href": "docs/amc_types___spec.html#L78C41"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/amc_types___spec.html#L78C9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Define the type of available sensors\n"
+                }
+              ]
+            }
+          ],
+          "literals": [
+            {
+              "label": "None",
+              "line": 78,
+              "column": 29,
+              "description": [
+              ]
+            },
+            {
+              "label": "Hall",
+              "line": 78,
+              "column": 35,
+              "description": [
+              ]
+            },
+            {
+              "label": "Encoder",
+              "line": 78,
+              "column": 41,
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "PWM_Alignment",
+          "qualifier": "",
+          "line": 94,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 94,
                   "children": [
                     {
                       "kind": "span",
@@ -1450,7 +2203,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "PWM_Alignment",
-                      "href": "docs/amc_types___spec.html#L63C9"
+                      "href": "docs/amc_types___spec.html#L94C9"
                     },
                     {
                       "kind": "span",
@@ -1466,7 +2219,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 64,
+                  "number": 95,
                   "children": [
                     {
                       "kind": "span",
@@ -1482,7 +2235,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Edge",
-                      "href": "docs/amc_types___spec.html#L64C8"
+                      "href": "docs/amc_types___spec.html#L95C8"
                     },
                     {
                       "kind": "span",
@@ -1493,7 +2246,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 65,
+                  "number": 96,
                   "children": [
                     {
                       "kind": "span",
@@ -1509,7 +2262,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 66,
+                  "number": 97,
                   "children": [
                     {
                       "kind": "span",
@@ -1520,13 +2273,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Center",
-                      "href": "docs/amc_types___spec.html#L66C8"
+                      "href": "docs/amc_types___spec.html#L97C8"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 67,
+                  "number": 98,
                   "children": [
                     {
                       "kind": "span",
@@ -1542,7 +2295,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 68,
+                  "number": 99,
                   "children": [
                     {
                       "kind": "span",
@@ -1558,7 +2311,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_types___spec.html#L63C9"
+                      "href": "docs/amc_types___spec.html#L94C9"
                     }
                   ]
                 }
@@ -1577,7 +2330,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "Edge",
-              "line": 64,
+              "line": 95,
               "column": 8,
               "description": [
                 {
@@ -1593,7 +2346,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Center",
-              "line": 66,
+              "line": 97,
               "column": 8,
               "description": [
                 {
@@ -1602,6 +2355,254 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "text": "Center of positive part\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Reference_Frame_Type",
+          "qualifier": "",
+          "line": 335,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 335,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Reference_Frame_Type",
+                      "href": "docs/amc_types___spec.html#L335C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 336,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Stator_Abc",
+                      "href": "docs/amc_types___spec.html#L336C8"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 337,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "comment",
+                      "text": "--  Three-dimensional stator value"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 338,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Stator_Ab",
+                      "href": "docs/amc_types___spec.html#L338C8"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 339,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "comment",
+                      "text": "--  Three-dimensional stator value"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 340,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Rotor",
+                      "href": "docs/amc_types___spec.html#L340C8"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 341,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "comment",
+                      "text": "--  Two-dimensional rotor value"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 342,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/amc_types___spec.html#L335C9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Defines the set of reference frames\n"
+                }
+              ]
+            }
+          ],
+          "literals": [
+            {
+              "label": "Stator_Abc",
+              "line": 336,
+              "column": 8,
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Three-dimensional stator value\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Stator_Ab",
+              "line": 338,
+              "column": 8,
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Three-dimensional stator value\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Rotor",
+              "line": 340,
+              "column": 8,
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Two-dimensional rotor value\n"
                     }
                   ]
                 }
@@ -1678,9 +2679,165 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Temperature_DegC",
+          "label": "Speed_Eradps",
           "qualifier": "",
-          "line": 34,
+          "line": 58,
+          "column": 12,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 58,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "subtype"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Speed_Eradps",
+                      "href": "docs/amc_types___spec.html#L58C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Speed_Radps",
+                      "href": "docs/amc_types___spec.html#L55C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Angular velocity of rotor given in electrical angle domain\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Speed_Erpm",
+          "qualifier": "",
+          "line": 52,
+          "column": 12,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 52,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "subtype"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Speed_Erpm",
+                      "href": "docs/amc_types___spec.html#L52C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Speed_Rpm",
+                      "href": "docs/amc_types___spec.html#L49C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Angular velocity of rotor given in electrical angle domain\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Speed_Radps",
+          "qualifier": "",
+          "line": 55,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -1691,7 +2848,181 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 34,
+                  "number": 55,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Speed_Radps",
+                      "href": "docs/amc_types___spec.html#L55C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "new"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Angular velocity of rotor given in mechanical angle domain\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Speed_Rpm",
+          "qualifier": "",
+          "line": 49,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 49,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Speed_Rpm",
+                      "href": "docs/amc_types___spec.html#L49C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "new"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Angular velocity of rotor given in mechanical angle domain\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Temperature_DegC",
+          "qualifier": "",
+          "line": 36,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 36,
                   "children": [
                     {
                       "kind": "span",
@@ -1712,7 +3043,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Temperature_DegC",
-                      "href": "docs/amc_types___spec.html#L34C9"
+                      "href": "docs/amc_types___spec.html#L36C9"
                     },
                     {
                       "kind": "span",
@@ -1758,7 +3089,7 @@ GNATdoc.Documentation = {
         {
           "label": "Temperature_K",
           "qualifier": "",
-          "line": 36,
+          "line": 38,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -1769,7 +3100,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 36,
+                  "number": 38,
                   "children": [
                     {
                       "kind": "span",
@@ -1790,7 +3121,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Temperature_K",
-                      "href": "docs/amc_types___spec.html#L36C9"
+                      "href": "docs/amc_types___spec.html#L38C9"
                     },
                     {
                       "kind": "span",
@@ -2038,9 +3369,9 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Voltage_V",
+          "label": "Valid_Hall_Bits",
           "qualifier": "",
-          "line": 28,
+          "line": 85,
           "column": 12,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -2051,7 +3382,116 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 28,
+                  "number": 85,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "subtype"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Valid_Hall_Bits",
+                      "href": "docs/amc_types___spec.html#L85C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Bits",
+                      "href": "docs/amc_types___spec.html#L84C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "range"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "1"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ".."
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "6"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Voltage_V",
+          "qualifier": "",
+          "line": 30,
+          "column": 12,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 30,
                   "children": [
                     {
                       "kind": "span",
@@ -2072,7 +3512,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Voltage_V",
-                      "href": "docs/amc_types___spec.html#L28C12"
+                      "href": "docs/amc_types___spec.html#L30C12"
                     },
                     {
                       "kind": "span",
@@ -2120,9 +3560,9 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Abc",
+          "label": "Space_Vector",
           "qualifier": "",
-          "line": 91,
+          "line": 346,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -2133,7 +3573,556 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 91,
+                  "number": 346,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Space_Vector",
+                      "href": "docs/amc_types___spec.html#L346C9"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 347,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Reference_Frame",
+                      "href": "docs/amc_types___spec.html#L347C8"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Reference_Frame_Type",
+                      "href": "docs/amc_types___spec.html#L335C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Rotor"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 348,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Reference_Frame"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 349,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "when"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Stator_Abc"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 350,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Stator_Fixed_Abc",
+                      "href": "docs/amc_types___spec.html#L350C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 351,
+                  "children": [
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 352,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "when"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Stator_Ab"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 353,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Stator_Fixed_Ab",
+                      "href": "docs/amc_types___spec.html#L353C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Alfa_Beta",
+                      "href": "docs/amc_types___spec.html#L149C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 354,
+                  "children": [
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 355,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "when"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Rotor"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 356,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Rotor_Fixed",
+                      "href": "docs/amc_types___spec.html#L356C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 357,
+                  "children": [
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 358,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "end"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 359,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "end"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/amc_types___spec.html#L346C9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "A variant type for respresenting a space vector value within a given\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "reference frame.\n"
+                }
+              ]
+            }
+          ],
+          "fields": [
+            {
+              "label": "Reference_Frame",
+              "line": 347,
+              "column": 8,
+              "type": {
+                "label": "AMC_Types.Reference_Frame_Type",
+                "docHref": "docs/amc_types___spec.html#L335C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Stator_Fixed_Abc",
+              "line": 350,
+              "column": 13,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Stator_Fixed_Ab",
+              "line": 353,
+              "column": 13,
+              "type": {
+                "label": "AMC_Types.Alfa_Beta",
+                "docHref": "docs/amc_types___spec.html#L149C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Rotor_Fixed",
+              "line": 356,
+              "column": 13,
+              "type": {
+                "label": "AMC_Types.Dq",
+                "docHref": "docs/amc_types___spec.html#L143C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "Record types"
+    },
+    {
+      "entities": [
+        {
+          "label": "Abc",
+          "qualifier": "",
+          "line": 136,
+          "column": 9,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 136,
                   "children": [
                     {
                       "kind": "span",
@@ -2154,7 +4143,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -2190,7 +4179,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 92,
+                  "number": 137,
                   "children": [
                     {
                       "kind": "span",
@@ -2201,7 +4190,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "A",
-                      "href": "docs/amc_types___spec.html#L92C7"
+                      "href": "docs/amc_types___spec.html#L137C7"
                     },
                     {
                       "kind": "span",
@@ -2232,7 +4221,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 93,
+                  "number": 138,
                   "children": [
                     {
                       "kind": "span",
@@ -2243,7 +4232,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "B",
-                      "href": "docs/amc_types___spec.html#L93C7"
+                      "href": "docs/amc_types___spec.html#L138C7"
                     },
                     {
                       "kind": "span",
@@ -2274,7 +4263,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 94,
+                  "number": 139,
                   "children": [
                     {
                       "kind": "span",
@@ -2285,7 +4274,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "C",
-                      "href": "docs/amc_types___spec.html#L94C7"
+                      "href": "docs/amc_types___spec.html#L139C7"
                     },
                     {
                       "kind": "span",
@@ -2316,7 +4305,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 95,
+                  "number": 140,
                   "children": [
                     {
                       "kind": "span",
@@ -2342,7 +4331,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     }
                   ]
                 }
@@ -2361,7 +4350,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "A",
-              "line": 92,
+              "line": 137,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -2371,7 +4360,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "B",
-              "line": 93,
+              "line": 138,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -2381,7 +4370,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "C",
-              "line": 94,
+              "line": 139,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -2394,7 +4383,7 @@ GNATdoc.Documentation = {
         {
           "label": "Alfa_Beta",
           "qualifier": "",
-          "line": 104,
+          "line": 149,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -2405,7 +4394,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 104,
+                  "number": 149,
                   "children": [
                     {
                       "kind": "span",
@@ -2426,7 +4415,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -2462,7 +4451,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 105,
+                  "number": 150,
                   "children": [
                     {
                       "kind": "span",
@@ -2473,7 +4462,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa",
-                      "href": "docs/amc_types___spec.html#L105C7"
+                      "href": "docs/amc_types___spec.html#L150C7"
                     },
                     {
                       "kind": "span",
@@ -2504,7 +4493,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 106,
+                  "number": 151,
                   "children": [
                     {
                       "kind": "span",
@@ -2515,7 +4504,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Beta",
-                      "href": "docs/amc_types___spec.html#L106C7"
+                      "href": "docs/amc_types___spec.html#L151C7"
                     },
                     {
                       "kind": "span",
@@ -2546,7 +4535,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 107,
+                  "number": 152,
                   "children": [
                     {
                       "kind": "span",
@@ -2572,7 +4561,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     }
                   ]
                 }
@@ -2591,7 +4580,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Alfa",
-              "line": 105,
+              "line": 150,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -2601,7 +4590,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Beta",
-              "line": 106,
+              "line": 151,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -2614,7 +4603,7 @@ GNATdoc.Documentation = {
         {
           "label": "Angle",
           "qualifier": "",
-          "line": 71,
+          "line": 116,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -2625,7 +4614,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 71,
+                  "number": 116,
                   "children": [
                     {
                       "kind": "span",
@@ -2646,7 +4635,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     },
                     {
                       "kind": "span",
@@ -2682,7 +4671,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 72,
+                  "number": 117,
                   "children": [
                     {
                       "kind": "span",
@@ -2693,7 +4682,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L72C7"
+                      "href": "docs/amc_types___spec.html#L117C7"
                     },
                     {
                       "kind": "span",
@@ -2714,7 +4703,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -2725,7 +4714,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 73,
+                  "number": 118,
                   "children": [
                     {
                       "kind": "span",
@@ -2741,7 +4730,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 74,
+                  "number": 119,
                   "children": [
                     {
                       "kind": "span",
@@ -2752,7 +4741,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Sin",
-                      "href": "docs/amc_types___spec.html#L74C7"
+                      "href": "docs/amc_types___spec.html#L119C7"
                     },
                     {
                       "kind": "span",
@@ -2783,7 +4772,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 75,
+                  "number": 120,
                   "children": [
                     {
                       "kind": "span",
@@ -2799,7 +4788,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 76,
+                  "number": 121,
                   "children": [
                     {
                       "kind": "span",
@@ -2810,7 +4799,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cos",
-                      "href": "docs/amc_types___spec.html#L76C7"
+                      "href": "docs/amc_types___spec.html#L121C7"
                     },
                     {
                       "kind": "span",
@@ -2841,7 +4830,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 77,
+                  "number": 122,
                   "children": [
                     {
                       "kind": "span",
@@ -2857,7 +4846,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 78,
+                  "number": 123,
                   "children": [
                     {
                       "kind": "span",
@@ -2883,7 +4872,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     }
                   ]
                 }
@@ -2902,11 +4891,11 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Angle",
-              "line": 72,
+              "line": 117,
               "column": 7,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -2922,7 +4911,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Sin",
-              "line": 74,
+              "line": 119,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -2941,7 +4930,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Cos",
-              "line": 76,
+              "line": 121,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -2963,7 +4952,7 @@ GNATdoc.Documentation = {
         {
           "label": "Dq",
           "qualifier": "",
-          "line": 98,
+          "line": 143,
           "column": 9,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -2974,7 +4963,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 98,
+                  "number": 143,
                   "children": [
                     {
                       "kind": "span",
@@ -2995,7 +4984,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -3031,7 +5020,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 99,
+                  "number": 144,
                   "children": [
                     {
                       "kind": "span",
@@ -3042,7 +5031,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "D",
-                      "href": "docs/amc_types___spec.html#L99C7"
+                      "href": "docs/amc_types___spec.html#L144C7"
                     },
                     {
                       "kind": "span",
@@ -3073,7 +5062,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 100,
+                  "number": 145,
                   "children": [
                     {
                       "kind": "span",
@@ -3084,7 +5073,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Q",
-                      "href": "docs/amc_types___spec.html#L100C7"
+                      "href": "docs/amc_types___spec.html#L145C7"
                     },
                     {
                       "kind": "span",
@@ -3115,7 +5104,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 101,
+                  "number": 146,
                   "children": [
                     {
                       "kind": "span",
@@ -3141,7 +5130,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     }
                   ]
                 }
@@ -3160,7 +5149,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "D",
-              "line": 99,
+              "line": 144,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -3170,7 +5159,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Q",
-              "line": 100,
+              "line": 145,
               "column": 7,
               "type": {
                 "label": "Float"
@@ -3188,7 +5177,7 @@ GNATdoc.Documentation = {
         {
           "label": "Clarke",
           "qualifier": "",
-          "line": 139,
+          "line": 184,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -3199,7 +5188,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 139,
+                  "number": 184,
                   "children": [
                     {
                       "kind": "span",
@@ -3220,7 +5209,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Clarke",
-                      "href": "docs/amc_types___spec.html#L139C13"
+                      "href": "docs/amc_types___spec.html#L184C13"
                     },
                     {
                       "kind": "span",
@@ -3236,7 +5225,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L139C21"
+                      "href": "docs/amc_types___spec.html#L184C21"
                     },
                     {
                       "kind": "span",
@@ -3267,7 +5256,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -3303,7 +5292,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -3351,11 +5340,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 139,
+              "line": 184,
               "column": 21,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -3387,7 +5376,7 @@ GNATdoc.Documentation = {
         {
           "label": "Clarke_Inv",
           "qualifier": "",
-          "line": 196,
+          "line": 249,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -3398,7 +5387,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 196,
+                  "number": 249,
                   "children": [
                     {
                       "kind": "span",
@@ -3419,7 +5408,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Clarke_Inv",
-                      "href": "docs/amc_types___spec.html#L196C13"
+                      "href": "docs/amc_types___spec.html#L249C13"
                     },
                     {
                       "kind": "span",
@@ -3435,7 +5424,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L196C25"
+                      "href": "docs/amc_types___spec.html#L249C25"
                     },
                     {
                       "kind": "span",
@@ -3466,7 +5455,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -3502,7 +5491,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -3550,11 +5539,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 196,
+              "line": 249,
               "column": 25,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
                 {
@@ -3585,560 +5574,6 @@ GNATdoc.Documentation = {
         },
         {
           "label": "Park",
-          "qualifier": "",
-          "line": 202,
-          "column": 13,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 202,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Park",
-                      "href": "docs/amc_types___spec.html#L202C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L202C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "'"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Class"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 203,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L203C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "renames"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "To_Dq"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Transform a two-dimensional stator fixed value to a two-dimensional\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "rotor fixed value, assuming a stator-to-rotor angle Angle.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 202,
-              "column": 19,
-              "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The two-dimensional stator fixed value\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Angle",
-              "line": 203,
-              "column": 19,
-              "type": {
-                "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Stator-to-rotor angle\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "returns": {
-            "description": [
-              {
-                "kind": "paragraph",
-                "children": [
-                  {
-                    "kind": "span",
-                    "text": "The two-dimensional rotor fixed value\n"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "label": "Park",
-          "qualifier": "",
-          "line": 210,
-          "column": 13,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 210,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Park",
-                      "href": "docs/amc_types___spec.html#L210C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L210C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "'"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Class"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 211,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle_In",
-                      "href": "docs/amc_types___spec.html#L211C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "'"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Class"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "renames"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "To_Dq"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Transform a two-dimensional stator fixed value to a two-dimensional\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "rotor fixed value, assuming a stator-to-rotor angle Angle.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 210,
-              "column": 19,
-              "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The two-dimensional stator fixed value\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Angle_In",
-              "line": 211,
-              "column": 19,
-              "type": {
-                "label": "AMC_Types.Angle",
-                "docHref": "docs/amc_types___spec.html#L71C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Stator-to-rotor angle\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "returns": {
-            "description": [
-              {
-                "kind": "paragraph",
-                "children": [
-                  {
-                    "kind": "span",
-                    "text": "The two-dimensional rotor fixed value\n"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "label": "Park_Inv",
           "qualifier": "",
           "line": 255,
           "column": 13,
@@ -4171,7 +5606,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Park_Inv",
+                      "text": "Park",
                       "href": "docs/amc_types___spec.html#L255C13"
                     },
                     {
@@ -4188,7 +5623,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L255C23"
+                      "href": "docs/amc_types___spec.html#L255C19"
                     },
                     {
                       "kind": "span",
@@ -4218,8 +5653,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "text": "Alfa_Beta",
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -4245,13 +5680,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                      "
+                      "text": "                  "
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L256C23"
+                      "href": "docs/amc_types___spec.html#L256C19"
                     },
                     {
                       "kind": "span",
@@ -4282,7 +5717,561 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "renames"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_Dq"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Transform a two-dimensional stator fixed value to a two-dimensional\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "rotor fixed value, assuming a stator-to-rotor angle Angle.\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 255,
+              "column": 19,
+              "type": {
+                "label": "AMC_Types.Alfa_Beta",
+                "docHref": "docs/amc_types___spec.html#L149C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "The two-dimensional stator fixed value\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Angle",
+              "line": 256,
+              "column": 19,
+              "type": {
+                "label": "AMC_Types.Angle_Rad",
+                "docHref": "docs/amc_types___spec.html#L43C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Stator-to-rotor angle\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "The two-dimensional rotor fixed value\n"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Park",
+          "qualifier": "",
+          "line": 263,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 263,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Park",
+                      "href": "docs/amc_types___spec.html#L263C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L263C19"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Alfa_Beta",
+                      "href": "docs/amc_types___spec.html#L149C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 264,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                  "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle_In",
+                      "href": "docs/amc_types___spec.html#L264C19"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle",
+                      "href": "docs/amc_types___spec.html#L116C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "renames"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_Dq"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Transform a two-dimensional stator fixed value to a two-dimensional\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "rotor fixed value, assuming a stator-to-rotor angle Angle.\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 263,
+              "column": 19,
+              "type": {
+                "label": "AMC_Types.Alfa_Beta",
+                "docHref": "docs/amc_types___spec.html#L149C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "The two-dimensional stator fixed value\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Angle_In",
+              "line": 264,
+              "column": 19,
+              "type": {
+                "label": "AMC_Types.Angle",
+                "docHref": "docs/amc_types___spec.html#L116C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Stator-to-rotor angle\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "The two-dimensional rotor fixed value\n"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Park_Inv",
+          "qualifier": "",
+          "line": 308,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 308,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Park_Inv",
+                      "href": "docs/amc_types___spec.html#L308C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L308C23"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 309,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle",
+                      "href": "docs/amc_types___spec.html#L309C23"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle_Rad",
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -4293,7 +6282,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 257,
+                  "number": 310,
                   "children": [
                     {
                       "kind": "span",
@@ -4314,7 +6303,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -4362,11 +6351,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 255,
+              "line": 308,
               "column": 23,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
                 {
@@ -4382,11 +6371,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle",
-              "line": 256,
+              "line": 309,
               "column": 23,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -4418,7 +6407,7 @@ GNATdoc.Documentation = {
         {
           "label": "Park_Inv",
           "qualifier": "",
-          "line": 272,
+          "line": 325,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -4429,7 +6418,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 272,
+                  "number": 325,
                   "children": [
                     {
                       "kind": "span",
@@ -4450,7 +6439,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Park_Inv",
-                      "href": "docs/amc_types___spec.html#L272C13"
+                      "href": "docs/amc_types___spec.html#L325C13"
                     },
                     {
                       "kind": "span",
@@ -4466,7 +6455,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L272C23"
+                      "href": "docs/amc_types___spec.html#L325C23"
                     },
                     {
                       "kind": "span",
@@ -4497,7 +6486,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -4518,7 +6507,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 273,
+                  "number": 326,
                   "children": [
                     {
                       "kind": "span",
@@ -4529,7 +6518,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_In",
-                      "href": "docs/amc_types___spec.html#L273C23"
+                      "href": "docs/amc_types___spec.html#L326C23"
                     },
                     {
                       "kind": "span",
@@ -4560,7 +6549,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     },
                     {
                       "kind": "span",
@@ -4581,7 +6570,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 274,
+                  "number": 327,
                   "children": [
                     {
                       "kind": "span",
@@ -4602,7 +6591,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -4650,11 +6639,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 272,
+              "line": 325,
               "column": 23,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
                 {
@@ -4670,11 +6659,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle_In",
-              "line": 273,
+              "line": 326,
               "column": 23,
               "type": {
                 "label": "AMC_Types.Angle",
-                "docHref": "docs/amc_types___spec.html#L71C9"
+                "docHref": "docs/amc_types___spec.html#L116C9"
               },
               "description": [
                 {
@@ -4702,6 +6691,384 @@ GNATdoc.Documentation = {
               }
             ]
           }
+        },
+        {
+          "label": "To_DegC",
+          "qualifier": "",
+          "line": 108,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 108,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_DegC",
+                      "href": "docs/amc_types___spec.html#L108C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Kelvin",
+                      "href": "docs/amc_types___spec.html#L108C22"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temperature_K",
+                      "href": "docs/amc_types___spec.html#L38C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 109,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                     "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temperature_DegC",
+                      "href": "docs/amc_types___spec.html#L36C9"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 110,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "with"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 111,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      Inline"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "Kelvin",
+              "line": 108,
+              "column": 22,
+              "type": {
+                "label": "AMC_Types.Temperature_K",
+                "docHref": "docs/amc_types___spec.html#L38C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Input value represented in Kelvin\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "Corresponding temperature in degrees celcius\n"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "To_Kelvin",
+          "qualifier": "",
+          "line": 101,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 101,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_Kelvin",
+                      "href": "docs/amc_types___spec.html#L101C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "DegC",
+                      "href": "docs/amc_types___spec.html#L101C24"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temperature_DegC",
+                      "href": "docs/amc_types___spec.html#L36C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 102,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Temperature_K",
+                      "href": "docs/amc_types___spec.html#L38C9"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 103,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "with"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 104,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      Inline"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "DegC",
+              "line": 101,
+              "column": 24,
+              "type": {
+                "label": "AMC_Types.Temperature_DegC",
+                "docHref": "docs/amc_types___spec.html#L36C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Input value represented in degrees celcius\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "Corresponding temperature in Kelvin\n"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ],
       "label": "Subprograms"
@@ -4711,7 +7078,7 @@ GNATdoc.Documentation = {
         {
           "label": "*",
           "qualifier": "",
-          "line": 117,
+          "line": 162,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -4722,7 +7089,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 117,
+                  "number": 162,
                   "children": [
                     {
                       "kind": "span",
@@ -4753,7 +7120,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L117C17"
+                      "href": "docs/amc_types___spec.html#L162C17"
                     },
                     {
                       "kind": "span",
@@ -4784,7 +7151,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -4800,7 +7167,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L117C29"
+                      "href": "docs/amc_types___spec.html#L162C29"
                     },
                     {
                       "kind": "span",
@@ -4856,7 +7223,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -4871,18 +7238,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 117,
+              "line": 162,
               "column": 17,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
               ]
             },
             {
               "label": "c",
-              "line": 117,
+              "line": 162,
               "column": 29,
               "type": {
                 "label": "Float"
@@ -4895,7 +7262,7 @@ GNATdoc.Documentation = {
         {
           "label": "*",
           "qualifier": "",
-          "line": 119,
+          "line": 164,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -4906,7 +7273,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 119,
+                  "number": 164,
                   "children": [
                     {
                       "kind": "span",
@@ -4937,7 +7304,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L119C17"
+                      "href": "docs/amc_types___spec.html#L164C17"
                     },
                     {
                       "kind": "span",
@@ -4983,7 +7350,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L119C31"
+                      "href": "docs/amc_types___spec.html#L164C31"
                     },
                     {
                       "kind": "span",
@@ -5014,7 +7381,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -5040,7 +7407,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -5055,7 +7422,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "c",
-              "line": 119,
+              "line": 164,
               "column": 17,
               "type": {
                 "label": "Float"
@@ -5065,11 +7432,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "X",
-              "line": 119,
+              "line": 164,
               "column": 31,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
               ]
@@ -5079,7 +7446,7 @@ GNATdoc.Documentation = {
         {
           "label": "*",
           "qualifier": "",
-          "line": 158,
+          "line": 211,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -5090,7 +7457,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 158,
+                  "number": 211,
                   "children": [
                     {
                       "kind": "span",
@@ -5121,7 +7488,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L158C17"
+                      "href": "docs/amc_types___spec.html#L211C17"
                     },
                     {
                       "kind": "span",
@@ -5152,7 +7519,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -5168,7 +7535,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L158C35"
+                      "href": "docs/amc_types___spec.html#L211C35"
                     },
                     {
                       "kind": "span",
@@ -5224,7 +7591,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -5239,18 +7606,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 158,
+              "line": 211,
               "column": 17,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
               ]
             },
             {
               "label": "c",
-              "line": 158,
+              "line": 211,
               "column": 35,
               "type": {
                 "label": "Float"
@@ -5263,7 +7630,7 @@ GNATdoc.Documentation = {
         {
           "label": "*",
           "qualifier": "",
-          "line": 160,
+          "line": 213,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -5274,7 +7641,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 160,
+                  "number": 213,
                   "children": [
                     {
                       "kind": "span",
@@ -5305,7 +7672,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L160C17"
+                      "href": "docs/amc_types___spec.html#L213C17"
                     },
                     {
                       "kind": "span",
@@ -5351,7 +7718,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L160C31"
+                      "href": "docs/amc_types___spec.html#L213C31"
                     },
                     {
                       "kind": "span",
@@ -5382,7 +7749,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -5408,7 +7775,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -5423,7 +7790,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "c",
-              "line": 160,
+              "line": 213,
               "column": 17,
               "type": {
                 "label": "Float"
@@ -5433,11 +7800,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "X",
-              "line": 160,
+              "line": 213,
               "column": 31,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
               ]
@@ -5447,7 +7814,7 @@ GNATdoc.Documentation = {
         {
           "label": "*",
           "qualifier": "",
-          "line": 222,
+          "line": 275,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -5458,7 +7825,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 222,
+                  "number": 275,
                   "children": [
                     {
                       "kind": "span",
@@ -5489,7 +7856,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L222C17"
+                      "href": "docs/amc_types___spec.html#L275C17"
                     },
                     {
                       "kind": "span",
@@ -5520,7 +7887,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -5536,7 +7903,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L222C28"
+                      "href": "docs/amc_types___spec.html#L275C28"
                     },
                     {
                       "kind": "span",
@@ -5592,7 +7959,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -5607,18 +7974,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 222,
+              "line": 275,
               "column": 17,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
               ]
             },
             {
               "label": "c",
-              "line": 222,
+              "line": 275,
               "column": 28,
               "type": {
                 "label": "Float"
@@ -5631,7 +7998,7 @@ GNATdoc.Documentation = {
         {
           "label": "*",
           "qualifier": "",
-          "line": 224,
+          "line": 277,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -5642,7 +8009,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 224,
+                  "number": 277,
                   "children": [
                     {
                       "kind": "span",
@@ -5673,7 +8040,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L224C17"
+                      "href": "docs/amc_types___spec.html#L277C17"
                     },
                     {
                       "kind": "span",
@@ -5719,7 +8086,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L224C31"
+                      "href": "docs/amc_types___spec.html#L277C31"
                     },
                     {
                       "kind": "span",
@@ -5750,7 +8117,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -5776,7 +8143,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -5791,7 +8158,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "c",
-              "line": 224,
+              "line": 277,
               "column": 17,
               "type": {
                 "label": "Float"
@@ -5801,534 +8168,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "X",
-              "line": 224,
+              "line": 277,
               "column": 31,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "+",
-          "qualifier": "",
-          "line": 109,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 109,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "\"+\""
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L109C17"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ","
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Y",
-                      "href": "docs/amc_types___spec.html#L109C20"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 109,
-              "column": 17,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Y",
-              "line": 109,
-              "column": 20,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "+",
-          "qualifier": "",
-          "line": 111,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 111,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "\"+\""
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L111C17"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "c",
-                      "href": "docs/amc_types___spec.html#L111C29"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Float"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 111,
-              "column": 17,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "c",
-              "line": 111,
-              "column": 29,
-              "type": {
-                "label": "Float"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "+",
-          "qualifier": "",
-          "line": 113,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 113,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "\"+\""
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "c",
-                      "href": "docs/amc_types___spec.html#L113C17"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Float"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L113C31"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "c",
-              "line": 113,
-              "column": 17,
-              "type": {
-                "label": "Float"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "X",
-              "line": 113,
-              "column": 31,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
               ]
@@ -6426,8 +8270,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -6452,8 +8296,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -6471,8 +8315,8 @@ GNATdoc.Documentation = {
               "line": 154,
               "column": 17,
               "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
               ]
@@ -6482,8 +8326,8 @@ GNATdoc.Documentation = {
               "line": 154,
               "column": 20,
               "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
               ]
@@ -6492,316 +8336,6 @@ GNATdoc.Documentation = {
         },
         {
           "label": "+",
-          "qualifier": "",
-          "line": 218,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 218,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "\"+\""
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L218C17"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ","
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Y",
-                      "href": "docs/amc_types___spec.html#L218C20"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 218,
-              "column": 17,
-              "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Y",
-              "line": 218,
-              "column": 20,
-              "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "-",
-          "qualifier": "",
-          "line": 115,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 115,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "\"-\""
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L115C17"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ","
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Y",
-                      "href": "docs/amc_types___spec.html#L115C20"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 115,
-              "column": 17,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Y",
-              "line": 115,
-              "column": 20,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "-",
           "qualifier": "",
           "line": 156,
           "column": 14,
@@ -6834,7 +8368,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "\"-\""
+                      "text": "\"+\""
                     },
                     {
                       "kind": "span",
@@ -6849,6 +8383,374 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "c",
+                      "href": "docs/amc_types___spec.html#L156C29"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 156,
+              "column": 17,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "c",
+              "line": 156,
+              "column": 29,
+              "type": {
+                "label": "Float"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "+",
+          "qualifier": "",
+          "line": 158,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 158,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "\"+\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "c",
+                      "href": "docs/amc_types___spec.html#L158C17"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L158C31"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "c",
+              "line": 158,
+              "column": 17,
+              "type": {
+                "label": "Float"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "X",
+              "line": 158,
+              "column": 31,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "+",
+          "qualifier": "",
+          "line": 207,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 207,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "\"+\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L207C17"
+                    },
+                    {
+                      "kind": "span",
                       "cssClass": "identifier",
                       "text": ","
                     },
@@ -6861,7 +8763,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Y",
-                      "href": "docs/amc_types___spec.html#L156C20"
+                      "href": "docs/amc_types___spec.html#L207C20"
                     },
                     {
                       "kind": "span",
@@ -6892,7 +8794,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -6918,7 +8820,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -6933,22 +8835,22 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 156,
+              "line": 207,
               "column": 17,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
               ]
             },
             {
               "label": "Y",
-              "line": 156,
+              "line": 207,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
               ]
@@ -6956,9 +8858,9 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "-",
+          "label": "+",
           "qualifier": "",
-          "line": 220,
+          "line": 271,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -6969,7 +8871,162 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 220,
+                  "number": 271,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "\"+\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L271C17"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Y",
+                      "href": "docs/amc_types___spec.html#L271C20"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 271,
+              "column": 17,
+              "type": {
+                "label": "AMC_Types.Dq",
+                "docHref": "docs/amc_types___spec.html#L143C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Y",
+              "line": 271,
+              "column": 20,
+              "type": {
+                "label": "AMC_Types.Dq",
+                "docHref": "docs/amc_types___spec.html#L143C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "-",
+          "qualifier": "",
+          "line": 160,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 160,
                   "children": [
                     {
                       "kind": "span",
@@ -7000,7 +9057,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L220C17"
+                      "href": "docs/amc_types___spec.html#L160C17"
                     },
                     {
                       "kind": "span",
@@ -7016,146 +9073,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Y",
-                      "href": "docs/amc_types___spec.html#L220C20"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 220,
-              "column": 17,
-              "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
-              },
-              "description": [
-              ]
-            },
-            {
-              "label": "Y",
-              "line": 220,
-              "column": 20,
-              "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "/",
-          "qualifier": "",
-          "line": 121,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 121,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "\"/\""
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L121C17"
+                      "href": "docs/amc_types___spec.html#L160C20"
                     },
                     {
                       "kind": "span",
@@ -7186,7 +9104,456 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 160,
+              "column": 17,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Y",
+              "line": 160,
+              "column": 20,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "-",
+          "qualifier": "",
+          "line": 209,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 209,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "\"-\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L209C17"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Y",
+                      "href": "docs/amc_types___spec.html#L209C20"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Alfa_Beta",
+                      "href": "docs/amc_types___spec.html#L149C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Alfa_Beta",
+                      "href": "docs/amc_types___spec.html#L149C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 209,
+              "column": 17,
+              "type": {
+                "label": "AMC_Types.Alfa_Beta",
+                "docHref": "docs/amc_types___spec.html#L149C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Y",
+              "line": 209,
+              "column": 20,
+              "type": {
+                "label": "AMC_Types.Alfa_Beta",
+                "docHref": "docs/amc_types___spec.html#L149C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "-",
+          "qualifier": "",
+          "line": 273,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 273,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "\"-\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L273C17"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Y",
+                      "href": "docs/amc_types___spec.html#L273C20"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 273,
+              "column": 17,
+              "type": {
+                "label": "AMC_Types.Dq",
+                "docHref": "docs/amc_types___spec.html#L143C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Y",
+              "line": 273,
+              "column": 20,
+              "type": {
+                "label": "AMC_Types.Dq",
+                "docHref": "docs/amc_types___spec.html#L143C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "/",
+          "qualifier": "",
+          "line": 166,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 166,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "\"/\""
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L166C17"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -7202,7 +9569,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L121C29"
+                      "href": "docs/amc_types___spec.html#L166C29"
                     },
                     {
                       "kind": "span",
@@ -7258,7 +9625,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -7273,18 +9640,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 121,
+              "line": 166,
               "column": 17,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
               ]
             },
             {
               "label": "c",
-              "line": 121,
+              "line": 166,
               "column": 29,
               "type": {
                 "label": "Float"
@@ -7297,7 +9664,7 @@ GNATdoc.Documentation = {
         {
           "label": "/",
           "qualifier": "",
-          "line": 162,
+          "line": 215,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -7308,7 +9675,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 162,
+                  "number": 215,
                   "children": [
                     {
                       "kind": "span",
@@ -7339,7 +9706,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L162C17"
+                      "href": "docs/amc_types___spec.html#L215C17"
                     },
                     {
                       "kind": "span",
@@ -7370,7 +9737,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -7386,7 +9753,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L162C35"
+                      "href": "docs/amc_types___spec.html#L215C35"
                     },
                     {
                       "kind": "span",
@@ -7442,7 +9809,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -7457,18 +9824,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 162,
+              "line": 215,
               "column": 17,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
               ]
             },
             {
               "label": "c",
-              "line": 162,
+              "line": 215,
               "column": 35,
               "type": {
                 "label": "Float"
@@ -7481,7 +9848,7 @@ GNATdoc.Documentation = {
         {
           "label": "/",
           "qualifier": "",
-          "line": 226,
+          "line": 279,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -7492,7 +9859,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 226,
+                  "number": 279,
                   "children": [
                     {
                       "kind": "span",
@@ -7523,7 +9890,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L226C17"
+                      "href": "docs/amc_types___spec.html#L279C17"
                     },
                     {
                       "kind": "span",
@@ -7554,7 +9921,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -7570,7 +9937,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "c",
-                      "href": "docs/amc_types___spec.html#L226C28"
+                      "href": "docs/amc_types___spec.html#L279C28"
                     },
                     {
                       "kind": "span",
@@ -7626,7 +9993,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -7641,18 +10008,18 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 226,
+              "line": 279,
               "column": 17,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
               ]
             },
             {
               "label": "c",
-              "line": 226,
+              "line": 279,
               "column": 28,
               "type": {
                 "label": "Float"
@@ -7665,7 +10032,7 @@ GNATdoc.Documentation = {
         {
           "label": "Compose",
           "qualifier": "",
-          "line": 85,
+          "line": 130,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -7676,7 +10043,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 85,
+                  "number": 130,
                   "children": [
                     {
                       "kind": "span",
@@ -7697,7 +10064,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Compose",
-                      "href": "docs/amc_types___spec.html#L85C13"
+                      "href": "docs/amc_types___spec.html#L130C13"
                     },
                     {
                       "kind": "span",
@@ -7713,7 +10080,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_In",
-                      "href": "docs/amc_types___spec.html#L85C22"
+                      "href": "docs/amc_types___spec.html#L130C22"
                     },
                     {
                       "kind": "span",
@@ -7744,7 +10111,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -7770,7 +10137,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     },
                     {
                       "kind": "span",
@@ -7794,11 +10161,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Angle_In",
-              "line": 85,
+              "line": 130,
               "column": 22,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -7830,7 +10197,7 @@ GNATdoc.Documentation = {
         {
           "label": "Magnitude",
           "qualifier": "",
-          "line": 123,
+          "line": 168,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -7841,7 +10208,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 123,
+                  "number": 168,
                   "children": [
                     {
                       "kind": "span",
@@ -7862,7 +10229,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Magnitude",
-                      "href": "docs/amc_types___spec.html#L123C13"
+                      "href": "docs/amc_types___spec.html#L168C13"
                     },
                     {
                       "kind": "span",
@@ -7878,7 +10245,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L123C24"
+                      "href": "docs/amc_types___spec.html#L168C24"
                     },
                     {
                       "kind": "span",
@@ -7909,7 +10276,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -7940,7 +10307,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 124,
+                  "number": 169,
                   "children": [
                     {
                       "kind": "span",
@@ -7954,530 +10321,6 @@ GNATdoc.Documentation = {
                     }
                   ]
                 },
-                {
-                  "kind": "line",
-                  "number": 125,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "         Inline"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Calculates the euclidean norm of X\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 123,
-              "column": 24,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Magnitude",
-          "qualifier": "",
-          "line": 164,
-          "column": 13,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 164,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Magnitude",
-                      "href": "docs/amc_types___spec.html#L164C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L164C24"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Float"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 165,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "with"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 166,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "         Inline"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Calculates the euclidean norm of X\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 164,
-              "column": 24,
-              "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Magnitude",
-          "qualifier": "",
-          "line": 228,
-          "column": 13,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 228,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Magnitude",
-                      "href": "docs/amc_types___spec.html#L228C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L228C24"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Float"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 229,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "with"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 230,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "         Inline"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Calculates the euclidean norm of X\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 228,
-              "column": 24,
-              "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Normalize",
-          "qualifier": "",
-          "line": 129,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 129,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "procedure"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Normalize",
-                      "href": "docs/amc_types___spec.html#L129C14"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/amc_types___spec.html#L129C25"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Normalizes the components of X such that the magnitude is 1\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 129,
-              "column": 25,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
-              },
-              "description": [
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Normalize",
-          "qualifier": "",
-          "line": 170,
-          "column": 14,
-          "src": "srcs/amc_types.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
                 {
                   "kind": "line",
                   "number": 170,
@@ -8485,6 +10328,398 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
+                      "text": "         Inline"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Calculates the euclidean norm of X\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 168,
+              "column": 24,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Magnitude",
+          "qualifier": "",
+          "line": 217,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 217,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Magnitude",
+                      "href": "docs/amc_types___spec.html#L217C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L217C24"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Alfa_Beta",
+                      "href": "docs/amc_types___spec.html#L149C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Float"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 218,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "with"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 219,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         Inline"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Calculates the euclidean norm of X\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 217,
+              "column": 24,
+              "type": {
+                "label": "AMC_Types.Alfa_Beta",
+                "docHref": "docs/amc_types___spec.html#L149C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Magnitude",
+          "qualifier": "",
+          "line": 281,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 281,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Magnitude",
+                      "href": "docs/amc_types___spec.html#L281C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L281C24"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Float"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 282,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "with"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 283,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         Inline"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Calculates the euclidean norm of X\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 281,
+              "column": 24,
+              "type": {
+                "label": "AMC_Types.Dq",
+                "docHref": "docs/amc_types___spec.html#L143C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Normalize",
+          "qualifier": "",
+          "line": 174,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 174,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
                       "text": "   "
                     },
                     {
@@ -8501,7 +10736,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Normalize",
-                      "href": "docs/amc_types___spec.html#L170C14"
+                      "href": "docs/amc_types___spec.html#L174C14"
                     },
                     {
                       "kind": "span",
@@ -8517,7 +10752,139 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L170C25"
+                      "href": "docs/amc_types___spec.html#L174C25"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Normalizes the components of X such that the magnitude is 1\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 174,
+              "column": 25,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Normalize",
+          "qualifier": "",
+          "line": 223,
+          "column": 14,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 223,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Normalize",
+                      "href": "docs/amc_types___spec.html#L223C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L223C25"
                     },
                     {
                       "kind": "span",
@@ -8558,7 +10925,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -8587,11 +10954,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 170,
+              "line": 223,
               "column": 25,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
               ]
@@ -8601,7 +10968,7 @@ GNATdoc.Documentation = {
         {
           "label": "Normalize",
           "qualifier": "",
-          "line": 234,
+          "line": 287,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -8612,7 +10979,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 234,
+                  "number": 287,
                   "children": [
                     {
                       "kind": "span",
@@ -8633,7 +11000,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Normalize",
-                      "href": "docs/amc_types___spec.html#L234C14"
+                      "href": "docs/amc_types___spec.html#L287C14"
                     },
                     {
                       "kind": "span",
@@ -8649,7 +11016,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L234C25"
+                      "href": "docs/amc_types___spec.html#L287C25"
                     },
                     {
                       "kind": "span",
@@ -8690,7 +11057,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -8719,11 +11086,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 234,
+              "line": 287,
               "column": 25,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
               ]
@@ -8733,7 +11100,7 @@ GNATdoc.Documentation = {
         {
           "label": "Set",
           "qualifier": "",
-          "line": 80,
+          "line": 125,
           "column": 14,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -8744,7 +11111,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 80,
+                  "number": 125,
                   "children": [
                     {
                       "kind": "span",
@@ -8765,7 +11132,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Set",
-                      "href": "docs/amc_types___spec.html#L80C14"
+                      "href": "docs/amc_types___spec.html#L125C14"
                     },
                     {
                       "kind": "span",
@@ -8781,7 +11148,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L80C19"
+                      "href": "docs/amc_types___spec.html#L125C19"
                     },
                     {
                       "kind": "span",
@@ -8822,7 +11189,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     },
                     {
                       "kind": "span",
@@ -8838,7 +11205,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_In",
-                      "href": "docs/amc_types___spec.html#L80C37"
+                      "href": "docs/amc_types___spec.html#L125C37"
                     },
                     {
                       "kind": "span",
@@ -8869,7 +11236,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -8898,11 +11265,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 80,
+              "line": 125,
               "column": 19,
               "type": {
                 "label": "AMC_Types.Angle",
-                "docHref": "docs/amc_types___spec.html#L71C9"
+                "docHref": "docs/amc_types___spec.html#L116C9"
               },
               "description": [
                 {
@@ -8918,11 +11285,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle_In",
-              "line": 80,
+              "line": 125,
               "column": 37,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -8941,7 +11308,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Abc",
           "qualifier": "",
-          "line": 174,
+          "line": 227,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -8952,7 +11319,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 174,
+                  "number": 227,
                   "children": [
                     {
                       "kind": "span",
@@ -8973,7 +11340,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Abc",
-                      "href": "docs/amc_types___spec.html#L174C13"
+                      "href": "docs/amc_types___spec.html#L227C13"
                     },
                     {
                       "kind": "span",
@@ -8989,7 +11356,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L174C21"
+                      "href": "docs/amc_types___spec.html#L227C21"
                     },
                     {
                       "kind": "span",
@@ -9020,7 +11387,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -9056,7 +11423,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -9084,11 +11451,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 174,
+              "line": 227,
               "column": 21,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
                 {
@@ -9120,7 +11487,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Abc",
           "qualifier": "",
-          "line": 238,
+          "line": 291,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -9131,7 +11498,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 238,
+                  "number": 291,
                   "children": [
                     {
                       "kind": "span",
@@ -9152,7 +11519,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Abc",
-                      "href": "docs/amc_types___spec.html#L238C13"
+                      "href": "docs/amc_types___spec.html#L291C13"
                     },
                     {
                       "kind": "span",
@@ -9168,7 +11535,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L238C21"
+                      "href": "docs/amc_types___spec.html#L291C21"
                     },
                     {
                       "kind": "span",
@@ -9199,7 +11566,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -9220,7 +11587,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 239,
+                  "number": 292,
                   "children": [
                     {
                       "kind": "span",
@@ -9231,7 +11598,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L239C21"
+                      "href": "docs/amc_types___spec.html#L292C21"
                     },
                     {
                       "kind": "span",
@@ -9262,7 +11629,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -9288,7 +11655,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -9316,11 +11683,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 238,
+              "line": 291,
               "column": 21,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
                 {
@@ -9336,11 +11703,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle",
-              "line": 239,
+              "line": 292,
               "column": 21,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -9372,7 +11739,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Alfa_Beta",
           "qualifier": "",
-          "line": 133,
+          "line": 178,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -9383,7 +11750,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 133,
+                  "number": 178,
                   "children": [
                     {
                       "kind": "span",
@@ -9404,7 +11771,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L133C13"
+                      "href": "docs/amc_types___spec.html#L178C13"
                     },
                     {
                       "kind": "span",
@@ -9420,7 +11787,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L133C27"
+                      "href": "docs/amc_types___spec.html#L178C27"
                     },
                     {
                       "kind": "span",
@@ -9451,7 +11818,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -9487,7 +11854,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -9515,11 +11882,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 133,
+              "line": 178,
               "column": 27,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -9551,7 +11918,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Alfa_Beta",
           "qualifier": "",
-          "line": 246,
+          "line": 299,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -9562,7 +11929,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 246,
+                  "number": 299,
                   "children": [
                     {
                       "kind": "span",
@@ -9583,7 +11950,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L246C13"
+                      "href": "docs/amc_types___spec.html#L299C13"
                     },
                     {
                       "kind": "span",
@@ -9599,7 +11966,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L246C27"
+                      "href": "docs/amc_types___spec.html#L299C27"
                     },
                     {
                       "kind": "span",
@@ -9630,7 +11997,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -9651,7 +12018,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 247,
+                  "number": 300,
                   "children": [
                     {
                       "kind": "span",
@@ -9662,7 +12029,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L247C27"
+                      "href": "docs/amc_types___spec.html#L300C27"
                     },
                     {
                       "kind": "span",
@@ -9693,7 +12060,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -9704,7 +12071,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 248,
+                  "number": 301,
                   "children": [
                     {
                       "kind": "span",
@@ -9725,7 +12092,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -9753,11 +12120,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 246,
+              "line": 299,
               "column": 27,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
                 {
@@ -9773,11 +12140,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle",
-              "line": 247,
+              "line": 300,
               "column": 27,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -9809,7 +12176,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Alfa_Beta",
           "qualifier": "",
-          "line": 264,
+          "line": 317,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -9820,7 +12187,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 264,
+                  "number": 317,
                   "children": [
                     {
                       "kind": "span",
@@ -9841,7 +12208,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L264C13"
+                      "href": "docs/amc_types___spec.html#L317C13"
                     },
                     {
                       "kind": "span",
@@ -9857,7 +12224,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L264C27"
+                      "href": "docs/amc_types___spec.html#L317C27"
                     },
                     {
                       "kind": "span",
@@ -9888,7 +12255,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -9909,7 +12276,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 265,
+                  "number": 318,
                   "children": [
                     {
                       "kind": "span",
@@ -9920,7 +12287,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_In",
-                      "href": "docs/amc_types___spec.html#L265C26"
+                      "href": "docs/amc_types___spec.html#L318C26"
                     },
                     {
                       "kind": "span",
@@ -9951,7 +12318,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     },
                     {
                       "kind": "span",
@@ -9987,7 +12354,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -10015,11 +12382,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 264,
+              "line": 317,
               "column": 27,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
                 {
@@ -10035,11 +12402,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle_In",
-              "line": 265,
+              "line": 318,
               "column": 26,
               "type": {
                 "label": "AMC_Types.Angle",
-                "docHref": "docs/amc_types___spec.html#L71C9"
+                "docHref": "docs/amc_types___spec.html#L116C9"
               },
               "description": [
                 {
@@ -10071,7 +12438,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Dq",
           "qualifier": "",
-          "line": 145,
+          "line": 190,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -10082,7 +12449,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 145,
+                  "number": 190,
                   "children": [
                     {
                       "kind": "span",
@@ -10103,7 +12470,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Dq",
-                      "href": "docs/amc_types___spec.html#L145C13"
+                      "href": "docs/amc_types___spec.html#L190C13"
                     },
                     {
                       "kind": "span",
@@ -10119,7 +12486,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L145C20"
+                      "href": "docs/amc_types___spec.html#L190C20"
                     },
                     {
                       "kind": "span",
@@ -10150,7 +12517,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Abc",
-                      "href": "docs/amc_types___spec.html#L91C9"
+                      "href": "docs/amc_types___spec.html#L136C9"
                     },
                     {
                       "kind": "span",
@@ -10171,7 +12538,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 146,
+                  "number": 191,
                   "children": [
                     {
                       "kind": "span",
@@ -10182,7 +12549,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L146C20"
+                      "href": "docs/amc_types___spec.html#L191C20"
                     },
                     {
                       "kind": "span",
@@ -10213,7 +12580,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -10239,7 +12606,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -10267,11 +12634,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 145,
+              "line": 190,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L91C9"
+                "docHref": "docs/amc_types___spec.html#L136C9"
               },
               "description": [
                 {
@@ -10287,11 +12654,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle",
-              "line": 146,
+              "line": 191,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -10323,7 +12690,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Dq",
           "qualifier": "",
-          "line": 180,
+          "line": 198,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -10334,7 +12701,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 180,
+                  "number": 198,
                   "children": [
                     {
                       "kind": "span",
@@ -10355,7 +12722,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Dq",
-                      "href": "docs/amc_types___spec.html#L180C13"
+                      "href": "docs/amc_types___spec.html#L198C13"
                     },
                     {
                       "kind": "span",
@@ -10371,7 +12738,269 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L180C20"
+                      "href": "docs/amc_types___spec.html#L198C20"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Abc",
+                      "href": "docs/amc_types___spec.html#L136C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 199,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle_In",
+                      "href": "docs/amc_types___spec.html#L199C20"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle",
+                      "href": "docs/amc_types___spec.html#L116C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Transform a three-dimensional stator fixed value to a two-dimensional\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "rotor fixed value, assuming a stator-to-rotor angle Angle.\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 198,
+              "column": 20,
+              "type": {
+                "label": "AMC_Types.Abc",
+                "docHref": "docs/amc_types___spec.html#L136C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "The three-dimensional stator fixed value\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Angle_In",
+              "line": 199,
+              "column": 20,
+              "type": {
+                "label": "AMC_Types.Angle",
+                "docHref": "docs/amc_types___spec.html#L116C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Stator-to-rotor angle\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "The two-dimensional rotor fixed value\n"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "To_Dq",
+          "qualifier": "",
+          "line": 233,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 233,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_Dq",
+                      "href": "docs/amc_types___spec.html#L233C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L233C20"
                     },
                     {
                       "kind": "span",
@@ -10402,7 +13031,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -10423,7 +13052,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 181,
+                  "number": 234,
                   "children": [
                     {
                       "kind": "span",
@@ -10434,7 +13063,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L181C20"
+                      "href": "docs/amc_types___spec.html#L234C20"
                     },
                     {
                       "kind": "span",
@@ -10465,7 +13094,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L41C9"
+                      "href": "docs/amc_types___spec.html#L43C9"
                     },
                     {
                       "kind": "span",
@@ -10491,7 +13120,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -10519,11 +13148,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 180,
+              "line": 233,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
                 {
@@ -10539,11 +13168,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle",
-              "line": 181,
+              "line": 234,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L41C9"
+                "docHref": "docs/amc_types___spec.html#L43C9"
               },
               "description": [
                 {
@@ -10575,7 +13204,7 @@ GNATdoc.Documentation = {
         {
           "label": "To_Dq",
           "qualifier": "",
-          "line": 188,
+          "line": 241,
           "column": 13,
           "src": "srcs/amc_types.ads.html",
           "summary": [
@@ -10586,7 +13215,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 188,
+                  "number": 241,
                   "children": [
                     {
                       "kind": "span",
@@ -10607,7 +13236,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "To_Dq",
-                      "href": "docs/amc_types___spec.html#L188C13"
+                      "href": "docs/amc_types___spec.html#L241C13"
                     },
                     {
                       "kind": "span",
@@ -10623,7 +13252,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "X",
-                      "href": "docs/amc_types___spec.html#L188C20"
+                      "href": "docs/amc_types___spec.html#L241C20"
                     },
                     {
                       "kind": "span",
@@ -10654,7 +13283,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L104C9"
+                      "href": "docs/amc_types___spec.html#L149C9"
                     },
                     {
                       "kind": "span",
@@ -10675,7 +13304,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 189,
+                  "number": 242,
                   "children": [
                     {
                       "kind": "span",
@@ -10686,7 +13315,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle_In",
-                      "href": "docs/amc_types___spec.html#L189C20"
+                      "href": "docs/amc_types___spec.html#L242C20"
                     },
                     {
                       "kind": "span",
@@ -10717,7 +13346,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Angle",
-                      "href": "docs/amc_types___spec.html#L71C9"
+                      "href": "docs/amc_types___spec.html#L116C9"
                     },
                     {
                       "kind": "span",
@@ -10753,7 +13382,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -10781,11 +13410,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "X",
-              "line": 188,
+              "line": 241,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L104C9"
+                "docHref": "docs/amc_types___spec.html#L149C9"
               },
               "description": [
                 {
@@ -10801,11 +13430,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Angle_In",
-              "line": 189,
+              "line": 242,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Angle",
-                "docHref": "docs/amc_types___spec.html#L71C9"
+                "docHref": "docs/amc_types___spec.html#L116C9"
               },
               "description": [
                 {
@@ -10833,6 +13462,247 @@ GNATdoc.Documentation = {
               }
             ]
           }
+        },
+        {
+          "label": "To_Rotor_Fixed",
+          "qualifier": "",
+          "line": 361,
+          "column": 13,
+          "src": "srcs/amc_types.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 361,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_Rotor_Fixed",
+                      "href": "docs/amc_types___spec.html#L361C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "X",
+                      "href": "docs/amc_types___spec.html#L361C29"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "        "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Space_Vector",
+                      "href": "docs/amc_types___spec.html#L346C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 362,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle_In",
+                      "href": "docs/amc_types___spec.html#L362C29"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle",
+                      "href": "docs/amc_types___spec.html#L116C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Class"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 363,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Dq",
+                      "href": "docs/amc_types___spec.html#L143C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Transform a space vector to its corresponding rotor fixed representation.\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "X",
+              "line": 361,
+              "column": 29,
+              "type": {
+                "label": "AMC_Types.Space_Vector",
+                "docHref": "docs/amc_types___spec.html#L346C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "The space vector\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Angle_In",
+              "line": 362,
+              "column": 29,
+              "type": {
+                "label": "AMC_Types.Angle",
+                "docHref": "docs/amc_types___spec.html#L116C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Stator-to-rotor angle\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "label": "Dispatching subprograms"

@@ -1,5 +1,5 @@
 GNATdoc.Documentation = {
-  "label": "Current_Control.Current_Control",
+  "label": "Position.Hall_State_Handler",
   "qualifier": "",
   "summary": [
   ],

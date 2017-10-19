@@ -300,7 +300,7 @@ GNATdoc.Documentation = {
         {
           "label": "Timer",
           "qualifier": "",
-          "line": 109,
+          "line": 95,
           "column": 9,
           "src": "srcs/amc_utils.ads.html",
           "summary": [
@@ -311,7 +311,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 109,
+                  "number": 95,
                   "children": [
                     {
                       "kind": "span",
@@ -332,7 +332,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timer",
-                      "href": "docs/amc_utils___spec.html#L109C9"
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     },
                     {
                       "kind": "span",
@@ -378,7 +378,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 110,
+                  "number": 96,
                   "children": [
                     {
                       "kind": "span",
@@ -389,7 +389,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Time",
-                      "href": "docs/amc_utils___spec.html#L110C7"
+                      "href": "docs/amc_utils___spec.html#L96C7"
                     },
                     {
                       "kind": "span",
@@ -441,7 +441,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 111,
+                  "number": 97,
                   "children": [
                     {
                       "kind": "span",
@@ -452,7 +452,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timeout",
-                      "href": "docs/amc_utils___spec.html#L111C7"
+                      "href": "docs/amc_utils___spec.html#L97C7"
                     },
                     {
                       "kind": "span",
@@ -504,7 +504,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 112,
+                  "number": 98,
                   "children": [
                     {
                       "kind": "span",
@@ -530,7 +530,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/amc_utils___spec.html#L109C9"
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     }
                   ]
                 }
@@ -549,7 +549,7 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Time",
-              "line": 110,
+              "line": 96,
               "column": 7,
               "type": {
                 "label": "AMC_Types.Seconds",
@@ -560,7 +560,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Timeout",
-              "line": 111,
+              "line": 97,
               "column": 7,
               "type": {
                 "label": "AMC_Types.Seconds",
@@ -1773,7 +1773,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Dq",
-                      "href": "docs/amc_types___spec.html#L98C9"
+                      "href": "docs/amc_types___spec.html#L143C9"
                     },
                     {
                       "kind": "span",
@@ -1910,7 +1910,7 @@ GNATdoc.Documentation = {
               "column": 24,
               "type": {
                 "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L98C9"
+                "docHref": "docs/amc_types___spec.html#L143C9"
               },
               "description": [
                 {
@@ -2461,384 +2461,6 @@ GNATdoc.Documentation = {
           }
         },
         {
-          "label": "To_DegC",
-          "qualifier": "",
-          "line": 101,
-          "column": 13,
-          "src": "srcs/amc_utils.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 101,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "To_DegC",
-                      "href": "docs/amc_utils___spec.html#L101C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Kelvin",
-                      "href": "docs/amc_utils___spec.html#L101C22"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Temperature_K",
-                      "href": "docs/amc_types___spec.html#L36C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 102,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                     "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Temperature_DegC",
-                      "href": "docs/amc_types___spec.html#L34C9"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 103,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "with"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 104,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      Inline"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "Kelvin",
-              "line": 101,
-              "column": 22,
-              "type": {
-                "label": "AMC_Types.Temperature_K",
-                "docHref": "docs/amc_types___spec.html#L36C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Input value represented in Kelvin\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "returns": {
-            "description": [
-              {
-                "kind": "paragraph",
-                "children": [
-                  {
-                    "kind": "span",
-                    "text": "Corresponding temperature in degrees celcius\n"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "label": "To_Kelvin",
-          "qualifier": "",
-          "line": 94,
-          "column": 13,
-          "src": "srcs/amc_utils.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 94,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "To_Kelvin",
-                      "href": "docs/amc_utils___spec.html#L94C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "DegC",
-                      "href": "docs/amc_utils___spec.html#L94C24"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Temperature_DegC",
-                      "href": "docs/amc_types___spec.html#L34C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 95,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Temperature_K",
-                      "href": "docs/amc_types___spec.html#L36C9"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 96,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "with"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 97,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      Inline"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "DegC",
-              "line": 94,
-              "column": 24,
-              "type": {
-                "label": "AMC_Types.Temperature_DegC",
-                "docHref": "docs/amc_types___spec.html#L34C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Input value represented in degrees celcius\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "returns": {
-            "description": [
-              {
-                "kind": "paragraph",
-                "children": [
-                  {
-                    "kind": "span",
-                    "text": "Corresponding temperature in Kelvin\n"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
           "label": "Wrap_To",
           "qualifier": "",
           "line": 50,
@@ -3120,7 +2742,7 @@ GNATdoc.Documentation = {
         {
           "label": "Create",
           "qualifier": "",
-          "line": 114,
+          "line": 100,
           "column": 13,
           "src": "srcs/amc_utils.ads.html",
           "summary": [
@@ -3131,7 +2753,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 114,
+                  "number": 100,
                   "children": [
                     {
                       "kind": "span",
@@ -3152,7 +2774,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Create",
-                      "href": "docs/amc_utils___spec.html#L114C13"
+                      "href": "docs/amc_utils___spec.html#L100C13"
                     },
                     {
                       "kind": "span",
@@ -3168,7 +2790,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timeout",
-                      "href": "docs/amc_utils___spec.html#L114C21"
+                      "href": "docs/amc_utils___spec.html#L100C21"
                     },
                     {
                       "kind": "span",
@@ -3225,7 +2847,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timer",
-                      "href": "docs/amc_utils___spec.html#L109C9"
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     },
                     {
                       "kind": "span",
@@ -3249,7 +2871,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Timeout",
-              "line": 114,
+              "line": 100,
               "column": 21,
               "type": {
                 "label": "AMC_Types.Seconds",
@@ -3285,7 +2907,7 @@ GNATdoc.Documentation = {
         {
           "label": "Is_Done",
           "qualifier": "",
-          "line": 136,
+          "line": 128,
           "column": 13,
           "src": "srcs/amc_utils.ads.html",
           "summary": [
@@ -3296,7 +2918,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 136,
+                  "number": 128,
                   "children": [
                     {
                       "kind": "span",
@@ -3317,7 +2939,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Is_Done",
-                      "href": "docs/amc_utils___spec.html#L136C13"
+                      "href": "docs/amc_utils___spec.html#L128C13"
                     },
                     {
                       "kind": "span",
@@ -3333,7 +2955,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/amc_utils___spec.html#L136C22"
+                      "href": "docs/amc_utils___spec.html#L128C22"
                     },
                     {
                       "kind": "span",
@@ -3374,7 +2996,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timer",
-                      "href": "docs/amc_utils___spec.html#L109C9"
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     },
                     {
                       "kind": "span",
@@ -3423,11 +3045,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 136,
+              "line": 128,
               "column": 22,
               "type": {
                 "label": "AMC_Utils.Timer",
-                "docHref": "docs/amc_utils___spec.html#L109C9"
+                "docHref": "docs/amc_utils___spec.html#L95C9"
               },
               "description": [
                 {
@@ -3459,7 +3081,7 @@ GNATdoc.Documentation = {
         {
           "label": "Reset",
           "qualifier": "",
-          "line": 119,
+          "line": 105,
           "column": 14,
           "src": "srcs/amc_utils.ads.html",
           "summary": [
@@ -3470,7 +3092,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 119,
+                  "number": 105,
                   "children": [
                     {
                       "kind": "span",
@@ -3491,7 +3113,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Reset",
-                      "href": "docs/amc_utils___spec.html#L119C14"
+                      "href": "docs/amc_utils___spec.html#L105C14"
                     },
                     {
                       "kind": "span",
@@ -3507,7 +3129,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/amc_utils___spec.html#L119C21"
+                      "href": "docs/amc_utils___spec.html#L105C21"
                     },
                     {
                       "kind": "span",
@@ -3548,7 +3170,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timer",
-                      "href": "docs/amc_utils___spec.html#L109C9"
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     },
                     {
                       "kind": "span",
@@ -3577,11 +3199,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 119,
+              "line": 105,
               "column": 21,
               "type": {
                 "label": "AMC_Utils.Timer",
-                "docHref": "docs/amc_utils___spec.html#L109C9"
+                "docHref": "docs/amc_utils___spec.html#L95C9"
               },
               "description": [
                 {
@@ -3598,9 +3220,223 @@ GNATdoc.Documentation = {
           ]
         },
         {
+          "label": "Reset",
+          "qualifier": "",
+          "line": 109,
+          "column": 14,
+          "src": "srcs/amc_utils.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 109,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Reset",
+                      "href": "docs/amc_utils___spec.html#L109C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "T",
+                      "href": "docs/amc_utils___spec.html#L109C21"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Timer",
+                      "href": "docs/amc_utils___spec.html#L95C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 110,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                    "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Timeout",
+                      "href": "docs/amc_utils___spec.html#L110C21"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Seconds",
+                      "href": "docs/amc_types___spec.html#L23C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Resets a timer object to the provided timout value.\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "T",
+              "line": 109,
+              "column": 21,
+              "type": {
+                "label": "AMC_Utils.Timer",
+                "docHref": "docs/amc_utils___spec.html#L95C9"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "A timer object\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Timeout",
+              "line": 110,
+              "column": 21,
+              "type": {
+                "label": "AMC_Types.Seconds",
+                "docHref": "docs/amc_types___spec.html#L23C12"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Time until next timeout in seconds\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
           "label": "Tick",
           "qualifier": "",
-          "line": 123,
+          "line": 115,
           "column": 13,
           "src": "srcs/amc_utils.ads.html",
           "summary": [
@@ -3611,7 +3447,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 123,
+                  "number": 115,
                   "children": [
                     {
                       "kind": "span",
@@ -3632,7 +3468,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Tick",
-                      "href": "docs/amc_utils___spec.html#L123C13"
+                      "href": "docs/amc_utils___spec.html#L115C13"
                     },
                     {
                       "kind": "span",
@@ -3648,7 +3484,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/amc_utils___spec.html#L123C19"
+                      "href": "docs/amc_utils___spec.html#L115C19"
                     },
                     {
                       "kind": "span",
@@ -3689,7 +3525,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timer",
-                      "href": "docs/amc_utils___spec.html#L109C9"
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     },
                     {
                       "kind": "span",
@@ -3700,7 +3536,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 124,
+                  "number": 116,
                   "children": [
                     {
                       "kind": "span",
@@ -3711,7 +3547,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Time_Step",
-                      "href": "docs/amc_utils___spec.html#L124C19"
+                      "href": "docs/amc_utils___spec.html#L116C19"
                     },
                     {
                       "kind": "span",
@@ -3791,11 +3627,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 123,
+              "line": 115,
               "column": 19,
               "type": {
                 "label": "AMC_Utils.Timer",
-                "docHref": "docs/amc_utils___spec.html#L109C9"
+                "docHref": "docs/amc_utils___spec.html#L95C9"
               },
               "description": [
                 {
@@ -3811,7 +3647,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Time_Step",
-              "line": 124,
+              "line": 116,
               "column": 19,
               "type": {
                 "label": "AMC_Types.Seconds",
@@ -3847,7 +3683,7 @@ GNATdoc.Documentation = {
         {
           "label": "Tick",
           "qualifier": "",
-          "line": 130,
+          "line": 122,
           "column": 14,
           "src": "srcs/amc_utils.ads.html",
           "summary": [
@@ -3858,7 +3694,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 130,
+                  "number": 122,
                   "children": [
                     {
                       "kind": "span",
@@ -3879,7 +3715,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Tick",
-                      "href": "docs/amc_utils___spec.html#L130C14"
+                      "href": "docs/amc_utils___spec.html#L122C14"
                     },
                     {
                       "kind": "span",
@@ -3895,7 +3731,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "T",
-                      "href": "docs/amc_utils___spec.html#L130C20"
+                      "href": "docs/amc_utils___spec.html#L122C20"
                     },
                     {
                       "kind": "span",
@@ -3936,7 +3772,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Timer",
-                      "href": "docs/amc_utils___spec.html#L109C9"
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     },
                     {
                       "kind": "span",
@@ -3947,7 +3783,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 131,
+                  "number": 123,
                   "children": [
                     {
                       "kind": "span",
@@ -3958,7 +3794,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Time_Step",
-                      "href": "docs/amc_utils___spec.html#L131C20"
+                      "href": "docs/amc_utils___spec.html#L123C20"
                     },
                     {
                       "kind": "span",
@@ -4018,11 +3854,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "T",
-              "line": 130,
+              "line": 122,
               "column": 20,
               "type": {
                 "label": "AMC_Utils.Timer",
-                "docHref": "docs/amc_utils___spec.html#L109C9"
+                "docHref": "docs/amc_utils___spec.html#L95C9"
               },
               "description": [
                 {
@@ -4038,7 +3874,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Time_Step",
-              "line": 131,
+              "line": 123,
               "column": 20,
               "type": {
                 "label": "AMC_Types.Seconds",

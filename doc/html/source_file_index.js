@@ -16,6 +16,10 @@ GNATdoc.SourceFileIndex = [
     "srcHref": "srcs/amc_encoder.ads.html"
   },
   {
+    "label": "amc_hall.ads",
+    "srcHref": "srcs/amc_hall.ads.html"
+  },
+  {
     "label": "amc_math.ads",
     "srcHref": "srcs/amc_math.ads.html"
   },
@@ -56,16 +60,12 @@ GNATdoc.SourceFileIndex = [
     "srcHref": "srcs/crc.ads.html"
   },
   {
-    "label": "current_control.ads",
-    "srcHref": "srcs/current_control.ads.html"
+    "label": "current_control-foc.ads",
+    "srcHref": "srcs/current_control-foc.ads.html"
   },
   {
     "label": "error_handling.ads",
     "srcHref": "srcs/error_handling.ads.html"
-  },
-  {
-    "label": "foc.ads",
-    "srcHref": "srcs/foc.ads.html"
   },
   {
     "label": "generic_po.ads",
@@ -90,6 +90,10 @@ GNATdoc.SourceFileIndex = [
   {
     "label": "pid.ads",
     "srcHref": "srcs/pid.ads.html"
+  },
+  {
+    "label": "position-alignment.ads",
+    "srcHref": "srcs/position-alignment.ads.html"
   },
   {
     "label": "position.ads",

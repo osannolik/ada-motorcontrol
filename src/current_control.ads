@@ -18,8 +18,6 @@ package Current_Control is
    --  control mode etc. is read from the Inverter_System task.
    --
 
-   type Control_Method is (Field_Oriented, Six_Step);
-
    type Current_Control_States is record
       Alignment_Done : Boolean := False;
    end record;
@@ -29,12 +27,13 @@ package Current_Control is
       Storage_Size => (4 * 1024);
 
    function Get_Current_Control_Output return Current_Control_States;
+   --  @return The outputs set by the current controller.
 
 private
 
    Nominal_Period : constant AMC_Types.Seconds := 1.0 / Config.PWM_Frequency_Hz;
 
-   Current_Controller : Current_Control (Field_Oriented);
+   Current_Controller : Current_Control (Config.Current_Control_Method);
 
    package Control_States_PO_Pack is new Generic_PO (Current_Control_States);
 
@@ -44,4 +43,5 @@ private
    Current_Control_Outputs : Current_Control_Output;
    --  A protected object that is updated atomically by the Current_Control task.
    --  Any outputs from Current_Control shall be passed through this record.
+
 end Current_Control;

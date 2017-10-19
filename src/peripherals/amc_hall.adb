@@ -1,5 +1,4 @@
 with HAL; use HAL;
---  with AMC_Types;
 
 with Calmeas;
 
@@ -9,9 +8,9 @@ package body AMC_Hall is
 
    function Get_Hall_Pin_Pattern return Hall_Pattern is
       (Hall_Pattern'(As_Pattern => False,
-                     H1         => H1_Pin.Set,
-                     H2         => H2_Pin.Set,
-                     H3         => H3_Pin.Set));
+                     H1_Pin     => H1_Pin.Set,
+                     H2_Pin     => H2_Pin.Set,
+                     H3_Pin     => H3_Pin.Set));
 
    Speed_Counter_Max : constant UInt32 := UInt32 (UInt16'Last);
 
@@ -126,7 +125,7 @@ package body AMC_Hall is
       (Initialized);
 
    function Is_Valid_Pattern (H : in Hall_Pattern) return Boolean is
-      (H.Bits in Valid_Hall_Bits);
+      (H.Bits in AMC_Types.Valid_Hall_Bits);
 
    function Is_Standstill return Boolean is
    begin

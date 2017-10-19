@@ -24,24 +24,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Angle_Deg",
-      "docHref": "docs/amc_types___spec.html#L38C9",
+      "docHref": "docs/amc_types___spec.html#L40C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L38"
+      "srcHref": "srcs/amc_types.ads.html#L40"
     },
     {
       "label": "Angle_Erad",
-      "docHref": "docs/amc_types___spec.html#L44C12",
+      "docHref": "docs/amc_types___spec.html#L46C12",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L44"
+      "srcHref": "srcs/amc_types.ads.html#L46"
     },
     {
       "label": "Angle_Rad",
-      "docHref": "docs/amc_types___spec.html#L41C9",
+      "docHref": "docs/amc_types___spec.html#L43C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L41"
+      "srcHref": "srcs/amc_types.ads.html#L43"
     },
     {
       "label": "Buffer_Index",
@@ -58,25 +58,32 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/amc_types.ads.html#L18"
     },
     {
-      "label": "Ctrl_Mode",
-      "docHref": "docs/amc_types___spec.html#L48C9",
+      "label": "Control_Method",
+      "docHref": "docs/amc_types___spec.html#L75C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L48"
+      "srcHref": "srcs/amc_types.ads.html#L75"
+    },
+    {
+      "label": "Ctrl_Mode",
+      "docHref": "docs/amc_types___spec.html#L63C9",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L63"
     },
     {
       "label": "Current_A",
-      "docHref": "docs/amc_types___spec.html#L31C12",
+      "docHref": "docs/amc_types___spec.html#L33C12",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L31"
+      "srcHref": "srcs/amc_types.ads.html#L33"
     },
     {
       "label": "Duty_Cycle",
-      "docHref": "docs/amc_types___spec.html#L25C12",
+      "docHref": "docs/amc_types___spec.html#L27C12",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L25"
+      "srcHref": "srcs/amc_types.ads.html#L27"
     },
     {
       "label": "Frequency_Hz",
@@ -84,6 +91,27 @@ GNATdoc.EntitiesCategory = {
       "declared": "AMC_Types",
       "declared_qualifier": "",
       "srcHref": "srcs/amc_types.ads.html#L22"
+    },
+    {
+      "label": "Hall_Bits",
+      "docHref": "docs/amc_types___spec.html#L84C12",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L84"
+    },
+    {
+      "label": "Hall_Direction",
+      "docHref": "docs/position___spec.html#L22C9",
+      "declared": "Position",
+      "declared_qualifier": "",
+      "srcHref": "srcs/position.ads.html#L22"
+    },
+    {
+      "label": "Hall_Sector",
+      "docHref": "docs/amc_types___spec.html#L81C9",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L81"
     },
     {
       "label": "Identifier_Type",
@@ -156,25 +184,46 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/zsm.ads.html#L14"
     },
     {
-      "label": "Phase",
-      "docHref": "docs/amc_types___spec.html#L60C9",
+      "label": "Pattern_To_Sector_Map",
+      "docHref": "docs/amc_types___spec.html#L88C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L60"
+      "srcHref": "srcs/amc_types.ads.html#L88"
+    },
+    {
+      "label": "Percent",
+      "docHref": "docs/amc_types___spec.html#L25C12",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L25"
+    },
+    {
+      "label": "Phase",
+      "docHref": "docs/amc_types___spec.html#L91C9",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L91"
     },
     {
       "label": "Position_Sensor",
-      "docHref": "docs/position___spec.html#L18C9",
-      "declared": "Position",
+      "docHref": "docs/amc_types___spec.html#L78C9",
+      "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L18"
+      "srcHref": "srcs/amc_types.ads.html#L78"
     },
     {
       "label": "PWM_Alignment",
-      "docHref": "docs/amc_types___spec.html#L63C9",
+      "docHref": "docs/amc_types___spec.html#L94C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L63"
+      "srcHref": "srcs/amc_types.ads.html#L94"
+    },
+    {
+      "label": "Reference_Frame_Type",
+      "docHref": "docs/amc_types___spec.html#L335C9",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L335"
     },
     {
       "label": "Seconds",
@@ -184,18 +233,53 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/amc_types.ads.html#L23"
     },
     {
-      "label": "Temperature_DegC",
-      "docHref": "docs/amc_types___spec.html#L34C9",
+      "label": "Speed_Eradps",
+      "docHref": "docs/amc_types___spec.html#L58C12",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L34"
+      "srcHref": "srcs/amc_types.ads.html#L58"
     },
     {
-      "label": "Temperature_K",
+      "label": "Speed_Erpm",
+      "docHref": "docs/amc_types___spec.html#L52C12",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L52"
+    },
+    {
+      "label": "Speed_Radps",
+      "docHref": "docs/amc_types___spec.html#L55C9",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L55"
+    },
+    {
+      "label": "Speed_Rpm",
+      "docHref": "docs/amc_types___spec.html#L49C9",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L49"
+    },
+    {
+      "label": "State_Type",
+      "docHref": "docs/position__alignment___spec.html#L14C9",
+      "declared": "Position.Alignment",
+      "declared_qualifier": "",
+      "srcHref": "srcs/position-alignment.ads.html#L14"
+    },
+    {
+      "label": "Temperature_DegC",
       "docHref": "docs/amc_types___spec.html#L36C9",
       "declared": "AMC_Types",
       "declared_qualifier": "",
       "srcHref": "srcs/amc_types.ads.html#L36"
+    },
+    {
+      "label": "Temperature_K",
+      "docHref": "docs/amc_types___spec.html#L38C9",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L38"
     },
     {
       "label": "UInt16",
@@ -219,11 +303,18 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/amc_types.ads.html#L14"
     },
     {
-      "label": "Voltage_V",
-      "docHref": "docs/amc_types___spec.html#L28C12",
+      "label": "Valid_Hall_Bits",
+      "docHref": "docs/amc_types___spec.html#L85C12",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L28"
+      "srcHref": "srcs/amc_types.ads.html#L85"
+    },
+    {
+      "label": "Voltage_V",
+      "docHref": "docs/amc_types___spec.html#L30C12",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L30"
     }
   ]
 };

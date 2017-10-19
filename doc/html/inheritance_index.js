@@ -1,15 +1,15 @@
 GNATdoc.InheritanceIndex = [
   {
     "label": "Abc",
-    "docHref": "docs/amc_types___spec.html#L91C9"
+    "docHref": "docs/amc_types___spec.html#L136C9"
   },
   {
     "label": "Alfa_Beta",
-    "docHref": "docs/amc_types___spec.html#L104C9"
+    "docHref": "docs/amc_types___spec.html#L149C9"
   },
   {
     "label": "Angle",
-    "docHref": "docs/amc_types___spec.html#L71C9"
+    "docHref": "docs/amc_types___spec.html#L116C9"
   },
   {
     "label": "Base_Stream",
@@ -27,7 +27,7 @@ GNATdoc.InheritanceIndex = [
   },
   {
     "label": "Dq",
-    "docHref": "docs/amc_types___spec.html#L98C9"
+    "docHref": "docs/amc_types___spec.html#L143C9"
   },
   {
     "label": "Interface_Type",
@@ -43,6 +43,6 @@ GNATdoc.InheritanceIndex = [
   },
   {
     "label": "Timer",
-    "docHref": "docs/amc_utils___spec.html#L109C9"
+    "docHref": "docs/amc_utils___spec.html#L95C9"
   }
 ];

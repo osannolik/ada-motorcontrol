@@ -2,11 +2,11 @@ GNATdoc.EntitiesCategory = {
   "label": "Tasks & Task Types",
   "entities": [
     {
-      "label": "Current_Control",
-      "docHref": "docs/current_control___current_control___spec.html#L20C9",
-      "declared": "Current_Control",
+      "label": "Hall_State_Handler",
+      "docHref": "docs/position___hall_state_handler___spec.html#L24C9",
+      "declared": "Position",
       "declared_qualifier": "",
-      "srcHref": "srcs/current_control.ads.html#L20"
+      "srcHref": "srcs/position.ads.html#L24"
     },
     {
       "label": "Inverter_System",

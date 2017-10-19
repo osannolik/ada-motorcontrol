@@ -1,5 +1,5 @@
 GNATdoc.Documentation = {
-  "label": "Transforms",
+  "label": "Position.Alignment",
   "qualifier": "",
   "summary": [
     {
@@ -7,7 +7,7 @@ GNATdoc.Documentation = {
       "children": [
         {
           "kind": "span",
-          "text": "Transforms\n"
+          "text": "Alignment of sensor to stator\n"
         }
       ]
     }
@@ -18,16 +18,30 @@ GNATdoc.Documentation = {
       "children": [
         {
           "kind": "span",
-          "text": "This package implements various transformations.\n"
+          "text": "Provides functionality to align the sensors to the stator/rotor reference frame.\n"
         }
       ]
     },
     {
-      "kind": "paragraph",
+      "kind": "ul",
       "children": [
         {
-          "kind": "span",
-          "text": "Clarke transform currently assumes the scaling factor k = 2/3\n"
+          "kind": "li",
+          "children": [
+            {
+              "kind": "span",
+              "text": "Hall: Map pin inputs to the corresponding hall sector.\n"
+            }
+          ]
+        },
+        {
+          "kind": "li",
+          "children": [
+            {
+              "kind": "span",
+              "text": "Encoder: Define the sensor value that corresponds to the rotor angle.\n"
+            }
+          ]
         }
       ]
     }
@@ -36,11 +50,11 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "Factor_Default",
+          "label": "State_Type",
           "qualifier": "",
-          "line": 13,
-          "column": 4,
-          "src": "srcs/transforms.ads.html",
+          "line": 14,
+          "column": 9,
+          "src": "srcs/position-alignment.ads.html",
           "summary": [
           ],
           "description": [
@@ -49,12 +63,17 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 13,
+                  "number": 14,
                   "children": [
                     {
                       "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Factor_Default"
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "type"
                     },
                     {
                       "kind": "span",
@@ -64,7 +83,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": ":"
+                      "text": "State_Type",
+                      "href": "docs/position__alignment___spec.html#L14C9"
                     },
                     {
                       "kind": "span",
@@ -74,7 +94,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "constant"
+                      "text": "is"
                     },
                     {
                       "kind": "span",
@@ -84,7 +104,18 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Float"
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Not_Performed",
+                      "href": "docs/position__alignment___spec.html#L14C24"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
                     },
                     {
                       "kind": "span",
@@ -94,17 +125,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": ":="
+                      "text": "Rotation",
+                      "href": "docs/position__alignment___spec.html#L14C39"
                     },
                     {
                       "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "number",
-                      "text": "2.0"
+                      "cssClass": "identifier",
+                      "text": ","
                     },
                     {
                       "kind": "span",
@@ -114,7 +141,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "/"
+                      "text": "Probing",
+                      "href": "docs/position__alignment___spec.html#L14C49"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
                     },
                     {
                       "kind": "span",
@@ -123,31 +156,68 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "number",
-                      "text": "3.0"
+                      "cssClass": "identifier",
+                      "text": "Done",
+                      "href": "docs/position__alignment___spec.html#L14C58"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": ";"
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/position__alignment___spec.html#L14C9"
                     }
                   ]
                 }
               ]
             }
+          ],
+          "literals": [
+            {
+              "label": "Not_Performed",
+              "line": 14,
+              "column": 24,
+              "description": [
+              ]
+            },
+            {
+              "label": "Rotation",
+              "line": 14,
+              "column": 39,
+              "description": [
+              ]
+            },
+            {
+              "label": "Probing",
+              "line": 14,
+              "column": 49,
+              "description": [
+              ]
+            },
+            {
+              "label": "Done",
+              "line": 14,
+              "column": 58,
+              "description": [
+              ]
+            }
           ]
         }
       ],
-      "label": "Constants and variables"
+      "label": "Simple types"
     },
     {
       "entities": [
         {
-          "label": "Clarke",
+          "label": "Alignment_Data",
           "qualifier": "",
           "line": 16,
-          "column": 13,
-          "src": "srcs/transforms.ads.html",
+          "column": 9,
+          "src": "srcs/position-alignment.ads.html",
           "summary": [
           ],
           "description": [
@@ -166,7 +236,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "function"
+                      "text": "type"
                     },
                     {
                       "kind": "span",
@@ -176,8 +246,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Clarke",
-                      "href": "docs/transforms___spec.html#L16C13"
+                      "text": "Alignment_Data",
+                      "href": "docs/position__alignment___spec.html#L16C9"
                     },
                     {
                       "kind": "span",
@@ -192,8 +262,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/transforms___spec.html#L16C21"
+                      "text": "Sensor",
+                      "href": "docs/position__alignment___spec.html#L16C25"
                     },
                     {
                       "kind": "span",
@@ -212,8 +282,14 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
+                      "cssClass": "identifier",
+                      "text": "AMC_Types.Position_Sensor",
+                      "href": "docs/amc_types___spec.html#L78C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
                     },
                     {
                       "kind": "span",
@@ -222,14 +298,18 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L136C9"
+                      "cssClass": "keyword",
+                      "text": "is"
                     },
                     {
                       "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
                     }
                   ]
                 },
@@ -240,18 +320,18 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                    "
+                      "text": "      "
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "K",
-                      "href": "docs/transforms___spec.html#L17C21"
+                      "text": "Timer",
+                      "href": "docs/position__alignment___spec.html#L17C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "   "
                     },
                     {
                       "kind": "span",
@@ -265,43 +345,14 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
+                      "cssClass": "identifier",
+                      "text": "AMC_Utils.Timer",
+                      "href": "docs/amc_utils___spec.html#L95C9"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Float"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":="
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Factor_Default"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
+                      "text": ";"
                     }
                   ]
                 },
@@ -312,145 +363,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                    "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
+                      "text": "      "
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L149C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Implements the Clarke transformation (Alpha-Beta), i.e. transforms\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "a three-dimensional vector to a corresponding two-dimensional vector,\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "assuming the vector components sum to 0.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 16,
-              "column": 21,
-              "type": {
-                "label": "AMC_Types.Abc",
-                "docHref": "docs/amc_types___spec.html#L136C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Input vector.\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "K",
-              "line": 17,
-              "column": 21,
-              "type": {
-                "label": "Float"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Optional parameter defining the scaling.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Clarke_Inv",
-          "qualifier": "",
-          "line": 25,
-          "column": 13,
-          "src": "srcs/transforms.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 25,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Clarke_Inv",
-                      "href": "docs/transforms___spec.html#L25C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/transforms___spec.html#L25C25"
+                      "text": "Is_Done",
+                      "href": "docs/position__alignment___spec.html#L18C7"
                     },
                     {
                       "kind": "span",
@@ -469,71 +388,8 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L149C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 26,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                        "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "K",
-                      "href": "docs/transforms___spec.html#L26C25"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Float"
+                      "text": "Boolean"
                     },
                     {
                       "kind": "span",
@@ -553,12 +409,310 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Factor_Default"
+                      "text": "False"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": ")"
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 19,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "State",
+                      "href": "docs/position__alignment___spec.html#L19C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "State_Type",
+                      "href": "docs/position__alignment___spec.html#L14C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Not_Performed"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 20,
+                  "children": [
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 21,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "case"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Sensor"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "is"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 22,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "when"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 23,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_Sector",
+                      "href": "docs/position__alignment___spec.html#L23C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Sector",
+                      "href": "docs/amc_types___spec.html#L81C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Sector",
+                      "href": "docs/amc_types___spec.html#L81C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "First"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 24,
+                  "children": [
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 25,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "         "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "when"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "None"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "|"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Encoder"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 26,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "null"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
                     }
                   ]
                 },
@@ -569,12 +723,12 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                        "
+                      "text": "      "
                     },
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "return"
+                      "text": "end"
                     },
                     {
                       "kind": "span",
@@ -583,9 +737,8 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Abc",
-                      "href": "docs/amc_types___spec.html#L136C9"
+                      "cssClass": "keyword",
+                      "text": "case"
                     },
                     {
                       "kind": "span",
@@ -593,84 +746,10 @@ GNATdoc.Documentation = {
                       "text": ";"
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Implements the inverse Clarke transformation (Alpha-Beta), i.e. transforms\n"
                 },
-                {
-                  "kind": "span",
-                  "text": "a two-dimensional vector to a corresponding three-dimensional vector,\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "assuming the final vector components sum to 0.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 25,
-              "column": 25,
-              "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L149C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Input vector.\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "K",
-              "line": 26,
-              "column": 25,
-              "type": {
-                "label": "Float"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Optional parameter defining the scaling.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Park",
-          "qualifier": "",
-          "line": 34,
-          "column": 13,
-          "src": "srcs/transforms.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
                 {
                   "kind": "line",
-                  "number": 34,
+                  "number": 28,
                   "children": [
                     {
                       "kind": "span",
@@ -680,7 +759,116 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "function"
+                      "text": "end"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "record"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";",
+                      "href": "docs/position__alignment___spec.html#L16C9"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "fields": [
+            {
+              "label": "Sensor",
+              "line": 16,
+              "column": 25,
+              "type": {
+                "label": "AMC_Types.Position_Sensor",
+                "docHref": "docs/amc_types___spec.html#L78C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Timer",
+              "line": 17,
+              "column": 7,
+              "type": {
+                "label": "AMC_Utils.Timer",
+                "docHref": "docs/amc_utils___spec.html#L95C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "Is_Done",
+              "line": 18,
+              "column": 7,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "State",
+              "line": 19,
+              "column": 7,
+              "type": {
+                "label": "Position.Alignment.State_Type",
+                "docHref": "docs/position__alignment___spec.html#L14C9"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "To_Sector",
+              "line": 23,
+              "column": 13,
+              "type": {
+                "label": "AMC_Types.Hall_Sector",
+                "docHref": "docs/amc_types___spec.html#L81C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "Record types"
+    },
+    {
+      "entities": [
+        {
+          "label": "Align_To_Sensor_Update",
+          "qualifier": "",
+          "line": 35,
+          "column": 14,
+          "src": "srcs/position-alignment.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 35,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
                     },
                     {
                       "kind": "span",
@@ -690,8 +878,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Park",
-                      "href": "docs/transforms___spec.html#L34C13"
+                      "text": "Align_To_Sensor_Update",
+                      "href": "docs/position__alignment___spec.html#L35C14"
                     },
                     {
                       "kind": "span",
@@ -706,13 +894,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/transforms___spec.html#L34C19"
+                      "text": "Alignment",
+                      "href": "docs/position__alignment___spec.html#L35C38"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "         "
                     },
                     {
                       "kind": "span",
@@ -736,67 +924,24 @@ GNATdoc.Documentation = {
                     },
                     {
                       "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L149C9"
+                      "text": "Alignment_Data",
+                      "href": "docs/position__alignment___spec.html#L16C9"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 35,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/transforms___spec.html#L35C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L43C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
                     }
                   ]
                 },
@@ -807,12 +952,33 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                  "
+                      "text": "                                     "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Period",
+                      "href": "docs/position__alignment___spec.html#L36C38"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "            "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
                     },
                     {
                       "kind": "span",
                       "cssClass": "keyword",
-                      "text": "return"
+                      "text": "in"
                     },
                     {
                       "kind": "span",
@@ -822,8 +988,119 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Dq",
-                      "href": "docs/amc_types___spec.html#L143C9"
+                      "text": "Seconds",
+                      "href": "docs/amc_types___spec.html#L23C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 37,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                                     "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "To_Angle",
+                      "href": "docs/position__alignment___spec.html#L37C38"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "          "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Angle",
+                      "href": "docs/amc_types___spec.html#L116C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 38,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "                                     "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Current_Set_Point",
+                      "href": "docs/position__alignment___spec.html#L38C38"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Current_A",
+                      "href": "docs/amc_types___spec.html#L33C12"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
                     },
                     {
                       "kind": "span",
@@ -839,43 +1116,27 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "span",
-                  "text": "Transforms a balanced two-phase orthogonal stationary vector into an\n"
+                  "text": "Handles the alignment. Should be called periodically until done.\n"
                 },
                 {
                   "kind": "span",
-                  "text": "orthogonal rotating reference frame, given the an angle.\n"
+                  "text": "It outputs the angle to where the rotor should be fixed to, and the current\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "to use.\n"
                 }
               ]
             }
           ],
           "parameters": [
             {
-              "label": "X",
-              "line": 34,
-              "column": 19,
-              "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L149C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Input vector.\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Angle",
+              "label": "Alignment",
               "line": 35,
-              "column": 19,
+              "column": 38,
               "type": {
-                "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L43C9"
+                "label": "Position.Alignment.Alignment_Data",
+                "docHref": "docs/position__alignment___spec.html#L16C9"
               },
               "description": [
                 {
@@ -883,214 +1144,19 @@ GNATdoc.Documentation = {
                   "children": [
                     {
                       "kind": "span",
-                      "text": "The angle between the first axis of the both reference frames.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Park",
-          "qualifier": "",
-          "line": 42,
-          "column": 13,
-          "src": "srcs/transforms.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 42,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Park",
-                      "href": "docs/transforms___spec.html#L42C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/transforms___spec.html#L42C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L149C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 43,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/transforms___spec.html#L43C19"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Angle",
-                      "href": "docs/amc_types___spec.html#L116C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 44,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                  "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Dq",
-                      "href": "docs/amc_types___spec.html#L143C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
+                      "text": "Keep track of current state etc.\n"
                     }
                   ]
                 }
               ]
             },
             {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Transforms a balanced two-phase orthogonal stationary vector into an\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "orthogonal rotating reference frame, given the an angle.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 42,
-              "column": 19,
+              "label": "Period",
+              "line": 36,
+              "column": 38,
               "type": {
-                "label": "AMC_Types.Alfa_Beta",
-                "docHref": "docs/amc_types___spec.html#L149C9"
+                "label": "AMC_Types.Seconds",
+                "docHref": "docs/amc_types___spec.html#L23C12"
               },
               "description": [
                 {
@@ -1098,16 +1164,16 @@ GNATdoc.Documentation = {
                   "children": [
                     {
                       "kind": "span",
-                      "text": "Input vector.\n"
+                      "text": "The time since last call, i.e. the call period.\n"
                     }
                   ]
                 }
               ]
             },
             {
-              "label": "Angle",
-              "line": 43,
-              "column": 19,
+              "label": "To_Angle",
+              "line": 37,
+              "column": 38,
               "type": {
                 "label": "AMC_Types.Angle",
                 "docHref": "docs/amc_types___spec.html#L116C9"
@@ -1118,7 +1184,27 @@ GNATdoc.Documentation = {
                   "children": [
                     {
                       "kind": "span",
-                      "text": "The angle between the first axis of the both reference frames.\n"
+                      "text": "The angle to force the rotor to. That is the caller's responsibility.\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Current_Set_Point",
+              "line": 38,
+              "column": 38,
+              "type": {
+                "label": "AMC_Types.Current_A",
+                "docHref": "docs/amc_types___spec.html#L33C12"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "Align the rotor using this maximum current.\n"
                     }
                   ]
                 }
@@ -1127,11 +1213,11 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Park_Inv",
+          "label": "Is_Done",
           "qualifier": "",
-          "line": 50,
+          "line": 30,
           "column": 13,
-          "src": "srcs/transforms.ads.html",
+          "src": "srcs/position-alignment.ads.html",
           "summary": [
           ],
           "description": [
@@ -1140,7 +1226,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 50,
+                  "number": 30,
                   "children": [
                     {
                       "kind": "span",
@@ -1160,8 +1246,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Park_Inv",
-                      "href": "docs/transforms___spec.html#L50C13"
+                      "text": "Is_Done",
+                      "href": "docs/position__alignment___spec.html#L30C13"
                     },
                     {
                       "kind": "span",
@@ -1176,8 +1262,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/transforms___spec.html#L50C23"
+                      "text": "Alignment",
+                      "href": "docs/position__alignment___spec.html#L30C22"
                     },
                     {
                       "kind": "span",
@@ -1207,77 +1293,18 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Dq",
-                      "href": "docs/amc_types___spec.html#L143C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 51,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/transforms___spec.html#L51C23"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Angle_Rad",
-                      "href": "docs/amc_types___spec.html#L43C9"
+                      "text": "Alignment_Data",
+                      "href": "docs/position__alignment___spec.html#L16C9"
                     },
                     {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ")"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 52,
-                  "children": [
+                    },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "                      "
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -1292,8 +1319,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "AMC_Types.Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L149C9"
+                      "text": "Boolean"
                     },
                     {
                       "kind": "span",
@@ -1309,19 +1335,19 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "span",
-                  "text": "Implements the inverse transformation of Park transformation.\n"
+                  "text": "Check if the alignment is done.\n"
                 }
               ]
             }
           ],
           "parameters": [
             {
-              "label": "X",
-              "line": 50,
-              "column": 23,
+              "label": "Alignment",
+              "line": 30,
+              "column": 22,
               "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L143C9"
+                "label": "Position.Alignment.Alignment_Data",
+                "docHref": "docs/position__alignment___spec.html#L16C9"
               },
               "description": [
                 {
@@ -1329,264 +1355,26 @@ GNATdoc.Documentation = {
                   "children": [
                     {
                       "kind": "span",
-                      "text": "Input vector.\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Angle",
-              "line": 51,
-              "column": 23,
-              "type": {
-                "label": "AMC_Types.Angle_Rad",
-                "docHref": "docs/amc_types___spec.html#L43C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The angle between the first axis of the both reference frames.\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "label": "Park_Inv",
-          "qualifier": "",
-          "line": 57,
-          "column": 13,
-          "src": "srcs/transforms.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 57,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Park_Inv",
-                      "href": "docs/transforms___spec.html#L57C13"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "X",
-                      "href": "docs/transforms___spec.html#L57C23"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Dq",
-                      "href": "docs/amc_types___spec.html#L143C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 58,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Angle",
-                      "href": "docs/transforms___spec.html#L58C23"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Angle",
-                      "href": "docs/amc_types___spec.html#L116C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 59,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "                      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "AMC_Types.Alfa_Beta",
-                      "href": "docs/amc_types___spec.html#L149C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Implements the inverse transformation of Park transformation.\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "X",
-              "line": 57,
-              "column": 23,
-              "type": {
-                "label": "AMC_Types.Dq",
-                "docHref": "docs/amc_types___spec.html#L143C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "Input vector.\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "Angle",
-              "line": 58,
-              "column": 23,
-              "type": {
-                "label": "AMC_Types.Angle",
-                "docHref": "docs/amc_types___spec.html#L116C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "The angle between the first axis of the both reference frames.\n"
+                      "text": "Alignment data.\n"
                     }
                   ]
                 }
               ]
             }
-          ]
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "True if done.\n"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ],
       "label": "Subprograms"

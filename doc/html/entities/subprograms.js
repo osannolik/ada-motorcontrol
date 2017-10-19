@@ -51,6 +51,13 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/calmeas.ads.html#L111"
     },
     {
+      "label": "Align_To_Sensor_Update",
+      "docHref": "docs/position__alignment___spec.html#L35C14",
+      "declared": "Position.Alignment",
+      "declared_qualifier": "",
+      "srcHref": "srcs/position-alignment.ads.html#L35"
+    },
+    {
       "label": "Bottom_Clamp",
       "docHref": "docs/zsm___spec.html#L76C13",
       "declared": "ZSM",
@@ -72,13 +79,6 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/crc.ads.html#L10"
     },
     {
-      "label": "Calculate_Voltage",
-      "docHref": "docs/foc___spec.html#L25C13",
-      "declared": "FOC",
-      "declared_qualifier": "",
-      "srcHref": "srcs/foc.ads.html#L25"
-    },
-    {
       "label": "Callback_Handler",
       "docHref": "docs/calmeas___spec.html#L135C14",
       "declared": "Calmeas",
@@ -87,10 +87,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Clarke",
-      "docHref": "docs/amc_types___spec.html#L139C13",
+      "docHref": "docs/amc_types___spec.html#L184C13",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L139"
+      "srcHref": "srcs/amc_types.ads.html#L184"
     },
     {
       "label": "Clarke",
@@ -101,10 +101,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Clarke_Inv",
-      "docHref": "docs/amc_types___spec.html#L196C13",
+      "docHref": "docs/amc_types___spec.html#L249C13",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L196"
+      "srcHref": "srcs/amc_types.ads.html#L249"
     },
     {
       "label": "Clarke_Inv",
@@ -191,6 +191,13 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/generic_po.ads.html#L8"
     },
     {
+      "label": "Get",
+      "docHref": "docs/amc_hall___state___spec.html#L88C16",
+      "declared": "AMC_Hall.State",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L88"
+    },
+    {
       "label": "Get_Angle",
       "docHref": "docs/amc_encoder___spec.html#L21C13",
       "declared": "AMC_Encoder",
@@ -213,10 +220,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Angle",
-      "docHref": "docs/position___spec.html#L27C13",
+      "docHref": "docs/position___spec.html#L41C13",
       "declared": "Position",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L27"
+      "srcHref": "srcs/position.ads.html#L41"
     },
     {
       "label": "Get_Direction",
@@ -233,6 +240,13 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/amc_pwm.ads.html#L40"
     },
     {
+      "label": "Get_Hall_Sector_Center_Angle",
+      "docHref": "docs/position___spec.html#L28C13",
+      "declared": "Position",
+      "declared_qualifier": "",
+      "srcHref": "srcs/position.ads.html#L28"
+    },
+    {
       "label": "Get_Injected_Samples",
       "docHref": "docs/amc_adc___handler___spec.html#L44C16",
       "declared": "AMC_ADC.Handler",
@@ -241,10 +255,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Get_Inverter_System_Output",
-      "docHref": "docs/amc___spec.html#L47C13",
+      "docHref": "docs/amc___spec.html#L45C13",
       "declared": "AMC",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc.ads.html#L47"
+      "srcHref": "srcs/amc.ads.html#L45"
     },
     {
       "label": "Get_Sample",
@@ -290,10 +304,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Initialize",
-      "docHref": "docs/amc_board___spec.html#L144C14",
+      "docHref": "docs/amc_board___spec.html#L154C14",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L144"
+      "srcHref": "srcs/amc_board.ads.html#L154"
     },
     {
       "label": "Initialize",
@@ -304,10 +318,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Initialize",
+      "docHref": "docs/amc_hall___spec.html#L46C14",
+      "declared": "AMC_Hall",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L46"
+    },
+    {
+      "label": "Initialize",
       "docHref": "docs/amc_pwm___spec.html#L20C14",
       "declared": "AMC_PWM",
       "declared_qualifier": "",
       "srcHref": "srcs/amc_pwm.ads.html#L20"
+    },
+    {
+      "label": "Is_Done",
+      "docHref": "docs/position__alignment___spec.html#L30C13",
+      "declared": "Position.Alignment",
+      "declared_qualifier": "",
+      "srcHref": "srcs/position-alignment.ads.html#L30"
     },
     {
       "label": "Is_Empty",
@@ -339,10 +367,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Is_Initialized",
-      "docHref": "docs/amc_board___spec.html#L140C13",
+      "docHref": "docs/amc_board___spec.html#L150C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L140"
+      "srcHref": "srcs/amc_board.ads.html#L150"
     },
     {
       "label": "Is_Initialized",
@@ -353,6 +381,13 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Is_Initialized",
+      "docHref": "docs/amc_hall___spec.html#L43C13",
+      "declared": "AMC_Hall",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L43"
+    },
+    {
+      "label": "Is_Initialized",
       "docHref": "docs/amc_pwm___spec.html#L16C13",
       "declared": "AMC_PWM",
       "declared_qualifier": "",
@@ -360,10 +395,17 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Is_Pressed",
-      "docHref": "docs/amc_board___spec.html#L133C13",
+      "docHref": "docs/amc_board___spec.html#L143C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L133"
+      "srcHref": "srcs/amc_board.ads.html#L143"
+    },
+    {
+      "label": "Is_Standstill",
+      "docHref": "docs/amc_hall___spec.html#L73C13",
+      "declared": "AMC_Hall",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L73"
     },
     {
       "label": "Last_Chance_Handler",
@@ -378,6 +420,13 @@ GNATdoc.EntitiesCategory = {
       "declared": "AMC_Math",
       "declared_qualifier": "",
       "srcHref": "srcs/amc_math.ads.html#L33"
+    },
+    {
+      "label": "Manual_Trigger",
+      "docHref": "docs/amc_hall___commutation___spec.html#L140C17",
+      "declared": "AMC_Hall.Commutation",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L140"
     },
     {
       "label": "Max",
@@ -443,18 +492,25 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/generic_queue.ads.html#L63"
     },
     {
-      "label": "Park",
-      "docHref": "docs/amc_types___spec.html#L202C13",
-      "declared": "AMC_Types",
+      "label": "Overflow",
+      "docHref": "docs/amc_hall___state___spec.html#L101C16",
+      "declared": "AMC_Hall.State",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L202"
+      "srcHref": "srcs/amc_hall.ads.html#L101"
     },
     {
       "label": "Park",
-      "docHref": "docs/amc_types___spec.html#L210C13",
+      "docHref": "docs/amc_types___spec.html#L255C13",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L210"
+      "srcHref": "srcs/amc_types.ads.html#L255"
+    },
+    {
+      "label": "Park",
+      "docHref": "docs/amc_types___spec.html#L263C13",
+      "declared": "AMC_Types",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_types.ads.html#L263"
     },
     {
       "label": "Park",
@@ -472,17 +528,17 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Park_Inv",
-      "docHref": "docs/amc_types___spec.html#L255C13",
+      "docHref": "docs/amc_types___spec.html#L308C13",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L255"
+      "srcHref": "srcs/amc_types.ads.html#L308"
     },
     {
       "label": "Park_Inv",
-      "docHref": "docs/amc_types___spec.html#L272C13",
+      "docHref": "docs/amc_types___spec.html#L325C13",
       "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_types.ads.html#L272"
+      "srcHref": "srcs/amc_types.ads.html#L325"
     },
     {
       "label": "Park_Inv",
@@ -590,11 +646,11 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/amc_encoder.ads.html#L36"
     },
     {
-      "label": "Set_Angle",
-      "docHref": "docs/position___spec.html#L31C14",
-      "declared": "Position",
+      "label": "Set_Commutation_Delay_Factor",
+      "docHref": "docs/amc_hall___state___spec.html#L94C17",
+      "declared": "AMC_Hall.State",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L31"
+      "srcHref": "srcs/amc_hall.ads.html#L94"
     },
     {
       "label": "Set_Duty_Cycle",
@@ -612,10 +668,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Set_Gate_Driver_Power",
-      "docHref": "docs/amc_board___spec.html#L109C14",
+      "docHref": "docs/amc_board___spec.html#L119C14",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L109"
+      "srcHref": "srcs/amc_board.ads.html#L119"
     },
     {
       "label": "Set_Trigger_Cycle",
@@ -654,73 +710,73 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "To_Board_Temp",
-      "docHref": "docs/amc_board___spec.html#L190C13",
+      "docHref": "docs/amc_board___spec.html#L200C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L190"
+      "srcHref": "srcs/amc_board.ads.html#L200"
     },
     {
       "label": "To_DegC",
-      "docHref": "docs/amc_utils___spec.html#L101C13",
-      "declared": "AMC_Utils",
+      "docHref": "docs/amc_types___spec.html#L108C13",
+      "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_utils.ads.html#L101"
+      "srcHref": "srcs/amc_types.ads.html#L108"
     },
     {
       "label": "To_Erad",
-      "docHref": "docs/position___spec.html#L21C13",
+      "docHref": "docs/position___spec.html#L35C13",
       "declared": "Position",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L21"
+      "srcHref": "srcs/position.ads.html#L35"
     },
     {
       "label": "To_Kelvin",
-      "docHref": "docs/amc_utils___spec.html#L94C13",
-      "declared": "AMC_Utils",
+      "docHref": "docs/amc_types___spec.html#L101C13",
+      "declared": "AMC_Types",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_utils.ads.html#L94"
+      "srcHref": "srcs/amc_types.ads.html#L101"
     },
     {
       "label": "To_Phase_Current",
-      "docHref": "docs/amc_board___spec.html#L150C13",
+      "docHref": "docs/amc_board___spec.html#L160C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L150"
+      "srcHref": "srcs/amc_board.ads.html#L160"
     },
     {
       "label": "To_Phase_Currents",
-      "docHref": "docs/amc_board___spec.html#L158C13",
+      "docHref": "docs/amc_board___spec.html#L168C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L158"
+      "srcHref": "srcs/amc_board.ads.html#L168"
     },
     {
       "label": "To_Phase_Voltage",
-      "docHref": "docs/amc_board___spec.html#L166C13",
+      "docHref": "docs/amc_board___spec.html#L176C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L166"
+      "srcHref": "srcs/amc_board.ads.html#L176"
     },
     {
       "label": "To_Phase_Voltages",
-      "docHref": "docs/amc_board___spec.html#L174C13",
+      "docHref": "docs/amc_board___spec.html#L184C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L174"
+      "srcHref": "srcs/amc_board.ads.html#L184"
     },
     {
       "label": "To_Vbus",
-      "docHref": "docs/amc_board___spec.html#L182C13",
+      "docHref": "docs/amc_board___spec.html#L192C13",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L182"
+      "srcHref": "srcs/amc_board.ads.html#L192"
     },
     {
       "label": "Toggle",
-      "docHref": "docs/amc_board___spec.html#L127C14",
+      "docHref": "docs/amc_board___spec.html#L137C14",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L127"
+      "srcHref": "srcs/amc_board.ads.html#L137"
     },
     {
       "label": "Top_Bottom_Clamp",
@@ -738,17 +794,38 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Turn_Off",
-      "docHref": "docs/amc_board___spec.html#L121C14",
+      "docHref": "docs/amc_board___spec.html#L131C14",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L121"
+      "srcHref": "srcs/amc_board.ads.html#L131"
     },
     {
       "label": "Turn_On",
-      "docHref": "docs/amc_board___spec.html#L115C14",
+      "docHref": "docs/amc_board___spec.html#L125C14",
       "declared": "AMC_Board",
       "declared_qualifier": "",
-      "srcHref": "srcs/amc_board.ads.html#L115"
+      "srcHref": "srcs/amc_board.ads.html#L125"
+    },
+    {
+      "label": "Update",
+      "docHref": "docs/current_control__foc___spec.html#L25C14",
+      "declared": "Current_Control.FOC",
+      "declared_qualifier": "",
+      "srcHref": "srcs/current_control-foc.ads.html#L25"
+    },
+    {
+      "label": "Update",
+      "docHref": "docs/amc_hall___state___spec.html#L91C17",
+      "declared": "AMC_Hall.State",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc_hall.ads.html#L91"
+    },
+    {
+      "label": "Wait_Until_Initialized",
+      "docHref": "docs/amc___spec.html#L49C14",
+      "declared": "AMC",
+      "declared_qualifier": "",
+      "srcHref": "srcs/amc.ads.html#L49"
     },
     {
       "label": "Wrap_To",
@@ -759,31 +836,31 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Wrap_To_180",
-      "docHref": "docs/position___spec.html#L35C13",
+      "docHref": "docs/position___spec.html#L45C13",
       "declared": "Position",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L35"
+      "srcHref": "srcs/position.ads.html#L45"
     },
     {
       "label": "Wrap_To_2Pi",
-      "docHref": "docs/position___spec.html#L55C13",
+      "docHref": "docs/position___spec.html#L65C13",
       "declared": "Position",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L55"
+      "srcHref": "srcs/position.ads.html#L65"
     },
     {
       "label": "Wrap_To_360",
-      "docHref": "docs/position___spec.html#L41C13",
+      "docHref": "docs/position___spec.html#L51C13",
       "declared": "Position",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L41"
+      "srcHref": "srcs/position.ads.html#L51"
     },
     {
       "label": "Wrap_To_Pi",
-      "docHref": "docs/position___spec.html#L49C13",
+      "docHref": "docs/position___spec.html#L59C13",
       "declared": "Position",
       "declared_qualifier": "",
-      "srcHref": "srcs/position.ads.html#L49"
+      "srcHref": "srcs/position.ads.html#L59"
     }
   ]
 };

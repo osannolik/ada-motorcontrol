@@ -6,46 +6,18 @@ package body Position.Alignment is
    procedure Map_Pattern_To_Sector (Pattern : in AMC_Hall.Hall_Pattern;
                                     Sector  : in Hall_Sector)
    is
-      use type AMC_Hall.Hall_Bits;
+      use type AMC_Types.Hall_Bits;
+      Hall_Map : Pattern_To_Sector_Map := Hall_Sector_Map.Get;
    begin
-      for P in Hall_Sector_Map'Range loop
+      for P in Hall_Map'Range loop
          if P = Pattern.Bits then
-            Hall_Sector_Map (P) := Sector;
+            Hall_Map (P) := Sector;
             exit;
          end if;
       end loop;
+
+      Hall_Sector_Map.Set (Hall_Map);
    end Map_Pattern_To_Sector;
-
-   procedure Set_Hall_Angle (Angle : in Angle_Erad)
-   is
-      Hall : constant AMC_Hall.Hall_State := AMC_Hall.State.Get;
-
-      function Is_Within_Sector (Angle  : in Angle_Erad;
-                                 Sector : in Hall_Sector)
-                                 return Boolean
-      is
-         Ccw_Angle : constant Angle_Erad := Get_Hall_Sector_Angle (Sector, Ccw);
-         Cw_Angle  : constant Angle_Erad := Get_Hall_Sector_Angle (Sector, Cw);
-      begin
-         if Ccw_Angle <= Cw_Angle then
-            return Ccw_Angle <= Angle and then Angle < Cw_Angle;
-         else
-            --  Sector spans over transition from 2pi to 0
-            return Ccw_Angle <= Angle or else Angle < Cw_Angle;
-         end if;
-      end Is_Within_Sector;
-   begin
-      for Sector in Hall_Sector loop
-         --  Which sector does the angle belong to?
-         if Is_Within_Sector (Angle  => Wrap_To_2Pi (Angle),
-                              Sector => Sector)
-         then
-            Map_Pattern_To_Sector (Pattern => Hall.Current,
-                                   Sector  => Sector);
-            exit;
-         end if;
-      end loop;
-   end Set_Hall_Angle;
 
    procedure Set_Encoder_Angle (Angle : in Angle_Erad)
    is
@@ -60,12 +32,11 @@ package body Position.Alignment is
    procedure Hall_Alignment_Update (Alignment         : in out Alignment_Data;
                                     Period            : in Seconds;
                                     To_Angle          : out Angle;
-                                    Current_Set_Point : out Space_Vector)
+                                    Current_Set_Point : out Current_A)
    is
-      Current : Current_A  := 0.0;
-      Angle   : constant Angle_Erad :=
-         Get_Hall_Sector_Center_Angle (Alignment.To_Sector);
    begin
+      Current_Set_Point := 0.0;
+
       case Alignment.State is
          when Not_Performed =>
             Alignment.State := Rotation;
@@ -81,13 +52,15 @@ package body Position.Alignment is
                   Alignment.To_Sector := Hall_Sector'Succ (Alignment.To_Sector);
                end if;
             end if;
-            Current  := 12.0;
+            Current_Set_Point  := 12.0;
 
          when Probing =>
             if Alignment.Timer.Tick (Period) then
                Alignment.Timer.Reset;
 
-               Set_Hall_Angle (Angle);
+               Map_Pattern_To_Sector
+                  (Pattern => AMC_Hall.State.Get.Current,
+                   Sector  => Alignment.To_Sector);
 
                if Alignment.To_Sector = Hall_Sector'First then
                   Alignment.State := Done;
@@ -95,28 +68,25 @@ package body Position.Alignment is
                   Alignment.To_Sector := Hall_Sector'Pred (Alignment.To_Sector);
                end if;
             end if;
-            Current  := 12.0;
+            Current_Set_Point  := 12.0;
 
          when Done =>
             null;
 
       end case;
 
-      To_Angle := Compose (Angle);
+      To_Angle := Compose (Get_Hall_Sector_Center_Angle (Alignment.To_Sector));
 
-      Current_Set_Point :=
-         Space_Vector'(Reference_Frame  => Rotor,
-                       Rotor_Fixed      => (D => Current,
-                                            Q => 0.0));
    end Hall_Alignment_Update;
 
    procedure Encoder_Alignment_Update (Alignment         : in out Alignment_Data;
                                        Period            : in Seconds;
                                        To_Angle          : out Angle;
-                                       Current_Set_Point : out Space_Vector)
+                                       Current_Set_Point : out Current_A)
    is
-      Current : Current_A := 0.0;
    begin
+      Current_Set_Point := 0.0;
+
       case Alignment.State is
          when Not_Performed =>
             Alignment.State := Probing;
@@ -127,7 +97,7 @@ package body Position.Alignment is
                Alignment.Timer.Reset;
                Set_Encoder_Angle (0.0);
             else
-               Current  := 12.0;
+               Current_Set_Point  := 12.0;
             end if;
 
          when Done =>
@@ -137,16 +107,12 @@ package body Position.Alignment is
 
       To_Angle := Compose (0.0);
 
-      Current_Set_Point :=
-         Space_Vector'(Reference_Frame  => Rotor,
-                       Rotor_Fixed      => (D => Current,
-                                            Q => 0.0));
    end Encoder_Alignment_Update;
 
    procedure Align_To_Sensor_Update (Alignment         : in out Alignment_Data;
                                      Period            : in Seconds;
                                      To_Angle          : out Angle;
-                                     Current_Set_Point : out Space_Vector)
+                                     Current_Set_Point : out Current_A)
    is
    begin
       case Alignment.Sensor is
@@ -154,16 +120,18 @@ package body Position.Alignment is
             raise Constraint_Error; --  TODO
 
          when Hall =>
-            Hall_Alignment_Update (Alignment         => Alignment,
-                                   Period            => Period,
-                                   To_Angle          => To_Angle,
-                                   Current_Set_Point => Current_Set_Point);
+            Hall_Alignment_Update
+               (Alignment         => Alignment,
+                Period            => Period,
+                To_Angle          => To_Angle,
+                Current_Set_Point => Current_Set_Point);
 
          when Encoder =>
-            Encoder_Alignment_Update (Alignment         => Alignment,
-                                      Period            => Period,
-                                      To_Angle          => To_Angle,
-                                      Current_Set_Point => Current_Set_Point);
+            Encoder_Alignment_Update
+               (Alignment         => Alignment,
+                Period            => Period,
+                To_Angle          => To_Angle,
+                Current_Set_Point => Current_Set_Point);
       end case;
    end Align_To_Sensor_Update;
 

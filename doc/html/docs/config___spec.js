@@ -37,7 +37,7 @@ GNATdoc.Documentation = {
         {
           "label": "ADC_ISR_Prio",
           "qualifier": "",
-          "line": 25,
+          "line": 35,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -48,7 +48,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 25,
+                  "number": 35,
                   "children": [
                     {
                       "kind": "span",
@@ -127,9 +127,9 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Current_Control_Prio",
+          "label": "Current_Control_Method",
           "qualifier": "",
-          "line": 27,
+          "line": 19,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -140,7 +140,89 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 27,
+                  "number": 19,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Current_Control_Method"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "AMC_Types.Control_Method"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "AMC_Types.Field_Oriented"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Current_Control_Prio",
+          "qualifier": "",
+          "line": 39,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 39,
                   "children": [
                     {
                       "kind": "span",
@@ -219,7 +301,7 @@ GNATdoc.Documentation = {
           ]
         },
         {
-          "label": "Inverter_System_Period_Ms",
+          "label": "Hall_ISR_Prio",
           "qualifier": "",
           "line": 37,
           "column": 4,
@@ -233,6 +315,643 @@ GNATdoc.Documentation = {
                 {
                   "kind": "line",
                   "number": 37,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_ISR_Prio"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "System.Interrupt_Priority"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "System.Interrupt_Priority"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Last"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "-"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "1"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Hall_Sensor_Pin_Map",
+          "qualifier": "",
+          "line": 27,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 27,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_Sensor_Pin_Map"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "AMC_Types.Pattern_To_Sector_Map"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 28,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "2"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "001"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H3"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 29,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "2"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "010"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H1"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 30,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "2"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "011"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H2"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 31,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "2"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "100"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H5"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 32,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "2"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "101"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H4"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 33,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "       "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "2"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "110"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "#"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "=>"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "H6"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Hall_State_Handler_Prio",
+          "qualifier": "",
+          "line": 41,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 41,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Hall_State_Handler_Prio"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "System.Priority"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "System.Priority"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "'"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Last"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "-"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "1"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Inverter_System_Period_Ms",
+          "qualifier": "",
+          "line": 51,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 51,
                   "children": [
                     {
                       "kind": "span",
@@ -303,7 +1022,7 @@ GNATdoc.Documentation = {
         {
           "label": "Inverter_System_Prio",
           "qualifier": "",
-          "line": 29,
+          "line": 43,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -314,7 +1033,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 29,
+                  "number": 43,
                   "children": [
                     {
                       "kind": "span",
@@ -415,7 +1134,7 @@ GNATdoc.Documentation = {
         {
           "label": "Logger_Period_Ms",
           "qualifier": "",
-          "line": 39,
+          "line": 53,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -426,7 +1145,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 39,
+                  "number": 53,
                   "children": [
                     {
                       "kind": "span",
@@ -497,7 +1216,7 @@ GNATdoc.Documentation = {
         {
           "label": "Logger_Prio",
           "qualifier": "",
-          "line": 31,
+          "line": 45,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -508,7 +1227,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 31,
+                  "number": 45,
                   "children": [
                     {
                       "kind": "span",
@@ -609,7 +1328,7 @@ GNATdoc.Documentation = {
         {
           "label": "Modulation_Method",
           "qualifier": "",
-          "line": 20,
+          "line": 21,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -620,7 +1339,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 20,
+                  "number": 21,
                   "children": [
                     {
                       "kind": "span",
@@ -691,7 +1410,7 @@ GNATdoc.Documentation = {
         {
           "label": "Position_Sensor",
           "qualifier": "",
-          "line": 22,
+          "line": 23,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -702,7 +1421,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 23,
                   "children": [
                     {
                       "kind": "span",
@@ -737,7 +1456,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Position.Position_Sensor"
+                      "text": "AMC_Types.Position_Sensor"
                     },
                     {
                       "kind": "span",
@@ -757,7 +1476,89 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Position.Encoder"
+                      "text": "AMC_Types.Hall"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Position_Sensor_Offset",
+          "qualifier": "",
+          "line": 25,
+          "column": 4,
+          "src": "srcs/config.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 25,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Position_Sensor_Offset"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "constant"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "AMC_Types.Angle_Erad"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "0.0"
                     },
                     {
                       "kind": "span",
@@ -773,7 +1574,7 @@ GNATdoc.Documentation = {
         {
           "label": "Protected_Object_Prio",
           "qualifier": "",
-          "line": 33,
+          "line": 47,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -784,7 +1585,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 33,
+                  "number": 47,
                   "children": [
                     {
                       "kind": "span",
@@ -874,7 +1675,7 @@ GNATdoc.Documentation = {
         {
           "label": "PWM_Frequency_Hz",
           "qualifier": "",
-          "line": 16,
+          "line": 15,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -885,7 +1686,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 16,
+                  "number": 15,
                   "children": [
                     {
                       "kind": "span",
@@ -956,7 +1757,7 @@ GNATdoc.Documentation = {
         {
           "label": "PWM_Gate_Deadtime_S",
           "qualifier": "",
-          "line": 18,
+          "line": 17,
           "column": 4,
           "src": "srcs/config.ads.html",
           "summary": [
@@ -967,7 +1768,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 18,
+                  "number": 17,
                   "children": [
                     {
                       "kind": "span",

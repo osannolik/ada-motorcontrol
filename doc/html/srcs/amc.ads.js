@@ -695,7 +695,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Idq_CC_Request",
+          "text": "Current_Command",
           "href": "docs/amc___spec.html#L37C7"
         },
         {
@@ -716,8 +716,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Dq",
-          "href": "docs/amc_types___spec.html#L98C9"
+          "text": "Space_Vector",
+          "href": "docs/amc_types___spec.html#L346C9"
         },
         {
           "kind": "span",
@@ -738,7 +738,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "--  Holds the Idq value that is used as set-point for the current controller"
+          "text": "--  Holds the current value that is used as set-point for the current controller"
         }
       ]
     },
@@ -776,7 +776,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Voltage_V",
-          "href": "docs/amc_types___spec.html#L28C12"
+          "href": "docs/amc_types___spec.html#L30C12"
         },
         {
           "kind": "span",
@@ -813,7 +813,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Alignment_Angle",
+          "text": "Mode",
           "href": "docs/amc___spec.html#L41C7"
         },
         {
@@ -834,8 +834,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Angle_Erad",
-          "href": "docs/amc_types___spec.html#L44C12"
+          "text": "Ctrl_Mode",
+          "href": "docs/amc_types___spec.html#L63C9"
         },
         {
           "kind": "span",
@@ -856,72 +856,13 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "--  In Alignment mode, the current controller aligns rotor to this angle"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 43,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Mode",
-          "href": "docs/amc___spec.html#L43C7"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Ctrl_Mode",
-          "href": "docs/amc_types___spec.html#L48C9"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 44,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
           "text": "--  Holds the current control mode"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 45,
+      "number": 43,
       "children": [
         {
           "kind": "span",
@@ -953,13 +894,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 46,
+      "number": 44,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 47,
+      "number": 45,
       "children": [
         {
           "kind": "span",
@@ -980,7 +921,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Get_Inverter_System_Output",
-          "href": "docs/amc___spec.html#L47C13"
+          "href": "docs/amc___spec.html#L45C13"
         },
         {
           "kind": "span",
@@ -1012,7 +953,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 48,
+      "number": 46,
       "children": [
         {
           "kind": "span",
@@ -1028,7 +969,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 49,
+      "number": 47,
       "children": [
         {
           "kind": "span",
@@ -1039,6 +980,44 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "comment",
           "text": "--  @return A record of type Inverter_System_States"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 48,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 49,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "procedure"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Wait_Until_Initialized",
+          "href": "docs/amc___spec.html#L49C14"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
         }
       ]
     },
