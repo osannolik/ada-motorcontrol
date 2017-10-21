@@ -1,13 +1,9 @@
-with AMC;
+with Position.Estimation; pragma Unreferenced(Position.Estimation);
 with AMC_Utils;
 with AMC_Encoder;
 with Motor;
-with Calmeas;
 
 package body Position is
-
-   Hall_State_Log : aliased UInt8;
-   Direction_Log  : aliased UInt8;
 
    function Get_Hall_Direction (Hall : in AMC_Hall.Hall_State)
                                 return Hall_Direction
@@ -61,66 +57,6 @@ package body Position is
       end case;
    end Get_Hall_Sector_Angle;
 
-   function Hall_State_To_Angle (Hall : in AMC_Hall.Hall_State)
-                                 return Angle_Erad
-   is
-   begin
-      return Get_Hall_Sector_Angle
-         (Sector    => Hall_Sector_Map.Get (Hall.Current.Bits),
-          Direction => Get_Hall_Direction (Hall));
-   end Hall_State_To_Angle;
-
-
-   task body Hall_State_Handler is
-      New_State : AMC_Hall.Hall_State;
-
-      Angle_Raw : Angle_Erad;
-
-      Delta_T : Seconds;
-
-      Speed_Raw : Speed_Eradps;
-
-      Speed_Timer_Overflow : Boolean;
-   begin
-
-      Hall_Data.Set (Position_Hall_Data'(Hall_State => AMC_Hall.State.Get,
-                                         Angle      => 0.0,
-                                         Speed_Raw  => 0.0));
-
-      AMC.Wait_Until_Initialized;
-
-      loop
-         AMC_Hall.State.Await_New (New_State            => New_State,
-                                   Time_Delta_s         => Delta_T,
-                                   Speed_Timer_Overflow => Speed_Timer_Overflow);
-
-         Hall_State_Log := UInt8 (New_State.Current.Bits);
-
-         case Get_Hall_Direction (Hall => New_State) is
-            when Cw =>
-               Direction_Log := 2;
-            when Ccw =>
-               Direction_Log := 0;
-            when Standstill =>
-               Direction_Log := 1;
-         end case;
-
-         Angle_Raw := Hall_State_To_Angle (New_State);
-
-         if Speed_Timer_Overflow then
-            Speed_Raw := 0.0;
-         else
-            Speed_Raw := Speed_Eradps
-               (2.0 * AMC_Math.Pi / (Float (AMC_Hall.Nof_Valid_Hall_States) * Delta_T));
-         end if;
-
-
-         Hall_Data.Set (Position_Hall_Data'(Hall_State => New_State,
-                                            Angle      => Angle_Raw,
-                                            Speed_Raw  => Speed_Raw));
-      end loop;
-   end Hall_State_Handler;
-
    function To_Erad (Angle : in Angle_Rad)
                      return Angle_Erad
    is
@@ -138,12 +74,24 @@ package body Position is
             return 0.0;
 
          when Hall =>
-            return Hall_Data.Get.Angle;
+            return Hall_Data.Get.Angle_Raw;
 
          when Encoder =>
             return To_Erad (AMC_Encoder.Get_Angle);
       end case;
    end Get_Angle;
+
+   function Get_Speed return Speed_Eradps
+   is
+   begin
+      case Config.Position_Sensor is
+         when None | Encoder =>
+            return 0.0;
+
+         when Hall =>
+            return Hall_Data.Get.Speed_Raw;
+      end case;
+   end Get_Speed;
 
    function Wrap_To_360 (Angle : in Angle_Deg) return Angle_Deg is
       (Angle_Deg (AMC_Utils.Wrap_To (Float (Angle), 360.0)));
@@ -179,13 +127,5 @@ package body Position is
 begin
 
    Hall_Sector_Map.Set (Config.Hall_Sensor_Pin_Map);
-
-   Calmeas.Add (Symbol      => Direction_Log'Access,
-                Name        => "Direction",
-                Description => "");
-
-   Calmeas.Add (Symbol      => Hall_State_Log'Access,
-                Name        => "Hall_State",
-                Description => "");
 
 end Position;

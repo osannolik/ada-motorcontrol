@@ -12,6 +12,7 @@ package body Current_Control.FOC is
    Iq_Log   : aliased Voltage_V;
 
    Rotor_Angle_Log : aliased Float;
+   Rotor_Speed_Log : aliased Float;
 
    Is_Saturated : Boolean := False;
 
@@ -114,6 +115,7 @@ package body Current_Control.FOC is
       end case;
 
       Rotor_Angle_Log := Float (Rotor_Angle.Angle);
+      Rotor_Speed_Log := Float (Position.Get_Speed);
 
       Calculate_Voltage
          (Phase_Currents => Phase_Currents,
@@ -130,6 +132,10 @@ begin
 
    Calmeas.Add (Symbol      => Rotor_Angle_Log'Access,
                 Name        => "Rotor_Angle",
+                Description => "");
+
+   Calmeas.Add (Symbol      => Rotor_Speed_Log'Access,
+                Name        => "Rotor_Speed",
                 Description => "");
 
    Calmeas.Add (Symbol      => Kp_Param'Access,

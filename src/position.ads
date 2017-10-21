@@ -21,17 +21,6 @@ package Position is
    --  Ccw is defined as an increasing angle.
    type Hall_Direction is (Standstill, Cw, Ccw);
 
-   task Hall_State_Handler with
-      Priority => Config.Hall_State_Handler_Prio,
-      Storage_Size => (2 * 1024);
-
-   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
-                                          return Angle_Erad;
-   --  Get the angle (referenced to the stator's a-axis) to the center of the
-   --  specified hall sensor sector.
-   --  @param Sector The hall sensor sector.
-   --  @return The angle in electrical radians in [0, 2pi).
-
    function To_Erad (Angle : in Angle_Rad)
                      return Angle_Erad;
    --  Convert a mechanical angle to the corresponding electrical angle.
@@ -39,8 +28,12 @@ package Position is
    --  @return Angle Electrical angle, i.e. corrected for number of motor pole-pairs.
 
    function Get_Angle return Angle_Erad;
-   --  Get the current rotor electrical angle using the configured sensor.
+   --  Get the current (raw) rotor electrical angle using the configured sensor.
    --  @return Angle in radians.
+
+   function Get_Speed return Speed_Eradps;
+   --  Get the current (raw) rotor electrical speed using the configured sensor.
+   --  @return Speed in radians per second.
 
    function Wrap_To_180 (Angle : in Angle_Deg)
                          return Angle_Deg;
@@ -72,6 +65,20 @@ package Position is
 
 private
 
+   function Get_Hall_Sector_Center_Angle (Sector : in Hall_Sector)
+                                          return Angle_Erad;
+   --  Get the angle (referenced to the stator's a-axis) to the center of the
+   --  specified hall sensor sector.
+   --  @param Sector The hall sensor sector.
+   --  @return The angle in electrical radians in [0, 2pi).
+
+   function Get_Hall_Direction (Hall : in AMC_Hall.Hall_State)
+                                return Hall_Direction;
+
+   function Get_Hall_Sector_Angle (Sector    : in Hall_Sector;
+                                   Direction : in Hall_Direction)
+                                   return Angle_Erad;
+
    Pi     : constant Angle_Rad := Angle_Rad (AMC_Math.Pi);
    Two_Pi : constant Angle_Rad := Angle_Rad (2.0 * AMC_Math.Pi);
 
@@ -89,7 +96,7 @@ private
 
    type Position_Hall_Data is record
       Hall_State : AMC_Hall.Hall_State;
-      Angle      : Angle_Erad;
+      Angle_Raw  : Angle_Erad;
       Speed_Raw  : Speed_Eradps;
    end record;
 

@@ -38,7 +38,7 @@ package Config is
 
    Current_Control_Prio : constant System.Priority := System.Priority'Last;
 
-   Hall_State_Handler_Prio : constant System.Priority := System.Priority'Last - 1;
+   Hall_Handler_Prio : constant System.Priority := System.Priority'Last - 1;
 
    Inverter_System_Prio : constant System.Priority := System.Priority'Last - 2;
 
