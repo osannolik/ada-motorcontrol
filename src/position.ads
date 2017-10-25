@@ -94,6 +94,21 @@ private
        4.0 * Pi / 3.0,
        5.0 * Pi / 3.0);
 
+--     A : Angle_Erad renames Hall_Sector_Angle;
+--     O : constant Angle_Erad := 0.5 * Hall_Sector_Angle;
+--
+--
+--     Sector_Angles : array (Hall_Sector'Range, Hall_Sector'Range) of Angle_Erad :=
+--     -- Previous
+--     --  |              ,--------------------------- Current -------------------------------,
+--     --  V               H1,          H2,          H3,          H4,          H5,          H6
+--        (H1 => (    0.0 * A, O + 0.0 * A, O + 1.0 * A, O + 2.0 * A, O + 4.0 * A, O + 5.0 * A),
+--         H2 => (O + 0.0 * A,     1.0 * A, O + 1.0 * A, O + 2.0 * A, O + 3.0 * A, O + 5.0 * A),
+--         H3 => (O + 0.0 * A, O + 1.0 * A,     2.0 * A, O + 2.0 * A, O + 3.0 * A, O + 4.0 * A),
+--         H4 => (O + 5.0 * A, O + 1.0 * A, O + 2.0 * A,     3.0 * A, O + 3.0 * A, O + 4.0 * A),
+--         H5 => (O + 5.0 * A, O + 0.0 * A, O + 2.0 * A, O + 3.0 * A,     4.0 * A, O + 4.0 * A),
+--         H6 => (O + 5.0 * A, O + 0.0 * A, O + 1.0 * A, O + 3.0 * A, O + 4.0 * A,     5.0 * A));
+
    type Position_Hall_Data is record
       Hall_State : AMC_Hall.Hall_State;
       Angle_Raw  : Angle_Erad;

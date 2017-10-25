@@ -14,7 +14,7 @@ package body Position is
       Previous_Sector : constant Hall_Sector := Hall_Map (Hall.Previous.Bits);
       Is_Ccw : Boolean;
    begin
-      if AMC_Hall.Is_Standstill or else Hall.Current.Bits = Hall.Previous.Bits then
+      if Hall.Current.Bits = Hall.Previous.Bits then
          return Standstill;
       end if;
 

@@ -242,7 +242,7 @@ package body AMC_ADC is
       procedure ISR is
          use STM32.ADC;
       begin
-         --  AMC_Board.Turn_On (AMC_Board.Led_Green);
+         AMC_Board.Turn_On  (AMC_Board.Debug_Pin_4);
 
          if Status (Multi_Main_ADC, Injected_Channel_Conversion_Complete) then
             Clear_Interrupt_Pending (Multi_Main_ADC, Injected_Channel_Conversion_Complete);
@@ -256,6 +256,8 @@ package body AMC_ADC is
 
             New_Samples := True;
          end if;
+
+         --  AMC_Board.Turn_Off  (AMC_Board.Debug_Pin_4);
       end ISR;
 
    end Handler;

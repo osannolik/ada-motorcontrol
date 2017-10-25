@@ -73,6 +73,9 @@ package AMC_Hall is
    function Is_Standstill return Boolean;
    --  @return True if the hall sensor has not changed state for a while.
 
+   Speed_Counter_Max : constant AMC_Types.UInt32 :=
+      AMC_Types.UInt32 (AMC_Types.UInt16'Last);
+
    protected State is
       pragma Interrupt_Priority (Config.Hall_ISR_Prio);
 
@@ -122,7 +125,7 @@ package AMC_Hall is
       Delay_Factor : Float range 0.0 .. 1.0 := 0.0;
       --  Time for commutation will be this Factor times the time since last state change
 
-      Speed_Timer_Counter : AMC_Types.UInt32 := 0;
+      Speed_Timer_Counter : AMC_Types.UInt32 := Speed_Counter_Max;
       --  Timer counts since last hall state change
 
    end State;

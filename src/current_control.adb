@@ -20,6 +20,8 @@ package body Current_Control is
              Phase_Current_Samples => I_Samples);
 
          AMC_Board.Turn_On (AMC_Board.Led_Green);
+         AMC_Board.Turn_On  (AMC_Board.Debug_Pin_3);
+         AMC_Board.Turn_Off  (AMC_Board.Debug_Pin_4);
 
          System_Outputs := AMC.Get_Inverter_System_Output;
 
@@ -41,6 +43,7 @@ package body Current_Control is
          AMC_PWM.Set_Duty_Cycle (Duty);
 
          AMC_Board.Turn_Off (AMC_Board.Led_Green);
+         AMC_Board.Turn_Off  (AMC_Board.Debug_Pin_3);
 
       end loop;
    end Current_Control;

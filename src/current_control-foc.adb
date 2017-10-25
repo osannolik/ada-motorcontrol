@@ -1,5 +1,6 @@
 with Position;
 with Position.Alignment;
+with Position.Estimation;
 with PID;
 with Transforms;
 with ZSM;
@@ -92,7 +93,8 @@ package body Current_Control.FOC is
 
       case System_Outputs.Mode is
          when Normal | Speed =>
-            Rotor_Angle     := Compose (Position.Get_Angle);
+            Position.Estimation.Angle_Update (Delta_T => Nominal_Period);
+            Rotor_Angle     := Compose (Position.Estimation.Get_Angle);
             Current_Command := System_Outputs.Current_Command;
 
          when Alignment =>

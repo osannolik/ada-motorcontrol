@@ -3,7 +3,7 @@ with Ada.Real_Time; use Ada.Real_Time;
 with AMC_Board;
 with AMC_ADC;
 with AMC_PWM;
---  with AMC_Encoder;
+with AMC_Encoder;
 with AMC_Hall;
 with AMC_Utils;
 with Calmeas;
@@ -175,13 +175,23 @@ package body AMC is
 
    procedure Initialize
    is
+      Position_Sensor_Initialized : Boolean := False;
    begin
 
       AMC_Board.Initialize;
 
-      --  AMC_Encoder.Initialize;
+      case Config.Position_Sensor is
+         when AMC_Types.Encoder =>
+            AMC_Encoder.Initialize;
+            Position_Sensor_Initialized := AMC_Encoder.Is_Initialized;
 
-      AMC_Hall.Initialize;
+         when AMC_Types.Hall =>
+            AMC_Hall.Initialize;
+            Position_Sensor_Initialized := AMC_Hall.Is_Initialized;
+
+         when AMC_Types.None =>
+            Position_Sensor_Initialized := True;
+      end case;
 
       AMC_ADC.Initialize;
 
@@ -203,7 +213,7 @@ package body AMC is
          AMC_Board.Is_Initialized and
          AMC_ADC.Is_Initialized and
          AMC_PWM.Is_Initialized and
-         --  AMC_Encoder.Is_Initialized;
+         Position_Sensor_Initialized and
          AMC_Hall.Is_Initialized;
 
       Inverter_System_Outputs.Set

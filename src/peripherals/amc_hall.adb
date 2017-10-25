@@ -12,8 +12,6 @@ package body AMC_Hall is
                      H2_Pin     => H2_Pin.Set,
                      H3_Pin     => H3_Pin.Set));
 
-   Speed_Counter_Max : constant UInt32 := UInt32 (UInt16'Last);
-
    Speed_Timer_Resolution : AMC_Types.Seconds;
 
    Comm_Del_Param : aliased UInt32 := 16#0010#;
@@ -137,11 +135,12 @@ package body AMC_Hall is
       entry Await_New (New_State            : out Hall_State;
                        Time_Delta_s         : out AMC_Types.Seconds;
                        Speed_Timer_Overflow : out Boolean) when Hall_State_Is_Updated is
+         use AMC_Types;
       begin
          New_State := State;
 
-         Time_Delta_s :=
-            AMC_Types.Seconds (Speed_Timer_Counter) * Speed_Timer_Resolution;
+         Time_Delta_s := Seconds'Max
+            (Seconds'Succ (0.0), Seconds (Speed_Timer_Counter) * Speed_Timer_Resolution);
 
          Speed_Timer_Overflow := Capture_Overflow;
 
@@ -182,14 +181,9 @@ package body AMC_Hall is
          then
             Clear_Pending_Interrupt (Hall_Timer, Timer_CC1_Interrupt);
 
-
-
-            AMC_Board.Turn_On  (AMC_Board.Debug_Pin_2);
-
-
             --  Get time period since last hall state change
             if Capture_Overflow then
-               Speed_Timer_Counter := 0;
+               Speed_Timer_Counter := Speed_Counter_Max;
                Capture_Overflow := False;
             else
                Speed_Timer_Counter := Current_Capture_Value (Hall_Timer, Channel_1);
@@ -211,9 +205,6 @@ package body AMC_Hall is
 
             Update;
 
-            AMC_Board.Turn_Off (AMC_Board.Debug_Pin_2);
-
-
             Clear_Pending_Interrupt (Hall_Timer, Timer_Update_Interrupt);
             Enable_Interrupt (Hall_Timer, Timer_Update_Interrupt);
          end if;
@@ -222,18 +213,16 @@ package body AMC_Hall is
          if Status (Hall_Timer, Timer_Update_Indicated) and then
             Interrupt_Enabled (Hall_Timer, Timer_Update_Interrupt)
          then
-
-            AMC_Board.Turn_On  (AMC_Board.Debug_Pin_4);
-            AMC_Board.Turn_Off (AMC_Board.Debug_Pin_4);
-
             Capture_Overflow := True;
+
+            Speed_Timer_Counter := Speed_Counter_Max;
 
             Update;
 
             Disable_Interrupt (Hall_Timer, Timer_Update_Interrupt);
          end if;
 
-         AMC_Board.Turn_Off (AMC_Board.Debug_Pin_1);
+         --  AMC_Board.Turn_Off (AMC_Board.Debug_Pin_1);
 
       end ISR;
 
