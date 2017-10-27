@@ -32,6 +32,17 @@ package AMC_Utils is
    --  @param Minimum Lower limit of X
    --  @return Saturated input
 
+   function Dead_Zone (X     : in Float;
+                       Upper : in Float;
+                       Lower : in Float)
+                       return Float;
+   --  A deadband region is defined by Lower and Upper. If X is within this interval,
+   --  the output is zero. It is assumed that Upper >= Lower.
+   --  @param X Input value
+   --  @param Upper Upper limit of dead zone interval
+   --  @param Lower Lower limit of dead zone interval
+   --  @return 0 if Lower <= X <= Upper, else X
+
    function Sign (X : in Float)
                   return Float
    with

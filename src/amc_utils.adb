@@ -23,6 +23,19 @@ package body AMC_Utils is
    is
       (Max (Min (X, Maximum), Minimum));
 
+   function Dead_Zone (X     : in Float;
+                       Upper : in Float;
+                       Lower : in Float)
+                       return Float
+   is
+   begin
+      if Lower <= X and then X <= Upper then
+         return 0.0;
+      else
+         return X;
+      end if;
+   end Dead_Zone;
+
    function Sign (X : in Float)
                   return Float
    is
