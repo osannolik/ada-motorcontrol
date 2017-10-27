@@ -14,9 +14,8 @@ package body AMC_Utils.Cum_Avg is
                   Value : in     Element_T)
    is
    begin
-      C_Avg := Cumulative_Average'
-         (Mean => Value,
-          N    => 1);
+      C_Avg := Cumulative_Average'(Mean => Value,
+                                   N    => 1);
    end Set;
 
    function Get (C_Avg : in Cumulative_Average) return Element_T is
