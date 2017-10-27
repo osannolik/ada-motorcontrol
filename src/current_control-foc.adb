@@ -117,7 +117,7 @@ package body Current_Control.FOC is
       end case;
 
       Rotor_Angle_Log := Float (Rotor_Angle.Angle);
-      Rotor_Speed_Log := Float (Position.Get_Speed);
+      Rotor_Speed_Log := Float (Position.Estimation.Get_Speed);
 
       Calculate_Voltage
          (Phase_Currents => Phase_Currents,

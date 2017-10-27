@@ -16,8 +16,6 @@ package body AMC_Hall is
 
    Comm_Del_Param : aliased UInt32 := 16#0010#;
 
-   Hall_Cntr : aliased UInt32 := 0;
-
    procedure Initialize
    is
       use STM32.Timers;
@@ -263,7 +261,5 @@ begin
    Calmeas.Add (Symbol      => Comm_Del_Param'Access,
                 Name        => "Comm_Delay",
                 Description => "");
-   Calmeas.Add (Symbol      => Hall_Cntr'Access,
-                Name        => "Hall_Cntr",
-                Description => "");
+
 end AMC_Hall;
