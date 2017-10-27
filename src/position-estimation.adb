@@ -97,8 +97,8 @@ package body Position.Estimation is
 
    task body Hall_Handler is
 
-      package MA is new AMC_Utils.Moving_Avg (N         => AMC_Hall.Nof_Valid_Hall_States,
-                                              Element_T => Seconds);
+      package MA is new AMC_Utils.Moving_Avg (N        => AMC_Hall.Nof_Valid_Hall_States,
+                                              Datatype => Seconds);
 
       New_State            : AMC_Hall.Hall_State;
       Delta_T              : Seconds;

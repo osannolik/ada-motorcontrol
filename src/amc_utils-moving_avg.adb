@@ -2,9 +2,9 @@ package body AMC_Utils.Moving_Avg is
 
 
    procedure Update (Ma    : in out Moving_Average;
-                     Value : in     Element_T)
+                     Value : in     Datatype)
    is
-      Tmp : Element_T := Reset_Value;
+      Tmp : Datatype := Reset_Value;
    begin
       Ma.History (Ma.Index) := Value;
 
@@ -18,11 +18,11 @@ package body AMC_Utils.Moving_Avg is
          Tmp := Tmp + X;
       end loop;
 
-      Ma.Output := Tmp / Element_T (Ma.History'Length);
+      Ma.Output := Tmp / Datatype (Ma.History'Length);
    end Update;
 
    procedure Set (Ma    : in out Moving_Average;
-                  Value : in     Element_T)
+                  Value : in     Datatype)
    is
    begin
       for I in Ma.History'Range loop
@@ -32,7 +32,7 @@ package body AMC_Utils.Moving_Avg is
       Ma.Output := Value;
    end Set;
 
-   function Get (Ma : in Moving_Average) return Element_T is
+   function Get (Ma : in Moving_Average) return Datatype is
       (Ma.Output);
 
 end AMC_Utils.Moving_Avg;
