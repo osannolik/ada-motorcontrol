@@ -1,6 +1,6 @@
 [submodule "Ada_Drivers_Library"]
 	path = Ada_Drivers_Library
 	url = https://github.com/osannolik/Ada_Drivers_Library.git
-[submodule "embedded-runtimes"]
-	path = embedded-runtimes
-	url = https://github.com/osannolik/embedded-runtimes.git
+[submodule "bb-runtimes"]
+	path = bb-runtimes
+	url = https://github.com/osannolik/bb-runtimes.git
