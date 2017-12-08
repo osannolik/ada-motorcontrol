@@ -14,7 +14,7 @@ package Config is
 
    PWM_Frequency_Hz : constant AMC_Types.Frequency_Hz := 20_000.0;
 
-   PWM_Gate_Deadtime_S : constant AMC_Types.Seconds := 166.0e-9;
+   PWM_Gate_Deadtime_S : constant AMC_Types.Seconds := 225.0e-9;
 
    Current_Control_Method : constant AMC_Types.Control_Method := AMC_Types.Field_Oriented;
 
