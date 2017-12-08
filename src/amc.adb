@@ -14,6 +14,7 @@ package body AMC is
    --  Variables available for measurement
    V_Bus_Log  : aliased Voltage_V;
    Iq_Ref_Log : aliased Float;
+   Board_Temp_Log : aliased Float;
 
    procedure Update_Mode (Current_Mode   : in out Ctrl_Mode;
                           Button_Pressed : in Boolean;
@@ -66,6 +67,8 @@ package body AMC is
             (AMC_ADC.Get_Sample (AMC_ADC.Bat_Sense)); --  TODO: filter
          Idq_Req := External_Voltage_To_Iq_Req
             (AMC_ADC.Get_Sample (AMC_ADC.Ext_V));
+         Board_Temp_Log := Float (AMC_Board.To_Board_Temp
+            (AMC_ADC.Get_Sample (AMC_ADC.Board_Temp)));
          Is_Aligned := Current_Control.Get_Current_Control_Output.Alignment_Done;
 
          --  Update current Mode
@@ -242,6 +245,10 @@ package body AMC is
 begin
 
    Initialize;
+
+   Calmeas.Add (Symbol      => Board_Temp_Log'Access,
+                Name        => "Board_Temp",
+                Description => "Board Temperature [degC]");
 
    Calmeas.Add (Symbol      => V_Bus_Log'Access,
                 Name        => "V_Bus",
