@@ -1,6 +1,6 @@
 with Config;
 
-package Logging is
+package Logging_Handler is
    --  @summary
    --  Logging
    --
@@ -18,4 +18,4 @@ package Logging is
       Priority => Config.Logger_Prio,
       Storage_Size => (8 * 1024);
 
-end Logging;
+end Logging_Handler;

@@ -34,14 +34,11 @@ package body AMC_UART is
 
       STM32.GPIO.Configure_IO (Points => Pins,
                                Config =>
-                                  (Mode        => STM32.GPIO.Mode_AF,
-                                   Output_Type => STM32.GPIO.Push_Pull,
-                                   Speed       => STM32.GPIO.Speed_50MHz,
-                                   Resistors   => STM32.GPIO.Pull_Up));
-
-      STM32.GPIO.Configure_Alternate_Function
-         (Points => Pins,
-          AF     => Stream.AF);
+                                  (Mode           => STM32.GPIO.Mode_AF,
+                                   AF_Output_Type => STM32.GPIO.Push_Pull,
+                                   AF_Speed       => STM32.GPIO.Speed_50MHz,
+                                   AF             => Stream.AF,
+                                   Resistors      => STM32.GPIO.Pull_Up));
 
       --  Configure Uart peripheral
       STM32.Device.Enable_Clock (UART);
