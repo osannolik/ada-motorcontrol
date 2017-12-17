@@ -7,7 +7,7 @@ with System;
 
 with AMC;             pragma Unreferenced (AMC);
 with Current_Control; pragma Unreferenced (Current_Control);
-with Logging;         pragma Unreferenced (Logging);
+with Logging_Handler; pragma Unreferenced (Logging_Handler);
 
 procedure Main is
    pragma Priority (System.Priority'First);

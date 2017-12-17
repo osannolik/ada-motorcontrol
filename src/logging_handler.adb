@@ -6,7 +6,7 @@ with Calmeas;
 --  with AMC_Board;
 with AMC;
 
-package body Logging is
+package body Logging_Handler is
 
    UART_COBS : aliased Serial_COBS.COBS_Stream;
    --  Instance of a COBS encoder/decoder
@@ -62,4 +62,4 @@ package body Logging is
       end loop;
    end Logger;
 
-end Logging;
+end Logging_Handler;

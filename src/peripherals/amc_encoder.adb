@@ -12,14 +12,11 @@ package body AMC_Encoder is
 
       STM32.GPIO.Configure_IO (Points => Input_Pins,
                                Config =>
-                                  (Mode        => STM32.GPIO.Mode_AF,
-                                   Output_Type => STM32.GPIO.Push_Pull,
-                                   Speed       => STM32.GPIO.Speed_100MHz,
-                                   Resistors   => STM32.GPIO.Floating));
-
-      STM32.GPIO.Configure_Alternate_Function
-         (Points => Input_Pins,
-          AF     => STM32.Device.GPIO_AF_TIM4_2);
+                                  (Mode           => STM32.GPIO.Mode_AF,
+                                   AF_Output_Type => STM32.GPIO.Push_Pull,
+                                   AF_Speed       => STM32.GPIO.Speed_100MHz,
+                                   AF             => STM32.Device.GPIO_AF_TIM4_2,
+                                   Resistors      => STM32.GPIO.Floating));
 
       STM32.Device.Enable_Clock (Counting_Timer);
 

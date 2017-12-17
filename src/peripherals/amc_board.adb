@@ -53,8 +53,6 @@ package body AMC_Board is
       STM32.Device.Enable_Clock (User_Button);
 
       Configuration := (Mode        => STM32.GPIO.Mode_In,
-                        Output_Type => STM32.GPIO.Push_Pull,
-                        Speed       => STM32.GPIO.Speed_100MHz,
                         Resistors   => STM32.GPIO.Pull_Up);
 
       STM32.GPIO.Configure_IO (User_Button, Configuration);
