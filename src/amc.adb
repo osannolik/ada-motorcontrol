@@ -1,5 +1,6 @@
 with Ada.Real_Time; use Ada.Real_Time;
 
+with AMC_WDG;
 with AMC_Board;
 with AMC_ADC;
 with AMC_PWM;
@@ -178,6 +179,10 @@ package body AMC is
       Position_Sensor_Initialized : Boolean := False;
    begin
 
+      AMC_WDG.Initialize
+         (Nominal_Period => 0.001,
+          Tolerance      => 0.0002);
+
       AMC_Board.Initialize;
 
       case Config.Position_Sensor is
@@ -211,6 +216,7 @@ package body AMC is
 
       Initialized :=
          AMC_Board.Is_Initialized and
+         AMC_WDG.Is_Initialized and
          AMC_ADC.Is_Initialized and
          AMC_PWM.Is_Initialized and
          Position_Sensor_Initialized and
