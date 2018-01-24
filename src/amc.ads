@@ -1,7 +1,6 @@
 with Generic_PO;
-with AMC_Types; use AMC_Types;
+with AMC_Types;
 with Config;
-
 
 package AMC is
    --  @summary
@@ -12,6 +11,8 @@ package AMC is
    --  inverter modes, input control signal selection, filtering etc.
    --  Used peripherals (e.g. ADC, PWM) are initialized here.
    --
+
+   use AMC_Types;
 
    procedure Initialize;
    --  Initializes used peripherals and sets the inverter in a default state.

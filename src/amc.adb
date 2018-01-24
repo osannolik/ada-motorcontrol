@@ -1,12 +1,11 @@
 with Ada.Real_Time; use Ada.Real_Time;
-
-with AMC_WDG;
 with AMC_Board;
 with AMC_ADC;
 with AMC_PWM;
 with AMC_Encoder;
 with AMC_Hall;
 with AMC_Utils;
+with Watchdog.Manager;
 with Calmeas;
 with Current_Control;
 
@@ -43,6 +42,7 @@ package body AMC is
 
 
    task body Inverter_System is
+
       Period_s : constant AMC_Types.Seconds :=
          AMC_Types.Seconds (Float (Config.Inverter_System_Period_Ms) / 1000.0);
       Period : constant Time_Span :=
@@ -56,10 +56,18 @@ package body AMC is
       Is_Aligned   : Boolean := False;
       Mode         : Ctrl_Mode := Off;
 
+      Wdg_Checkpoint : Watchdog.Checkpoint_Id := Watchdog.Create_Checkpoint;
+
    begin
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
       AMC_Board.Turn_Off (AMC_Board.Led_Green);
+
+      Watchdog.Manager.Instance.Initialize_Checkpoint
+         (Checkpoint         => Wdg_Checkpoint,
+          Period_Factor      => Config.Inverter_System_Period_Ms / Watchdog.Manager.Base_Period_Ms,
+          Minimum_Nof_Visits => 1,
+          Allowed_Misses     => 1);
 
       loop
          --  Get inputs dependent upon
@@ -90,6 +98,8 @@ package body AMC is
          --  Log some data
          V_Bus_Log := Vbus;
          Iq_Ref_Log := Idq_Req.Q;
+
+         Watchdog.Manager.Instance.Visit (Wdg_Checkpoint);
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;
@@ -179,10 +189,6 @@ package body AMC is
       Position_Sensor_Initialized : Boolean := False;
    begin
 
-      AMC_WDG.Initialize
-         (Nominal_Period => 0.001,
-          Tolerance      => 0.0002);
-
       AMC_Board.Initialize;
 
       case Config.Position_Sensor is
@@ -216,7 +222,6 @@ package body AMC is
 
       Initialized :=
          AMC_Board.Is_Initialized and
-         AMC_WDG.Is_Initialized and
          AMC_ADC.Is_Initialized and
          AMC_PWM.Is_Initialized and
          Position_Sensor_Initialized and

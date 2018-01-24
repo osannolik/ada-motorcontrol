@@ -7,11 +7,11 @@ package body AMC_WDG is
 
    --  Watchdog counter counts DOWN from Window_Start and causes a reset when
    --  when it passes Window_End, i.e. hits Window_End - 1.
-   Counter_Start : Downcounter := Downcounter'Last;
+   Counter_Start :          Downcounter := Downcounter'Last;
    Window_End    : constant Downcounter := Downcounter'First;
 
-   procedure Initialize (Nominal_Period : AMC_Types.Seconds;
-                         Tolerance      : AMC_Types.Seconds)
+   procedure Initialize (Period    : AMC_Types.Seconds;
+                         Tolerance : AMC_Types.Seconds)
    is
       PCLK1_Freq : constant Float := Float (STM32.Device.System_Clock_Frequencies.PCLK1);
       Cntr_Freq  : constant array (Prescalers'Range) of Float :=
@@ -37,7 +37,7 @@ package body AMC_WDG is
       is
          subtype Valid_Window is Integer range Integer (Window_End) .. Integer (Cntr_Start);
       begin
-         return Period_Plus_Tolerance (Prescaler, Cntr_Start) <= Nominal_Period + Tolerance and then
+         return Period_Plus_Tolerance (Prescaler, Cntr_Start) <= Period + Tolerance and then
             Window_Start (Prescaler, Tolerance) in Valid_Window'Range;
       end Is_Valid_Setting;
 
@@ -75,7 +75,11 @@ package body AMC_WDG is
    procedure Activate is
    begin
       Activate_Watchdog (Counter_Start);
+      Activated := True;
    end Activate;
+
+   function Is_Activated return Boolean is
+      (Activated);
 
    procedure Refresh is
    begin

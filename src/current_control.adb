@@ -3,6 +3,8 @@ with AMC_PWM;
 with AMC_Board;
 with Current_Control.FOC;
 with AMC;
+with Watchdog.Manager;
+
 package body Current_Control is
 
    task body Current_Control is
@@ -10,7 +12,16 @@ package body Current_Control is
       I_Samples      : Abc;
       System_Outputs : AMC.Inverter_System_States;
       Duty           : Abc;
+
+      Wdg_Checkpoint : Watchdog.Checkpoint_Id := Watchdog.Create_Checkpoint;
    begin
+
+      Watchdog.Manager.Instance.Initialize_Checkpoint
+         (Checkpoint         => Wdg_Checkpoint,
+          Period_Factor      => 1,
+          Minimum_Nof_Visits =>
+             Natural (Float (Watchdog.Manager.Base_Period_Ms) / (1000.0 * Nominal_Period)),
+          Allowed_Misses     => 1);
 
       AMC.Wait_Until_Initialized;
 
@@ -45,6 +56,7 @@ package body Current_Control is
          AMC_Board.Turn_Off (AMC_Board.Led_Green);
          AMC_Board.Turn_Off  (AMC_Board.Debug_Pin_3);
 
+         Watchdog.Manager.Instance.Visit (Wdg_Checkpoint);
       end loop;
    end Current_Control;
 
