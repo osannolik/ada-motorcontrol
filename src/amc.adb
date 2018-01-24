@@ -54,7 +54,7 @@ package body AMC is
       Enable_Gates : Boolean := False;
       Outputs      : Inverter_System_States;
       Is_Aligned   : Boolean := False;
-      Mode         : Ctrl_Mode := Off;
+      Mode         : Ctrl_Mode := Normal;
 
       Wdg_Checkpoint : Watchdog.Checkpoint_Id := Watchdog.Create_Checkpoint;
 
@@ -68,6 +68,10 @@ package body AMC is
           Period_Factor      => Config.Inverter_System_Period_Ms / Watchdog.Manager.Base_Period_Ms,
           Minimum_Nof_Visits => 1,
           Allowed_Misses     => 1);
+
+      if AMC_Board.Is_Pressed (AMC_Board.User_Button) then
+         Mode := Off;
+      end if;
 
       loop
          --  Get inputs dependent upon
