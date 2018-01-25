@@ -20,8 +20,8 @@ package body Current_Control is
          (Checkpoint         => Wdg_Checkpoint,
           Period_Factor      => 1,
           Minimum_Nof_Visits =>
-             Natural (Float (Watchdog.Manager.Base_Period_Ms) / (1000.0 * Nominal_Period)),
-          Allowed_Misses     => 1);
+             Natural (Float (Watchdog.Manager.Base_Period_Ms) / (1000.0 * Nominal_Period)) - 1,
+          Allowed_Misses     => 2);
 
       AMC.Wait_Until_Initialized;
 
