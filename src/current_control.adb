@@ -13,7 +13,7 @@ package body Current_Control is
       System_Outputs : AMC.Inverter_System_States;
       Duty           : Abc;
 
-      Wdg_Checkpoint : Watchdog.Checkpoint_Id := Watchdog.Create_Checkpoint;
+      Wdg_Checkpoint : Watchdog.Checkpoint_Id;
    begin
 
       Watchdog.Manager.Instance.Initialize_Checkpoint

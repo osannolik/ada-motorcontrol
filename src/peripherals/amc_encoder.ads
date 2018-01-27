@@ -1,5 +1,4 @@
 with STM32.Timers;
-with STM32.Device;
 with STM32.GPIO;
 with AMC_Types;
 with AMC_Board;
@@ -49,7 +48,7 @@ private
    Input_Pins : constant STM32.GPIO.GPIO_Points :=
       (AMC_Board.Encoder_A_Pin, AMC_Board.Encoder_B_Pin);
 
-   Counting_Timer : STM32.Timers.Timer renames STM32.Device.Timer_4;
+   Counting_Timer : STM32.Timers.Timer renames AMC_Board.Pos_Timer;
 
    Counts_Per_Revolution : constant Float := 4.0 * Float (PPR);
    --  x4 due to counting at all pulse edges

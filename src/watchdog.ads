@@ -27,17 +27,13 @@ package Watchdog is
 
    function Is_Initialized (Wdg : in Watchdog_Type) return Boolean;
 
-   function Create_Checkpoint return Checkpoint_Id is
-      (Checkpoint_Id'First);
-
    procedure Initialize_Checkpoint
       (Wdg                : in out Watchdog_Type;
-       Checkpoint         : in out Checkpoint_Id;
+       Checkpoint         :    out Checkpoint_Id;
        Period_Factor      : in     Positive;
        Minimum_Nof_Visits : in     Natural;
        Allowed_Misses     : in     Natural)
-      with Pre  => Checkpoint = 0,
-           Post => Checkpoint >= Checkpoint_Valid_Id'First;
+      with Post => Checkpoint >= Checkpoint_Valid_Id'First;
 
 private
 

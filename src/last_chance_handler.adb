@@ -43,8 +43,8 @@ package body Last_Chance_Handler is
    procedure Last_Chance_Handler (Error : Exception_Occurrence) is
    begin
       --  No-return procedure...
+      Error_Handling.Handler (Error);
       loop
-         Error_Handling.Handler (Error);
          delay until Clock + Milliseconds (500);
       end loop;
    end Last_Chance_Handler;

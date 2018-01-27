@@ -67,7 +67,7 @@ package body Watchdog is
 
    procedure Initialize_Checkpoint
       (Wdg                : in out Watchdog_Type;
-       Checkpoint         : in out Checkpoint_Id;
+       Checkpoint         :    out Checkpoint_Id;
        Period_Factor      : in     Positive;
        Minimum_Nof_Visits : in     Natural;
        Allowed_Misses     : in     Natural)

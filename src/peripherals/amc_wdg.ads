@@ -28,4 +28,6 @@ private
    Initialized : Boolean := False;
    Activated   : Boolean := False; -- TODO: Check with peripheral registers...
 
+   --  Update_Timer : STM32.Timers.Timer renames AMC_Board.Wdg_Timer;
+
 end AMC_WDG;

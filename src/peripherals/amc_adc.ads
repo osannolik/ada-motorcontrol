@@ -2,6 +2,7 @@ with STM32.Device;
 with STM32.ADC;
 with STM32.GPIO;
 with STM32.DMA;
+with STM32.Timers;
 with Ada.Interrupts.Names;
 with AMC_Types;
 with AMC_Board;
@@ -81,6 +82,8 @@ private
    ADC_V_Per_Lsb : constant Float := AMC_Board.ADC_Vref / 4095.0; --  12 bit
 
    Regular_Conversion_Frequency : constant Positive := 14_000;
+
+   Regular_Timer : STM32.Timers.Timer renames AMC_Board.ADC_Reg_Timer;
 
    Regulars_ADC : STM32.ADC.Analog_To_Digital_Converter renames STM32.Device.ADC_1;
 

@@ -1,4 +1,6 @@
 with AMC_Math;
+with STM32.WWDG;
+with AMC_PWM;
 
 package body AMC_Board is
 
@@ -57,8 +59,24 @@ package body AMC_Board is
 
       STM32.GPIO.Configure_IO (User_Button, Configuration);
 
+      if STM32.WWDG.WWDG_Reset_Indicated then
+         STM32.WWDG.Clear_WWDG_Reset_Flag;
+         Startup_Reason := AMC_Types.Watchdog_Reset;
+      else
+         Startup_Reason := AMC_Types.Power_On;
+      end if;
+
       Initialized := True;
    end Initialize;
+
+   function Get_Startup_Reason
+      return AMC_Types.Start_Reason is (Startup_Reason);
+
+   procedure Safe_State is
+   begin
+      AMC_PWM.Generate_Break_Event;
+      Set_Gate_Driver_Power (Enabled => False);
+   end Safe_State;
 
    function Is_Initialized
       return Boolean is (Initialized);

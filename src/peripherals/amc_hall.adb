@@ -1,5 +1,5 @@
 with HAL; use HAL;
-
+with STM32.Device;
 with Calmeas;
 
 package body AMC_Hall is

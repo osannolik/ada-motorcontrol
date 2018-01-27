@@ -1,10 +1,8 @@
 with AMC_Board;
-with AMC;
 with Ada.Text_IO;
 
 package body Error_Handling is
 
-   procedure Make_Safe;
    procedure Make_Safe is
    begin
       if not AMC_Board.Is_Initialized then
@@ -16,20 +14,25 @@ package body Error_Handling is
       AMC_Board.Turn_Off (Led => AMC_Board.Led_Green);
 
       --  Force the gate driver into a safe state
-      AMC.Safe_State;
+      AMC_Board.Safe_State;
    end Make_Safe;
+
+   procedure Handler is
+   begin
+      Make_Safe;
+   end Handler;
 
    procedure Handler (Msg : System.Address; Line : Integer) is
       pragma Unreferenced (Msg, Line);
    begin
-      Make_Safe;
+      Handler;
    end Handler;
 
    procedure Handler (Error : Exception_Occurrence) is
       Name : constant String := Exception_Name (Error);
    begin
-      Make_Safe;
       Ada.Text_IO.Put_Line (Name);
+      Handler;
    end Handler;
 
 

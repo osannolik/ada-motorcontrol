@@ -52,6 +52,11 @@ package AMC_Board is
    Gate_Power_Enable : STM32.GPIO.GPIO_Point renames STM32.Device.PA3;
 
    PWM_Timer        : STM32.Timers.Timer            renames STM32.Device.Timer_1;
+   ADC_Reg_Timer    : STM32.Timers.Timer            renames STM32.Device.Timer_2;
+   Pos_Comm_Timer   : STM32.Timers.Timer            renames STM32.Device.Timer_3;
+   Pos_Timer        : STM32.Timers.Timer            renames STM32.Device.Timer_4;
+--   Wdg_Timer        : STM32.Timers.Timer            renames STM32.Device.Timer_6;
+
    PWM_Gate_GPIO_AF : STM32.GPIO_Alternate_Function renames STM32.Device.GPIO_AF_TIM1_1;
    PWM_Gate_A_Ch    : STM32.Timers.Timer_Channel    renames STM32.Timers.Channel_1;
    PWM_Gate_B_Ch    : STM32.Timers.Timer_Channel    renames STM32.Timers.Channel_2;
@@ -203,8 +208,18 @@ package AMC_Board is
    --  @param ADC_Voltage ADC reading in volts
    --  @return Corresponding temperature
 
+   function Get_Startup_Reason return AMC_Types.Start_Reason;
+   --  @return The reason for board startup.
+
+   procedure Safe_State;
+   --  Forces the inverter into a state that is considered safe.
+   --  Typically this disables the PWM generation (all switches off), and
+   --  turns off the power to the gate drivers.
+
 private
    Initialized : Boolean := False;
+
+   Startup_Reason : AMC_Types.Start_Reason;
 
    Phase_Ampere_Per_ADC_Voltage : constant Float :=
       1.0 / (R_Shunt * Ina240_Gain);

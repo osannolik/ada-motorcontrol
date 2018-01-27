@@ -21,11 +21,6 @@ package AMC is
       return Boolean;
    --  @return True when initialized.
 
-   procedure Safe_State;
-   --  Forces the inverter into a state that is considered safe.
-   --  Typically this disables the PWM generation (all switches off), and
-   --  turns off the power to the gate drivers.
-
    task Inverter_System with
       Priority => Config.Inverter_System_Prio,
       Storage_Size => (8 * 1024);
