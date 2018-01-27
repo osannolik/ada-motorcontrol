@@ -34,6 +34,8 @@ package Config is
 
    Enable_Watchdog : constant Boolean := True;
 
+   Wdg_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
+
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
 
    Hall_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last - 1;

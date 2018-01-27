@@ -55,7 +55,7 @@ package AMC_Board is
    ADC_Reg_Timer    : STM32.Timers.Timer            renames STM32.Device.Timer_2;
    Pos_Comm_Timer   : STM32.Timers.Timer            renames STM32.Device.Timer_3;
    Pos_Timer        : STM32.Timers.Timer            renames STM32.Device.Timer_4;
---   Wdg_Timer        : STM32.Timers.Timer            renames STM32.Device.Timer_6;
+   Wdg_Timer        : STM32.Timers.Timer            renames STM32.Device.Timer_6;
 
    PWM_Gate_GPIO_AF : STM32.GPIO_Alternate_Function renames STM32.Device.GPIO_AF_TIM1_1;
    PWM_Gate_A_Ch    : STM32.Timers.Timer_Channel    renames STM32.Timers.Channel_1;
