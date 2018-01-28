@@ -25,7 +25,7 @@ package AMC_WDG is
    function Is_Activated return Boolean;
    --  @return True if activated
 
-   procedure Refresh;
+   procedure Refresh (N : in Positive := 1);
 
 private
 

@@ -1,5 +1,7 @@
 with AMC_Board;
 with Ada.Text_IO;
+with AMC_WDG;
+with Ada.Real_Time;
 
 package body Error_Handling is
 
@@ -18,8 +20,13 @@ package body Error_Handling is
    end Make_Safe;
 
    procedure Handler is
+      use Ada.Real_Time;
    begin
       Make_Safe;
+      loop
+         AMC_WDG.Refresh; -- Keep the board alive
+         delay until Clock + Milliseconds (1);
+      end loop;
    end Handler;
 
    procedure Handler (Msg : System.Address; Line : Integer) is

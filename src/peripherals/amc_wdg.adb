@@ -2,6 +2,7 @@ with HAL; use HAL;
 with STM32.Device;
 with STM32.PWM;
 with STM32.WWDG;
+with STM32_SVD.DBG;
 
 package body AMC_WDG is
    use STM32.WWDG;
@@ -77,6 +78,9 @@ package body AMC_WDG is
 
          STM32.Timers.Disable_Interrupt (Refresh_Timer, STM32.Timers.Timer_Update_Interrupt);
 
+         STM32_SVD.DBG.DBG_Periph.DBGMCU_APB1_FZ.DBG_WWDG_STOP := True;
+         STM32_SVD.DBG.DBG_Periph.DBGMCU_APB1_FZ.DBG_TIM6_STOP := True;
+
          Initialized := True;
       end if;
 
@@ -139,10 +143,10 @@ package body AMC_WDG is
    function Is_Activated return Boolean is
       (Activated);
 
-   procedure Refresh is
+   procedure Refresh (N : in Positive := 1) is
    begin
       --AMC_Board.Turn_On (AMC_Board.Debug_Pin_2);
-      Refresher.Set_Counter (1);
+      Refresher.Set_Counter (N);
       --AMC_Board.Turn_Off (AMC_Board.Debug_Pin_2);
    end Refresh;
 
