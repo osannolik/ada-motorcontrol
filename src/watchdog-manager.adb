@@ -5,6 +5,11 @@ with AMC;
 
 package body Watchdog.Manager is
 
+   procedure Refresh is
+   begin
+      AMC_WDG.Refresh;
+   end Refresh;
+
    task body Watchdog_Manager is
       use Ada.Real_Time;
       use Config;
@@ -40,7 +45,6 @@ package body Watchdog.Manager is
             end if;
          else
             Update (Instance, Refresh);
-
             if Refresh then
                AMC_WDG.Refresh;
             end if;

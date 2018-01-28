@@ -14,6 +14,8 @@ package Watchdog.Manager is
       Priority => Config.Watchdog_Prio,
       Storage_Size => 1024;
 
+   procedure Refresh;
+
    Instance : Watchdog_Type;
 
 end Watchdog.Manager;

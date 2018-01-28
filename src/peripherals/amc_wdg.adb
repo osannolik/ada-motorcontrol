@@ -84,6 +84,7 @@ package body AMC_WDG is
          Initialized := True;
       end if;
 
+      --  TODO: Create ISR for pre-reset handling (Early_Wakeup_Interrupt)
    end Initialize;
 
    protected body Refresher is

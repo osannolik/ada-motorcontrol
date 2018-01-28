@@ -1,6 +1,6 @@
 with AMC_Board;
 with Ada.Text_IO;
-with AMC_WDG;
+with Watchdog.Manager;
 with Ada.Real_Time;
 
 package body Error_Handling is
@@ -24,8 +24,8 @@ package body Error_Handling is
    begin
       Make_Safe;
       loop
-         AMC_WDG.Refresh; -- Keep the board alive
-         delay until Clock + Milliseconds (1);
+         Watchdog.Manager.Refresh; -- Keep the board alive
+         delay until Clock + Milliseconds (Watchdog.Manager.Base_Period_Ms);
       end loop;
    end Handler;
 
