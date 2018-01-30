@@ -32,9 +32,15 @@ package Config is
        2#101# => H4,
        2#110# => H6);
 
+   Enable_Watchdog : constant Boolean := True;
+
+   Wdg_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
+
    ADC_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last;
 
    Hall_ISR_Prio : constant System.Interrupt_Priority := System.Interrupt_Priority'Last - 1;
+
+   Watchdog_Prio : constant System.Priority := System.Priority'Last;
 
    Current_Control_Prio : constant System.Priority := System.Priority'Last;
 
@@ -51,5 +57,7 @@ package Config is
    Inverter_System_Period_Ms : constant Positive := 10;
 
    Logger_Period_Ms : constant Positive := 1;
+
+   Watchdog_Manager_Period_Ms : constant Positive := 1;
 
 end Config;

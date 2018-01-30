@@ -1,13 +1,11 @@
 with Ada.Real_Time; use Ada.Real_Time;
-
 with AMC_Board;
 with AMC_ADC;
-with AMC_PWM;
-with AMC_Encoder;
-with AMC_Hall;
 with AMC_Utils;
+with Watchdog.Manager;
 with Calmeas;
 with Current_Control;
+with Startup;
 
 package body AMC is
 
@@ -43,6 +41,7 @@ package body AMC is
 
 
    task body Inverter_System is
+
       Period_s : constant AMC_Types.Seconds :=
          AMC_Types.Seconds (Float (Config.Inverter_System_Period_Ms) / 1000.0);
       Period : constant Time_Span :=
@@ -54,12 +53,27 @@ package body AMC is
       Enable_Gates : Boolean := False;
       Outputs      : Inverter_System_States;
       Is_Aligned   : Boolean := False;
-      Mode         : Ctrl_Mode := Off;
+      Mode         : Ctrl_Mode := Normal;
 
+      Wdg_Checkpoint : Watchdog.Checkpoint_Id;
    begin
 
       AMC_Board.Turn_Off (AMC_Board.Led_Red);
       AMC_Board.Turn_Off (AMC_Board.Led_Green);
+
+      Watchdog.Manager.Instance.Initialize_Checkpoint
+         (Checkpoint         => Wdg_Checkpoint,
+          Period_Factor      => Config.Inverter_System_Period_Ms / Watchdog.Manager.Base_Period_Ms,
+          Minimum_Nof_Visits => 1,
+          Allowed_Misses     => 1);
+
+      if AMC_Board.Is_Pressed (AMC_Board.User_Button) then
+         Mode := Off;
+      end if;
+
+--        if AMC_Board.Get_Startup_Reason = Watchdog_Reset then
+--           AMC_Board.Turn_On (AMC_Board.Led_Red);
+--        end if;
 
       loop
          --  Get inputs dependent upon
@@ -92,6 +106,8 @@ package body AMC is
          --  Log some data
          V_Bus_Log := Vbus;
          Iq_Ref_Log := Idq_Req.Q;
+
+         Watchdog.Manager.Instance.Visit (Wdg_Checkpoint);
 
          Next_Release := Next_Release + Period;
          delay until Next_Release;
@@ -169,56 +185,8 @@ package body AMC is
    function Get_Inverter_System_Output return Inverter_System_States is
       (Inverter_System_Outputs.Get);
 
-   procedure Safe_State is
+   procedure Initialize is
    begin
-      AMC_PWM.Generate_Break_Event;
-      AMC_Board.Set_Gate_Driver_Power (Enabled => False);
-   end Safe_State;
-
-
-   procedure Initialize
-   is
-      Position_Sensor_Initialized : Boolean := False;
-   begin
-
-      AMC_Board.Initialize;
-
-      case Config.Position_Sensor is
-         when AMC_Types.Encoder =>
-            AMC_Encoder.Initialize;
-            Position_Sensor_Initialized := AMC_Encoder.Is_Initialized;
-
-         when AMC_Types.Hall =>
-            AMC_Hall.Initialize;
-            Position_Sensor_Initialized := AMC_Hall.Is_Initialized;
-
-         when AMC_Types.None =>
-            Position_Sensor_Initialized := True;
-      end case;
-
-      AMC_ADC.Initialize;
-
-      AMC_PWM.Initialize (Frequency => Config.PWM_Frequency_Hz,
-                          Deadtime  => Config.PWM_Gate_Deadtime_S,
-                          Alignment => AMC_Types.Center);
-
-      AMC_PWM.Set_Duty_Cycle (Dabc => AMC_Types.Abc'(A => 50.0,
-                                                     B => 50.0,
-                                                     C => 50.0));
-
-      AMC_PWM.Set_Trigger_Cycle (AMC_PWM.Get_Duty_Resolution);
-
-      AMC_PWM.Enable (AMC_Types.A);
-      AMC_PWM.Enable (AMC_Types.B);
-      AMC_PWM.Enable (AMC_Types.C);
-
-      Initialized :=
-         AMC_Board.Is_Initialized and
-         AMC_ADC.Is_Initialized and
-         AMC_PWM.Is_Initialized and
-         Position_Sensor_Initialized and
-         AMC_Hall.Is_Initialized;
-
       Inverter_System_Outputs.Set
          ((Current_Command =>
                  Space_Vector'(Reference_Frame  => Rotor,
@@ -226,6 +194,9 @@ package body AMC is
            Vbus            => 0.0,
            Mode            => Off));
 
+      Startup.Initialize;
+
+      Initialized := Startup.Is_Initialized;
    end Initialize;
 
    function Is_Initialized

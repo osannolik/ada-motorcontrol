@@ -8,6 +8,7 @@ with System;
 with AMC;             pragma Unreferenced (AMC);
 with Current_Control; pragma Unreferenced (Current_Control);
 with Logging_Handler; pragma Unreferenced (Logging_Handler);
+with Watchdog.Manager; pragma Unreferenced (Watchdog.Manager);
 
 procedure Main is
    pragma Priority (System.Priority'First);

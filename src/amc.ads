@@ -1,7 +1,6 @@
 with Generic_PO;
-with AMC_Types; use AMC_Types;
+with AMC_Types;
 with Config;
-
 
 package AMC is
    --  @summary
@@ -13,17 +12,14 @@ package AMC is
    --  Used peripherals (e.g. ADC, PWM) are initialized here.
    --
 
+   use AMC_Types;
+
    procedure Initialize;
    --  Initializes used peripherals and sets the inverter in a default state.
 
    function Is_Initialized
       return Boolean;
    --  @return True when initialized.
-
-   procedure Safe_State;
-   --  Forces the inverter into a state that is considered safe.
-   --  Typically this disables the PWM generation (all switches off), and
-   --  turns off the power to the gate drivers.
 
    task Inverter_System with
       Priority => Config.Inverter_System_Prio,

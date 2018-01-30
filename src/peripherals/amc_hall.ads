@@ -1,6 +1,5 @@
 with Ada.Interrupts.Names;
 with STM32.Timers;
-with STM32.Device;
 with STM32.GPIO;
 with AMC_Types;
 with AMC_Board;
@@ -165,8 +164,8 @@ private
 
    Input_Pins : constant STM32.GPIO.GPIO_Points := (H1_Pin, H2_Pin, H3_Pin);
 
-   Hall_Timer : STM32.Timers.Timer renames STM32.Device.Timer_4;
+   Hall_Timer : STM32.Timers.Timer renames AMC_Board.Pos_Timer;
 
-   Commutation_Timer : STM32.Timers.Timer renames STM32.Device.Timer_3;
+   Commutation_Timer : STM32.Timers.Timer renames AMC_Board.Pos_Comm_Timer;
 
 end AMC_Hall;

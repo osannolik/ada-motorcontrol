@@ -1,6 +1,4 @@
 with STM32.PWM;
-with STM32.Timers;
-
 
 package body AMC_ADC is
 
@@ -155,10 +153,10 @@ package body AMC_ADC is
 
 
       --  Initialize the timer used for triggering the regular conversions
-      STM32.PWM.Configure_PWM_Timer (Generator => STM32.Device.Timer_2'Access,
+      STM32.PWM.Configure_PWM_Timer (Generator => Regular_Timer'Access,
                                      Frequency => STM32.PWM.Hertz (Regular_Conversion_Frequency));
 
-      Regular_Conv_Trigger.Attach_PWM_Channel (Generator => STM32.Device.Timer_2'Access,
+      Regular_Conv_Trigger.Attach_PWM_Channel (Generator => Regular_Timer'Access,
                                                Channel   => STM32.Timers.Channel_4,
                                                Polarity  => STM32.Timers.High);
 

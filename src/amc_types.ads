@@ -98,6 +98,14 @@ package AMC_Types is
        --  Center of positive part
       );
 
+   --  Represents the reason for startup
+   type Start_Reason is
+      (Power_On,
+       --  Normal startup, i.e. applied power
+       Watchdog_Reset
+       --  Startup caused by a watchdog reset
+      );
+
    function To_Kelvin (DegC : in Temperature_DegC)
                        return Temperature_K
    with

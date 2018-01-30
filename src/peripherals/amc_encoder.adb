@@ -1,5 +1,6 @@
 with AMC_Math;
 with HAL; use HAL;
+with STM32.Device;
 
 package body AMC_Encoder is
 
